@@ -19,7 +19,6 @@
 	 </script>
 <script src="../js/prototype.js" ></script>
 <script src="../js/FonctionDefiChrono2.js?v=1"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </script>
 </head>

@@ -1,0 +1,87 @@
+  	<!--<p id ="Etape2"> 
+		<p>
+			<label for="dateEtape2">  Date Etape 2 : </label>
+			<input type="date" name="dateEtape2" id="dateEtape2" tabindex="10"  value= '<?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateEtape2"]));?>'  />
+			<input type="button"   onclick="modification(dateEtape2)" style= " width: 50px; height: 50px";> 
+			<i  style="  margin:5px;"  class="fa fa-edit"></i> 
+			</input>
+		</p>
+		<p>
+			<label for="LieuEtape2">  Lieu Etape 2 : </label>
+			<input type="text" name="LieuEtape2" id="LieuEtape2" tabindex="10"  value= '<?php echo $val ["LieuEtape2"] ?>'  />
+			<input type="button"   onclick="modification(LieuEtape2)" style= " width: 50px; height: 50px";> 
+				<i  style="  margin:5px;"  class="fa fa-edit"></i>
+			</input>
+			</p>
+		<p>
+			<label for="EmplacementEtape2">  Emplacement Etape 2 : </label>
+			<input type="text" name="EmplacementEtape2" id="EmplacementEtape2" tabindex="10"  value= '<?php echo $val ["EmplacementEtape2"] ?>'  />
+			<input type="button"   onclick="modification(EmplacementEtape2)" style= " width: 50px; height: 50px";> 
+			<i  style="  margin:5px;"  class="fa fa-edit"></i> 
+			</input>
+		</p>
+		<p>
+			<label for="ImgEtape2">Image Etape2</label> :<input type="file"  name='ImgEtape2' />
+			<input type="button"   onclick="modification(Organisateur)" style= " width: 50px; height: 50px";> 
+			<i  style="  margin:5px;"  class="fa fa-edit"></i> 
+			</input>
+		
+		<?php 
+									/*	$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/Etape2.jpg";
+										if (file_exists($chemin)) 
+										{
+											echo '<center><img src="'.$chemin.'" alt=""  WIDTH=60% /></center>'; 
+										}
+										$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/profil_etape2.jpg";*/
+  ?>
+		</p> 
+     	<p id ="Etape3"> 
+		<p>
+			<label for="dateEtape3">  Date Etape 3 : </label><input type="date" name="dateEtape3" id="dateEtape3" tabindex="10"  value= '<?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateEtape3"]));?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>
+			<label for="LieuEtape3">  Lieu Etape 3: </label><input type="text" name="LieuEtape3" id="LieuEtape3" tabindex="10"  value= '<?php echo $val ["LieuEtape3"] ?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>
+			<label for="EmplacementEtape3">  Emplacement Etape 3: </label><input type="text" name="EmplacementEtape3" id="EmplacementEtape3" tabindex="10"  value= '<?php echo $val ["EmplacementEtape3"] ?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>
+			<label for="ImgEtape3">Image Etape3</label> :<input type="file"  name='ImgEtape3' />
+			<input TYPE="image" src="images/modification.png"title="modifier" />
+		<?php 
+									/*	$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/Etape2.jpg";
+										if (file_exists($chemin)) 
+										{
+											echo '<center><img src="'.$chemin.'" alt=""  WIDTH=60% /></center>'; 
+										}
+										$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/profil_etape2.jpg";*/
+  ?>
+   </p> 
+        <p id ="Etape4"> 
+		<p>
+			<label for="dateEtape4">  Date Etape 4 : </label><input type="date" name="dateEtape4" id="dateEtape4" tabindex="10"  value= '<?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateEtape4"]));?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>
+			<label for="LieuEtape4">  Lieu Etape 4: </label><input type="text" name="LieuEtape4" id="LieuEtape4" tabindex="10"  value= '<?php echo $val ["LieuEtape4"] ?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>
+			<label for="EmplacementEtape4">  Emplacement Etape 4: </label><input type="text" name="EmplacementEtape4" id="EmplacementEtape4" tabindex="10"  value= '<?php echo $val ["EmplacementEtape4"] ?>'  />
+			<input TYPE="image" src="images/modification.png"title="modifier" />	
+		</p>
+		<p>	
+			<label for="ImgEtape4">Image Etape4</label> :<input type="file"  name='ImgEtape4' />
+			<input TYPE="image" src="images/modification.png"title="modifier" />-->
+		<?php 
+									/*	$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/Etape2.jpg";
+										if (file_exists($chemin)) 
+										{
+											echo '<center><img src="'.$chemin.'" alt=""  WIDTH=60% /></center>'; 
+										}
+	
+	 	$chemin= 'courses/'.$_GET['nom_course'].$ANNEE_COURSE."/".$Parcours."/".$depart."/images/profil_etape2.jpg";*/
+	

@@ -1,0 +1,18 @@
+Prix départ;2020-12-25 23:59:59;1 Etape;12;True;4
+Prix départ;2020-12-25 23:59:59;2 Etapes ;24;True;4
+Prix départ;2020-12-25 23:59:59;3 Etapes;36;True;4
+Prix départ;2020-12-25 23:59:59;4 Etapes;48;True;4
+Prix N° 2;2020-12-26 23:59:59;1 Etape;0;True;
+Prix N° 2;2020-12-26 23:59:59;2 Etapes;0;True;
+Prix N° 2;2020-12-26 23:59:59;3 Etapes;0;True;
+Prix N° 2;2020-12-26 23:59:59;4 Etapes;0;True;
+Inscription sur place;2020-12-27 23:59:59;1 Etape;25;False;
+Inscription sur place;2020-12-27 23:59:59;2 Etape;35;False;
+Inscription sur place;2020-12-27 23:59:59;3 Etape;40;False;
+Inscription sur place;2020-12-27 23:59:59;4 Etape;50;False;
+Inscription après une étape;2020-12-28 23:59:59;1 Etape;20;True;
+Inscription après une étape;2020-12-28 23:59:59;2 Etapes;30;True;
+Inscription après une étape;2020-12-28 23:59:59;3 Etapes;35;True;
+Inscription après deux étapes;2020-12-29 23:59:59;1 Etape;20;True;
+Inscription après deux étapes;2020-12-29 23:59:59;2 Etape;30;True;
+Inscription après trois étapes;2020-12-30 23:59:59;1 Etape;20;True;

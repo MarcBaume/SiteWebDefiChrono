@@ -1,0 +1,295 @@
+
+
+@font-face {
+  font-family: 'playfair_displayitalic';
+  src: url('fonts/playfairdisplay-italic-variablefont_wght-webfont.eot');
+  src: url('fonts/playfairdisplay-italic-variablefont_wght-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/playfairdisplay-italic-variablefont_wght-webfont.woff2') format('woff2'),
+       url('fonts/playfairdisplay-italic-variablefont_wght-webfont.woff') format('woff'),
+       url('fonts/playfairdisplay-italic-variablefont_wght-webfont.svg#playfair_displayitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'playfair_displayregular';
+  src: url('fonts/playfairdisplay-variablefont_wght-webfont.eot');
+  src: url('fonts/playfairdisplay-variablefont_wght-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/playfairdisplay-variablefont_wght-webfont.woff2') format('woff2'),
+       url('fonts/playfairdisplay-variablefont_wght-webfont.woff') format('woff'),
+       url('fonts/playfairdisplay-variablefont_wght-webfont.svg#playfair_displayregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+body
+{
+	width:100%;
+   margin: auto; /* Pour centrer notre page */
+   margin-top: 5px; /* Pour �viter de coller avec le haut de la fen�tre du navigateur. Essayez d'enlever pour voir ! */
+   margin-bottom: 20px;    /* Idem pour le bas du navigateur */
+   background:  white;
+font-family: arial,"Times New Roman", Times, serif;
+ }
+#connection
+{
+float: right;
+}
+#menu_vertical li
+{
+ float: left;
+padding:0;
+padding-left:10px;
+ border: 0;
+}
+#index a
+{
+	float: right;
+	font-size : 8px;
+  display:inline-block;
+
+}
+#index span
+{
+	align: center;
+}
+#menu_vertical
+{
+	width: 100%;
+list-style-type: none;
+  margin: auto; /* Pour centrer notre page */
+ border: 0;
+float: right;
+background: #00b4ff;
+margin-bottom: 2%;    /* Idem pour le bas du navigateur */
+}
+#menu_vertical li a:link, #menu_vertical li a:visited
+{
+ display: block;
+ padding: 4px 8px;
+ height: 1%;
+ color: #FFF;
+ margin: 0;
+ border-right: 1px solid #fff;
+ text-decoration: none;
+}
+#menu_vertical li a:hover { background-color: #FFFFFF; 
+color:black;}
+
+ #logo
+ {
+  display: block;
+ margin-top: 20px; 
+ height: 173px;
+  width:100%;
+	background:  url("../images/BanderolePlan.png") repeat-x  ;
+ float:Right;
+
+ }
+ #menu_horizontal
+{
+	float:left;
+list-style-type: none;
+ width:10%;
+ padding: 15px;/*marge dans le corps*/
+ margin-top:1px;
+ display: block;
+ margin-right:1%;
+ border: none;/* 5px #70ff00 outset;
+ border-radius: 5px;
+ box-shadow: 6px 6px 10px black inset; */
+}
+input:read-only { 
+  background-color: #e2e2e2;
+}
+
+ #menu_horizontal p
+{
+
+
+ margin: 2px;
+}
+#menu_horizontal li a:link, #menu_horizontal li a:visited
+{
+ display: block;
+ float:left;
+ padding: 4px 4px;
+ height: 1%;
+ color: #000;
+ margin: 0;
+ border-right: 1px solid #fff;
+ text-decoration: none;
+}
+#menu_horizontal li a:hover { background-color: #00b4ff;
+color:black;}
+
+ #corps
+ {
+ width:72.5%;
+   padding: 2px;/*marge dans le corps*/
+ margin-top:2px;
+ float:Center;
+   margin-left: auto;
+    margin-right: auto 
+ /*margin-right:5%;
+  border: 5px #70ff00 outset;
+  border-radius: 5px;
+  box-shadow: 6px 6px 10px black inset; */
+ }
+  #corps table
+ {
+	width=80%; 
+	 
+ }
+ #corps tr:nth-child(even) {background-color: #f2f2f2;}
+ #step fieldset
+{
+ background-color : #DDF1F6;
+border: 1px #006100 outset;
+}
+
+#TableauResulat table
+{
+   width: 100%;
+     border-collapse: collapse;
+ font-family: Arial, Helvetica, sans-serif;
+}
+#TableauResulat th
+{
+    background-color: #1e8ac2 ;
+    color: white;
+  height: 30px;
+    text-align: left;
+	  border-bottom: 1px solid #ddd;
+}
+#TableauResulat td
+{
+  height: 15px;
+    padding: 10px;
+    text-align: Left;
+ border-bottom: 1px solid #ddd;
+}
+#TableauResulat tr:nth-child(even) {background-color: #f2f2f2;}
+#step label
+{
+	display: block;
+	width: 100px;
+	float: left;
+}
+#step input, #step textarea
+{
+background-color: #CCCCCC;
+}
+#image input
+{background-color:#FFFFFF;
+}
+#Information p 
+ {
+  padding: 10px;
+  background: rgba(36, 174,232, 0.25); /* Une couleur de fond pour le corps */
+ }
+#Information fieldset 
+ {
+  background: rgba(36, 174,232, 0.25); /* Une couleur de fond pour le corps */
+  border : none;
+ }
+
+#Information table
+ {
+  margin-top:15px;
+   text-align: Left;
+ background: rgba(36, 174,232, 0.25); /* Une couleur de fond pour le corps */
+ }
+ #formulaire
+ {
+
+ text-align: left;
+ }
+#formulaire p 
+ {
+padding : 3px;
+ background: #C0C0C0;
+ 
+ }
+ #formulaire  label 
+ {
+  margin-left: 20px;
+	display: block;
+	width: 210px;
+	float: left;
+ }
+ #formulaire input , select
+ {	
+ padding: 4px;
+ font-size : 16px;
+    font-weight: 520;
+border-radius: 3px;
+   margin-left:5%;
+width: 40%;
+ }
+ #prix
+ {
+
+ text-align: left;
+ }
+#prix p 
+ {
+padding : 3px;
+ background: #F8F8F8;
+ 
+ }
+ #prix  label 
+ {
+  margin-left: 40%;
+	display: block;
+	width: 250px;
+	float: left;
+ }
+ #prix input , select
+ {	
+ padding: 4px;
+ font-size : 16px;
+    font-weight: 520;
+border-radius: 3px;
+   margin-left:5%;
+width: 15%;
+ }
+ #onglets
+{
+    font : bold 11px  arial;
+    list-style-type : none;
+    padding-bottom : 20px; /* � modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
+    border-bottom : 1px solid #9EA0A1;
+	
+    margin-left : 0;
+}
+#onglets li
+{
+    float : left;
+    height : 30px; /* � modifier suivant la taille de la police pour centrer le texte dans l'onglet */
+    background-color: #F4F9FD;
+    margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
+    margin : 1px 2px 0 2px;  /* Pour IE  */
+    border : 1px solid #9EA0A1;
+}
+#onglets li.active
+{
+    border-bottom: 1px solid #fff;
+    background: white ;
+}
+#onglets a:hover
+{
+    background-color : #33E000;
+}
+
+#onglets a
+{
+    display : block;
+    color : black;
+    text-decoration : none;
+    padding : 4px;
+}

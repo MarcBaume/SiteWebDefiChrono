@@ -1,0 +1,96 @@
+<html  >
+<header>
+<script src="/js/prototype.js" >
+</script>
+<script >
+function verif()
+{
+	var xhr = null;
+		
+	if(window.XMLHttpRequest || window.ActiveXObject){
+		if(window.ActiveXObject){
+			try{
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			}catch(e){
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		}else{
+			xhr = new XMLHttpRequest(); 
+		}
+	}else{
+		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+		return;
+	}
+}
+function verifAjax()
+{
+$('monform').request({
+	onComplete: function(transport){
+	console.log('1');
+		var errors = transport.responseText.evalJSON();
+		var message = "";
+		
+		for (var id in errors)
+		{
+			console.log("id" + errors[id]);
+		message = message+ "\n - "+ errors[id];
+		}
+				console.log(message);
+		if (message = "")
+		{
+			alert("Félicitations !");
+		}
+		else
+		{
+			alert("Veuillez vérifier les champs suivants : "+ message);
+		}
+	
+	}
+});
+}
+function calcule()
+{
+	if ($F('a').blank() ||$F('b').blank()) {
+	alert('Veuillez réviser les valeurs.');
+	return;
+	}
+	$('calculatrice').request({
+	onComplete: function(transport){
+		alert(transport.responseText);
+		}
+	});
+}
+
+verif();
+</script>
+</header>
+<body>
+<form id = "calculatrice" method="get" action="calculatrice.php">
+<input type = "text" name="a" id="a" />
+<select name= "operation"> 
+<option value="addition">+ </option>
+<option value="soustraction">-</option>
+</select>
+<input type = "text" name="b" id="b" />
+<input type="button" value="calculer" onClick="calcule()" /> </br>
+</form>
+
+<form id = "monform" action="verif.php">
+<label> Titre du Film </label>
+<input type = "text" name="titre" id="idTitre" /><br/>
+<label> Année </label>
+<input type = "text" name="annee" id="idAnnee" maxlength="4"/><br/>
+<label> Genre </label>
+<select name= "genre[]" multiple="yes" size="3" id="idGenre"> 
+<option value="policier">POLICIER</option>
+<option value="sf">SCIENCE FICTION</option>
+<option value="culte">CULTE</option>
+</select></br>
+<label> Description </label>
+<textarea name="description" id="idDescipt"> </textarea>
+<input type = "text" name="b" id="b" />
+<input type="button" value="valider" onClick="verifAjax()" /> </br>
+</form>
+</body>
+</html>
+

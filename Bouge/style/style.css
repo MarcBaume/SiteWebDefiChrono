@@ -1,0 +1,128 @@
+﻿
+body
+{
+ /*width: 100%; taille du navigateur  à modifier*/
+   margin:20 auto; /* Pour centrer notre page */
+   margin-top: 0px; /* Pour éviter de coller avec le haut de la fenêtre du navigateur. Essayez d'enlever pour voir ! */
+   margin-bottom: 20px;    /* Idem pour le bas du navigateur */
+   background: rgba(240, 240, 240, 1); /* Une couleur de fond pour le corps */
+  font:20px arial; 
+  /* background-position: center;
+   background-attachment:fixed;  fond d'écran fixe*/
+}
+#en_tete
+{
+ /*margin: auto; */
+  margin: 0 auto;
+ margin-top: 10px;
+width: 1024px;
+ position: center;
+	height: 244px;
+	background:  url("images/banniere.png")  ;
+ background-position:  center ;
+}
+.para
+{
+  display: block;
+  margin: 20px;
+  padding :10px;
+	width: 300px;  
+}
+
+.para ul
+{
+	display: block;
+}
+
+.box
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu
+{ 
+	font:25px arial; 
+    margin: 0 auto;
+	margin-bottom: 20px;
+    display: block;
+	position:center;
+    overflow: hidden;
+	width: 1024px;
+    background: rgba(29, 198, 218, 1); /* Une couleur de fond pour le corps */
+}
+#menuDeroulant
+{
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ border: 0;
+}
+#menuDeroulant li
+{
+ float: left;
+}
+
+#menuDeroulant li a:link, #menuDeroulant li a:visited
+{
+ display: block;
+ color: #FFF;
+ margin: 0;
+ padding: 15px 40px;
+ border-right: 1px solid #fff;
+ text-decoration: none;
+}
+#menuDeroulant li a:hover { background-color: #F2462E; }
+#menuDeroulant li a:active { background-color: #5F879D; }
+
+
+#corps li
+{
+list-style-type: none;/* enleve puce*/
+}
+#corps
+{
+    margin: 0 auto;
+width: 1024px;
+ text-align: center; /* Pour centrer le titre */
+/*margin-top: 15px;*/
+ display: float;
+  position: center;
+   margin-bottom: 20px; /* Ca c'est pour éviter que le corps colle trop au pied de page en-dessous */
+   padding: 1px; /* Pou éviter que le texte à l'intérieur du corps ne colle trop à la bordure */
+   color: Black;
+ /* background: rgba(255, 255, 255, 0.5); /* Une couleur de fond pour le corps */
+  background-position: center;
+  /* border: 1px solid #ffffff;*/
+font:20px/ 30px arial; /* espace ligne*/
+ text-align: left;
+}
+
+ #formulaire
+ {
+font:20px arial;
+text-align: left;
+ }
+#formulaire p
+ {
+	padding:7px;
+	background: #C0C0C0;
+ 
+ }
+ #formulaire  label 
+ {
+  margin :7px;
+  margin-left: 100px;
+	display: block;
+	width: 250px;
+	float: left;
+ }
+ #formulaire input
+ {	
+ font:20px arial;
+ margin :7px;
+  margin-left:50px;
+
+ }
+
+

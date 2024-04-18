@@ -1139,12 +1139,22 @@ inInfoCode.style.display  = "block" ;
 				
 				
 			 }
+			 else if ( val > 8000)
+			 {
+				var PrixDepart = document.getElementById("PrixDepart");
+				val = (parseFloat(PrixDepart.value) / 100 ) * (val -8000);
+			 }
+
 			// Ajout réduction 
 			 if (val > 0)
 			 {
 				 if (val > 9990)
 				 {
 					AddReduction(inCode.value, val, "ReductionCodeEtape" );
+				 }
+				 else if ( val > 8000)
+				 {
+					AddReduction(inCode.value, val, "ReductionCodePourCent" );
 				 }
 				 else
 				 {

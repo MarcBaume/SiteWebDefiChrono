@@ -40,11 +40,11 @@ if (file_exists($pathsponosr)) {?>
 						{
 							if (strlen($Siteweb) >1)
 							{
-						?> <td> <?php		echo '<a href="'.$Siteweb.'"target="_blank"><img src="'.$PathimgSponsors.'" alt="" /Width=100%></a>'; ?> </td><?php
+						?> <td> <?php		echo '<a href="'.$Siteweb.'"target="_blank"><img tyle="max-width:1200px" src="'.$PathimgSponsors.'" alt="" /Width=100%></a>'; ?> </td><?php
 							}
 							else
 							{
-							?> <td> <?php	echo '<img src="'.$PathimgSponsors.'" alt="" /Width=100%></a>'; ?> </td><?php
+							?> <td> <?php	echo '<img style="max-width:1200px" src="'.$PathimgSponsors.'" alt="" /Width=100%></a>'; ?> </td><?php
 							}
 						}
 						else

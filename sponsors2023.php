@@ -48,7 +48,7 @@ if (file_exists($pathsponosr)) {?>
 							}
 							else
 							{
-							?> <td> <?php	echo '<center><img style="max-width:800px" src="'.$PathimgSponsors.'" alt="" /Width=100%></center></a>'; ?> </td><?php
+							?> <td> <?php	echo '<center><img style="max-width:90%" src="'.$PathimgSponsors.'" alt="" /Width=100%></center></a>'; ?> </td><?php
 							}
 						}
 						else

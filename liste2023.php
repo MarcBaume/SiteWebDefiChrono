@@ -106,7 +106,7 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. 
 		if ($NomDepartTampon!=("")){
 		?></table> 
         </center><?php
-		echo "</br><i style ='margin-left :5%'>Nombres concurrents inscrits pour ce départ : <b>". $m."</b></i>";
+		echo "</br><i style ='font-size: 14px;margin-left :5%'>Nombres concurrents inscrits pour ce départ : <b>". $m."</b></i>";
 		$m = 0;
 		}
 		$NomDepartTampon = $donnees['NomDepart'] ;
@@ -418,8 +418,8 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
 <?php
 		$m = $m +1;
 		$c = $c +1;
-		echo "</br><i style ='margin-left :5%'>Nombres concurrents inscrits pour ce départ :  <b>". $m."</b></br></br>"."</i>";
-echo "<i style ='margin-left :5%'>Nombres total de concurrents inscrits : <b>". $c."</b></i>";
+		echo "</br><i style ='font-size: 14px;margin-left :5%'>Nombres concurrents inscrits pour ce départ :  <b>". $m."</b></br></br>"."</i>";
+echo "<i style ='font-size: 14px;margin-left :5%'>Nombres total de concurrents inscrits : <b>". $c."</b></i>";
 }
 ?>
 

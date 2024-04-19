@@ -572,6 +572,7 @@ if ($Depart != null)
 
 		var Parcours= new Object();	
        
+		CountCoureurTotal = 0;
 
 
 		// lecture fichier JSON des résultats de la course
@@ -603,7 +604,7 @@ if ($Depart != null)
 
 					funMenuNomClassement(ListCoureurs);
 
-					ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint);
+					ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
 
 					LastPoint = false;
 				}
@@ -916,12 +917,12 @@ if ($Depart != null)
 			}				
 		}
 		
-		function ListCoureurLiveToTable(LivePointPassage, ListCoureurs, LastPointDePassage)
+		function ListCoureurLiveToTable(LivePointPassage, ListCoureurs, LastPointDePassage , idPointPassage)
 		{
+        
 			// Trie selon le type de classement ( Scratch , Categorie , Sexe)
 			var FormTypeClassement= document.getElementById('FormTypeClassement');
 			var DivViewLiveCoureur= document.getElementById('ViewLiveCoureur');
-			console.log("Type Classement =" + FormTypeClassement.value);
 			// SI le fichier est de type classement extern 
 			if (FormTypeClassement.value.includes("File") )
 			{
@@ -965,8 +966,6 @@ if ($Depart != null)
 
 					var FormNomClassement= document.getElementById('FormNomClassement');
 
-					console.log("Nom Classement =" + FormNomClassement.value);
-				
 					if (FormTypeClassement.value == "Sexe" )
 					{
 						LivePointPassage.ListCoureursArrivee.sort((a,b) => a.Coureur.Sexe < b.Coureur.Sexe  ? -1 : 1);
@@ -974,7 +973,7 @@ if ($Depart != null)
 					}
 					else 	if (FormTypeClassement.value == "Categorie" )
 					{
-						console.log(LivePointPassage.ListCoureursArrivee);
+						
 						LivePointPassage.ListCoureursArrivee.sort((a,b) => a.Coureur.NumCategorie < b.Coureur.NumCategorie  ? -1 : 1);
 						console.log(LivePointPassage.ListCoureursArrivee);
 					}
@@ -993,7 +992,8 @@ if ($Depart != null)
 					for (let i = 0; i < ListCoureurs.length; i++) 
 					{
 					
-				
+                        idCoureur = (idPointPassage *100) + i;
+                        console.log(idCoureur);
 						// Si détection contient un coureur 
 						if (ListCoureurs[i].Coureur != null)
 						{
@@ -1038,9 +1038,9 @@ if ($Depart != null)
                                 }
                                                             
                                 CountCoureur ++;
-
+                                rows.id =idCoureur;
 								rows.addEventListener("click", function() {
-									ViewDetailCoureur(i);
+									ViewDetailCoureur(this.id);
 									}, false);
 
 							/*	if ( LivePointPassage.EType == 2 &&  LastPointDePassage)
@@ -1393,7 +1393,7 @@ if ($Depart != null)
                                         rows = document.createElement('tr');
                                         rows.style.background = "white";
                                         rows.style.display = "none";
-                                        rows.id = "TableauPointPassage"+ i;
+                                        rows.id = "TableauPointPassage"+ idCoureur;
                                         TableResult.appendChild(rows);
                                         // Décalage avec position
                                         colonne = document.createElement('td');
@@ -1931,49 +1931,12 @@ if ($Depart != null)
 			elmnt.submit();
 		}
 		var DivViewLiveCoureur= document.getElementById('ViewLiveCoureur');
-		function ListCoureurLive(PointPassage)
-		{
-		
-			var NombreDeCoureur= document.getElementById('NombreDeCoureur');
-			NombreDeCoureur.innerHTML = PointPassage.ListCoureur.length;
-
-			var TablePointPassage= document.getElementById('TableListeCoureur');
-			TablePointPassage.innerHTML = "";
-			
-			for (let i = 0; i < PointPassage.ListCoureur.length; i++) 
-			{
-			
-				// Si détection contient un coureur 
-				if (PointPassage.ListCoureur[i].LineClass.Coureur != null)
-				{
-					rows = document.createElement('tr');
-					TablePointPassage.appendChild(rows);
-					rows.addEventListener("click", function() {
-						ViewDetailCoureur(i);
-						}, false);
-					
-					colonne = document.createElement('td');
-					colonne.innerText = PointPassage.ListCoureur[i].LineClass.CLassementScratch.Position;
-					rows.appendChild(colonne);
-
-					colonne = document.createElement('td');
-					colonne.innerText = PointPassage.ListCoureur[i].LineClass.Coureur.Nom._Value;
-					rows.appendChild(colonne);
-					
-					colonne = document.createElement('td');
-					colonne.innerText = PointPassage.ListCoureur[i].LineClass.Coureur.Prenom._Value;
-					rows.appendChild(colonne);
-
-					colonne = document.createElement('td');
-					colonne.innerText = PointPassage.ListCoureur[i].LineClass.CLassementScratch.Temps;
-					rows.appendChild(colonne);
-				}
-			}
-		}
+	
 
 
 		function ViewDetailCoureur(Coureur)
 		{
+			console.log(Coureur);
 			var TableDetailCoureur= document.getElementById("TableauPointPassage"+ Coureur);
 			if (TableDetailCoureur.style.display == "none")
             {

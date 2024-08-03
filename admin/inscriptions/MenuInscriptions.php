@@ -36,6 +36,10 @@
 <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
 </a>
 </div>
+<div id="Title" style="float: right;margin: 10px;">
+<h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?>
+	</h3>	
+</div>
 <script>
 function getURL( ValueFind, IDElement) {
 

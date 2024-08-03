@@ -79,7 +79,7 @@ var ArCourreur = [] ;
 			document.getElementById("adresse").value = Coureur.adresse ;
 			document.getElementById("zip").value = Coureur.zip  ;
 			document.getElementById("ville").value = Coureur.ville ;
-			document.getElementById("club").value = Coureur.Club ;
+			document.getElementById("club").value = Coureur.club ;
 			document.getElementById("pays").value =  Coureur.Pays ;
 			document.getElementById("dateNaissance").value = Coureur.date ;
 			document.getElementById("sexe").value = Coureur.sexe ;
@@ -99,10 +99,12 @@ var ArCourreur = [] ;
 				
 				}
 			});
-			localStorage.clear();
-			document.getElementById("ValueCourse").action ="endInscriptionSurPlace.php" ;
-			document.getElementById("ValueCourse").submit();
+			
+
 	}
+	localStorage.clear();
+	document.getElementById("ValueCourse").action ="endInscriptionSurPlace.php" ;
+			document.getElementById("ValueCourse").submit();
 </script>
 
 </body>

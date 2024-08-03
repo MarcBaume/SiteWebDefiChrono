@@ -1,7 +1,16 @@
 ﻿
 
 <?php
+ if  ( strlen($_REQUEST['DateCourse'])>0)
+{
+$DateCourse =  $_REQUEST['DateCourse'];
+$Date =  date_parse($_REQUEST['DateCourse']);
+$ANNEE_COURSE = $Date['year']; 
+//$ANNEE_COURSE = $_GET['annee_course'];
+$NOM_COURSE = $_REQUEST["NomCourse"];
 
+
+}
 
   // On se connecte à MySQL
 $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
@@ -16,6 +25,24 @@ else
 {
      try
      {
+        // Verification que le dossard n'existe pas
+        $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'AND NumDossard  =\''. $_REQUEST['num_dossard'].'\'AND ID  !=\'' .$_REQUEST['IDCoureur'].'\''; 
+        $ResultAddInsc = mysqli_query($con,$sql);	
+      
+        if ( $ResultAddInsc )
+        {
+
+                // SI le dossard existe déjà
+            if ($ResultAddInsc && mysqli_num_rows($ResultAddInsc) > 0)
+            {
+                print(-9999);
+                exit;
+            }
+          
+        }
+      
+
+
         $sql = 'UPDATE inscription SET NumDossard =\''.$_REQUEST['num_dossard'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
         $ResultAddInsc = mysqli_query($con,$sql);	
 

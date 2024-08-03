@@ -174,17 +174,24 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 		  // Multi étape 
 		  if (intval($valResult['nbr_etape'])>1)
 		  {
-			  if ($DateResult['year']> 2021)
+			  if ($DateResult['year']> 2022)
 			  {
 				  
 				  ?>
-				  <a href="<? echo "informations2022.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+				  <a href="<? echo "Resultat2023.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+				  <?
+			  }
+			  else   if ($DateResult['year']> 2021)
+			  {
+				  
+				  ?>
+				  <a href="<? echo "ResultatV4.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
 				  <?
 			  }
 			  else
 			  {
 				  ?>
-				  <a href="<? echo "informations.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+				  <a href="<? echo "informati	ons.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
 					  <?
 			  }
 		  }

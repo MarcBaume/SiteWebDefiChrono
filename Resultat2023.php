@@ -577,7 +577,8 @@ if ($Depart != null)
 
 		// lecture fichier JSON des résultats de la course
 		Parcours.info =  readJSON(PathFolder +"//Etape"+ PathEtape+ "//ResultatsV2.json");
-
+		console.log("ResultatsV2.json");
+		console.log(Parcours.info);
 		if (Parcours.info != undefined)
 		{
 			// Affichage du live des coureurs de chaque point de passage 
@@ -1096,8 +1097,8 @@ if ($Depart != null)
 								colonne.style.paddingLeft = "10px";
 								colonne.style.paddingRight = "10px";
 								colonne.style.fontSize = "16px";
-								// Affichage du Nom d'équipe et le nom du coureur
-								if ( ListCoureurs[i].Coureur.NomEquipe.length > 0 && ListCoureurs[i].Coureur.Coureur2.length > 0  && false)
+								// Affichage du Nom d'équipe ou  le nom du coureur si c'est un relais
+								if ( ListCoureurs[i].Coureur.NomEquipe.length > 0 && ListCoureurs[i].Coureur.Coureur2.length > 1 )
 								{
 									colonne.innerText =  ListCoureurs[i].Coureur.NomEquipe;
 								}
@@ -1113,8 +1114,9 @@ if ($Depart != null)
 								colonne.style.paddingRight = "10px";
 								colonne.style.fontSize = "12px";
 								colonne.style.fontWeight = "italic";
+
 						// Affichage du Nom d'équipe et le nom du coureur
-						if ( ListCoureurs[i].Coureur.NomEquipe.length > 0 && ListCoureurs[i].Coureur.Coureur2.length > 0  )
+						if ( ListCoureurs[i].Coureur.NomEquipe.length > 0 && ListCoureurs[i].Coureur.Coureur2.length > 1 )
 								{
 									tableCoureur = document.createElement('table'); 
 							
@@ -1128,7 +1130,7 @@ if ($Depart != null)
 									colonneC.style.fontSize = "12px";
 						
 									colonneC.style.fontWeight = "italic";
-									colonneC.innerText = ListCoureurs[i].Coureur.Coureur1._Value;
+									colonneC.innerText = ListCoureurs[i].Coureur.Coureur1;
 									RowCoureurCoureur.appendChild(colonneC);
 									tableCoureur.appendChild(RowCoureurCoureur);
 
@@ -1212,6 +1214,7 @@ if ($Depart != null)
 								}
 								else
 								{
+									console.log(ListCoureurs[i].Coureur.AnneeNaissance);
 									colonne.innerText = ListCoureurs[i].Coureur.AnneeNaissance;
 								}
 								

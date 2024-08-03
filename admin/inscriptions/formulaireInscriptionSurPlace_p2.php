@@ -103,12 +103,16 @@ function ReadLocalStorage()
 
 	// Afichage para aucun coureur inscrit 
 	var para = document.getElementById("AucuneInscription");
+	var para2 = document.getElementById("ValiderMesInscriptions");
+	
 	if (localStorage.length > 0)
 	{
+		para2.style.display = "";
 		para.style.display = "none";
 	}
 	else
 	{
+		para2.style.display = "none";
 		para.style.display = "";
 	}
 
@@ -119,7 +123,7 @@ for (var i = 0; i < localStorage.length; i++)
 		newObject = localStorage.getItem(IndexCoureur);
 		//console.log(newObject);
 		 var ReadCoureur = JSON.parse(newObject);
-		//console.log(ReadCoureur);
+		console.log(ReadCoureur);
 
 
 		tr1 = document.createElement('Tr');
@@ -174,6 +178,12 @@ for (var i = 0; i < localStorage.length; i++)
 		tr1.append(td1);
 
 		td1 = document.createElement('Td');
+		td1.style.fontSize = "16px";
+		td1.innerHTML =   ReadCoureur.club;
+		tr1.append(td1);
+
+
+		td1 = document.createElement('Td');
 		ButtonDelete = document.createElement('button');
 		ButtonDelete.classList.add("ButtonResultat");
 		ButtonDelete.type = "button"
@@ -217,35 +227,69 @@ function DeleteCoureur(evt)
 	  ?>
 
 	  	<h2>Liste de mes inscriptions </h2>
-		<a id="AucuneInscription" ><i > Aucune inscriptions </i></a>
-	  <table id="TableCoureur">
+		<a id="AucuneInscription" ><i > Aucune inscription </i></a>
+	<table id="TableCoureur"  >
 
+	</table>
+	
+	
+		<table >
+		<tr style="width: 50%" >
+			<td  id="ValiderMesInscriptions">
+				<Button class="ButtonResultat"  style="width: 80%; Height : 160px ; font-size:24px; margin :20px; padding :20px;" onclick="ValideInscription()">
+					<table>
+						<tr>
+							<td>
+							<i class="fa fa-check-circle" style=" font-size:48px;" ></i>
+							</td>
+							<td>
+							Valider mes inscriptions
+							</td>
+						</tr>
+					</table>
+				</Button>
+			</td>
+			<td>
+			<table>
+				<tr>
+					<td>
+						<Button class="ButtonResultat"  style="width: 80% ;Height : 120px ;font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithSameAdresse()">
+						<table>
+							<tr>
+								<td>
+								<i class="fa fa-plus-circle" style=" font-size:48px;" ></i>
+								</td>
+					
+								<td>
+									Ajout inscription avec la même adresse
+								</td>
+							</tr>
+						</table>
+						</Button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<Button class="ButtonResultat" style="width: 80% ;Height : 120px ; font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithoutSameAdresse()">
+						<table>
+							<tr>
+								<td>
+								<i class="fa fa-plus-circle" style=" font-size:48px;" ></i>
+								</td>
+								<td>
+									Ajout inscription avec une adresse différente
+								</td>
+							</tr>
+						</table>
+						</Button>
+					</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
 		</table>
-		<p>
-<h2> Ajouter une autre inscription à mon pannier</h2>
-		<Button  style="width: 30% ; font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithSameAdresse()">
-		Avec la même adresse
-		</Button>
-		<Button style="width: 30% ; font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithoutSameAdresse()">
-		Adresse différente
-		</Button>
-		</p>
-	   <p> 
-	  <label> J'accepte le réglement 
-		<?echo '<a href="'.$pathReglement.'"target="_blank">ci-joint</a>'?></label>
-		<input type="checkbox" style="width:40px;height:40px"  id="Reglement" >
-
-		 </p>
-		 <p>
-		<h2>Valider mes inscriptions</h2>
-		<Button  style="width: 30% ; font-size:24px; margin :20px; padding :20px;" onclick="ValideInscription()">
-			Je valide
-		</Button>
-		<Button style="width: 30% ; font-size:24px; margin :20px; padding :20px;">
-			Réinitialisé
-		</Button>
-		</p>
-		 
+		
+	
 		</form>	
 
 

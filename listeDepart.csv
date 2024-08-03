@@ -1,3 +1,460 @@
-0;Baume;Marc;Emibois 61;2338;Les Emibois ;1988;H;-;4;marcbaume12@gmail.com;Soft Gar�ons;1 Courses enfants;2 Soft;;;BFM Tour des Somm�tres2023;9415;;;;;;;;;;;;;;Membre VCFM;dams_1985@msn.com;Bon;;0;15.09.2023 15:15;true;0;0;-----;;;;0
-0;Paupe;El�onore;Sur L'hota 62;2735;Champoz;1992;H;Bechtel Cycles ;S;marcbaume12@gmail.com;;4 Tour des Somm�tres;4 Tour des Somm�tres;;;BFM Tour des Somm�tres2023;9280;;;;;;;;;;;;;;;;;;0;04.09.2023 20:57;;0;0;;;;;0
-"	 ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+NumDossard;Nom;Prenom;adresse;npa;localite;DateNaissance;sexe;club;NumCategorie;mail;NomCategorie;parcours;NomDepart;tel;equipe;course;ID;NomEquipe;NomDisc1;PrenomDisc1;NomDisc2;PrenomDisc2;NomDisc3;PrenomDisc3;NomDisc4;PrenomDisc4;NomDisc5;PrenomDisc5;NomDisc6;PrenomDisc6;NbrEtape;Login;Payer;OrderPayement;Prix;Date;PayementOnLine;Partenaire;TypeEquipe;PrixSouvenir;Informations
+1;Queloz;Antonin;Lilas 6;2340;Le Noirmont;2002;H;YORC3NTER;H1;antoninqueloz@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;YORC3NTER 1;BCJ Challenge2024;13246;YORC3NTER 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+2;Zuber;Raphaël;En-Fontaine-Allée 2;2950;Courgenay;1977;H;CAP Hunt;H3;zuber.raph@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;Les vols-lents déplumés;BCJ Challenge2024;13247;Les vols-lents déplumés;;;;;;;;;;;;;4;;;;;;;;2;;;1
+3;Charmillot;Emilie;Sur Rosé 4;2832;Rebeuvelier;1989;D;;D2;emiliecharmillot@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les vols-lents déplumés;BCJ Challenge2024;13248;Les vols-lents déplumés;;;;;;;;;;;;;4;;;;;;;;2;;;1
+4;Rufer;Aline;Les traversains 20;2925;Buix;1980;D;GSB;D3;aline.rufer@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13249;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+5;Frésard;Marie;Charreratte 4;2800;Delémont;2002;D;-;D1;marie.fre@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;Les Beusard;BCJ Challenge2024;13250;Les Beusard;;;;;;;;;;;;;4;;;;;;;;2;;;1
+6;Beuret;Léo;Haute-Rive, 1A;2950;Courgenay;2000;H;;H1;leobeuret2000@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Les Beusard;BCJ Challenge2024;13251;Les Beusard;;;;;;;;;;;;;4;;;;;;;;2;;;1
+7;Poignant;Jerome;38 rue du bambois;90100;Joncherey;1979;H;;H3;poignantj350@orange.fr;Hommes 3;1 Course à pied;1 Course à pied;;Basic Frite;BCJ Challenge2024;13252;Basic Frite;;;;;;;;;;;;;4;;;;;;;;2;;;0
+8;Chalumeau ;Audrey;38 rue du bambois;90100;Joncherey ;1984;D;;D3;poignantj350@orange.fr;Dames 3;1 Course à pied;1 Course à pied;;Basic Frites;BCJ Challenge2024;13253;Basic Frites;;;;;;;;;;;;;4;;;;;;;;2;;;0
+9;Saunier;Arnaud;Rue des Cloutiers 9 ;2854;Bassecourt ;1993;H;;H2;arnaud.saunier19@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13254;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+10;Wolff;Yann;Rue des Gaulois 9;2800;Delémont;1975;H;;H3;wolffmya@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13255;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+11;De santa;Shana;Longennes, 256;2856;Boécourt;2008;D;;NW;stephane.desanta@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13258;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+12;De santa;Stéphane;Longennes, 256;2856;Boécourt;1976;H;;NW;stephane.desanta@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13259;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+13;De santa;Tess;Rue des Longennes 256;2856;Boécourt;2012;D;;NW;stephane.desanta@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13260;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+14;Rebetez;Stéphane;Chemin des Chênes 22;2830;Courrendlin;1983;H;;H3;stephrebetez@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;13261;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;1
+15;Morand;Michael;Marzon, 13;2738;Court;1983;H;YORC3NTER ;H3;mvja.morand@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;YORC3NTER 1;BCJ Challenge2024;13264;YORC3NTER 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+16;Morand;Alexis;Marzon, 13;2738;Court;2007;H;YORC3NTER ;HJ;mvja.morand@bluewin.ch;Hommes juniors;1 Course à pied;1 Course à pied;;YORC3NTER 1;BCJ Challenge2024;13265;YORC3NTER 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+17;Plumez;Timothé ;Rue des Brandons 9;2802;Develier;2009;H;;HJ;timothe.plumez@gmail.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13266;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+18;Plumez;Virginie;Brandons 9;2802;Develier;1978;D;;D3;virginie.plumez@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13267;Divtec Team 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+19;Stadelmann;Rémy;Rte de la Raisse 1;2855;Glovelier;1989;H;;H2;petirem@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13269;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+20;Brahier;Céline ;Route de Courgenay 74;2900;Porrentruy ;1986;D;;D2;Celine.bourquenez@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13270;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+21;Koller;Richard;Les Mengartes 19;2828;Montsevelier;1985;H;;H2;richard.koller4@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13271;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+22;Gobat;Patrick;En Geneveret 11;2824;Vicques;1982;H;GobaTech;H3;patrickgobat@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;GobaTech;BCJ Challenge2024;13272;GobaTech;;;;;;;;;;;;;4;;;;;;;;2;;;1
+23;Juillerat;Patrick;Les Colonges 93;2906;Chevenez;1965;H;;H4;patrick.juillerat@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13273;Divtec Team 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+24;Choffat;Lise;En Brisat 108k;2932;Coeuve;1982;D;;D3;lise_jb@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13274;Divtec Team 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+25;Chantir;Nordine;2 impasse Paul Émile Victor ;25200;Grand Charmont;1974;H;SG HERICOURT;H4;chantir.nordine@me.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13275;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+26;Plumez;Richard;Brandons 9;2802;Develier;1973;H;;H4;richard.plumez@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13277;Divtec Team 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+27;Hirtzlin;Pauline;rue des Tilleuls 18;2873;Saulcy;1987;D;;D2;pauline.hulmann@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13278;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+28;Haegeli ;Muriel ;Jolimont 68A ;2855;Glovelier ;1980;D;;D3;murielhaegeli35@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13279;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+29;Corbat;Félicia;Route De Coeuve 30;2900;Porrentruy;1994;D;;D2;felicia.nicolet.ap@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13280;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+30;Fleury;Théo;Rue de Chêtre 73A;2800;Delémont;1999;H;Team La Vallée / GST;H1;theofl@icloud.com;Hommes 1;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13281;Team La Vallée 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+31;Cerf;Isabelle;Fin Doie 65;2854;Bassecourt;1980;D;;NW;isabelle.cerf16@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13283;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+32;Bagarozza;Alessandra;Fin Doie 63b;2854;Bassecourt;1975;D;;NW;mario.bagarozza@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13284;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+33;Beuret;Philippe;ch des vanniers 13;2900;Porrentruy;1976;H;team la vallée;H3;beuret6@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13285;Team La Vallée 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+34;Escribano;Juan;Rue des Perchattes 3;2830;Courrendlin;1973;H;;H4;juan_escribano@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13286;Divtec Team 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+35;Perujo;Julie;Sur la Fenatte 8;2950;Courgenay;1986;D;;D2;julie.hanni@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13287;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+36;Riebli;Barbara;Rière La Rouge Eau 1;2712;Le Fuet;1967;D;FSC (Fédération Suisse de Canicross);D4;riebli.barbara67@gmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13288;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+37;Martoccia;Rocco;Rue des sources;2613;Villeret;1965;H;Tornos;H4;roc1965@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;Tornos;BCJ Challenge2024;13289;Tornos;;;;;;;;;;;;;4;;;;;;;;1;;;0
+38;Meyer;Andrée ;Mont-Terri 15;2900;Porrentruy ;1953;D;;NW;andreemeyer@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13291;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+39;Séverine;Nappez;Sur Chenal;2908;Grandfontaine;1973;D;;NW;andreemeyer@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13293;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+40;Saraiva-Donzé;Aurore;Route des Romains 30;2950;Courtemautruy;1987;D;;D2;famille.donze@bluewin.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13294;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+41;Ribeaud;Fabien;Rue des Longs-Champs 24;2822;Courroux;1973;H;;H4;Ribeaud.fabien@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13295;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+42;Rossé ;Julie;Route de Séprais 11;2856;Boécourt;1992;D;-;D2;julie.rosse92@googlemail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13296;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+43;Riat;Christelle;Rue des Pesses 6;2855;Glovelier;1977;D;Fsg Courroux ;D3;chriat@outlook.fr;Dames 3;1 Course à pied;1 Course à pied;;Titi et Rominet ;BCJ Challenge2024;13307;Titi et Rominet ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+44;Ferrara;Agostino;Pesses 6;2855;Glovelier;1969;H;;H4;agostino210869@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;Titi et Rominet ;BCJ Challenge2024;13308;Titi et Rominet ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+45;Bon;Yannick;Chalière 21;2740;Moutier;1990;H;YORC3NTER;H2;yannickbon@hotmail.fr;Hommes 2;1 Course à pied;1 Course à pied;;YORC3NTER 1;BCJ Challenge2024;13309;YORC3NTER 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+46;Schaller;Marine;Rue du Midi 26;2854;Bassecourt;1991;D;;D2;ma.flamme@bluemail.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13310;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+47;Crausaz;Geneviève ;Sur ville 72;2864;Soulce ;1963;D;;D4;genevieve.crausaz@gmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13311;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+48;Gogniat;Vanessa;Rue des chenevières 8;2854;Bassecourt ;1990;D;;D2;vanessa.gogniat@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13323;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+49;Terrier;Chantal;Route Canada 4;2924;Montignez;1958;D;;NW;chantal.terrier@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13324;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+50;Heiniger;Sébastien;En Chésal 9;2943;Vendlincourt ;2001;H;;NW;renedom@hispeed.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13325;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+51;Chêne;Matthieu;Faverge 38;2853;Courfaivre ;2001;H;;H1;renedom@hispeed.ch;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13326;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+52;Borruat;Sylviane;Rue des Écluses 454;2906;Chevenez ;1957;D;;NW;sylviane.borruat@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13327;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+53;Jecker;Marie;Rue du Musée 14;2714;Les Genevez ;1991;D;-;D2;jeckerli09@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13328;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+54;Saunier ;Françoise ;Les Tuileries 200;2906;Chevenez;1966;D;;NW;francoise.saunier@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13329;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+55;Allimann;Denis;Rue de la Faverge 16;2853;Courfaivre;1971;H;;H4;denis.allimann@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13332;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+56;Murer;Boris;Pâquerettes 35;2854;Bassecourt;1983;H;GS Tabeillon;H3;boris.murer@outlook.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13333;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+57;Michel;Hubert ;Vaux-sur-Chaux 190;2905;Courtedoux ;1960;H;;H4;Michel.hubert2905@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13334;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+58;Joly;Lena;Pinsonnière 15;2350;Saignelégier ;1988;D;;D2;lena_joly@bluewin.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13337;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+59;Haegeli ;Lucas ;Jolimont 68A ;2855;Glovelier ;2005;H;;HJ;murielhaegeli35@gmail.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13338;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+60;Crausaz;Célien;Route de Séprais, 26;2856;Boécourt;1994;H;Team La Vallée;H2;Crausaz.celien@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;13339;Team La Vallée 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+61;Grange;Mélanie;Rue des Condemennes 5;2852;Courtételle;1989;D;;D2;melanierosse2@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13340;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+62;Riat;Laurence;Rue des Moissons 100;2906;Chevenez ;1962;D;;NW;laurenceriat62@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13341;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+63;Oberli;Amélie;Le Chaufour 76;2887;Soubey;1996;D;;D1;ameliedonze20@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13342;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+64;Queloz;Stéphane;Lilas 6;2340;Le Noirmont;1977;H;;H3;stephanequeloz@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13344;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+65;Leibundgut;Pierre ;Rue Abbé Rossé 51;2856;Boécourt ;1984;H;;H3;leibundgutpierre@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13347;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+66;Caroli;Alizée;Rue du Nord 2;2735;Malleray-Bévilard;1991;D;Gsmb;D2;ali.schnegg@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13348;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+67;Studer;Michel;Soie 1;2822;Courroux;1966;H;;H4;studercm@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;Tornos;BCJ Challenge2024;13349;Tornos;;;;;;;;;;;;;4;;;;;;;;1;;;1
+68;Kohler;Alain;Rue des Chênes 14 ;2740;Moutier;1971;H;tornos;H4;Kohler.a@tornos.com;Hommes 4;1 Course à pied;1 Course à pied;;Tornos;BCJ Challenge2024;13350;Tornos;;;;;;;;;;;;;4;;;;;;;;1;;;1
+69;Busto martínez;Damián;Pré-Guillaume 11;2800;Delémont;1994;H;;H2;busto.dam@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Tornos;BCJ Challenge2024;13351;Tornos;;;;;;;;;;;;;4;;;;;;;;1;;;1
+70;Schaller;Ludovic;Clos Saucy 2;2825;Courchapoix;1982;H;;H3;ludo45@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13353;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+71;Lommano;Claudio;Vieux-Moulin 23;2852;Courtételle;1974;H;YORC3NTER;H4;clommano@yahoo.fr;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13354;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+72;Boillat;Grégory;route de la transjurane 20;2855;Glovelier;1986;H;Pibor Iso SA 2;H2;g.morel@pibor.ch;Hommes 2;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13357;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;1
+73;Bloque;Jonas;route de la transjurane 20;2855;Glovelier;1986;H;Pibor Iso SA 2;H2;g.morel@pibor.ch;Hommes 2;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13358;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;1
+74;Beuret;Célien;route de la transjurane 20;2855;Glovelier;1979;H;Pibor Iso SA 2;H3;g.morel@pibor.ch;Hommes 3;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13359;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;1
+75;Personeni;Aline;route de la transjurane 20;2855;Glovelier;1967;D;Pibor Iso SA 2;D4;g.morel@pibor.ch;Dames 4;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13362;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;1
+76;Petermann;Judith;route de la transjurane 20;2855;Glovelier;1984;D;Pibor Iso SA 2;D3;g.morel@pibor.ch;Dames 3;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13363;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;1
+77;Bourquin;Sébastien;route de la transjurane 20;2855;Glovelier;1984;H;Pibor Iso SA 2;H3;g.morel@pibor.ch;Hommes 3;1 Course à pied;1 Course à pied;;Pibor Iso, la une;BCJ Challenge2024;13364;Pibor Iso, la une;;;;;;;;;;;;;4;;;;;;;;1;;;0
+78;Bailly;Rosalie;route de la transjurane 20;2855;Glovelier;1989;D;Pibor Iso SA 1;D2;g.morel@pibor.ch;Dames 2;1 Course à pied;1 Course à pied;;Pibor Iso, la deux;BCJ Challenge2024;13365;Pibor Iso, la deux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+79;Bloque;Patrick;route de la transjurane 20;2855;Glovelier;1980;H;Pibor Iso SA 1;H3;g.morel@pibor.ch;Hommes 3;1 Course à pied;1 Course à pied;;Pibor Iso, la deux;BCJ Challenge2024;13366;Pibor Iso, la deux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+80;Camenzind;Anaïs;route de la transjurane 20;2855;Glovelier;1990;D;Pibor Iso SA 1;D2;g.morel@pibor.ch;Dames 2;1 Course à pied;1 Course à pied;;Pibor Iso, la deux;BCJ Challenge2024;13367;Pibor Iso, la deux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+81;Lombard;Stéphane;route de la transjurane 20;2855;Glovelier;1975;H;Pibor Iso SA 1;H3;g.morel@pibor.ch;Hommes 3;1 Course à pied;1 Course à pied;;Pibor Iso, la deux;BCJ Challenge2024;13368;Pibor Iso, la deux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+82;Morel;Guy;route de la transjurane 20;2855;Glovelier;1983;H;Pibor Iso SA 1;H3;g.morel@pibor.ch;Hommes 3;1 Course à pied;1 Course à pied;;Pibor Iso, la deux;BCJ Challenge2024;13369;Pibor Iso, la deux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+83;Schindelholz ;Sylvie;Rue des Pierres 4;2800;Delémont;1981;D;;D3;sylvieschindelholz@yahoo.fr;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13381;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+84;Grime;Céline;La Grangette 122;2906;Chevenez;1982;D;;D3;celine.grime@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13387;Divtec Team 2;;;;;;;;;;;;;3;;;;;;;;1;;;1
+85;Retti;Inès;Rue de Voillebeu 350 O;2902;Fontenais ;1997;D;;D1;ines.retti@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13388;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+86;Comment;Céline;La Fonderie 7;2950;Courgenay ;1980;D;;D3;celine.comment@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13392;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+87;Crausaz;Jérémie;rue des Longs Champs 30;2854;Bassecourt;1996;H;Team La Vallée;H1;jer.crausaz@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13393;Team La Vallée 1;;;;;;;;;;;;;4;;;;;;;;1;;;0
+88;Eschmann;Olivier;Rue du Stand 41;2800;Delémont ;1979;H;;H3;o_eschmann@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;13394;Team La Vallée 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+89;Ribeaud;Sabrina;Rue du Temple 22;2854;Bassecourt;1995;D;;D1;sab.ribeaud@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13399;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+90;Manci;Manon;rue des pervenches 50;2800;Delemont ;1999;D;;D1;manon.manci@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13401;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+91;Murer;Pierre;Pré Convert 22;2854;Bassecourt;1957;H;;H4;pierre.murer@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13415;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+92;Moreira;Filipe;En Fontaine Allée 4;0;Courgenay;1976;H;Divtec Team;H3;filipe.moreira@divtec.ch;Hommes 3;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13421;Divtec Team 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+93;Chevrey;Jérôme;Derrière Metthiez 3;2950;Courgenay;1975;H;;H3;chevrey@lesregisseurs.ch;Hommes 3;1 Course à pied;1 Course à pied;;Sotoco Swiss;BCJ Challenge2024;13436;Sotoco Swiss;;;;;;;;;;;;;4;;;;;;;;1;;;1
+94;Roussy;Gérald;76 rue de la 5ièm D.B;25750;Arcey;1976;H;;H3;gerald.roussy@orange.fr;Hommes 3;1 Course à pied;1 Course à pied;;Sotoco Swiss;BCJ Challenge2024;13437;Sotoco Swiss;;;;;;;;;;;;;4;;;;;;;;1;;;1
+95;Etienne ;Kevin;35 Bis rue Charles Allemand;25400;Audincourt;1990;H;;H2;etienne.kvn@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Sotoco Swiss;BCJ Challenge2024;13438;Sotoco Swiss;;;;;;;;;;;;;4;;;;;;;;1;;;1
+96;Gillioz;Jérôme;Champs Morel 23;2950;Courgenay;1975;H;CAP Hunt;H3;jerome.gillioz@balmer-gillioz.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13441;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+97;Maître;Claude;Champ de Coeudre 119;2932;Coeuve;1967;H;;H4;claude.maitre@divtec.ch;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13442;Divtec Team 1;;;;;;;;;;;;;4;;;;;;;;1;;;0
+98;Daucourt;Julien;Route de Buix 24;2915;Bure;1976;H;CàP Hunt / Mont Terrible;H3;juliendaucourt@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13443;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+99;Joray;Daniel;Au Sacy 55;2829;Vermes;1971;H;;H4;dano.joray@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13445;Divtec Team 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+100;Corbaz;Audrey;Beauregard 26;2740;Moutier;1998;D;;D1;audrey.corbaz@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;Tornos R&D;BCJ Challenge2024;13449;Tornos R&D;;;;;;;;;;;;;3;;;;;;;;1;;;0
+101;Lombardo;Guillaume;Rue champ-faudin 32;2740;Moutier;1997;H;;H1;guillaume.l07@orange.fr;Hommes 1;1 Course à pied;1 Course à pied;;Tornos;BCJ Challenge2024;13450;Tornos;;;;;;;;;;;;;4;;;;;;;;1;;;1
+102;Ruetsch;Simon;Ch. des Combattes 2;2744;Belprahon;1996;H;;H1;ruetschsimon@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Tornos R&D;BCJ Challenge2024;13451;Tornos R&D;;;;;;;;;;;;;4;;;;;;;;1;;;0
+103;Rais;Simon;Rue de l'Avenir 14;2738;Court;1994;H;;H2;simon.rais29@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Tornos R&D;BCJ Challenge2024;13452;Tornos R&D;;;;;;;;;;;;;4;;;;;;;;1;;;0
+104;Riou ;Christophe;Rue des écoles 8;2855;Glovelier;1976;H;;H3;chrisbzh@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;13454;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;1
+105;Brüning;Loïc;Chemin des Royes 9;2350;Saignelégier ;1988;H;;H2;loic_bruning@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13455;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+106;Witschi;Christophe;Place de l'Eglise 10;2803;Bourrignon;1990;H;;H2;ch.witschi@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13456;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+107;Brahier ;Rémy;Cornat 34;2852;Courtételle;1991;H;;H2;R.brahier@hormail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13466;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+108;Geiser;Jennifer ;Rue du Cornat 34;2852;Courtételle ;1995;D;;D1;jenny.geiser@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13467;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+109;Mangia;Cindy;Rue des Fougères 6;2854;Bassecourt;1989;D;;D2;bidoux8@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les Chicorettes;BCJ Challenge2024;13468;Les Chicorettes;;;;;;;;;;;;;2;;;;;;;;1;;;1
+110;Wenger;Yaël ;Rue es Planches 14;2842;Rossemaison;2006;H;Team La Vallée;HJ;Info@edelness.ch;Hommes juniors;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;13470;Team La Vallée 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+111;Comisso;Aline;Rue des Ecoles 14;2855;Glovelier;1982;D;Team FAM;D3;acomisso@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13472;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+112;Varin;Cristel;Route principale 49;2803;Bourrignon;1986;D;;D2;cristelvarin@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les Chicorettes;BCJ Challenge2024;13477;Les Chicorettes;;;;;;;;;;;;;2;;;;;;;;1;;;1
+113;Rossé;Lionel;Finage 37;2856;Boécourt ;1992;H;Aucun ;H2;lionelrosse@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13481;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+114;Girardin ;Danielle ;Crosattes dessus 15;2854;Bassecourt ;1982;D;Aucun ;D3;dane.miserez@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13482;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+115;Bourquard ;Thierry ;Erables 240 ;2856;Boécourt ;1975;H;Non ;H3;thierrybourquard@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;CSS_2024;BCJ Challenge2024;13504;CSS_2024;;;;;;;;;;;;;1;;;;;;;;1;;;0
+116;Clauzel ;David ;Route de Courgenay 36;2900;Porrentruy ;1979;H;;H3;thierrybourquard@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;13506;Team CSS Jura;;;;;;;;;;;;;1;;;;;;;;1;;;1
+117;Oberholzer ;Benoit ;Molière 26;2800;Delémont ;1999;H;;H1;thierrybourquard@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;13508;Team CSS Jura;;;;;;;;;;;;;1;;;;;;;;1;;;1
+118;Fleury ;Martial ;Romains 14 ;2854;Bassecourt ;1968;H;;H4;mlfleury@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;13509;Team CSS Jura;;;;;;;;;;;;;1;;;;;;;;1;;;1
+119;Erard;Cédric;Courtine 4;2740;Moutier;1973;H;DIVTEC Team;H4;cedricerard.erard@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13512;Divtec Team 2;;;;;;;;;;;;;1;;;;;;;;1;;;0
+120;Siegenthaler;Luc;Rue des Bâts 6;2800;Delémont;1990;H;;H2;luc.siegenthaler1@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Divtec Team 1;BCJ Challenge2024;13513;Divtec Team 1;;;;;;;;;;;;;1;;;;;;;;1;;;1
+121;Cramatte;Ronald;Chemin des Laboureurs 3;2900;Porrentruy;1974;H;;H4;ronald.cramatte@bcj.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13514;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+122;Morillo;Florence;Les champs morel 3;2950;Courgenay ;1982;D;CLUB BCJ;D3;flo.morillo@icloud.com;Dames 3;1 Course à pied;1 Course à pied;;CLUB BCJ;BCJ Challenge2024;13516;CLUB BCJ;;;;;;;;;;;;;4;;;;;;;;1;;;1
+123;Germanà;Claudio;Route de Fontenais 11;2900;Porrentruy;1981;H;Les Coureurs du Dimanche;H3;claudio.germana@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13532;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+124;Bourquard;Yanis;Érables 240;2856;Boécourt;2003;H;;H1;yanis2003@outlook.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13533;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+125;Beuchat ;Jérôme ;Rue du Kirlou 29;2800;Delémont;1988;H;;H2;jerome.beuchat88@hotmail.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13534;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+126;Schouller;Alexis;Rue des Blés 5;2854;Bassecourt;1988;H;FSP BIKE SPORT;H2;schou9002@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13538;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+127;Monnerat;Gauthier;Rue du Vieux-Moulin 2;2854;Bassecourt;1999;H;Team la Vallée / TTD;H1;gauthier.monnerat07@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;13541;Team La Vallée 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+128;Marschal;Denis;2 rue de la Synagogue;68560;Hirsingue;1952;H;AAS;H4;denis.marschal@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;AAS;BCJ Challenge2024;13542;AAS;;;;;;;;;;;;;4;;;;;;;;1;;;1
+129;Dick;Bryan;Rue Denise-Péronne 2;2800;Delémont;1999;H;Club BCJ;H1;bryan.dick@bluewin.ch;Hommes 1;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13545;Jurafamille;;;;;;;;;;;;;3;;;;;;;;1;;;0
+130;Domon;Luca;Rue des Romains 38;2854;Bassecourt;1996;H;;H1;luca15896@hotmail.com;Hommes 1;1 Course à pied;1 Course à pied;;CLUB BCJ;BCJ Challenge2024;13546;CLUB BCJ;;;;;;;;;;;;;4;;;;;;;;1;;;1
+131;Kottelat;Marine;Vieux-Moulin 13 ;2852;Courtételle;1995;D;;D1;Marine_277@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13547;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+132;Kohler;Benjamin;Bellevie 32;2822;Courroux ;2001;H;FC Truite ;H1;Benj10.koher@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13548;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+133;Crausaz;Morgane;La Jardinerie 1;2853;Courfaivre;1992;D;Team La Vallée;D2;crausaz.morgane@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13555;Team La Vallée 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+134;Challet;Kevin;Rue des Ecoles 4;2855;Glovelier;1987;H;La Meute;H2;kevin.challet@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;La Meute ;BCJ Challenge2024;13556;La Meute ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+135;Dobler;Jean-Robert;Route de Recolaine 21;2824;Vicques;1956;H;GSTabeillon;H4;jrdobler@yahoo.fr;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13559;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+136;Christe ;Laurie ;Rue des Pervenches 41;2800;Delémont ;1996;D;;D1;christe.laurie@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13567;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+137;Giammarino;Stefano;Route de Courgenay 326;2902;Fontenais;1977;H;CLUB BCJ;H3;giammas@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;CLUB BCJ;BCJ Challenge2024;13568;CLUB BCJ;;;;;;;;;;;;;4;;;;;;;;1;;;1
+138;Giammarino;Caroline;Rte de Courgenay 326;2902;Fontenais;1979;D;CLUB BCJ;D3;caro.giamma@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;CLUB BCJ;BCJ Challenge2024;13569;CLUB BCJ;;;;;;;;;;;;;4;;;;;;;;1;;;1
+139;Scheurer-Willemin;Clémence;Rue des Chenevières 47;2852;Courtételle;1989;D;Club de natation Delémont;D2;clemence.scheurer@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13573;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+140;Frund;Aurélien ;Route principale 45;2803;Bourrignon ;1978;H;;H3;aurelien.frund@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;Les Groins;BCJ Challenge2024;13580;Les Groins;;;;;;;;;;;;;4;;;;;;;;1;;;1
+141;Kunz;Marie;Route Du Jura 28;2812;Movelier;1995;D;;D1;marie.kunz@outlook.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13583;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+142;Neuhaus;Yann;Promenade Iris-de-Roten 1;2800;Delémont;1975;H;YORC3NTER;H3;yann.neuhaus@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13585;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+143;Castro;Laurence;Rue de Bellevie 58;2822;Courroux;1981;D;Team Fam;D3;laurence.castro@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13586;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+144;Desboeufs;Gian;Sur Prêle 7;2950;Courgenay;1991;H;;H2;giandesb@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Les Groins;BCJ Challenge2024;13587;Les Groins;;;;;;;;;;;;;2;;;;;;;;1;;;0
+145;Kottelat;Laurent;Penesse 6;2852;Courtételle;1988;H;Jurafamille;H2;laurent.kottelat@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13588;Jurafamille;;;;;;;;;;;;;3;;;;;;;;1;;;1
+146;Schaeffer;Thomas ;La Pran 7;2824;Vicques;1987;H;;H2;Schaeffer.thomas@yahoo.fr;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13589;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+147;Schaeffer;Fanny;La Pran 7;2824;Vicques;1987;D;;D2;Schaeffer.thomas@yahoo.fr;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13590;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+148;Flückiger;Léa;Route Principale 27;2824;Vicques;1998;D;;D1;leaf@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13597;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+149;Monnin;Benoît;La Colombière 8;2900;Porrentruy;1977;H;Les Coureurs du Dimanche;H3;bmonnin@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13603;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+150;Müller;Martine;Haut de Chaudron 7;2826;Corban ;1978;D;;NW;martine_mueller@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13604;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+151;Eggenschwiler;Thibault;Rue des Erables 245;2856;Boécourt;2003;H;FCBoécourt;H1;tiboeggen@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13607;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+152;Lovis ;Viviane;Romains 36;2854;Bassecourt ;1994;D;;D2;vivianelovis25@outlook.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13611;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+153;Capobianco;Flavio;Rue du Stand 36;2800;Delémont;2006;H;Delémont Athlétisme;HJ;flaviorene.capobianco@gmail.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13612;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+154;Stalder;Maud;Champ du Chêne 9;2950;Courtemautruy ;1983;D;CLUB BCJ;D3;maud.stalder@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;CLUB BCJ;BCJ Challenge2024;13617;CLUB BCJ;;;;;;;;;;;;;4;;;;;;;;1;;;1
+155;Saint-Mars;Camille;Impasse de la Basilique 4;2852;Courtételle ;1996;D;;D1;camillerubin@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13619;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+156;Hulmann;Didier;Chemin des Quoires 22;2952;Cornol;1981;H;Aristote Fan ;H3;d_hulmann@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13620;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+157;Pasquino;Lauranne;Chemin du Tiètre 1;2803;Bourrignon ;1999;D;;D1;plauranne@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13623;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+158;Choffat;Yannick;Au Village 60;2904;Bressaucourt;1979;H;;H3;yannickchoffat@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13630;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+159;Babey;Pascal;Chemin des Minoux 9;2900;Porrentruy;1965;H;;H4;pbabey@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13631;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+160;Queloz;Barbara ;Rue Émile-Boéchat 17 ;2800;Delémont ;1978;D;;D3;barbara.queloz@outlook.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13632;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+161;Seiler;Laurence;Clos Grasson 18;2735;Champoz ;1973;D;;D4;lolotte.seilou@icloud.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13636;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+162;Savary;Michel;Rue des Primevères 55;2854;Bassecourt;1971;H;GS Ajoie;H4;michel.savary.02@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;Les Mimi's;BCJ Challenge2024;13637;Les Mimi's;;;;;;;;;;;;;4;;;;;;;;2;;;0
+163;Bianco;Mireille;Lion d'or 12;2735;Malleray;1973;D;;D4;m.bianco@bluewin.ch;Dames 4;1 Course à pied;1 Course à pied;;Les Mimi's;BCJ Challenge2024;13638;Les Mimi's;;;;;;;;;;;;;4;;;;;;;;2;;;0
+164;Eschmann;Loïc;Rue des Etangs 28;2854;Bassecourt;1990;H;Team La Vallée;H2;l.eschmann@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13640;Team La Vallée 1;;;;;;;;;;;;;2;;;;;;;;1;;;1
+165;Brand;Sebahat;16 rue prinicpale;68480;Roppentzwiller;1975;D;EHA/AAS;D3;sebahat.brand75@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;Les Bramas;BCJ Challenge2024;13643;Les Bramas;;;;;;;;;;;;;4;;;;;;;;2;;;1
+166;Brand;Serge;16 rue principale;68480;Roppentzwiller;1969;H;EHA/AAS;H4;serge.brand@club-internet.fr;Hommes 4;1 Course à pied;1 Course à pied;;Les Bramas;BCJ Challenge2024;13644;Les Bramas;;;;;;;;;;;;;4;;;;;;;;2;;;1
+167;Dolce;Catherine;RAUCHEMUR 20;2802;Develier;1962;D;Privé;D4;G.dolce@Hotmail.ch;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13645;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+168;Varé;Sandra;Chemin des Laboureurs 1;2900;Porrentruy;1970;D;;D4;vares70@gmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13648;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+169;Monnin;Carlyn;La Colombière 8;2900;Porrentruy;1983;D;;D3;carlyn.monnin@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13651;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+170;Girardin;Marie;Rue Pierre-Percée 2;2950;Courgenay ;2005;D;;DJ;girardin.marie@icloud.com;Dames juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13652;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+171;Snoriguzzi;Carole;Le borbet 26;2950;Courgenay ;1977;D;;D3;carole@agora.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13653;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+172;Gisiger;Alexandra;Rue des Muguets 2;2822;Courroux;1986;D;;D2;al.zwahlen@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13654;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+173;Moldovan;Delia;Rue de l'Hôpital 19;2350;Saignelégier;1988;D;;NW;delia_lahm@yahoo.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13655;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+174;Hulmann;Rachel;Rue de la Poste 20;2952;Cornol;1985;D;TRC Monterri;D2;rachel.rondez@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13656;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+175;Caillet;Christèle;Ch. des Cordonniers 7;2900;Porrentruy ;1975;D;;D3;christele.lachat@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13658;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+176;Chappuis;Luc;Impasse de la Prairie 40;2900;Porrentruy;1990;H;Divtec Team;H2;chappuis.l@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;Divtec Team 2;BCJ Challenge2024;13660;Divtec Team 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+177;Erba;Mathias;Pesses 2;2855;Glovelier;1992;H;La Meute;H2;Mathiaserba@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13661;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+178;Cambianica;Marion;marioncambia@gmail.com;2800;Delémont;1982;D;YORC3NTER;D3;marioncambia@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13662;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+179;Mühlethaler;Pierre;Rue des Sources 4;2738;Court;1987;H;;H2;pierre.muhlethaler@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13664;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+180;Faller;Justine ;Les Rangiers 12b;2954;Asuel;1987;D;;D2;justine.faller@bluewin.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13666;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+181;Burkhalter;Chantal;Rte de moron 17;2735;Malleray;1982;D;;D3;chantal.schoeni@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13669;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+182;Crevoiserat;Maxime;Champ-de-Val 12;2802;Develier;1999;H;;H1;maxime99@hotmail.ch;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13670;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+183;Lando;Fabien;La Montbiaidge 19;2902;Fontenais;1974;H;;H4;landofabien@hotmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13672;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+184;André;Delphine;Route de Courgenay 5;2952;Cornol;1998;D;;D1;andredelphine15@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13674;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+185;Salomon;Sylviane;rte de Porrentruy 2;2923;Courtemaîche;1965;D;BCJ;NW;sylviane.salomon@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13675;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+186;Bourquin;Caroline;Grand-Rue 21;2900;Porrentruy;1998;D;Club BCJ;D1;caroline.bourquin@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13676;Jurafamille;;;;;;;;;;;;;4;;;;;;;;1;;;0
+187;Renger ;Cecile;Rue tourterelles 2;2800;Delemont ;1993;D;;D2;cecile.renger12@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Tourterelles Gang ;BCJ Challenge2024;13677;Tourterelles Gang ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+188;Pierrard;Amand;Rue tourterelles 2;2800;Delemont;1992;H;;H2;cecile.renger12@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Tourterelles Gang;BCJ Challenge2024;13678;Tourterelles Gang;;;;;;;;;;;;;4;;;;;;;;2;;;1
+189;Neuenschwander;Jenna;Palustre 6;2822;Courroux;1991;D;;D2;j.fierobe@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13679;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+190;Michel;Catherine;Champs-Forts 4;2740;Moutier;1990;D;Le Forum Sports et Arts Martiaux;D2;catherine.michel@windowslive.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13680;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+191;Hürlimann;Gladys;Le Borbet 23;2950;Courgenay ;1976;D;;D3;gladyshurlimann@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13681;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+192;Meister;Gilles;Rue du Canal 2;2802;Develier;1989;H;;H2;gillesmeister89@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13683;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+193;Chapuis;Stéphane;Rue des écluses 458;2906;Chevenez;1983;H;;H3;steph.chapuis@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13685;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+194;Chapuis;Karin;Ecluses 458;2906;Chevenez;1984;D;;D3;chapuis.karin@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13686;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+195;Frainier;Célien;Chemin De La Tuilerie, 3;2900;Porrentruy;2007;H;CA Fontenais;HJ;celien.frainier@gmail.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13687;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+196;Choffat;Kevin;Rue des Tourterelles 12;2800;Delémont;1992;H;UHC Ajoie;H2;kevin.choffat@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Les Groins;BCJ Challenge2024;13690;Les Groins;;;;;;;;;;;;;4;;;;;;;;1;;;1
+197;Corbat;Martin;Le Chauffour 3;2942;Alle;2004;H;;H1;martin.corbat8@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13692;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+198;Mouzo;Pamela;Clos sur le perrerat 3;2842;Rossemaison ;1986;D;;D2;Pam2007@windowslive.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13698;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+199;Loew;Manon;Chemin des Moines 19;2713;Bellelay ;1994;D;;D2;mani-mani8@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13700;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+200;Beuchat;Laura;Rue du Quartier 2;2882;St-Ursanne;1999;D;;D1;laurabeuchat@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13701;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+201;Willemin;Noah;Coeudret 34;2854;Bassecourt;2005;H;;HJ;noah.willemin@gmail.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13707;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+202;Roy;Céline;Rue des Grottes 3;2800;Delémont;1999;D;;D1;celine.roy484@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13710;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+203;Prongué;Nathalie;Rue du 30-Avril 2;2925;Buix;1969;D;;NW;nathalie.prongue@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13713;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+204;Prongué;Martial;Rue du 30-Avril 2;2925;Buix;1968;H;;NW;martial.prongue@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13714;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+205;Prongué;Pauline;Rue du 30-Avril 2;2925;Buix;2001;D;;D1;pauline.prongue01@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13715;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+206;Brahier;Kevin;Route de Courgenay 74;2900;Coeuve;1989;H;;H2;celine.bourquenez@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13720;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+207;Gagliardi;Deborah;Rue de la Gare 12;2830;Courrendlin;1995;D;Le Forum Sports et Arts Martiaux;D1;gagldeb@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13721;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+208;Pepe;Mélissa ;Rue des Genêts 6;2800;Delémont ;2001;D;TriTeam Domoniak;D1;mpepe@technibox.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13723;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+209;Erzer;Jonas;Clos de la Betteratte 6;2802;Develier ;1991;H;;H2;jonas.erzer@me.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13728;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+210;Chavanne;Camille;Le Cras 144c;2932;Coeuve;1986;H;;H2;c.chavanne@gazsa.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13733;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+211;Gigon;Florine;Route de la Fontaine 15;2908;Grandfontaine;1995;D;;D1;florinegigon@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13742;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+212;Couche;Quentin;Haut des prés 4;2843;Châtillon ;1997;H;Cancer Warrior;H1;quentin.couche@hotmail.fr;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13746;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+213;Cecconi ;Leonardo ;Domont 40;2800;DelÉmont ;1975;H;YORC3NTER;H3;Ceccosystem@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13747;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+214;Cecconi;Valentino ;Domont 40;2800;Delémont ;2006;H;CECCO;HJ;valentino.cecconi@icloud.com;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13748;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+215;Althaus ;Céline;Les Traversains 7;2925;Buix;1977;D;;NW;celine@althaussarl.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13750;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+216;Ramseyer ;Emmanuel ;Route Principale 27 ;2933;Lugnez ;1989;H;;H2;ramzy.manu@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13752;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+217;Bourquard;Yanis;Érables 240;2856;Boécourt;2003;H;Team CSS Jura;H1;yanis2003@outlook.com;Hommes 1;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;13760;Team CSS Jura;;;;;;;;;;;;;2;;;;;;;;1;;;1
+218;Paupe;Eric;Route des Rangiers 50;2882;St-Ursanne;1966;H;Mont-Terrible;H4;eric.paupe@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13761;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+219;Beuchat;Maude;Métairie des pics 2;2853;Courfaivre;1986;D;;D2;maude.buchwalder@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les pieds carrés;BCJ Challenge2024;13766;Les pieds carrés;;;;;;;;;;;;;4;;;;;;;;2;;;1
+220;Da silva;Samuel;Rue Ernest Daucourt 3;2942;Alle;1991;H;;H2;samuelo03@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13790;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+221;Brahier;Virginie ;Vie du haut 12;2925;Buix;1981;D;Gymn Buix ;NW;thierry.courbat@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13817;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+222;Brahier ;Méline;Vie du haut 12;2925;Buix;1999;D;Gymn Buix ;NW;thierry.courbat@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13818;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+223;Lapaire;Julie;Les vieilles oeuches 10;2950;Courgenay;1990;D;;D2;julie.cattin@hotmail.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13821;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+224;Portenier;Loïc;Es-Cotay 458;2903;Villars Sur Fontenais ;1986;H;CAP Hunt ;H2;loic.portenier@icloud.com;Hommes 2;1 Course à pied;1 Course à pied;;Les pieds carrés;BCJ Challenge2024;13822;Les pieds carrés;;;;;;;;;;;;;4;;;;;;;;2;;;1
+225;Schaffter;Clément;Argile 27;2900;Porrentruy;1986;H;GSAjoie;H2;clement.schaffter@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13823;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+226;Jobé monnin;Rachel;Bois-Chatons;2925;Buix - Suisse;1967;D;Groupe sportif Buix;NW;famille-monnin@ajoie-net.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13826;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+227;Salzedas ;Luisa;Ch. de l étang 20;2800;Delémont ;1969;D;;D4;l.salzedas@bluewin.ch;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13827;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+228;Courbat;Maryline ;Chemin du Bois-Chatons 6;2925;Buix;1975;D;;NW;marylinecourbat@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13828;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+229;Paroz;Guillaume;Rauracie 19;2853;Courfaivre;2002;H;;H1;guillaumeparoz62@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13829;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+230;Scaiola;Lucie;Plein Soleil 12;2740;Moutier;1986;D;;D2;lucie.scaiola@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13831;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+231;Varrin;Annie;Sous la Cour 10;2952;Cornol;1982;D;Club BCJ;D3;annie.varrin@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13832;Jurafamille;;;;;;;;;;;;;4;;;;;;;;1;;;1
+232;D'haze;Thomas;Les tuileries 196;2906;Chevenez ;1990;H;;H2;thomas.dhaze@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13833;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+233;Huber;Thomas;l'Erveratte 3c;2946;Miécourt;1985;H;;H2;huber-thomas@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13834;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+234;Wyss;Erine;Rue Marzon 20;2738;Court;2005;D;;DJ;wysserine@gmail.com;Dames juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13838;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+235;Schlüchter ;David ;Le clos brené 5 ;2843;Châtillon ;1980;H;;H3;dav.caro@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;13839;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;1
+236;Ramseyer;Mathis;Haute Fin 15;2900;Porrentruy;1998;H;Club BCJ;H1;mathis.ramseyer@bluewin.ch;Hommes 1;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13840;Jurafamille;;;;;;;;;;;;;2;;;;;;;;1;;;1
+237;Vallat;Artiom;Rue de la Gare 12;2855;Glovelier;1994;H;GoFasta;H2;artiom.vallat@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13841;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+238;Rubli;Estelle;Rue Jean-Jacques de Staal 9;2800;Delémont;2000;D;;D1;Estellerubli@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13844;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+239;Burkhard;Nina;Rue Préfet comte 18;2852;Courtételle;1999;D;FCGlovelier;D1;ninaburkhard@bluewin.ch;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13845;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+240;Froidevaux;Vincent;Oeuches de la Pran 2;2855;Glovelier;1977;H;;H3;froidevaux.vincenzo@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13846;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+241;Theubet;Simon;Vieux Moulin 32;2854;Bassecourt;1993;H;GST;H2;simon.theubet@outlook.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13853;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+242;Chenal;Raphaël ;Pré-Sergent 1;2364;Saint-Brais;1974;H;GS Tabeillon;H4;raphaelchenal@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13856;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+243;Muller ;Elisa ;Vie de Bonfol 110;2933;Damphreux ;2001;D;;D1;01elisamuller@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;Les Pas-Lourds ;BCJ Challenge2024;13857;Les Pas-Lourds ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+244;Mischler;Laure;Rue Pierre Coullery 650;2903;Villars-Sur Fontenais;1997;D;;D1;lauremischler@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13858;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+245;Pages;Morgan;Rte de Courtemblin, 26;2950;Courgenay;2001;H;;H1;pages.morgan@bluewin.ch;Hommes 1;1 Course à pied;1 Course à pied;;Les Pas-Lourds ;BCJ Challenge2024;13859;Les Pas-Lourds ;;;;;;;;;;;;;4;;;;;;;;2;;;1
+246;Terrier;Hervé ;Rue du Fahy 7;2900;Porrentruy ;1982;H;;H3;herve.terrier@bluewin.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13870;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+247;Besnard;Charline;Rue des Tourterelles 8;2800;Delémont;1995;D;Fam Coaching;D1;charline.besnard95@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13873;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+248;Beltran;Ludivine;12 rue des sapins;68960;Illtal Grentzingen;1988;D;Altkirch Athlé Sundgau;D2;vogel.ludivine3@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;AAS;BCJ Challenge2024;13875;AAS;;;;;;;;;;;;;2;;;;;;;;1;;;1
+249;Jobé monnin;Rachel;Bois-Chatons;2925;Buix - Suisse;1967;D;Groupe sportif Buix;NW;famille-monnin@ajoie-net.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13877;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+250;Neukomm;Elisa;Sur le Perrerat 3;2842;Rossemaison;1997;D;Club BCJ;D1;elisa.neukomm@bcj.ch;Dames 1;1 Course à pied;1 Course à pied;;Jurafamille;BCJ Challenge2024;13878;Jurafamille;;;;;;;;;;;;;4;;;;;;;;1;;;1
+251;Girardin;Thomas;Rue des Pâquerettes 11;2830;Courrendlin;2001;H;;H1;girardin.thomas@outlook.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13884;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+252;Hofmann;Loan;Champs St-Martin 23;2942;Alle;1999;H;Fc Alle;H1;loan.hofmann@hotmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13887;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+253;Graber;Jérémy;Chemin des Noz 26;2942;Alle;2000;H;FC Alle;H1;jrmgraber@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13889;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+254;Baume;Ophélie;Les Rouges-Terres 113;2360;Le Bémont;1997;D;;D1;ophelie.baume@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13890;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+255;Joly;Muriel;Bas-du-Village 18 ;2345;La Chaux-Des Breuleux ;1998;D;GSFM;D1;muriel-joly@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13891;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+256;Cattin;Camille;Pré Neuf;2900;Porrentruy;1988;D;;D2;benjamin.cattin@bluewin.ch;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13892;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+257;Cattin;Benjamin;Pré Neuf;2900;Porrentruy;1986;H;;H2;benjamin.cattin@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13893;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+258;Charmillot;Lucien;Rosière1;2852;Courtételle;1963;H;;H4;lucien.ch@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13894;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+259;Fusaro;Marie;Chemin des Quoires 5;2952;Cornol;1995;D;;NW;marie.fusaro@bcj.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13898;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+260;Pose;Karine;Rte des Fontaines 28;2952;Cornol;1975;D;;NW;karine.pose@bcj.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13899;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+261;Glauser;Laurence;Pommiers 5;2830;Courrendlin;1965;D;;NW;laurence.glauser@bcj.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;13900;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+262;Culfa;David;Rue de l’Abbé-Rossé 44 a;2856;Boécourt ;1988;H;;H2;david.culfa@hotmail.fr;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13911;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+263;Faivre;Manon;Rue des Pèlerins 27;2800;Delémont;1987;D;;D2;manfaivre@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les fées no men;BCJ Challenge2024;13914;Les fées no men;;;;;;;;;;;;;2;;;;;;;;1;;;0
+264;Scherrer;Coline;Rue des Mayettes 1;2800;Delémont;1986;D;YORC3NTER;D2;Coline.scherrer86@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les fées no men;BCJ Challenge2024;13915;Les fées no men;;;;;;;;;;;;;2;;;;;;;;1;;;0
+265;Vermeille ;Ryan;Combatte Marepos 76;2718;Lajoux;1999;H;;H1;ryan.vermeille@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13918;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+266;Crelier;Gérald;Champs St-Martin 24;2942;Alle;1967;H;;H4;gerald.crelier@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13919;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+267;Baillif;Frédéric ;Derrière-Metthiez 18;2950;Courgenay;1982;H;;H3;frederic.baillif@hotmail.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13920;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+269;Parrat;Philippe;Rue du Mont 17;2852;Courtételle;1986;H;Team La Vallée;H2;pepeparrat@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13924;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+270;D'haze;Thomas;Les tuileries 196;2906;Chevenez ;1990;H;;H2;thomas.dhaze@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13926;;;;;;;;;;;;;;3;;;;;;;;0;;;0
+271;Duplain;Marie;Rue Achille-Merguin 7;2900;Porrentruy;1998;D;;D1;mduplain@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13929;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+272;Huber;Emmanuelle;Rue de la poste 14;2952;Cornol;1991;D;;D2;mduplain@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13930;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+273;Bieri;Laure;Les courtes raies 9;2950;Courgenay;2001;D;;D1;laurebieri@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13931;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+274;Stadelmann ;Claude;Route de la courtine 7;2807;Pleigne ;1981;H;Team la vallée ;H3;stadelmann.claude@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;Team La Vallée 1;BCJ Challenge2024;13935;Team La Vallée 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+275;Eggimann;Melissa;Rue des Romains 13M;2856;Boécourt;1989;D;;D2;alain.eggimann@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13945;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+276;Amiot;Olivier;;0;;1985;H;TAG Heuer;H2;;Hommes 2;1 Course à pied;1 Course à pied;;TAG Heuer 2;BCJ Challenge2024;13954;TAG Heuer 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+277;Bardet;Maxime;;0;;1991;H;TAG Heuer;H2;;Hommes 2;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13948;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+278;Even;Alexandre;;0;;1990;H;TAG Heuer;H2;alexandre.even@tagheuer.com;Hommes 2;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13950;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+279;Fleury;Sébastien;;0;;1974;H;TAG Heuer;H4;;Hommes 4;1 Course à pied;1 Course à pied;;TAG Heuer 3;BCJ Challenge2024;13960;TAG Heuer 3;;;;;;;;;;;;;4;;;;;;;;1;;;1
+280;Hoffbekc;François;;0;;1998;H;TAG Heuer;H1;;Hommes 1;1 Course à pied;1 Course à pied;;TAG Heuer 3;BCJ Challenge2024;13959;TAG Heuer 3;;;;;;;;;;;;;4;;;;;;;;1;;;0
+281;Huet;Jean-Simon;;0;;1993;H;TAG Heuer;H2;;Hommes 2;1 Course à pied;1 Course à pied;;TAG Heuer 2;BCJ Challenge2024;13958;TAG Heuer 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+282;Jardin;Luca;;0;;1999;H;TAG Heuer;H1;;Hommes 1;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13951;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;0
+283;Jimenez;Anthony;;0;;1990;H;TAG Heuer;H2;anthony.jimenez@tagheuer.com;Hommes 2;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13953;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;0
+284;Lapp;Aurélien;;0;;1995;H;TAG Heuer;H1;;Hommes 1;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13952;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+285;Ludwig;Zoé;;0;;1994;D;TAG Heuer;D2;;Dames 2;1 Course à pied;1 Course à pied;;TAG Heuer 2;BCJ Challenge2024;13956;TAG Heuer 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+286;Martin;Julien;;0;;1984;H;TAG Heuer;H3;julien.martin@tagheuer.com;Hommes 3;1 Course à pied;1 Course à pied;;TAG Heuer 1;BCJ Challenge2024;13949;TAG Heuer 1;;;;;;;;;;;;;4;;;;;;;;1;;;1
+287;Planchon;Nathalie;;0;;1991;D;TAG Heuer;D2;;Dames 2;1 Course à pied;1 Course à pied;;TAG Heuer 2;BCJ Challenge2024;13955;TAG Heuer 2;;;;;;;;;;;;;4;;;;;;;;1;;;1
+288;Sanseigne;Eric;;0;;1982;H;TAG Heuer;H3;;Hommes 3;1 Course à pied;1 Course à pied;;TAG Heuer 2;BCJ Challenge2024;13957;TAG Heuer 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+289;Filipetto;Laurie;Les Gasses 4;2942;Vendlincourt;1997;D;;D1;laurie_balmer@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13964;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+290;Lovis;Elodie;Le Genevrier 3;2950;Courgenay;1996;D;;D1;lovis.elodie@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13974;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+291;Barthe-Léchenne;Claire;Route de Buix;2915;Bure;1985;D;;D2;claire.barthe-lechenne@ecomail.bio;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13982;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+292;Principe;Débora;Rue de la Birse 10;2822;Courroux;1998;D;;D1;debora.principe@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13983;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+293;Deletoile;Marie-Luce;Sonvilier;2615;Sonvilier;1999;D;;D1;marieluced@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13995;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+294;Deletoile;Rébecca;Rte des Sauges 6;2615;Sonvilier;1968;D;;D4;deletoile.rebecca@gmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13996;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+295;Gerber;Marie;Prés Gris;2762;Roches Be;2001;D;DDC;D1;mariemariegerber@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;13997;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+296;Kohler;Benjamin;Bellevie 32;2822;Courroux ;2001;H;FC Truite ;H1;Benj10.koher@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14001;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+297;Frein;Carolane;Rue de la Farrère 21;2830;Courrendlin;2002;D;;D1;freincaro@icloud.com;Dames 1;1 Course à pied;1 Course à pied;;Les Chicorettes;BCJ Challenge2024;14007;Les Chicorettes;;;;;;;;;;;;;1;;;;;;;;1;;;0
+298;Rothen;Nicolas;Côte Champ Françon 27;2942;Alle;1979;H;;NW;nico.rothen@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14008;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+299;Günter;Jonas;Quai de la sorne 24;2800;Delémont ;2000;H;FSG Courroux;H1;jonas.guenter@hispeed.ch;Hommes 1;1 Course à pied;1 Course à pied;;FSG Courroux;BCJ Challenge2024;14010;FSG Courroux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+300;Rion;Gaëlle;Coinat 16;2950;Courgenay;1984;D;FSG Courgenay;D3;gaelle.rion@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14014;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+301;Saunier;Thomas;Les Colonges 72;2906;Chevenez;1991;H;CapHunt;H2;saunier74@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14020;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+302;Schlüchter ;David ;Le clos brené 5 ;2843;Châtillon ;1980;H;;H3;dav.caro@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;14022;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;0
+303;Varé;Lionel;Route Principale 30;2827;Mervelier;1985;H;GS Ajoie;H2;lionel.vare@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14033;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+304;Champion;Pauline;Route de Vicques, 6;2830;Courrendlin;1996;D;;D1;pauline.champion@outlook.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14035;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+305;Champion;Marie;Creux-de-la-Quère 5;2830;Courrendlin;1998;D;;D1;mariechampion1211@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14036;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+306;Borne ;Yvan ;Penesse 33;2852;Courtételle ;1977;H;YORC3NTER;H3;yvan.borne@sunrise.ch;Hommes 3;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;14059;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;1
+307;Borne ;Fanny ;Penesse 33;2852;Courtételle ;2006;D;SRD;DJ;fanny.borne@sunrise.ch;Dames juniors;1 Course à pied;1 Course à pied;;tape m'en cinq;BCJ Challenge2024;14060;tape m'en cinq;;;;;;;;;;;;;4;;;;;;;;1;;;1
+308;Joray;Antoine;Rue de la Fenaison 45;2800;Delémont;1997;H;FC Pleigne;H1;antoine.joray@protonmail.ch;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14070;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+309;Girard;Line;Rue de la Penesse 27;2852;Courtételle;1995;D;;D1;line.logg@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14074;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+310;Girard ;Claire;Rue du Pécas 55;2864;Soulce;1997;D;;D1;claire.girard.cg@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14075;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+311;Catellani;Amandine ;Rue St-Maurice 24;2852;Courtételle ;2004;D;;D1;amandinecatellani@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14079;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+312;Eschmann;Océane;Rue des Andains 5;2830;Courrendlin;2002;D;;NW;oceane.eschmann@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14080;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+313;Linder;Tommy ;Industrie 14;2720;Tramelan;1992;H;;H2;tl292120@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14098;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+314;Chatelain ;Nicolas ;Otaux 3 ;2720;Tramelan ;1993;H;;H2;n.chatelain@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14101;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+315;Ucar;Elif;Cras des Charmés 5;2854;Bassecourt ;1991;D;;D2;elif.ucar.154@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14104;;;;;;;;;;;;;;2;;;;;;;;0;;;0
+316;Riat;Vivien;Rue Jeann Haas-Ulmann 4;2800;Delémont;1990;H;;H2;vivien.riat@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14120;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+317;Braihier;Marie-Christine;Rte Principale 34 A;2856;Boécout;1966;D;;D4;marie.braihier@gmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14132;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+318;Nussbaumer;Tania;Les Champs Morel 35;2950;Courgenay;1973;D;VanBo Sports;D4;tania.nussbaumer@bluewin.ch;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14133;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+319;Vachez;Enguerran;Rue des Vergers 19;25550;Bavans;1991;H;;H2;vanessa.portenier@biwi.ch;Hommes 2;1 Course à pied;1 Course à pied;;Biwi ;BCJ Challenge2024;14136;Biwi ;;;;;;;;;;;;;2;;;;;;;;1;;;0
+320;Zuber;Gillian;Rue des Fougères 5;2854;Bassecourt;1998;H;;H1;vanessa.portenier@biwi.ch;Hommes 1;1 Course à pied;1 Course à pied;;Biwi ;BCJ Challenge2024;14137;Biwi ;;;;;;;;;;;;;2;;;;;;;;1;;;1
+321;Widmer;Jean-Charles;Pré Renaudot 7;25310;Roches Les Blamont;1986;H;;H2;vanessa.portenier@biwi.ch;Hommes 2;1 Course à pied;1 Course à pied;;Biwi ;BCJ Challenge2024;14138;Biwi ;;;;;;;;;;;;;2;;;;;;;;1;;;1
+322;Bandeira fernandes de oliveira;Eva rute ;Rue de la maison blanche 23;90500;Beaucourt;1974;D;;D4;vanessa.portenier@biwi.ch;Dames 4;1 Course à pied;1 Course à pied;;Biwi;BCJ Challenge2024;14139;Biwi;;;;;;;;;;;;;3;;;;;;;;1;;;1
+323;Mouginot;Elisa;Les Colonges 71;2906;Chevenez;1997;D;;D1;vanessa.portenier@biwi.ch;Dames 1;1 Course à pied;1 Course à pied;;Biwi;BCJ Challenge2024;14140;Biwi;;;;;;;;;;;;;3;;;;;;;;1;;;1
+324;Mourcely;Antoine ;Rue du Bois Joli 10;90400;Dorans;2001;H;;H1;vanessa.portenier@biwi.ch;Hommes 1;1 Course à pied;1 Course à pied;;Biwi ;BCJ Challenge2024;14141;Biwi ;;;;;;;;;;;;;2;;;;;;;;1;;;0
+325;Staempfli;Valéry;Les Oeuches 4;2827;Mervelier;1960;H;;H4;valery.staempfli@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14143;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+326;Léchenne;Mélanie;Chemin des Minoux 1;2900;Porrentruy;1992;D;-;D2;melanielechenne14@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;les yoginis;BCJ Challenge2024;14146;les yoginis;;;;;;;;;;;;;1;;;;;;;;1;;;0
+327;Myy;Jessica;Route de Courgenay 20;2942;Alle;1997;D;-;D1;jessica06.my@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;les yoginis;BCJ Challenge2024;14147;les yoginis;;;;;;;;;;;;;1;;;;;;;;1;;;0
+328;Fleury;Auriane;Chemin des grandes vies 1;2900;Porrentruy;2000;D;-;D1;auriane.fleury5@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;les yoginis;BCJ Challenge2024;14148;les yoginis;;;;;;;;;;;;;1;;;;;;;;1;;;0
+329;Hurtaud ;Lauriane ;Rue de la Gare 16;2830;Courrendlin ;1997;D;;D1;lauriane015@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14153;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+330;Baume;Marie-Christine;Forge 5;2345;Les Breuleux;1966;D;;NW;baume.constructions@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14154;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+331;Monnerat ;Aurelie;Rue des Vergers 5;2800;Delémont;1988;D;Aucun;D2;monnerat.aurelie@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14155;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+332;Chételat;Christophe;Rue du Haut-Fourneau 29;2800;Delémont;1968;H;;H4;christophe.chetelat@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14158;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+333;Vuillaume;Julie;La Condemenne 202a;2944;Bonfol;1988;D;;D2;julie.girardin8@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14160;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+334;Eschmann ;Valérie ;Rue des Etangs 28 ;2854;Bassecourt ;1993;D;;D2;gogniatvalerie@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14161;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+335;Jardin;Rogelaine;Rue des Sels 5;2800;Delémont;1991;D;Garage Maurice Montavon SA;D2;rogelaine.jardin@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14166;Garage Maurice Montavon SA;;;;;;;;;;;;;3;;;;;;;;1;;;1
+336;Rebetez;Randy;Rue du Nord 3;2854;Bassecourt;1998;H;;H1;randy.rebetez@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14167;Garage Maurice Montavon SA;;;;;;;;;;;;;2;;;;;;;;1;;;1
+337;Ory;Vincent;Rue du Quartier 2;2882;St-Ursanne;1995;H;;H1;vincent.10768@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14168;Garage Maurice Montavon SA;;;;;;;;;;;;;2;;;;;;;;1;;;1
+338;Chappuis;Nicolas;Rue St-Imier 16;2802;Develier;1960;H;;H4;nicolas.chappuis@garagemontavon.ch;Hommes 4;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14169;Garage Maurice Montavon SA;;;;;;;;;;;;;4;;;;;;;;1;;;1
+339;Thirion;Lionel;Rue de Beaucourt 3;0;Abbevillers;1962;H;Garage M. Montavon SA;H4;LIOTHI@windowslive.com;Hommes 4;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14170;Garage Maurice Montavon SA;;;;;;;;;;;;;4;;;;;;;;1;;;1
+340;Vitone;Anna;Rue de l'Avenir 50;2800;Delémont;1975;D;Garage M. Montavon SA;D3;annavitone@hotmail.com;Dames 3;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14171;Garage Maurice Montavon SA;;;;;;;;;;;;;2;;;;;;;;1;;;1
+341;Bekjiri;Suad;Rue du Colonel Hoffmeyer 43b;2854;Bassecourt;1998;H;Garage M. Montavon SA;H1;suadbekiri@libero.it;Hommes 1;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14172;Garage Maurice Montavon SA;;;;;;;;;;;;;2;;;;;;;;1;;;1
+342;Pascale;Luigi;Les Lammes 6;2825;Courchapoix;2000;H;Garage M. Montavon SA;H1;luigipascale26@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14173;Garage Maurice Montavon SA;;;;;;;;;;;;;2;;;;;;;;1;;;1
+343;Ackermann;Delphine;ackermann.del@gmail.com;2502;Bienne;1993;D;;D2;ackermann.del@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14176;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+344;Coeudevez;Sabine;Mormont 123;2922;Courchavon;1986;D;;D2;sabine.phuon@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14191;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+345;Staempfli;Caroline ;Impasse Pré Renadat 2;2822;Courroux;1996;D;-;D1;caroline.staempfli@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;Tel père, telle fille;BCJ Challenge2024;14193;Tel père, telle fille;;;;;;;;;;;;;3;;;;;;;;1;;;1
+346;Laterali;Eléa;Rue des Prés 7;2830;Courrendlin ;2005;D;;NW;elea.laterali@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14194;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+347;Schaller;Yannick;Rue du Midi 26;2854;Bassecourt;1986;H;Pulse Racing Team;H2;yannick_schaller@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14216;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+348;Oeuvray;Isaac;Rte de Porrentruy 84;2932;Coeuve;1985;H;;H2;isaac@zaco-coeuve.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14218;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+349;Trouillat;Quentin;Pré communal 105f;2932;Coeuve;1987;H;Team Zaco;H2;Quentin.trouillat@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14219;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+350;Frainier ;Laurence ;Tuileries 3;2900;Porrentruy ;1977;D;;NW;laurencefrainier@yahoo.fr;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14220;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+351;Hostettler;Andi;Rue de bellevie 39 ;2822;Courroux ;2003;H;;H1;andihostettler227564@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Les Groins;BCJ Challenge2024;14223;Les Groins;;;;;;;;;;;;;3;;;;;;;;1;;;0
+352;Humair;Philippe;Les finages 4;2714;Les Genevez;1972;H;VC Team La Courtine;H4;humair.philippe@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14224;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+353;Hauert;Léna;Rue des Perriers 5;2900;Porrentruy ;1984;D;;D3;lena.baumgartner@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14229;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+354;Gonçalves;Nolan;Rue de la Clef 13c;2610;St-Imier;2003;H;;H1;goncalves.nolan@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14230;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+355;Perret;Fabienne;Chasseral 30;2350;Saignelégier;1978;D;;D3;fabterrep@hotmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14231;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+356;Eschmann ;Sylvaine;Croix 3;2854;Bassecourt;1977;D;-;D3;sglardon@bluewin.ch;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14232;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+357;Morel;Corentin;Rue des Saules 1;2830;Courrendlin;1989;H;;H2;morel.corentin@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14233;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+358;Hubert;Jonathan;Grand-près 93;2854;Bassecourt;1991;H;Team la Vallée;H2;marcbaume12@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;14234;Team La Vallée 2;;;;;;;;;;;;;4;;;;;;;;1;;;0
+359;Maître;Charline;Route de Sauly 9a;2855;Glovelier;1994;D;;D2;marcbaume12@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14235;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+360;Faller;Lola;Les Rangiers 12b;2954;Asuel;2015;D;;NW;justine.faller@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14236;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+361;Vuilleumier;Matt;grand clos 9;2710;Tavannes;1999;H;Fabien bike Tramelan;H1;matt.vuilleumier@bluewin.ch;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14237;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+362;Faller;Ariane;Rouges Terres 7;2863;Undervelier ;1956;D;;NW;justine.faller@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14238;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+363;Gogniat;Yves;Chemin de la Sapinière 30R;2805;Soyhières;1990;H;;H2;gogniat.yves@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14239;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+364;Maître;Sandra;Rte Principale 48c;2856;Boécourt;1972;D;;D4;josue.maitre@bkw.ch;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14240;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+365;Maître;Josué ;Rte principale 48c;2856;Boécourt ;1976;H;;H3;josue.maitre@bkw.ch;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14241;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+366;Aubry;Julien;Rue des Longennes 254;2856;Boécourt;1999;H;;H1;ju.aubry@icloud.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14242;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+367;Leibundgut;Nathalie;Rue Abbé Rossé 51;2856;Boécourt;1979;D;;D3;natchevre@hotmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14243;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+368;Flury;Luc;Bas du village 18;2345;La Chaux Des Breuleux ;1996;H;GSFM;H1;lucflury@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;GSFM;BCJ Challenge2024;14248;GSFM;;;;;;;;;;;;;4;;;;;;;;1;;;1
+369;Etique;Adeline;Rue du Chaufour 5;2853;Courfaivre;1990;D;;D2;adeline.heche@hotmail.fr;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14249;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+370;Berberat ;Véronique ;La Colombière 33;2900;Porrentruy ;1978;D;CAP Hunt;D3;vro.muller@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14250;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+371;Beuret;Cindy;Sur-les-Côtes 3;2950;Courgenay;1986;D;;D2;cindy.choulat@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14254;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+372;Ackermann;Christophe;La Burgisberg 1;2803;Bourrignon;1979;H;;H3;christophe@laburgis.ch;Hommes 3;1 Course à pied;1 Course à pied;;Les Groins;BCJ Challenge2024;14255;Les Groins;;;;;;;;;;;;;1;;;;;;;;1;;;1
+373;Cramatte;Pascaline;Tilleuls 21;2900;Porrentruy ;1973;D;;NW;o.p.cramatte@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14258;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+374;Rebetez;Clément;Colombière 131;2900;Porrentruy;2003;H;CAP HUNT;H1;clemreb7@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14262;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+375;Clauzel ;Magali ;Erables 240;2856;Boécourt ;1982;D;Team CSS Jura;D3;thierrybourquard@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;14264;Team CSS Jura;;;;;;;;;;;;;1;;;;;;;;1;;;1
+376;Bourquard ;Sacha ;Erables 240;2856;Boécourt ;2006;H;;HJ;sacha.2006@outlook.com;Hommes juniors;1 Course à pied;1 Course à pied;;Team CSS Jura;BCJ Challenge2024;14266;Team CSS Jura;;;;;;;;;;;;;1;;;;;;;;1;;;1
+377;Parietti;Josée;Rue Tchésa 3;2915;Bure;1978;D;;NW;josee.crelier@bluewin.ch;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14267;;;;;;;;;;;;;;4;;;;;;;;0;;;0
+378;Monnerat;Jérôme;Vergers 5;2800;Delémont;1988;H;;H2;jeromemonnerat13@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14269;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+379;Kläy;Andy;Route du Haut-Plateau 11;2806;Mettembert ;1991;H;Team 4K;H2;andy.klay@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14270;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+380;Leibundgut;Luca;Rue Abbé Rossé 51;2856;Boécourt;2013;H;;NW;leibundgutpierre@gmail.com;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;14271;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+381;Steullet;Sylvain;Sur Rosé 6;2832;Rebeuvelier;1987;H;;H2;sylvainsteullet@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14273;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+382;Babey;Claude;Ch. De La Fontaine-aux-Chiens 5;2900;Porrentruy;1976;D;Fémina Courtedoux ;D3;claude_babey@yahoo.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14274;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+383;Lovis;Méline;Impasse de la Basilique 2;2852;Courtételle;1993;D;GST;D2;melinelovis3@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14278;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+384;Bieri;Laure;Les Courtes-Raies 9;2950;Courgenay;2001;D;;D1;laurebieri@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14279;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+385;Duplain;Marie;Rue Achille-Merguin 7;2900;Porrentruy;1998;D;;D1;mduplain@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14280;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+386;Paratte;Théo;Estivage 18;2800;Delémont;1996;H;;H1;bonne-bouille96@hotmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14281;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+387;Rérat ;Mathilde ;Rte du Creugenat 124k;2905;Courtedoux;1992;D;;D2;mathilde.rerat@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14283;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+388;Migy;Mathieu;30 Route Cantonale;2884;Montenol;1986;H;;H2;mat.migy14@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14284;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+389;Metzger ;Laura ;15 rue des bleuets ;68210;Hagenbach ;1988;D;;D2;Laura.metzger@live.fr;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14286;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+390;Wirth;Laurie;Rue de Moron 15;2740;Moutier;1995;D;;D1;laurie-3@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14287;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+391;Chappatte;Lucie;23.juin.10;2345;Les Breuleux;1987;D;SEP Olympic La Chaux-de-Fonds ;D2;chappattelucie@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14288;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+392;Lovis;Magali;Route de Bâle 16;2805;Soyhières;1988;D;YORC3NTER;D2;magalilovis@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14289;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+393;Paupe;Eléonore;Industrie 21;2345;Les Breuleux;1992;D;GSFM;D2;eleonore.paupe@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14290;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+394;Barthoulot;Pablo;Rue du Mont 1;2852;Courtételle;2001;H;Team La Vallée;H1;pablo.barthoulot@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;Team La Vallée 2;BCJ Challenge2024;14292;Team La Vallée 2;;;;;;;;;;;;;1;;;;;;;;1;;;1
+395;Ortega;Lolita;Aux Fossés 9B;2852;Courtételle;1997;D;;D1;loretga020@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14293;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+396;Dobler;Anthony;Rue franche 12;2800;Delémont;2000;H;;H1;anthony.dobler@icloud.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14298;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+397;Plumey;Charline;Rue Denise-Péronne 2;2800;Delémont;1998;D;;D1;charline.plumey.cp@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14299;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+398;Chaignat;Garance;Rue de La poste 250;2362;Montfaucon;2000;D;;D1;garance.chaignat@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14300;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+399;Haegeli;Maxime;Chemin des Tilleuls 20;2362;Montfaucon;1998;H;;H1;max.haegeli@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14301;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+400;Babey;Yannis;Fontaine aux Chiens 5;2900;Porrentruy ;1972;H;#legosse;H4;yannis.babey@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14302;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+401;Ackermann;Brice ;Rue de Chêtre 38;2800;Delémont;1990;H;;H2;brice.ackermann@outlook.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14303;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+402;Rapacchietta;Damien;30A Rue du 2E Cuirassier;68130;Altkirch;1985;H;;H2;damien@rapacchietta.org;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14305;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+403;Vazquez ;Teresa ;Gravière 17;2854;Bassecourt ;1977;D;;D3;terevitone@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14308;;;;;;;;;;;;;;1;;;;;;;;0;;;0
+404;Fleury ;Maxime ;Le genévrier 2 ;2950;Courgenay ;2001;H;;H1;maxime.fleury27@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14309;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+405;Sollberger;Frédéric;Route de Courtedoux 4;2900;Porrentruy;1973;H;;H4;frederic.sollberger@gmail.com;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14310;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+406;Ricchieri;Amata;Route de Delémont 162;2802;Develier;1995;D;Garage M. Montavon SA;D1;amataricchieri@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;Garage Maurice Montavon SA;BCJ Challenge2024;14311;Garage Maurice Montavon SA;;;;;;;;;;;;;1;;;;;;;;1;;;0
+407;Dolce;Rocco;Princiaple 16;2824;Vicques;1962;H;FSG Courroux;H4;d.rocco@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;FSG Courroux;BCJ Challenge2024;14312;FSG Courroux;;;;;;;;;;;;;1;;;;;;;;1;;;1
+408;Aubry;Laura;Rue des Longennes 254;2856;Boécourt;1997;D;FSG Bassecourt;D1;laura.aubry@hotmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14313;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+409;Friedli;Loric;Champ de la Pierre 20;2736;Sorvilier;1984;H;Gymnasport Sorvilier;H3;loric_friedli@hotmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14314;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+410;Ruegg;Martin;Vieilles forges 62;2854;Bassecourt ;1985;H;;H2;Info.rueggmartin@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14316;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+411;Miserez;Julie;Les Rotchets, 42f;2718;Lajoux Ju;1983;D;;D3;ju.miserez@gmail.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14317;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+412;Zimmermann;Johan;Promenade iris de Roten ;2800;Delemont;1995;H;FSG Courroux- Courcelon;H1;johan_zimmermann@hotmail.com;Hommes 1;1 Course à pied;1 Course à pied;;FSG Courroux;BCJ Challenge2024;14318;FSG Courroux;;;;;;;;;;;;;4;;;;;;;;1;;;1
+413;Frund;Joanie;Rue du Kirlou;2800;Delémont;1994;D;;D2;j0aniiie@hotmail.com;Dames 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14319;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+414;Beyeler;Marie;Rue du Marais 5;2822;Courroux;2000;D;;D1;mariebeyeler3@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14320;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+415;Hulmann;Valère;Les Rotchets 42b;2718;Lajoux;1986;H;;H2;vhadmin@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14321;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+416;Willemin geiser;Faustine;;2857;Bassecourt;1991;D;;D2;faustine.willemiin@gmail.com;Dames 2;1 Course à pied;1 Course à pied;;Les champions chips;BCJ Challenge2024;14322;Les champions chips;;;;;;;;;;;;;1;;;;;;;;2;;;1
+417;Geiser;Matthieu;;2854;Bassecourt;1988;H;;H2;matthieu.geiser@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Les champions chips;BCJ Challenge2024;14323;Les champions chips;;;;;;;;;;;;;1;;;;;;;;2;;;1
+418;Meyer;Maxime;Rue Eglise 15;2800;Delémont;1994;H;;H2;meyerm0803@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14324;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+419;Varrin;Célien;Rue des rangiers 28;2350;Saignelégier;1999;H;MC-VV;H1;celien.ktm@bluewin.ch;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14325;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+420;Broquet;Joanne;Rue du Midi 29;2854;Bassecourt;1982;D;;D3;joanne.broquet@me.com;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14326;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+421;Hofer;Michael;Rue du chat perché 5;2853;Courfaire;1985;H;;H2;micha_hofer@msn.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14327;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+422;Chételat;Colin;rue Sous-le-Borbet 7;2800;Delémont;2001;H;;H1;chetelatcolin@gmail.com;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14328;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+423;Prato;Loris;Abbé-Monnin 53;2854;Bassecourt;1993;H;;H2;loris.prato@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14329;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+424;Ortega;Thierry;Le Bambois 2;2843;Châtillon;1972;H;;H4;famille.ortega@sunrise.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14330;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+425;Schnetz;Simon;Le Genevrier 3;2950;Courgenay ;1998;H;;H1;simon@schnetz.net;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14331;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+426;Mosset;Gabrielle;En Geneveret 11;2824;Vicques;1985;D;GobaTech;D2;mosset_gabrielle@bluewin.ch;Dames 2;1 Course à pied;1 Course à pied;;GobaTech;BCJ Challenge2024;14332;GobaTech;;;;;;;;;;;;;4;;;;;;;;2;;;1
+427;Salomon;Kewin;Rue du Bambois 196;2856;Boécourt;1981;H;;H3;kewin.salomon@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;14333;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+429;Viatte ;Sylvain;Fin du droit;2350;Saignelégier;1975;H;CCMJ;H3;viatte.sylvainpro@gmail.com;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+428;Hennet;Manuel;;2735;Bévilard;1969;H;GSMB / GST;H4;maniol@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+432;Falcoz;Matys;;2842;Rossemaison;2007;H;;NW;;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+431;Falcoz;Steve;;2842;Rossemaison;1979;H;;NW;;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+430;Flacoz;Sophie;;2842;Rossemaison;1981;D;;NW;;Nordic walking;2 Nordic walking;2 Nordic walking;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+434;Keller;Grégoire;;2807;Pleigne;1988;H;Team la Vallée;H2;gregoirekeller@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;Team la Vallée 2;BCJ Challenge2024;0;Team la Vallée 2;;;;;;;;;;;;;0;;;;;;;;1;;;1
+433;Comte;Timo;;2852;Courtételle;2005;H;;HJ;;Hommes juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;0;;;;;;;;0;;;1
+438;Fluckiger;David;;2946;Miécourt;1976;H;FSG Alle;H3;cindy.wira@outlook.fr;Hommes 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;0;;;;;;;;0;;;1
+437;Hertzeisen ;Fabrice ;Fondras 19;2714;Les Genevez ;1966;H;Team Alouette;H4;;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+436;Wenger;Evelyne;Berlincourt 53;2854;Bassecourt;1977;D;;D3;;Dames 3;1 Course à pied;1 Course à pied;;Les Wengou;BCJ Challenge2024;0;Les Wengou;;;;;;;;;;;;;1;;;;;;;;2;;;1
+435;Wenger;Fabrice;;2854;Bassecourt;1978;H;Steulet Microtechnique;H3;;Hommes 3;1 Course à pied;1 Course à pied;;Les Wengou;BCJ Challenge2024;0;Les Wengou;;;;;;;;;;;;;1;;;;;;;;2;;;1
+440;Juillard ;Arnaud ;arnaudjuillard@outlook. com;2914;Damvant;1996;H;FSG Damvant;H1;arnaudjuillard@outlook.com;Hommes 1;1 Course à pied;1 Course à pied;;Dambant tout Puissant;BCJ Challenge2024;0;Dambant tout Puissant;;;;;;;;;;;;;4;;;;;;;;2;;;1
+439;Pape juillard;Chantal ;Route Principale 3;2914;Damvant;1971;D;FSG Alle;D4;guy.chantal.juillard@bluewin.ch;Dames 4;1 Course à pied;1 Course à pied;;Dambant tout Puissant;BCJ Challenge2024;0;Dambant tout Puissant;;;;;;;;;;;;;4;;;;;;;;2;;;1
+442;Gerber;Sébastien;;2942;Alle;1972;H;FSG Alle;H4;sebgerber@bluewin.ch;Hommes 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+441;Keller;Marin;;2812;Movelier;1997;H;FC Pleigne;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;2;;;;;;;;0;;;1
+443;Willemin;Sarah;Coeudret 34;2854;Bassecourt;1978;D;;D3;;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+444;Salomon;Caroline;;2856;Boécourt;1983;D;;D3;;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+446;Kohler;Benjamin;;2822;Courroux;2001;H;CC Truites;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+445;Comastri;Léo;;2823;Courcelon;2001;H;;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+451;Piquerez;Alain;rue de l'Argent 7;2502;Bienne;1989;H;Racing Club Jurassien;H2;alain.piquerez@gmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+450;Notaro;Michel;;2900;Porrentruy;1994;H;Team Tacos;H2;;Hommes 2;1 Course à pied;1 Course à pied;;Team Tacos;BCJ Challenge2024;0;Team Tacos;;;;;;;;;;;;;4;;;;;;;;1;;;1
+449;Rüegg;Alexis;;2900;Porrentruy;1998;H;Team Tacos;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+448;Monnin;Dennis;;2822;Courroux;2001;H;;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+447;Humair;Laura;;2714;Les Genevez JU;2005;D;GSFM;DJ;;Dames juniors;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+457;Tomat;Carla;;2856;Boécourt   ;1977;D;BOÉCOURT;D3;;Dames 3;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+456;Kneuss;Veronica;;2853;Courfaivre;1973;D;;D4;verokneuss@hotmail.com;Dames 4;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+455;Theubet;Sébastien;;0;Alle;1998;H;;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+454;Santos;Gonçalo;;2852;Courtételle;1988;H;GS Tabeillon;H2;goncalo_f_santos@hotmail.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+453;Rérat;Dylan;;2906;Chevenez;1998;H;;H1;;Hommes 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1
+452;Brand;Eda;;68480;Roppentzwiller;2007;D;EHA/AAS;DJ;serge.brand@club-internet.fr;Dames juniors;1 Course à pied;1 Course à pied;;AAS;BCJ Challenge2024;0;AAS;;;;;;;;;;;;;4;;;;;;;;1;;;1
+460;Christe;Quentin;;2943;Vendlincourt;1992;H;Mont-Terri XCO Team;H2;quentin.christe@bluewin.ch;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;3;;;;;;;;0;;;1
+459;Boillat;Nicolas;Rue des Pesses 4;2855;Glovelier;1989;H;La bande à Mamy;H2;nicolas.boillat@icloud.com;Hommes 2;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;4;;;;;;;;0;;;1
+458;Courbat;Laurane;;2942;Alle;2001;D;Fsg Alle;D1;laurane.courbat@gmail.com;Dames 1;1 Course à pied;1 Course à pied;;;BCJ Challenge2024;0;;;;;;;;;;;;;;1;;;;;;;;0;;;1

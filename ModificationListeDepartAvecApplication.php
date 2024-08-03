@@ -81,7 +81,7 @@ function majuscules($inChaine)
 					// Recherche si le numéro d'id existe
 					$IDCoureur = $data[17];
 				
-                    $sql = 'SELECT * FROM inscription WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'';
+                    $sql = 'SELECT * FROM inscription WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'AND DateNaissance = \''.$data[6].'\'';
 					
 					$result4 = mysqli_query($con,$sql);	
 
@@ -93,13 +93,13 @@ function majuscules($inChaine)
 							if (intval($data[0]) > 0)
 							{
 								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
+								$sql1 = 'DELETE FROM inscription   WHERE  course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
 												
 							}
-							else
+							else // Si la personne a déjà un numéro de dossard on va supprimer seulement ces data
 							{
 								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE NumDossard = \''.$data[0].'\' AND  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
+								$sql1 = 'DELETE FROM inscription   WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND NumDossard = \''.$data[0].'\' AND  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
 												
 							}
 
@@ -114,6 +114,8 @@ function majuscules($inChaine)
                                 echo "Error Delete Delete _";
                                 echo $result1;
                             }
+						}
+					}
 					/*		// Mise a jour entrée base de donnée Nombre crédit restant dans l'application
 							$sql1 = 'UPDATE inscription SET NombreCreditUtilise=\''.  $data[42]. '\'   WHERE   Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'';
 							$result1 = mysqli_query($con,$sql1);   
@@ -129,11 +131,13 @@ function majuscules($inChaine)
 							{
 								echo "Nbr etape Modifier_".$data[31]."_".$data[1]."_".$data[2]."</br>";
 							}*/
-						}
 						
 						
-						$sql2 = 'INSERT INTO inscription (`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
-							`PrenomDisc1`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`, `PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`, `NomDisc6`, `PrenomDisc6`,`NbrEtape`,`NombreCreditUtilise`)
+						
+						$sql2 = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
+						`PrenomDisc1`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`, `PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`, `NomDisc6`, `PrenomDisc6`,`NbrEtape` ,
+						`Login`,`Payer` ,`OrderPayement` ,`Prix` ,`Date` ,`PayementOnLine` ,`Partenaire` ,`TypeEquipe` ,`PrixSouvenir` ,`Informations` ,`NombreCreditUtilise`)
+
 						VALUES
 						("'.$data[0].'", 
 						"'.$Nom.'",
@@ -166,6 +170,18 @@ function majuscules($inChaine)
 						"'.$data[29].'", 
 						"'.$data[30].'", 
 						"'.$data[31].'", 
+
+						"'.$data[32].'",
+						"'.$data[33].'",
+						"'.$data[34].'",
+
+						"'.$data[35].'",
+						"'.$data[36].'",
+						"'.$data[37].'",
+						"'.$data[38].'",
+						"'.$data[39].'",
+						"'.$data[40].'",
+						"'.$data[41].'",
 						"'.$data[42].'");';
 						$result2 = mysqli_query($con,$sql2);   
 						if ($result2  )
@@ -173,12 +189,10 @@ function majuscules($inChaine)
 							echo "Insertion personne".$data[1]."_".$data[2]."</br>" ;
 							
 						}
-						
+					}
                     }	
                 }
             }
-        }
-    }					
-	
+
 ?>
 </html>

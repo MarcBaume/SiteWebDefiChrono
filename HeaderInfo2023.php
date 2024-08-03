@@ -179,7 +179,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 			  {
 				  
 				  ?>
-				  <a href="<? echo "informations2022.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+				  <a href="<? echo "Resultat2023.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
 				  <?
 			  }
 			  else
@@ -194,7 +194,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 		  {
 			  
 			  ?>
-			  <a href="<? echo "ResultatV4.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;"><?	echo $DateResult['year'];?></a>
+			  <a href="<? echo "Resultat2023.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;"><?	echo $DateResult['year'];?></a>
 			  <?
 		  }
 		  else

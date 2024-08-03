@@ -22,9 +22,9 @@
 function chargement()
 {
     secondes=5;
-    setTimeout(redirect,secondes*1000);
-    change_valeur();
-    timer=setInterval(change_valeur, 1000);
+   // setTimeout(redirect,secondes*1000);
+  //  change_valeur();
+  //  timer=setInterval(change_valeur, 1000);
  
 }
  
@@ -52,6 +52,20 @@ function change_valeur()
     secondes--;
 }
 
+function AddNewInscriptionWithoutSameAdresse()
+{
+	TableCoureur = document.getElementById("LastAdresse");
+	TableCoureur.value = "False";
+	f1 = document.getElementById("ValueCourse");
+	f1.submit();
+}
+
+function Informations()
+{
+	f1 = document.getElementById("ValueCourse");
+	f1.action="../../informations2023.php";
+	f1.submit();
+}
 </script>
 </head>
     <body onload="chargement();">
@@ -61,7 +75,7 @@ function change_valeur()
 	  ?>
 
 <div id="corps">
-		<h2> Maintenant vous pouvez aller à la caisse pour payer et récupérer votre dossard </h2>
+		<h2> <i class="fa fa-check-circle" style="color:LightGreen; font-size:48px;" ></i> Maintenant vous pouvez aller à la caisse pour payer et récupérer votre dossard </h2>
         	 <!--- Couverture --->
 <form method="get" action="formulaireInscriptionSurPlace.php" id="ValueCourse" name="ValueCourse" >
 <!-- Tableau information de la course !-->
@@ -76,7 +90,12 @@ function change_valeur()
 	<input type="hidden" name="LastAdresse" id="LastAdresse" />
 	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 
-Redirection dans <span id="compteur" ></span>.
+	<Button class="ButtonResultat"  style="width: 30% ;Height : 80px ; font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithoutSameAdresse()">
+	Nouvelle Inscription
+		</Button>
+		<Button class="ButtonResultat"  style="width: 30% ;Height : 80px ; font-size:24px; margin :20px; padding :20px;" onclick="Informations()">
+		Informations événement
+		</Button>
 
 </form>
 </div>

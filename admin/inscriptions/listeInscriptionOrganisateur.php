@@ -34,6 +34,8 @@
 			<h3>
 				Liste de départ  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
 			</h3>
+			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
+
 		</td>
 		<td>
 
@@ -66,6 +68,7 @@
  <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse?>' />
 <input type="hidden" name="NomCourse" id="NomCourse"  size="60"  value= '<?php echo $NOM_COURSE ?>' />
 <input type="hidden" name="IDCoureur" id="IDCoureur"  />
+<input type="hidden" name="num_dossard" id="num_dossard"  />
 </form>
  <?php
 $row = 1;
@@ -92,6 +95,7 @@ function SearchCoureur() {
 
 	ColHeader = document.createElement('th');
 	ColHeader.innerHTML = "N°"
+	
 	RowHeader.append(ColHeader);
 
 	ColHeader = document.createElement('th');
@@ -144,14 +148,38 @@ function SearchCoureur() {
 					RowsCoureur = document.createElement('tr');
 					RowsCoureur.style.background ="white";
 
-					RowsCoureur.dataset.value = Coureur.ID ;
-					RowsCoureur.addEventListener("click", function() { SelectCoureur(this.dataset.value); } );
+					
 					table1.append(RowsCoureur);
 
 					col1 = document.createElement('td');
 					col1.style.color = "black";
 					col1.style.fontSize = "24px";
-					col1.innerHTML = Coureur.NumDossard;
+
+					
+					TextBox1 = document.createElement('input');
+					TextBox1.id = Coureur.ID +"_NumDossard";
+					TextBox1.style.padding = "5px";
+					TextBox1.value = Coureur.NumDossard;
+					TextBox1.style.margin = "5px";
+					TextBox1.style.width = "100px";
+					if (Coureur.NumDossard == "0")
+					{
+						TextBox1.style.backgroundColor = "orange";
+					}
+					else
+					 {
+						TextBox1.style.backgroundColor = "lightgreen";
+					 }
+					 col1.append(TextBox1);
+
+					 ButtonModNumero = document.createElement('button');
+					 ButtonModNumero.style.padding = "5px";
+					 ButtonModNumero.dataset.value = Coureur.ID ;
+					 ButtonModNumero.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-check"></i>	';
+					 ButtonModNumero.addEventListener("click", function() { ModifiNumeroCoureur(this.dataset.value); } );
+				
+					 col1.append(ButtonModNumero);
+
 					RowsCoureur.append(col1);
 
 
@@ -202,10 +230,11 @@ function SearchCoureur() {
 					col1 = document.createElement('td');
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";
-					col1.dataset.value = Coureur.ID ;
 					
-					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
+					col1.dataset.value = Coureur.ID ;
 					col1.addEventListener("click", function() { SelectCoureur(this.dataset.value); } );
+					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
+		
 					RowsCoureur.append(col1);
 
 					
@@ -213,12 +242,80 @@ function SearchCoureur() {
 					col1.style.color = "white";
 					col1.style.fontSize = "12px";
 					col1.dataset.value = Coureur.ID ;
-
-		
 				};
 			
+			}
+		});
+}
+
+function ModifiNumeroCoureur(e)
+{
+	document.getElementById("IDCoureur").value = e;
+	console.log(e);
+	document.getElementById("num_dossard").value =    document.getElementById(e +"_NumDossard").value;
+
+	FormCoureur = document.getElementById("FormListCoureur");
+		// Check si dossard déjà existant
+		FormCoureur.action="ReadInscriptionMysqlExistingNumber.php";
+
+		$('FormListCoureur').request({
+			onComplete: function(transport){
+
+				val =transport.responseText.evalJSON();
+				if (val== 1 )
+				{
+					console.log("Modify");
+					var lblinfo = document.getElementById("lblInformation");
+	
+					lblinfo.style.display  = "none" ;
+					lblinfo.innerHTML = "";	
+					AddInscriptionOrModify();
 				}
-});
+				else
+				{
+					var lblinfo = document.getElementById("lblInformation");
+					lblinfo.style.visibility = "visible" ;
+					lblinfo.style.display  = "block" ;
+					lblinfo.innerHTML = "Numéro déjà existant";	
+				}
+			}
+		});
+}
+
+
+
+// Ajout inscriptiuon ou modifie inscription existante
+function AddInscriptionOrModify()
+{
+	var FormCoureur =document.getElementById("FormListCoureur");
+	// Ajout ou modification inscription
+
+	FormCoureur.action="CibleUpdateNumeroDossard.php";
+	
+
+	$('FormListCoureur').request({
+			onComplete: function(transport){
+
+				 val =transport.responseText.evalJSON();
+				 console.log(val);
+			
+
+				if (val == -9999)
+				{
+					var lblinfo = document.getElementById("lblInformation");
+						lblinfo.style.visibility = "visible" ;
+						lblinfo.style.display  = "block" ;
+						lblinfo.innerHTML = "Numéro déjà existant";
+				
+				}
+				else
+				{
+					SearchCoureur();
+					lblinfo.style.display  = "none" ;
+						lblinfo.innerHTML = "";
+				}
+			}
+		});
 }
 
 function SelectCoureur(e) {

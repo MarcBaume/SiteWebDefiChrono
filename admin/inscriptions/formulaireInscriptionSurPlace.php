@@ -236,20 +236,20 @@ function DeleteCoureur(evt)
 		<table width="100%">
 			<tr style="background:#C0C0C0;padding:20px;">
 
-				<td style="padding: 10px;padding-left: 20px;">Nom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Nom  * :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="last_name" id="last_name" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Prénom :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><input type="text" name="prenom" id="prenom" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Prénom *  :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><input type="text" name="prenom" id="prenom" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date" style="padding:5px; Background:lightblue;">	<input   onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
+				<td style="padding: 10px;padding-left: 20px;">Année de Naissance * :</td><td id="td_date" style="padding:5px; Background:lightblue;">	<input   onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
@@ -283,14 +283,14 @@ function DeleteCoureur(evt)
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
+				<td style="padding: 10px;padding-left: 20px;">Adresse * :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">NPA & Localité :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
+				<td style="padding: 10px;padding-left: 20px;">NPA & Localité * :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
 				 <input style="width: 70px;" type="text" name="zip" id="zip" /> <input type="text" name="ville" id="ville"/></td>
 			</tr>
 			<tr style="height: 10px;"> 
@@ -302,21 +302,21 @@ function DeleteCoureur(evt)
 </tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Pays  :</td><td id="td_pays"  style="padding:5px; Background:lightblue;">	<input type="text" name="pays" id="pays"/>	</td>
+				<td style="padding: 10px;padding-left: 20px;">Pays  * :</td><td id="td_pays"  style="padding:5px; Background:lightblue;">	<input type="text" name="pays" id="pays" value="Suisse"/>	</td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	<input type="text" name="club" id="club"/></td>
+				<td style="padding: 10px;padding-left: 20px;">Club * :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	<input type="text" name="club" id="club"/></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse e-mail :</td><td id="td_email"  style="padding:5px; Background:lightblue;">		 <input type="text" name="email" id="email" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Adresse e-mail * :</td><td id="td_email"  style="padding:5px; Background:lightblue;">		 <input type="text" name="email" id="email" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
@@ -489,7 +489,8 @@ function DeleteCoureur(evt)
 		</tr>
 	</table>
 <center>
-	<input type="button" style="visibility:hidden;height:80px;font-size:30px;padding:20px;background:#FFFFFF;margin:20px;"  class="ButtonResultat"  id="ButtonSendFormulaire" value="Ajouter cette inscription à mon pannier" onclick="AddPersonne()"/>  </br>
+	<input type="button" style="visibility:hidden;height:80px;font-size:30px;padding:20px;background:#FFFFFF;margin:20px;"  
+	class="ButtonResultat"  id="ButtonSendFormulaire" value="Ajouter cette inscription à mon pannier" onclick="AddPersonne()"/>  </br>
 </center>
 	<div id="HaveAChoiceTarif"style="display:none">
 
@@ -770,7 +771,7 @@ function DeleteCoureur(evt)
 //	inputPrenom.addEventListener("change", SearchDatabase);
 
 	inputLocalite = document.getElementById("zip");
-	//inputLocalite.addEventListener("change", SearchLocalite);
+	inputLocalite.addEventListener("change", SearchLocalite);
 
 	var inputSexe = document.getElementById("sexe");
 	var inputDame = document.getElementById("SexeDame");
@@ -806,12 +807,6 @@ function SelectSexe(Sexe)
 	ListeDepartNoForm();
 }
 
-
-
--
-
-
-
 function SelectCoureur(e) {
 	var Coureur = new Object();
 		Coureur = val[e];
@@ -833,6 +828,7 @@ function SelectCoureur(e) {
 	}
 	ListeDepartNoForm();
 }
+
 function SelectLocalite(e) {
 
 	var Coureur = new Object();
@@ -841,8 +837,75 @@ function SelectLocalite(e) {
 
 }
 
+// Recherche des localité disponible avec la base de donnée avec npa 	
+function SearchLocalite(e){
+
+ VarFieldZip = document.getElementById("zip");
+	if ( VarFieldZip.value.length > 3)
+{
+FormValue = document.getElementById("FormulaireCoureur");
+FormValue.method="get" ;
+FormValue.action="ReadLocaliteSurPlace.php"
+
+ColCoureurFind = document.getElementById("TableLocaliteFind");
+table1 = document.createElement('Table');
+ColCoureurFind.innerHTML = ""
+ColCoureurFind.append(table1);
+if ( VarFieldZip.value.length == 4)
+{
+	document.getElementById("pays").value = "Suisse";
+}
+
+$('FormulaireCoureur').request({
+		onComplete: function(transport){
+			 val =transport.responseText.evalJSON();
 
 	
+		 if (val.length == 1)
+		{
+			ville = document.getElementById("ville");
+			ville.value = val[0].Localite;
+		}
+		 else
+		{
+			for (var j = 0; j < val.length && j < 5;j++) 
+			{
+				
+				var Localite = new Object();
+				Localite = val[j];
+
+				if (j == 0)
+				{
+					ville = document.getElementById("ville");
+					ville.value = Localite.Localite;
+				}
+				
+
+				RowsCoureur = document.createElement('tr');
+				RowsCoureur.style.background ="#00b4ff";
+				RowsCoureur.dataset.value = j ;
+			
+				RowsCoureur.addEventListener("click", function() { SelectLocalite(this.dataset.value); } );
+			
+
+				col1 = document.createElement('td');
+				col1.style.color = "white";
+				col1.style.fontSize = "24px";
+				console.log("Test3");
+				col1.innerHTML = Localite.Localite;
+				RowsCoureur.append(col1);
+			
+				table1.append(RowsCoureur);
+
+			};
+		}
+		
+	}
+
+});
+}
+}
+
 
 
 function choiceOption(f)
@@ -920,6 +983,9 @@ function choiceOption(f)
 
 function isMail(txtMail)
 {
+	txtMail =txtMail.trim();
+	document.getElementById("email").value = txtMail;
+
 	var regMail=new RegExp("^[0-9a-z._-]+@{1}[0-9a-z. -]{2,}[.]{1}[a-z]{2,5}$", "i");
 	return regMail.test(txtMail);
 }
@@ -976,12 +1042,12 @@ function check() {
 var coureur =  new Object();
     f1 =  document.getElementById("FormulaireCoureur");
 
-	if (f1.nom.value.length<3) {
+	if (f1.last_name.value.length<3) {
 		alert("Merci d'indiquer votre nom");
 		f1.nom.focus();
 		return false;
 	}
-	coureur.nom = f1.nom.value;
+	coureur.nom = f1.last_name.value;
 
 		if (f1.prenom.value.length<3) {
 		alert("Merci d'indiquer votre prÃ©nom");
@@ -1051,7 +1117,7 @@ var coureur =  new Object();
 	}
 	
 	coureur.sexe = f1.sexe.value;
-
+	coureur.club = f1.club.value;
 	var Cat =	document.getElementById("NomDepart");
 	var tabOption = Cat.value.split(';');
 	/*var DepartObj = ArrayParcours[intselected].ArrayDepart[tabOption[0]];	
@@ -1188,7 +1254,6 @@ function  SelectDepart(evt)
 	}
 
 
-
 	document.getElementById(evt).classList.remove("ButtonResultat");
 	document.getElementById(evt).classList.add("ButtonResultatSelected");
 
@@ -1217,6 +1282,9 @@ function  SelectDepart(evt)
 		document.getElementById("Paradisc5").style.display = "none" ;
 		document.getElementById("Paradisc6").style.display = "none" ;
 		document.getElementById("ParaRemarques").style.display = "none" ;
+		document.getElementById("ButtonSendFormulaire").style.display = "block" ;
+
+		document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
 
 		document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
 		document.getElementById("Paradisc1").style.visibility = "hidden" ;
@@ -1411,6 +1479,7 @@ function liste_depart(f,CheckSexe)
 	document.getElementById("Paradisc2").style.display  = "none" ;
 	document.getElementById("Paradisc3").style.display  = "none" ;
 	document.getElementById("Paradisc4").style.display  = "none" ;
+	document.getElementById("ButtonSendFormulaire").style.display  = "none" ;
 	document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
 
 	document.getElementById("Paradisc1").style.visibility = "hidden" ;
@@ -1438,7 +1507,7 @@ function liste_depart(f,CheckSexe)
 
 			var RowDepart = document.createElement("tr");
 				tableDepart.append(RowDepart);
-
+			var MemDataSet = "";
 			// Scan chaque départ
 			for(var iParcours=0; iParcours<ArrayParcours.length; ++iParcours) 
 			{
@@ -1472,6 +1541,7 @@ function liste_depart(f,CheckSexe)
 							buttonParcours.id = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							// Text infomratif sur le bouton
 							buttonParcours.innerHTML = ArrayParcours[iParcours].nom   + " " +Cat.NomCategorie._Value+" "+Cat.debutAnnee._Value+" - "+Cat.finAnnee._Value;
+							MemDataSet  = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							buttonParcours.dataset.value = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							// Infomration du départ donnée au bouton 
 							buttonParcours.dataset.value = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
@@ -1505,6 +1575,10 @@ function liste_depart(f,CheckSexe)
 			// ajoute le noeud texte au nouveau div crÃ©Ã©
 			//	Div.value = "Aucune catÃ©gorie existe sur ce parcours pour cette annÃ©e de naissance";
 			}
+			else if (ICounterCat == 1)
+			{
+				SelectDepart( MemDataSet);
+			}
 			else 
 			{
 				
@@ -1514,12 +1588,6 @@ function liste_depart(f,CheckSexe)
 				lblinfo.style.display  = "none" ;
 				document.getElementById('date').style.backgroundColor="white";
 				document.getElementById('NomParcours').style.backgroundColor="white";
-			}
-
-			// Plusieurs départ disponible ajouter un champs pour sélectionner le départ 
-			if (ICounterCat == 1)
-			{
-				ChoiceDepart(f);
 			}
 		}
 		else if (!CheckSexe)

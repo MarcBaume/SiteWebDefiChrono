@@ -56,7 +56,7 @@ if ( strlen ($_REQUEST['Code'])>2)
 				$index = $index + 1;	
 				// date du jour 
 				$today = date("Y-m-d H:i:s"); 
-				if ($today < $val["DateLimit"]  )
+				if ($today < $val["DateLimit"]  || $val["DateLimit"]  == '0000-00-00 00:00:00'  )
 				{
 					
 					if (strlen ( $val["LoginValid"])>0)

@@ -93,7 +93,8 @@ function AddPersonne()
 
 <!-- Tableau information du coureurs à inscrire !-->
 <div id="InformationsCoureurs">
-		
+	<h3> Formulaire d'inscription sur place : <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?>
+	</h3>		
 		<table width="100%">
 		<tr style="background:#C0C0C0;padding:20px;">
 
@@ -103,53 +104,69 @@ function AddPersonne()
 			<td></td><td></td>
 			</tr>
 			<tr style="background:#C0C0C0;padding:20px;">
-				<td style="padding: 10px;padding-left: 20px;">Nom:</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /></td>
-				<td style="padding: 10px;padding-left: 20px;">Prénom:</td><td id="td_prenom" style="padding:5px; Background:lightblue;"> <input type="text" name="prenom" id="prenom" /></td>
+
+				<td style="padding: 10px;padding-left: 20px;">Nom & prénom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /> <input type="text" name="prenom" id="prenom" /></td>
 			</tr>
-			<tr>
-				<!-- Emplacement des coureurs trouvé -->
-                <Td colspan="5" id="TableForRunnerFind">
-                </td>
-            </tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 			<tr style="background:#C0C0C0;">
 				<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date"  style="padding:5px; Background:lightblue;">	<input  style="width: 70px;" onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
-				<td style="padding: 10px;padding-left: 20px;">Sexe (M ou D):</td>
-				<td style="padding:5px; Background:lightblue;"><input type="text " name="sexe" id="sexe"  style="width: 70px;" onchange ="liste_depart(this.form,false);"  /></td>
-				<!--	<button  id= "SexeHomme" type="button" style=" font-size :24px"  onclick="SelectSexe(true)">
+			</tr>
+			<tr style="height: 10px;"> 
+				<td></td><td></td>
+			</tr>
+            <tr>
+				<!-- Emplacement des coureurs trouvé -->
+                <Td colspan="2" id="TableForRunnerFind">
+                </td>
+            </tr>
+			<tr style="background:#C0C0C0;">
+
+				<td>
+					<label style="vertical-alignement: center" id="lblSexe" >Sexe * :</label>
+					
+					<input type="text " name="sexe" id="sexe"  onchange ="liste_depart(this.form,false);"  />
+				</td>
+
+				<td>
+					<button  id= "SexeHomme" type="button" style=" font-size :24px"  onclick="SelectSexe(true)">
 						<i class='fa fa-male' ></i>
 					</button>
 
 					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px"  onclick="SelectSexe(false)">
 						<i class='fa fa-female' ></i>	
-					</button>-->
-			</tr>
+					</button>
+				</td>
+
+            </tr>
+
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
-			</tr>
-           
-			<tr style="height: 10px;"> 
-			
 			</tr>
 
 			<tr style="background:#C0C0C0;">
 				<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
-				<td style="padding: 10px;padding-left: 20px;">NPA , Localité :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
-				 <input style="width: 70px;" type="text" name="zip" id="zip" /> <input type="text" name="ville" id="ville"/>	</td>
 			</tr>
-	
+			<tr style="height: 10px;"> 
+				<td></td><td></td>
+			</tr>
+
+			<tr style="background:#C0C0C0;">
+				<td style="padding: 10px;padding-left: 20px;">NPA , Localité  & pays:</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
+				 <input style="width: 70px;" type="text" name="zip" id="zip" /> <input type="text" name="ville" id="ville"/><input type="text" name="pays" id="pays"/>	</td>
+			</tr>
+			<tr style="height: 10px;"> 
+				<td></td><td></td>
+			</tr>
 			<tr>
 					<!-- Emplacement des localité  trouvé  avec le npa-->
-				<Td colspan="5" id="TableLocaliteFind"> </td>
+				<Td colspan="2" id="TableLocaliteFind"> </td>
 			</tr>
 
 
 			<tr style="background:#C0C0C0;">
 				<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	<input type="text" name="club" id="club"/></td>
-				<td style="padding: 10px;padding-left: 20px;">Pays:</td> <td style="padding:5px; Background:lightblue;"><input type="text" name="pays" id="pays"/></td>
-			
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
@@ -161,6 +178,7 @@ function AddPersonne()
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
+
 
 			<tr style="background:#C0C0C0;">
 				<!-- Emplacement des départs trouvé -->
@@ -435,14 +453,9 @@ function SearchLocalite(e){
 	FormValue.method="get" ;
 	FormValue.action="ReadLocaliteSurPlace.php"
 
-
-
-	ColCoureurFind1 = document.getElementById("TableForRunnerFind");
-	ColCoureurFind1.innerHTML = "";
-
 	ColCoureurFind = document.getElementById("TableLocaliteFind");
 	table1 = document.createElement('Table');
-	ColCoureurFind.innerHTML = "";
+	ColCoureurFind.innerHTML = ""
 	ColCoureurFind.append(table1);
 
 	if ( document.getElementById("zip").value.length == 4)
@@ -502,9 +515,7 @@ function SearchLocalite(e){
 // Recherche coureur disponible sur base de donnée listePersonnes
 function SearchDatabase(e) {
 
-	TableLocalite = document.getElementById("TableLocaliteFind");
-	TableLocalite.innerHTML = "";
-
+	console.log("Chang database");
 	ColCoureurFind = document.getElementById("TableForRunnerFind");
 	table1 = document.createElement('Table');
 
@@ -574,8 +585,14 @@ function SelectCoureur(e) {
 	document.getElementById("zip").value = Coureur.npa ;
 	document.getElementById("ville").value = Coureur.localite ;
 	document.getElementById("club").value = Coureur.club ;
-	document.getElementById("sexe").value = Coureur.sexe ;
-
+	if (Coureur.sexe == "D")
+	{
+		SelectSexe(false);
+	}
+	else
+	{
+		SelectSexe(true)
+	}
 	ListeDepartNoForm();
 }
 
@@ -941,11 +958,11 @@ function  ResetCoureur()
 
 	document.getElementById("ParaRemarques").value = "" ;
 
-/*	inputHomme.classList.remove("ButtonResultatSelected");
+	inputHomme.classList.remove("ButtonResultatSelected");
 	inputHomme.classList.add("ButtonResultat");	
 
 	inputDame.classList.remove("ButtonResultatSelected");
-	inputDame.classList.add("ButtonResultat");	*/
+	inputDame.classList.add("ButtonResultat");	
 	
 	var tableDepart =	document.getElementById("TableDepartForRunner");
 		tableDepart.innerHTML = "";
@@ -957,8 +974,6 @@ function  ResetCoureur()
 	lblinfo.style.visibility = "hidden" ;
 					lblinfo.style.display  = "none" ;
 					lblinfo.innerHTML = "";
-
-	
 	document.getElementById("ButtonSendFormulaire").style.display  = "none" ;
 		document.getElementById("ButtonSendFormulaire").style.visibility = "hidden" ;
 		document.getElementById("ButtonDeleteFormulaire").style.display  = "none" ;
@@ -1246,7 +1261,7 @@ function liste_depart(f,CheckSexe)
 		if (f.sexe.value.length > 0 && f.sexe.value == "D" || f.sexe.value == "H")
 		{
 			sexe = f.sexe.value;
-			document.getElementById('sexe').style.background = "transparent";
+			document.getElementById('lblSexe').style.background = "transparent";
 
 			// Tableau depart possible pour ces indication
 			var tableDepart =	document.getElementById("TableDepartForRunner");
@@ -1364,7 +1379,7 @@ function liste_depart(f,CheckSexe)
 		}
 		else
 		{
-			document.getElementById('sexe').style.background = "red";
+			document.getElementById('lblSexe').style.background = "red";
 		}
 	}
 	else

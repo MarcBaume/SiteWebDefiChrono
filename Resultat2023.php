@@ -499,14 +499,13 @@ if ($Depart != null)
 <div   class="menu_vertical" style="margin-bottom:5px;" id="NomClassement">
 </div>
 <form>
-	<Table style="margin:10px ;width:50%">
+	<Table style="margin:10px ;width:100%">
 		<tr>
 			<td>
-		<input type="text" id="InputSearch" style="font-size:18px;padding:5px" onkeyup="valider()" placeholder="Nom recherché..."\>
+			<i style='font-size:24px;margin-right:5px' class='fa fa-search'></i>
+		<input type="text" id="InputSearch" style="font-size:24px;padding:5px;width:50%" onkeyup="valider()" placeholder="Nom / prénom / dossard recherché..."\>
 	</td>
-	<td>
-		<input type="text" id="InputSearchPrenom"  style="font-size:18px;padding:5px" onkeyup="valider()" placeholder="Prénom recherché..."\>
-	</td>
+	
 	</tr>
 	</table>
 	</form>
@@ -520,11 +519,9 @@ if ($Depart != null)
 		var NbrEtape=parseInt(<?php echo json_encode($_GET['NbrEtape']); ?> );
 		
 		var PathFolder=<?php echo json_encode($pathfolder); ?> ;
-		console.log(PathFolder);
+
 		var PathEtape=<?php echo json_encode($Etape); ?> ;
 		
-		console.log("PathEtape");
-		console.log(PathEtape);
 		
 		var Etape= new Object();	
 	// Lecture du fichier " info étape "
@@ -2469,11 +2466,9 @@ if ($Depart != null)
 	function valider()
 	{
 		var table = document.getElementsByClassName("TableauResulat");
-		console.log(table);
-		
 		input = document.getElementById("InputSearch");
 		
-		inputPrenom = document.getElementById("InputSearchPrenom");
+		inputPrenom = document.getElementById("InputSearch");
 		
 		filter = input.value.toUpperCase();
 		filterPrenom = inputPrenom.value.toUpperCase();

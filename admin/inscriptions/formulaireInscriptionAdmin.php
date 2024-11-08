@@ -87,7 +87,6 @@ function AddPersonne()
 	<input type="hidden" name="Find" id="Find" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 	<input type="hidden" name="IDCoureur" id="IDCoureur"  value= '<?php echo $_GET["IDCoureur"] ?>'  />
 	
 
@@ -97,7 +96,7 @@ function AddPersonne()
 		<table width="100%">
 		<tr style="background:#C0C0C0;padding:20px;">
 
-			<td style="padding: 10px;padding-left: 20px;">Numéro dossard :</td><td id="td_num_dossard" style="padding:5px; Background:lightblue;"><input type="text" name="num_dossard" id="num_dossard" /></td>
+			<td style="padding: 10px;padding-left: 20px;">Numéro dossard :</td><td id="td_num_dossard" style="padding:5px; Background:lightblue;"><input type="number" name="num_dossard" id="num_dossard" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 			<td></td><td></td>
@@ -116,7 +115,7 @@ function AddPersonne()
 			</tr>
 			<tr style="background:#C0C0C0;">
 				<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date"  style="padding:5px; Background:lightblue;">	<input  style="width: 70px;" onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
-				<td style="padding: 10px;padding-left: 20px;">Sexe (M ou D):</td>
+				<td style="padding: 10px;padding-left: 20px;">Sexe (H ou D):</td>
 				<td style="padding:5px; Background:lightblue;"><input type="text " name="sexe" id="sexe"  style="width: 70px;" onchange ="liste_depart(this.form,false);"  /></td>
 				<!--	<button  id= "SexeHomme" type="button" style=" font-size :24px"  onclick="SelectSexe(true)">
 						<i class='fa fa-male' ></i>
@@ -157,7 +156,9 @@ function AddPersonne()
 
 			<tr style="background:#C0C0C0;">
 				<td style="padding: 10px;padding-left: 20px;">Adresse e-mail :</td><td id="td_email"  style="padding:5px; Background:lightblue;">		 <input type="text" name="email" id="email" /></td>
-			</tr>
+				<td style="padding: 10px;padding-left: 20px;visibility:hidden; display:none">Nombre de étape:</td> <td style="padding:5px; Background:lightblue;visibility:hidden; display:none"><input type="text" name="NbrEtape" id="NbrEtape"/></td>
+			
+			</tr>		
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
@@ -312,17 +313,7 @@ function AddPersonne()
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
 </form>
-	<!---------- CHOIC TARIFS _______________-->
-	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
-		<tr style="background:#C0C0C0;padding:20px;" >
-			<td style="width: 40%;padding: 10px;padding-left: 20px;">
-				Choix*:
-			</td> 
-			<td>
-				<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
-			</td>
-		</tr>
-	</table>
+
 
 	
 	<center>
@@ -365,8 +356,9 @@ function AddPersonne()
 </div>	
 </div>
 <center>
-<h2>Liste des dernières inscriptions </h2>
+
 <p>
+<b>Liste des dernières inscriptions </b>
   <input Type="text"  style="font-size:24px" name="FindValue" id="FindValue" onchange="ReadMysqlCoureur()" />
   <button type="button" class="ButtonResultat" onclick="ReadMysqlCoureur()">	<i class='fa fa-search' ></i></button>
 </p>
@@ -392,6 +384,8 @@ function AddPersonne()
 	inputLocalite.addEventListener("change", SearchLocalite);
 
 	var inputSexe = document.getElementById("sexe");
+	inputSexe.addEventListener("change", SearchDatabase);
+
 	var inputDame = document.getElementById("SexeDame");
 	inputDame.classList.add("ButtonResultat");
 	var inputHomme = document.getElementById("SexeHomme");
@@ -518,7 +512,7 @@ function SearchDatabase(e) {
 			onComplete: function(transport){
 				 val =transport.responseText.evalJSON();
 				 console.log(val);
-		        for (var j = 0; j < val.length && j < 5;j++) 
+		        for (var j = 0; j < val.length && j < 10;j++) 
 				{
 				
 					var Coureur = new Object();
@@ -567,14 +561,15 @@ function SelectCoureur(e) {
 	var Coureur = new Object();
 		Coureur = val[e];
 		document.getElementById("nom").value = Coureur.Nom;
-	document.getElementById("prenom").value = Coureur.Prenom;
-	document.getElementById("date").value = Coureur.DateNaissance;
-	document.getElementById("adresse").value = Coureur.adresse;
-	document.getElementById("email").value = Coureur.mail ;
-	document.getElementById("zip").value = Coureur.npa ;
-	document.getElementById("ville").value = Coureur.localite ;
-	document.getElementById("club").value = Coureur.club ;
-	document.getElementById("sexe").value = Coureur.sexe ;
+		document.getElementById("prenom").value = Coureur.Prenom;
+		document.getElementById("date").value = Coureur.DateNaissance;
+		document.getElementById("adresse").value = Coureur.adresse;
+		document.getElementById("email").value = Coureur.mail ;
+		document.getElementById("zip").value = Coureur.npa ;
+		document.getElementById("ville").value = Coureur.localite ;
+		document.getElementById("club").value = Coureur.club ;
+		document.getElementById("sexe").value = Coureur.sexe ;
+		document.getElementById("NbrEtape").value = Coureur.NbrEtape ;
 
 	ListeDepartNoForm();
 }
@@ -668,53 +663,6 @@ function isMail(txtMail)
 	return regMail.test(txtMail);
 }
 
-// SI l'on a choisie la même adresse dans la page 2 
-function funSameAdresseWithLastID()
-{
-	
-		if (localStorage.length> 0)
-		{
-			var KeyLastCoureur =0 ;
-			// Cherche la plus grand clé
-			for (var i = 0; i < localStorage.length; i++)
-			{
-				if  (KeyLastCoureur < parseInt(localStorage.key(i)))
-				{
-					KeyLastCoureur = parseInt(localStorage.key(i));
-					
-				}
-	
-			}
-			// Transfrome clé en objet 
-			newObject = localStorage.getItem(KeyLastCoureur);
-			//console.log(newObject);
-			f1 =  document.getElementById("FormulaireCoureur");
-			 var LastCoureur = JSON.parse(newObject);
-			 console.log(LastCoureur);
-			 f1.email.value = 	LastCoureur.email ;
-			 f1.zip.value = LastCoureur.zip;
-			 f1.adresse.value = LastCoureur.adresse;
-			f1.ville.value = LastCoureur.ville;
-		}
-
-
-}
-
-
-// Si on a sélecter la même adresse que l'ancien coureur 
-</script>
-<?
- if ($_GET["LastAdresse"]== "True")
- {
-	?>
-		<script>
-		funSameAdresseWithLastID();
-		</script>
-	<?
- }
-
-?>
-<script>
 // Contrôle que le formulaire est remplie correctement
 function check() 
 {
@@ -745,11 +693,7 @@ function check()
 	}
 
 	coureur.prenom = f1.prenom.value;
-
-
 	coureur.email = f1.email.value;
-
-
 
 	if (f1.zip.value.length<4) {
 		f1.zip.style.background = "red";
@@ -795,7 +739,7 @@ function check()
 
 
 		if (f1.date.value.length!=4) {
-		prenom
+			f1.date.style.background = "red";
 		f1.date.focus();
 		return false;
 	}
@@ -804,10 +748,16 @@ function check()
 
 
 		if (f1.sexe.value.length<1) {
-		alert("Merci d'indiquer votre sexe");
+		f1.sexe.style.background = "red";
 		f1.sexe.focus();
 		return false;
 	}
+/*
+	if (f1.NbrEtape.value.length<1 && f1.NbrEtape.style.display  != "none"  ) {
+		f1.NbrEtape.style.background = "red";
+		f1.NbrEtape.focus();
+		return false;
+	}*/
 	
 	coureur.sexe = f1.sexe.value;
 	var FormCoureur =document.getElementById("FormulaireCoureur");
@@ -914,8 +864,11 @@ function MajBasedeDonneeCoureur()
 // Remettre vierge formulaire coureur
 function  ResetCoureur()
 {
+	console.log("Reset coureur");
 	document.getElementById("IDCoureur").value ="";
 	document.getElementById("num_dossard").value ="";
+	document.getElementById("num_dossard").style.background = "white";
+
 	document.getElementById("nom").value ="";
 	document.getElementById("prenom").value ="";
 	document.getElementById("date").value  ="";
@@ -923,13 +876,20 @@ function  ResetCoureur()
 	document.getElementById("email").value ="";
 	document.getElementById("zip").value ="";
 	document.getElementById("ville").value ="";
+
 	document.getElementById("club").value  ="";
+
 	document.getElementById("sexe").value  ="";
+	document.getElementById("sexe").style.background = "white";
+	
 	document.getElementById("NomDepart").value = "" ;
 	document.getElementById("NomParcours").value = "" ;
 	document.getElementById("NomCat").value = "" ;
 	document.getElementById("NumCat").value = "" ;	
-	
+
+	document.getElementById("NbrEtape").value = "" ;	
+	document.getElementById("NbrEtape").style.background = "white";
+
 	document.getElementById("NomEquipe").value = "" ;
 
 	document.getElementById("Paradisc1").value = "" ;
@@ -941,6 +901,7 @@ function  ResetCoureur()
 
 	document.getElementById("ParaRemarques").value = "" ;
 
+	FindCoureurID();
 /*	inputHomme.classList.remove("ButtonResultatSelected");
 	inputHomme.classList.add("ButtonResultat");	
 
@@ -971,13 +932,16 @@ function  ResetCoureur()
 // Selon coordonnée du corueur départ disponible sans vérificatino que le champs sexe est bien remplie
 function  ListeDepartNoForm()
 {
-	liste_depart(document.getElementById("FormulaireCoureur",false));
+	console.log("function ListeDepartNoForm");
+	if (document.getElementById("FormulaireCoureur").date.value.length > 0 &&  document.getElementById("FormulaireCoureur").sexe.value.length > 0 ) 
+	{
+		liste_depart(document.getElementById("FormulaireCoureur",false));
+	}
 }
 
 // Sélection départ dans le formulaire
 function  SelectDepart(evt)
 {	
-
 	var ButtonParcours	= document.getElementsByName("buttonParcours");
 	for(var i = 0; i < ButtonParcours.length; i++) 
 	{
@@ -1212,7 +1176,6 @@ function addValue(Text , Value)
 function liste_depart(f,CheckSexe) 
 {
 
-
 	// Rendre invisible les différents champs lors de l'initialisation 
 	document.getElementById("lblNomEquipe").style.display  = "none" ;
 	document.getElementById("Paradisc1").style.display  = "none" ;
@@ -1243,11 +1206,17 @@ function liste_depart(f,CheckSexe)
 	{
         f.date.style.background = "white";
 		
-		if (f.sexe.value.length > 0 && f.sexe.value == "D" || f.sexe.value == "H")
+		if (f.sexe.value.length > 0 && (f.sexe.value == "D" || f.sexe.value == "H"))
 		{
 			sexe = f.sexe.value;
-			document.getElementById('sexe').style.background = "transparent";
-
+			if (f.sexe.value  == "D" )
+			{
+				f.sexe.style.background = "pink";
+			}
+			else
+			{
+				f.sexe.style.background = "lightblue";
+			}			
 			// Tableau depart possible pour ces indication
 			var tableDepart =	document.getElementById("TableDepartForRunner");
 				tableDepart.innerHTML = "";
@@ -1318,7 +1287,7 @@ function liste_depart(f,CheckSexe)
 				}
 
 			}
-			
+			console.log("Counter catégorie :"+ ICounterCat)
 			// SI il existe aucune catégorie
 			var lblinfo = document.getElementById("lblInformation"); 
 			if (ICounterCat == 0)
@@ -1588,8 +1557,8 @@ function funDeleteCoureur()
 					document.getElementById("NomDepart").value = CoureurFind.NomDepart ;
 					document.getElementById("NumCat").value = CoureurFind.NumCategorie ;
 					document.getElementById("NomCat").value = CoureurFind.NomCategorie ;
-					document.getElementById("Nbretape").value = CoureurFind.NbrEtape ;
-
+					document.getElementById("NbrEtape").value = CoureurFind.NbrEtape ;
+					document.getElementById("sexe").value = CoureurFind.sexe ;
 					document.getElementById("ButtonSendFormulaire").value = "Modifier mon inscription" ;
 					document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
 					document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
@@ -1597,15 +1566,7 @@ function funDeleteCoureur()
 					document.getElementById("ButtonDeleteFormulaire").style.display  = "block" ;
 					document.getElementById("ButtonDeleteFormulaire").style.visibility = "visible" ;
 
-					if (CoureurFind.sexe == "D")
-					{
-						SelectSexe(false);
-					}
-					else
-					{
-						SelectSexe(true)
-					}
-					//ListeDepartNoForm();
+					ListeDepartNoForm();
 				}
 			}
 		});
@@ -1654,7 +1615,7 @@ function ReadMysqlCoureur()
 	RowHeader.append(ColHeader);
 
 	ColHeader = document.createElement('th');
-	ColHeader.innerHTML = "Paiement"
+	ColHeader.innerHTML = "Club"
 	RowHeader.append(ColHeader);
 
 	// Transmets au champs la valeur rechercher
@@ -1667,7 +1628,7 @@ function ReadMysqlCoureur()
 			onComplete: function(transport){
 				 val =transport.responseText.evalJSON();
 				 document.getElementById("FindValue").value = "";
-				 console.log(val);
+			
 		        for (var j = 0; j < val.length && j < 10 ;j++) 
 				{
 				
@@ -1675,7 +1636,14 @@ function ReadMysqlCoureur()
 					 Coureur = val[j];
 
 					RowsCoureur = document.createElement('tr');
-					RowsCoureur.style.background ="Lightblue";
+					if (Coureur.sexe == "H")
+					{
+						RowsCoureur.style.background ="Lightblue";
+					}
+					else if (Coureur.sexe == "D")
+					{
+						RowsCoureur.style.background ="Pink";
+					}
 					RowsCoureur.dataset.value = Coureur.ID ;
 					RowsCoureur.addEventListener("click", function() { SelectCoureurInscrit(this.dataset.value); } );
 					table1.append(RowsCoureur);
@@ -1742,11 +1710,9 @@ function ReadMysqlCoureur()
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";
 					col1.style.padding = "5px";
-					col1.innerHTML = Coureur.Payer;
+					col1.innerHTML = Coureur.club;
 					RowsCoureur.append(col1);
 			
-
-
 					col1 = document.createElement('td');
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";
@@ -1755,15 +1721,11 @@ function ReadMysqlCoureur()
 					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
 				//	col1.addEventListener("click", function() { SelectCoureurInscrit(this.dataset.value); } );
 					RowsCoureur.append(col1);
-
-					
-				
-				
-		
 				};
 			
 				}
 });
+
 }
 
 function SelectCoureurInscrit(e) {

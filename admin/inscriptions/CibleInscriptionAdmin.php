@@ -83,7 +83,7 @@ else
 			"'.$_REQUEST['strCodeReduction'].'",
 			"'.$_REQUEST['Equipe'].'",
 			"'.$TailleTShirt.'",
-			"'.$_REQUEST['Option'].'",
+			"'.$_REQUEST['NbrEtape'].'",
 			"'.$_REQUEST['Remarques'].'");';
 			$ResultAddInsc = mysqli_query($con,$sql);	
 			if ( $ResultAddInsc == 1)

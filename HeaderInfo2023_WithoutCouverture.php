@@ -270,7 +270,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 								<i class="fa fa-trophy" style= "font-size: 18px;margin:0px;margin-right: 9px;"></i>
 							</td>
 							<td style="padding-left: 10px;font-size: 12px;font-weight :normal">
-								Ancienne éditions 
+								Anciennes éditions 
 							</td>
 						</tr>
 					</table>
@@ -412,6 +412,31 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				</td>
 				<?php
 				}
+				$chemin= 'courses/'.$NOM_COURSE. $ANNEE_COURSE."/info/Photos";
+				if (file_exists($chemin)) {
+					?>
+					<td class="ColMenuInfo" onClick="ClickRowsPhotos()" onmouseover="" style="cursor: pointer;">
+					<span class="dot"  id="<?php echo "RowRace6".$IdRace ?>">
+						<table>
+							<tr   >
+								<td style="width:30px">
+								
+										<i class="fa fa-camera" style= "font-size: 35px;margin:2px;"></i>
+								
+								
+								</td>
+								<td style="padding-left: 10px;">
+									Photos
+								</td>
+							</tr>
+							<script>
+								getURL( "Photos","<?php echo "RowRace6".$IdRace ?>" ) ;
+							</script>		
+						</table>
+					</span>
+				</td>
+					<?php
+				}
 				
 			}
 		?>
@@ -464,6 +489,15 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	{
 		elmnt.action = "Resultat2023.php";
 	}
+
+		elmnt.submit();
+	}
+
+	function ClickRowsPhotos(elmnt )
+    {  
+	elmnt = document.getElementById("Menu");
+	
+		elmnt.action = "Photos.php";
 
 		elmnt.submit();
 	}

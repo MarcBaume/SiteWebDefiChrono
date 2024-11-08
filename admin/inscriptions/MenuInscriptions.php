@@ -27,19 +27,7 @@
  $Nbr_etape =  $_GET["NbrEtape"] ;
  }
 ?> 
-<Div id= "Header" style="  z-index:1035;">
-<table style= "width: 100%;">
-<tr>
-<td>
-<Div id = "logo">
-<a href="../../index.php">
-<img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
-</a>
-</div>
-<div id="Title" style="float: right;margin: 10px;">
-<h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?>
-	</h3>	
-</div>
+
 <script>
 function getURL( ValueFind, IDElement) {
 
@@ -69,6 +57,18 @@ if (window.location.href.search(ValueFind)>-1)
  <div id="menu_vertical" class="menu_vertical">
     <table style="Width : 100%">
         <tr>
+
+        <td>
+            <a href="../../index.php">
+              <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
+            </a>
+        </td>
+        <td>
+            <div id="Title" style="margin: 10px;">
+                 <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
+            </div>
+        </td>
+        <td>
 	       <li>
                 <td style="Width : 25%" onClick="ClickColForm()" >
                     <span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>"  >

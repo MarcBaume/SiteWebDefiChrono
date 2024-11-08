@@ -147,18 +147,39 @@ else
             print(-22);
         }
 
+        $sql = 'UPDATE inscription SET club  =\''.$_REQUEST['club'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+        $ResultAddInsc = mysqli_query($con,$sql);	
+
+        
+        if ( $ResultAddInsc !=  1)
+        {
+            print(-24);
+        }
+
+
+        
         $sql = 'UPDATE inscription SET NomEquipe  =\''.$_REQUEST['NomEquipe'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
         $ResultAddInsc = mysqli_query($con,$sql);	
 
 			$ResultAddInsc = mysqli_query($con,$sql);	
-			if ( $ResultAddInsc == 1)
-			{
-				print(1);
-			}
-            else
-            {
+			if ( $ResultAddInsc !=  1)
+           {
                 print(-23);
             }
+
+            $sql = 'UPDATE inscription SET NbrEtape  =\''.$_REQUEST['NbrEtape'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+    
+                $ResultAddInsc = mysqli_query($con,$sql);	
+                if ( $ResultAddInsc == 1)
+                {
+                    print(1);
+                }
+                else
+                {
+                    print(-24);
+                }
+    
 
      }
      catch(Exception $e)

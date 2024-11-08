@@ -86,140 +86,177 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
 if ($Nbr_etape < 2)
 {?>
 
-        <tr >
-            <td style= "background:#BCDDFD; padding: 10px;">
-            <center>
-             <i class="fa fa-calendar" style= "font-size: 35px;"></i>
-            </center>
-            </td>
-            <td style= "background:#BCDDFD;padding: 10px;">
-          <?php echo  strftime('%A %d %B %Y ',strtotime($val ["Date"]));?>
-            </td>
-            <td style= "width:10px;">
-            </td>
-            <td style= "background:#BCDDFD;padding:10px;">
-            <center>
-          <i class="fa fa-map-marker" style= "font-size: 35px;"></i>
-          </center>
-            </td>
-            <td style= "background:#BCDDFD;padding: 10px;">
-             <?php echo $val ["Lieu"] ;
-            if ( strlen($val ["Emplacement"] ) > 1)     
-            { ?>
-                </br></br>
-                <?php echo $val ["Emplacement"] ;
-                
-            }?>
-            </td>
-        </tr>
-        <tr style= "Height:20px;">
-        </tr>
+	<tr  >
+		<td   style= "width:50%;background:#BCDDFD; padding: 10px;">
+			<table   style= "width:100%;">
+				<tr>
+					<td style= "width:50px;">
+					<center>
+					<i class="fa fa-calendar" style= "font-size: 35px;"></i>
+					</center>
+					</td>
+					<td style= "background:#BCDDFD;padding: 10px;">
+				<?php echo  strftime('%A %d %B %Y ',strtotime($val ["Date"]));?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style= "width:20px;">
+		</td>
+		<td style= "width:50%;background:#BCDDFD; padding: 10px;">
+			<table style= "width:100%;">
+				<tr>	
+	
+					<td style= "width:50px;">
+						<center>
+						<i class="fa fa-map-marker" style= "font-size: 35px;"></i>
+						</center>
+					</td>
+					<td style= "background:#BCDDFD;padding: 10px;">
+						<?php echo $val ["Lieu"] ;
+						if ( strlen($val ["Emplacement"] ) > 1)     
+						{ ?>
+							</br></br>
+							<?php echo $val ["Emplacement"] ;
+							
+						}?>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr style= "Height:20px;">
+	</tr>
 
  <?php 
  } 
  // ******************** POUR COURSE PLUSIEURS ETAPES **********************************/		
  ?>
  <tr>
-    <td style= "background:#BCDDFD;padding:10px;">
-         <center>
-         <i class="fa fa-users" style= "font-size: 35px;"></i>
-        </center>
-    </td>
-    <td style= "background:#BCDDFD;padding: 10px;">
-        <?php echo $val ["Organisateur"] ?> 
-    </td>
-    <td style= "width:10px;">
-</td>
-    <td style= "background:#BCDDFD;padding: 10px;">
-    <center>
-         <i class="fa fa-globe" style= "font-size: 35px;"></i>
-    </center>
-    </td>
-    <td style= "background:#BCDDFD;padding:10px;">
-          <a target="_blank" href=<?php echo "http://www.". $val ["Site"] ?>><?php echo "www.". $val ["Site"] ?> </a>
-    </td>
+	<td style= "width:50%;background:#BCDDFD; padding: 10px;">
+		<table    style= "width:100%;">
+			<tr>
+				<td style= "width:50px;">
+					<center>
+					<i class="fa fa-users" style= "font-size: 35px;"></i>
+					</center>
+				</td>
+				<td style= "background:#BCDDFD;padding: 10px;">
+					<?php echo $val ["Organisateur"] ?> 
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td style= "width:10px;">
+	</td>
+    <td   style= "width:50%;background:#BCDDFD; padding: 10px;" >
+		<table  style= "width:100%;">
+			<tr style= "width:50px;">
+				<td>
+					<center>
+						<i class="fa fa-globe" style= "font-size: 35px;"></i>
+					</center>
+				</td>
+				<td style= "background:#BCDDFD;padding:10px;">
+					<a target="_blank" href=<?php echo "http://www.". $val ["Site"] ?>><?php echo "www.". $val ["Site"] ?> </a>
+				</td>
+			</tr>
+		</table>
+	</td>
 </tr>
-    <tr style= "Height:20px;">
-        </tr>
+<tr style= "Height:20px;">
+ </tr>
 <tr>
-<td style= "background:#BCDDFD;padding: 10px;">
-    <center>
-         <i class="fa fa-wpforms" style= "font-size: 35px;"></i>
-    </center>
-    </td>
-    <td style= "background:#BCDDFD;padding:10px;">
-        <!--********* ETATS DES INSCRIPTIONS *****-->
-        <?php $today = date("Y-m-d H:i:s");  
-        if ($val ["InscriptionExtern"] )
-        {
-            ?> Les inscriptions s'effectue sur le site de l'organisateur
-        <?php
-        }
-        else if ($today >$val ["Date"] )
-        {
-            echo 'Course Terminé';
-        }
-		else if ( $today < $val ["DateStartInscription"]  )
-		{?>
-			les inscriptions pour cette course ne sont pas encore ouverte, elles ouvrent le       <?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateStartInscription"]));
+	<td  style= "width:50%;background:#BCDDFD; padding: 10px;">
+		<table    style= "width:100%;">
+			<tr>
+				<td style= "width:50px;">
+   				 <center>
+   			      <i class="fa fa-wpforms" style= "font-size: 35px;"></i>
+   				 </center>
+    			</td>
+				<td style= "background:#BCDDFD;padding:10px;">
+					<!--********* ETATS DES INSCRIPTIONS *****-->
+					<?php $today = date("Y-m-d H:i:s");  
+					if ($val ["InscriptionExtern"] )
+					{
+						?> Les inscriptions s'effectue sur le site de l'organisateur
+					<?php
+					}
+					else if ($today >$val ["Date"] )
+					{
+						echo 'Course Terminé';
+					}
+					else if ( $today < $val ["DateStartInscription"]  )
+					{?>
+						les inscriptions pour cette course ne sont pas encore ouverte, elles ouvrent le       <?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateStartInscription"]));
 
-		}
-        else if ( $today > $val ["DATE_END_INSCRIPTION"] )
-        {
-            ?> Inscriptions fermée ,  il est toujours possible de s'inscrire sur place
-        <?php
-        }
-        else
-        {
-            $Dateend =  date_parse($val ["DATE_END_INSCRIPTION"]);?> 	
-            <b>	Inscriptions : </b> </br></br>
-            Les inscriptions en ligne sont ouvertes jusqu'au : 
-            <?php
-                echo strftime('%A %d %B %Y       %H:%M',strtotime($val ["DATE_END_INSCRIPTION"])) ;
-            ?>
+					}
+					else if ( $today > $val ["DATE_END_INSCRIPTION"] )
+					{
+						?> Inscriptions fermée ,  il est toujours possible de s'inscrire sur place
+					<?php
+					}
+					else
+					{
+						$Dateend =  date_parse($val ["DATE_END_INSCRIPTION"]);?> 	
+						<b>	Inscriptions : </b> </br></br>
+						Les inscriptions en ligne sont ouvertes jusqu'au : 
+						<?php
+							echo strftime('%A %d %B %Y       %H:%M',strtotime($val ["DATE_END_INSCRIPTION"])) ;
+						?>
 
-            <?php 
+						<?php 
 
-            if (  $val ["NO_INSCRIPTIONS_SUR_PLACE"])
-            {
-            ?>
-            Il est impossible de s'inscrire sur place</br>
-            <?php
-            }
-            else
-            {
-            ?>
-            Les inscriptions sur place sont aussi possibles mais peuvent entraîner une majoration de prix</br>
+						if (  $val ["NO_INSCRIPTIONS_SUR_PLACE"])
+						{
+						?>
+						Il est impossible de s'inscrire sur place</br>
+						<?php
+						}
+						else
+						{
+						?>
+						Les inscriptions sur place sont aussi possibles mais peuvent entraîner une majoration de prix</br>
 
-            <?php	
-            }
-        }
-        if (! strlen($val ["InscriptionExtern"] ))
-        { ?>
-        <div class="title" id="Paiement"> Paiement :</div>
-            <Fieldset>
+						<?php	
+						}
+					}
+					if (! strlen($val ["InscriptionExtern"] ))
+					{ ?>
+					<div class="title" id="Paiement"> Paiement :</div>
+						<Fieldset>
 
-                Le paiement de votre inscription s'effectue sur place </br>
-            </Fieldset>
+							Le paiement de votre inscription s'effectue sur place </br>
+						</Fieldset>
 
 
-      
-        <?php
-        }?>
-   </td>
+				
+					<?php
+					}?>
+				</td>
+			</tr>
+		</table>
+	</td>
     <?php
     if ( strlen($val ["Email"] ) > 1)     
     { ?>
       <td style= "width:10px;">
-</td>
-        <td style= "background:#BCDDFD;padding: 10px;">
-            <center>
-            <i class="fa fa-envelope-o" style= "font-size: 35px;"></i>
-            </center>
-        </td>
-        <td style= "background:#BCDDFD;padding: 10px;">
-            <?php echo $val ["Email"] ?>  
-        </td>
+	  </td>
+	  <td>
+			<table>
+				<tr>
+					<td>
+						<center>
+						<i class="fa fa-envelope-o" style= "font-size: 35px;"></i>
+						</center>
+					</td>
+					<td style= "background:#BCDDFD;padding: 10px;">
+						<?php echo $val ["Email"] ?>  
+					</td>
+				</tr>
+			</table>
+		</td>
         <?php
     } 
 
@@ -228,8 +265,8 @@ if ($Nbr_etape < 2)
     { ?>
        <tr style= "Height:20px;">
         </tr>
-    <tr>
-    <td style= "background:#BCDDFD;padding: 10px;">
+  	  <tr>
+    	<td style= "background:#BCDDFD;padding: 10px;">
             <center>
             <i class="fa fa-shield" style= "font-size: 35px;"></i>
             </center>

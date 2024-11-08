@@ -700,6 +700,17 @@ background-color: #CCCCCC;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+  
+
+ }
+ .imgGalleryPhotos
+ {
+  display: float;
+  max-width: 900px;
+margin: 10px;
+  border : 4px solid #1e8ac2;    
+  border-radius: 10px;
+  
 
  }
 #Information fieldset 

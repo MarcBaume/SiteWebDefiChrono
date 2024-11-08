@@ -16,7 +16,15 @@
 	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-	 </script>
+ </script>
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+ <link rel="stylesheet"   href="https://fonts.googleapis.com/css?family=Open Sans">
+ <style>
+      body {
+		font-family: 'Open Sans', serif;
+
+      }
+    </style>
 <script src="../../js/prototype.js" ></script>
 <script src="../../js/FonctionDefiChrono2.js?v=1"></script>
 </script>
@@ -26,12 +34,12 @@
     <body>
 	<?	include("MenuInscriptions.php"); ?>
 	<div id="corps">
-
-
 <table>
 	<tr>
 		<td>
-			<h3>
+			<h3><span class="material-symbols-outlined">
+install_mobile
+</span>
 				Liste de départ  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
 			</h3>
 			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
@@ -148,7 +156,15 @@ function SearchCoureur() {
 					RowsCoureur = document.createElement('tr');
 					RowsCoureur.style.background ="white";
 
-					
+					if (Coureur.sexe == "H")
+					{
+						RowsCoureur.style.background ="Lightblue";
+					}
+					else if (Coureur.sexe  == "D")
+					{
+						RowsCoureur.style.background ="Pink";
+					}
+
 					table1.append(RowsCoureur);
 
 					col1 = document.createElement('td');
@@ -328,7 +344,11 @@ function SelectCoureur(e) {
 }
 
 
+	// Inscription à l'événement de recherche
+	const textInputValue = document.getElementById('FindValue');
+	textInputValue.addEventListener("input", updateValue);
 
+	// evenement avec bouton recherche
     const textInput = document.getElementById('Find');
     textInput.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
@@ -336,10 +356,12 @@ function SelectCoureur(e) {
         // Perform desired actions here
       }
     });
-	
 
 
-	
+	const input = document.querySelector("input");
+	function updateValue(e) {
+		SearchCoureur();
+}
 SearchCoureur();
 </script>
 

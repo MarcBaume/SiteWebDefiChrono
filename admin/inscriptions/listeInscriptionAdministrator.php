@@ -111,8 +111,9 @@ function SearchCoureur() {
 					 Coureur = val[j];
 
 					RowsCoureur = document.createElement('tr');
-					RowsCoureur.style.background ="white";
+			
 					RowsCoureur.dataset.value = Coureur.ID ;
+				
 					table1.append(RowsCoureur);
 
 					col1 = document.createElement('td');
@@ -153,7 +154,7 @@ function SearchCoureur() {
                         col1.style.background = "Orange";
                     }
                     
-					col1.innerHTML = Coureur.Payer;
+					col1.innerHTML = Coureur.sexe;
 					RowsCoureur.append(col1);
 			
 					col1 = document.createElement('td');

@@ -41,17 +41,13 @@ function getURLHeader( ValueFind, IDElement) {
 	
 		if (window.location.href.search(ValueFind)>-1)
 		{
-			console.log("fsdf");
-		//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-			//document.getElementById(IDElement).style.color = "white";
+
 			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
 			document.getElementById(IDElement).classList.remove("dotHeader");
 
 		}
 		else
 		{
-		//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-			//document.getElementById(IDElement).style.color = " #3d6ca4";
 			document.getElementById(IDElement).classList.add("dotHeader");
 			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
 		}
@@ -62,16 +58,13 @@ function getURLHeader( ValueFind, IDElement) {
 
 if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
 {
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
 	document.getElementById(IDElement).classList.add("dotDisplayedHeader");
 	document.getElementById(IDElement).classList.remove("dotHeader");
 
 }
 else
 {
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
+
 	document.getElementById(IDElement).classList.add("dotHeader");
 	document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
 }

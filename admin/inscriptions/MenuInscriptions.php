@@ -35,28 +35,39 @@
  $NOM_COURSE = $_GET["NomCourse"];
  $Nbr_etape =  $_GET["NbrEtape"] ;
  }
+
+
+
+/*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
+$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+  else
+  {
+	  
+	  mysqli_select_db($con ,'dxvv_jurachrono' );
+// ***************************************** AFFICHAGE BASE de Donnée ***************************************
+	  // Create table de donnée du nom de parcours
+//	mysqli_select_db($con,$row['Database']);
+	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_GET["NomCourse"].'\'AND Date=\''.$_GET['DateCourse'].'\'' ; 
+	$result = mysqli_query($con,$sql);
+	
+    if ($result && mysqli_num_rows($result) > 0) 
+    {
+        // output data of each row
+        while($val1 = mysqli_fetch_assoc($result)) 
+        {
+            $val = $val1;
+        }
+    }
+}
+
+
 ?> 
 
 <script>
-
-    
-function infoRace()
-{
-    console.log("funInformationRace");
-	var FormMenu =document.getElementById("FormMenu");
-	FormMenu.action="ReadInfomationsMyqlCourse.php";
-    console.log(FormMenu);
-	$('FormMenu').request({
-			onComplete: function(transport){
-
-				 val =transport.responseText.evalJSON();
-				
-				 console.log(val);
-				 console.log("Result maj list presonne");
-			}
-		});
-
-}
 
 function getURL( ValueFind, IDElement) {
 
@@ -142,8 +153,6 @@ if (window.location.href.search(ValueFind)>-1)
 </div>
 
 <script>
- 
- infoRace();
  
 function ClickColForm()
 {

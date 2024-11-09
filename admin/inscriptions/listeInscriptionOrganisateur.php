@@ -25,7 +25,10 @@
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
     <body>
-<?	include("MenuInscriptions.php"); ?>
+<?	include("MenuInscriptions.php");
+
+
+?>
 
     <script>
 	var CoureurFind = new Object();
@@ -343,6 +346,7 @@ function AddPersonne()
 </div>	
 </div>
 <center>
+	<div id="DivListeCoureurInscrits">
 <h2>Liste des  personnes inscrites </h2>
 <p>
   <input Type="text"  style="font-size:24px" name="FindValue" id="FindValue" />
@@ -351,8 +355,7 @@ function AddPersonne()
 <Table  style="width: 80%" id ="TableListCoureurs">
 </table>
 		</center>
-
-   </Fieldset>
+</div>
 <script>
 
 	// Inscription à l'événement de recherche
@@ -607,7 +610,7 @@ function AddInscriptionOrModify()
 
 				 val =transport.responseText.evalJSON();
 				 console.log(val);
-			
+				 console.log("val6");
 
 				if (val == -9999)
 				{
@@ -619,45 +622,39 @@ function AddInscriptionOrModify()
 				}
 				else
 				{
-	 				// Mise à jour base de donnée coureur 
-					 MajBasedeDonneeCoureur();
-
 					 // Ecriture numéro de dossard sur mémoire chache du navigateur afin de deviner le numéro suivant a enregistrer
-									
+					 console.log( "val999");
+					 console.log(  <?php echo json_encode($val['TypeAttributionDossardAuto'])?>);
 					//!! Todo selon paramètrage si numéro de dossard est par départ / Parcours ou global
-					localStorage.setItem(document.getElementById("NomDepart").value ,document.getElementById("num_dossard").value);
+					if (  <?php echo json_encode($val['TypeAttributionDossardAuto']); ?>   == "DEPART")
+					{
+						localStorage.setItem(document.getElementById("NomDepart").value ,document.getElementById("num_dossard").value);
+					}
+					else if ( <?php echo json_encode($val['TypeAttributionDossardAuto']); ?>  == "PARCOURS")
+					{
+						localStorage.setItem(document.getElementById("NomParcours").value ,document.getElementById("num_dossard").value);		
+					}
+					else
+					{
+						console.log("val5");
+						localStorage.setItem( <?php echo json_encode($NOM_COURSE. $ANNEE_COURSE ); ?>  ,document.getElementById("num_dossard").value);
+					}
 
 
-				// Remise à zéro formulaire
-				ResetCoureur()
-				// Lecture base de donnée mysql 10 derniers inscrits
-				ReadMysqlCoureur();
+					// Lecture base de donnée mysql 
+					ReadMysqlCoureur();
+					// Remise à zéro formulaire
+					ResetCoureur();
 				}
 			}
 		});
 }
 
-//  Mettre à jour coordonnée base de donnée Liste Personne quand on ajoute une nouvelle inscription 
-function MajBasedeDonneeCoureur()
-{
-	console.log("maj LISTE Personnes");
-	var FormCoureur =document.getElementById("FormulaireCoureur");
-	FormCoureur.action="MajCoureurBaseDeDonneeListePersonne.php";
-
-	$('FormulaireCoureur').request({
-			onComplete: function(transport){
-
-				 val =transport.responseText.evalJSON();
-				
-				 console.log(val);
-				 console.log("Result maj list presonne");
-			}
-		});
-}
 
 // Remettre vierge formulaire coureur
 function  ResetCoureur()
 {
+	console.log("fun Reset Coureur");
 	document.getElementById("IDCoureur").value ="";
 	document.getElementById("num_dossard").value ="";
 	document.getElementById("nom").value ="";
@@ -684,12 +681,7 @@ function  ResetCoureur()
 
 	inputDame.classList.remove("ButtonResultatSelected");
 	inputDame.classList.add("ButtonResultat");	
-	
-	var tableDepart =	document.getElementById("TableDepartForRunner");
-		tableDepart.innerHTML = "";
 
-		var ColCoureurFind = document.getElementById("TableForRunnerFind");
-	ColCoureurFind.innerHTML = ""
 	
 	var lblinfo = document.getElementById("lblInformation"); 
 	lblinfo.style.visibility = "hidden" ;
@@ -701,7 +693,9 @@ function  ResetCoureur()
 		document.getElementById("ButtonDeleteFormulaire").style.visibility = "hidden" ;
 		document.getElementById("lblInfoDeleteCoureur").style.display  = "none" ;
 		document.getElementById("lblInfoDeleteCoureur").style.visibility = "hidden" ;
-
+		document.getElementById("FormulaireCoureur").style.display  = "none" ;
+		document.getElementById("DivListeCoureurInscrits").style.display  = "block" ;
+		
 }
 
 // Selon coordonnée du corueur départ disponible sans vérificatino que le champs sexe est bien remplie
@@ -1356,9 +1350,23 @@ function funDeleteCoureur()
 						if (localStorage.length> 0)
 						{
 							// Transfrome clé en objet 
-							// ?? Selon type de paramètre
-							var NumDossard = localStorage.getItem(document.getElementById("NomDepart").value);
-							console.log("Key index depart" );
+							// ?? todo Selon type de paramètre
+							console.log( "val");
+							console.log(  <?php echo json_encode($val['TypeAttributionDossardAuto'])?>);
+							if (  <?php echo json_encode($val['TypeAttributionDossardAuto']); ?>  == "DEPART")
+							{
+								console.log("val99");
+								var NumDossard = localStorage.getItem(document.getElementById("NomDepart").value);
+							}
+							else if (  <?php echo json_encode($val['TypeAttributionDossardAuto']); ?> == "PARCOURS")
+							{
+								var NumDossard = localStorage.getItem(document.getElementById("NomParcours").value);
+							}
+							else
+							{
+								var NumDossard = localStorage.getItem(<?php echo json_encode($NOM_COURSE. $ANNEE_COURSE ); ?>);
+							}
+
 							// Si la clé existe 
 							if (NumDossard != null)
 							{
@@ -1381,8 +1389,9 @@ function funDeleteCoureur()
 function ReadMysqlCoureur()
 {
  
-	FindCoureurID();
+	//FindCoureurID();
 
+	console.log("ReadMysqlCoureur");
 	table1 = document.getElementById("TableListCoureurs");
 
 	table1.innerHTML = ""
@@ -1520,18 +1529,14 @@ function ReadMysqlCoureur()
 					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
 				//	col1.addEventListener("click", function() { SelectCoureurInscrit(this.dataset.value); } );
 					RowsCoureur.append(col1);
-
-					
-				
-				
-		
 				};
 			
-				}
+			}
 });
 }
 function SelectCoureurInscrit(e) {
 	
+	document.getElementById("DivListeCoureurInscrits").style.display  = "none" ;
 	document.getElementById("IDCoureur").value = e;
 	FindCoureurID();
 

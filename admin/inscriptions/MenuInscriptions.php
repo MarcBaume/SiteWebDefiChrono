@@ -48,13 +48,14 @@ if (window.location.href.search(ValueFind)>-1)
 </script>
 <form method="get"  id="FormMenu" name="FormMenu"  >
 
-	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
-	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
+<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
+<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
+<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 
 </form>
 
  <div id="menu_vertical" class="menu_vertical">
+
     <table style="Width : 100%">
         <tr>
 
@@ -110,13 +111,33 @@ if (window.location.href.search(ValueFind)>-1)
         </tr>
    </table>
 </div>
+
 <script>
+  
+//  Mettre à jour coordonnée base de donnée Liste Personne quand on ajoute une nouvelle inscription 
+
+	console.log("funInformationRace");
+	var FormMenu =document.getElementById("FormMenu");
+	FormMenu.action="ReadInfomationsMyqlCourse.php";
+    console.log(FormMenu);
+	$('FormMenu').request({
+			onComplete: function(transport){
+
+				 val =transport.responseText.evalJSON();
+				
+				 console.log(val);
+				 console.log("Result maj list presonne");
+			}
+		});
+
+
 function ClickColForm()
 {
     f1 = 	document.getElementById("FormMenu");
     f1.action="formulaireInscriptionAdmin.php";
   
      f1.submit();
+
 }
 function ClickColListe()
 {
@@ -124,6 +145,8 @@ function ClickColListe()
     f1.action="listeInscriptionOrganisateur.php";
      
      f1.submit();
+
+
 }
 
 </script>

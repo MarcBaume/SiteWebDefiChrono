@@ -1315,11 +1315,11 @@ function  SelectDepart(evt)
 			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
 			document.getElementById("lblNomEquipe").style.display  = "table" ;
 			// Pour course DUO
-			if (f.NomParcours.value == "TEAM")
+	/*		if (f.NomParcours.value == "TEAM")
 			{
 				document.getElementById("ParaRemarques").style.visibility = "visible" ;
 				document.getElementById("ParaRemarques").style.display  = "table" ;
-			}
+			}*/
 
 	
 		// Si la catégorie est en relais

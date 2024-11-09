@@ -23,21 +23,7 @@ else
      try
      {
           mysqli_select_db($con ,'dxvv_jurachrono' );
-          if (strlen($_REQUEST['Find']) > 0)
-          {
-               $sql = 'SELECT * FROM inscription WHERE course= "'.$_REQUEST["NomCourse"]. $ANNEE_COURSE .'" and ( Nom  LIKE "'.$_REQUEST['Find'].'%" or NumDossard  LIKE "'.$_REQUEST['Find'].'%"  or Prenom Like "'.$_REQUEST['Find'].'%")ORDER BY Date DESC';
-		
-          }
-          else if (strlen($_REQUEST['NomCourse']) > 0)
-          {
-               $sql = 'SELECT * FROM inscription WHERE course= "'.$_REQUEST["NomCourse"]. $ANNEE_COURSE .'" and ( Nom  LIKE "'.$_REQUEST['Find'].'%" or NumDossard  LIKE "'.$_REQUEST['Find'].'%"  or Prenom Like "'.$_REQUEST['Find'].'%")ORDER BY Date DESC';
-		
-          }
-          else
-          {
-               $sql = 'SELECT * FROM inscription  ORDER BY Date DESC LIMIT 100';
-		  
-          }
+		  $sql = 'SELECT * FROM inscription WHERE course= "'.$_REQUEST["NomCourse"]. $ANNEE_COURSE. '" and ( Nom  LIKE "'.$_REQUEST['Find'].'%" or NumDossard  LIKE "'.$_REQUEST['Find'].'%"  or Prenom Like "'.$_REQUEST['Find'].'%")';
 		  $result = mysqli_query($con,$sql);
 		  $array = array();
           if ( $result )

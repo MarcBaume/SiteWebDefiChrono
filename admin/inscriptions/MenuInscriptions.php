@@ -1,4 +1,13 @@
- 
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
+<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+ </script>
+<script src="../../js/prototype.js" ></script>
+<script src="../../js/FonctionDefiChrono2.js?v=1"></script>
+</script>
 <?php
  
  if ( strlen($_POST['DateCourse'])>0)
@@ -29,6 +38,26 @@
 ?> 
 
 <script>
+
+    
+function infoRace()
+{
+    console.log("funInformationRace");
+	var FormMenu =document.getElementById("FormMenu");
+	FormMenu.action="ReadInfomationsMyqlCourse.php";
+    console.log(FormMenu);
+	$('FormMenu').request({
+			onComplete: function(transport){
+
+				 val =transport.responseText.evalJSON();
+				
+				 console.log(val);
+				 console.log("Result maj list presonne");
+			}
+		});
+
+}
+
 function getURL( ValueFind, IDElement) {
 
 if (window.location.href.search(ValueFind)>-1)
@@ -113,24 +142,9 @@ if (window.location.href.search(ValueFind)>-1)
 </div>
 
 <script>
-  
-//  Mettre à jour coordonnée base de donnée Liste Personne quand on ajoute une nouvelle inscription 
-
-	console.log("funInformationRace");
-	var FormMenu =document.getElementById("FormMenu");
-	FormMenu.action="ReadInfomationsMyqlCourse.php";
-    console.log(FormMenu);
-	$('FormMenu').request({
-			onComplete: function(transport){
-
-				 val =transport.responseText.evalJSON();
-				
-				 console.log(val);
-				 console.log("Result maj list presonne");
-			}
-		});
-
-
+ 
+ infoRace();
+ 
 function ClickColForm()
 {
     f1 = 	document.getElementById("FormMenu");

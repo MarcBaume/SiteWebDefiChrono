@@ -1,4 +1,5 @@
 <?php
+
 /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
 $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
 if (!$con)
@@ -12,7 +13,7 @@ if (!$con)
 // ***************************************** AFFICHAGE BASE de Donnée ***************************************
 	  // Create table de donnée du nom de parcours
 //	mysqli_select_db($con,$row['Database']);
-	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_GET["nom_course"].'\'AND Date=\''.$DateCourse.'\'' ; 
+	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_REQUEST["NomCourse"].'\'AND Date=\''.$_REQUEST["DateCourse"].'\'' ; 
 	$result = mysqli_query($con,$sql);
     $array = array();
     if ( $result )
@@ -29,8 +30,4 @@ if (!$con)
     { 
          print(-2);
     }
-}
-catch(Exception $e)
-{
-    print(-1);
-}    
+  }

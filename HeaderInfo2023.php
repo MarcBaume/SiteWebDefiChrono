@@ -479,7 +479,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 		elmnt.submit();
 	}
 	function ClickRowsResultat(elmnt )
-    {  
+    {   
 	elmnt = document.getElementById("Menu");
 	if ( <?php echo json_encode($ANNEE_COURSE ); ?> > 2019 &&  <?php echo json_encode($Nbr_etape ); ?> >10 )
 	{

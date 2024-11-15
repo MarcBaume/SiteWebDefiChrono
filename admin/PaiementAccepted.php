@@ -24,7 +24,7 @@ $_SESSION['Login'] =$_GET["Login"];
 <?	include("MenuMember.php"); ?>
 <div id="corps">
 <img src="../images/FilRougeInscription6.png" style="width: 100%" >
-	<h3> Merci pour les paiement des inscriptions : <?php echo $_GET["Login"] ?> </h3>
+	<h3> Merci votre paiement est accepté  : <?php echo $_GET["Login"] ?> </h3>
 	</br> 
 	<?php
 	
@@ -53,12 +53,12 @@ $_SESSION['Login'] =$_GET["Login"];
 			</tr>
 			
 		<?php
-
+/* Utilisation d'un webhook
 		$sql = 'UPDATE inscription SET Payer = \'Payé\'  WHERE OrderPayement=\''.$_GET["ID"].'\''; 
 				if (!mysqli_query($con,$sql))
 				{
 					echo "Error update : Membres Nom" . mysql_error();
-				}  
+				}  */
 		while($donnees = mysqli_fetch_assoc($result)) 
 		{
 						// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table inscription OrderPayement

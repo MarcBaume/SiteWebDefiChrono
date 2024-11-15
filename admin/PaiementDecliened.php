@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="../styleV2.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../styleV6.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 <body>
@@ -18,7 +18,6 @@ $_SESSION['Login'] =$_GET["Login"];
   include("HeaderAdmin.php"); 
   ?>
 </br>
-<?	include("MenuMember.php"); ?>
 <div id="corps">
 
 <?php 
@@ -35,10 +34,30 @@ else
 { 
 	?>
 	<h3> Mal Heureusement votre paiement a été refusé : <?php echo $_GET["Login"] ?> </h3>
+
+	<span class="dot"  id="RowRace6">
+						<table>
+							<tr   onClick="ClickRowsListe()" >
+				<Form id="GoMenu">
+</Form>
+								<td style="padding-left: 10px;">
+									Retour à votre pannier d'achat
+								</td>
+							</tr>
+							
+						</table>
+					</span>
 <?
 }
 ?>
-
+<script>
+		function ClickRowsListe( )
+    {  
+	elmnt = document.getElementById("GoMenu");
+	elmnt.action = "Pannier.php";
+		elmnt.submit();
+	}
+</script>
 	</br> 
 	<?php
 	
@@ -68,11 +87,11 @@ else
 			
 		<?php
 
-		$sql = 'UPDATE inscription SET Payer = \''.$_GET["StatusPaiement"].'\' WHERE OrderPayement=\''.$_GET["ID"].'\''; 
+		/*$sql = 'UPDATE inscription SET Payer = \''.$_GET["StatusPaiement"].'\' WHERE OrderPayement=\''.$_GET["ID"].'\''; 
 				if (!mysqli_query($con,$sql))
 				{
 					echo "Error update : Membres Nom" . mysql_error();
-				}  
+				}  */
 		while($donnees = mysqli_fetch_assoc($result)) 
 		{
 						// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table inscription OrderPayement

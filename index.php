@@ -21,7 +21,15 @@
   include("Header2023.php"); 
   ?>
 <div id="corps">
+<?php
 
+  
+
+    $DateLastYear = date('Y-m-d', strtotime(' - 1 years'));
+
+  
+
+?>
 <?php
 
  session_start();
@@ -67,7 +75,7 @@ else
 		   <?php
 
 	//mysqli_select_db($con,$row['Database']);
-
+$FirstEventLastEdition = False;
 	$sql = "SELECT * FROM Course ORDER BY Date DESC";
 	$result = mysqli_query($con,$sql);
 	if ($result && mysqli_num_rows($result) > 0) 
@@ -75,6 +83,25 @@ else
 		// output data of each row
 		while($val = mysqli_fetch_assoc($result)) 
 		{
+			// MAsquage des anciennes éditions
+			if (!$FirstEventLastEdition && $DateLastYear  > $val ["Date"] )
+			{
+
+				$FirstEventLastEdition  = true;?>
+ 				<tr >
+				 <td class="ColMenuInfo"  onClick="ClickDisplayCourseBefore()" onmouseover="" style="cursor: pointer;">
+					 <span class="dot" style="font-size :36px;margin: 20px; padding : 20px" >
+						<center>
+							 Afficher les  anciennes éditions...
+						</center>
+					</span>
+				</td>
+
+				 </tr>
+
+			<?
+			}
+
 			if($val['ModeAdmin'] == 0 || $_SESSION['Niveau'] == 2)
 			{
 				$Date =  date_parse($val ["Date"]);
@@ -88,38 +115,75 @@ else
 				{
 					// Creat a row with the Year 
 					$YearBuffer = $Year;
-					?>
-					
-					 <tr    >
+				
+					if ( $DateLastYear  > $val ["Date"] )
+					{
+						?>
+						<tr name="RowRaceBefore"   style=" display : none;" >
+											<?
+					}
+					else
+					{
+						?>
+						<tr name="RowRace">
+						<?
+					}?>
+		
 						<td> <p style="color:white;margin:5px; padding:20px; font-size:24px;background: rgba(36, 174,232, 1);  font-weight:bold;"> <?php echo $Year?> </p></td>
 					 </tr>
 				<?php
 				}
+
 				if ($MonthBuffer <> $Month)
 				{
-					// Creat a row with the Year 
+					// Creat a row with the month 
 					$MonthBuffer = $Month;
-					?>
-					
-					 <tr >
+
+					if ( $DateLastYear  > $val ["Date"] )
+					{
+						?>
+						<tr name="RowRaceBefore"   style=" display : none;" >
+											<?
+					}
+					else
+					{
+						?>
+						<tr name="RowRace">
+						<?
+					}?>
+				
 						<td ><p style="color:black; margin:5px;padding:15px; font-size:24px; font-weight:bold; "><?php echo  strftime ("%B",$timestamp)?> </p></td>
 					 </tr>
 
 				<?php
 				}
+
+
 				
-											$IdRace =  $val ["ID"]  ;
-		
+				$IdRace =  $val ["ID"]  ;
+				
 				?>
-					<form method="get"  name="<?php echo "Formulaire".$IdRace  ?>" id="<?php echo "Formulaire".$IdRace  ?>">
+					<form method="get"  name="FormulaireCourse" id="<?php echo "Formulaire".$IdRace  ?>">
 										
 						<input type="hidden" name="NbrEtape"  value= '<?php echo $val ["nbr_etape"] ?>' />
 						<input type="hidden" name="DateCourse"  tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
 						<input type="hidden" name="Etape" value= 1 />
 						<input type="hidden" name="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
 						<input type="hidden" name="ID"  tabindex="10"  size="60"  value= '<?php echo $val ["ID"] ?>' />						
-		
-					<tr id="<?php echo "RowRace".$IdRace ?>" onmouseover="" style="cursor: pointer;"  onClick="ClickRows( event, <?php echo $IdRace ?>)">
+		<?php
+				if ( $DateLastYear  > $val ["Date"] )
+				{
+					?>
+					<tr name="RowRaceBefore" id="<?php echo "RowRace".$IdRace ?>" onmouseover="" style="cursor: pointer; display : none;"  onClick="ClickRows( event, <?php echo $IdRace ?>)">
+										<?
+				}
+				else
+				{
+					?>
+					<tr name="RowRace" id="<?php echo "RowRace".$IdRace ?>" onmouseover="" style="cursor: pointer;"  onClick="ClickRows( event, <?php echo $IdRace ?>)">
+					<?
+				}?>
+					
 						<td >
 							<table width = 100% >
 							
@@ -502,6 +566,15 @@ document.getElementById("GoToTop").style.visibility = "hidden";
 }
 
 };
+
+function ClickDisplayCourseBefore()
+{
+	var elements =   document.getElementsByName("RowRaceBefore") ;
+	for (var i = 0; i < elements.length; i++) 
+	{
+		elements[i].style.display = "table-row";
+	}
+}
 	function ClickRows(event, id)
     {  
 		if (	document.getElementById("Infos"+id).style.display == "")

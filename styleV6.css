@@ -411,9 +411,9 @@ width:100%;
   padding-right: 10px;
   cursor: pointer;
   display: inline-block;
-  min-width:120px;
+  min-width:40px;
   margin:10px;
-  height: 40px;
+  min-height: 40px;
   background-color: #FFFFFF  ;
   color: #3D6CA4;
 }
@@ -605,6 +605,13 @@ padding-left : 20px;
     text-align: left;
 	  border-bottom: 1px solid #ddd;
 }
+
+#TableauResulat th
+{
+  background-color: #1e8ac2 ;
+  color: white;
+}
+
 #TableauResulat td
 {
 	width:auto;
@@ -771,6 +778,11 @@ padding : 10px;
  {	
   width: 90%;
  }
+ #prix table
+ {
+  display: block;
+	float: left;
+ }
  #prix
  {
 
@@ -782,13 +794,20 @@ padding : 3px;
  background: #F8F8F8;
  
  }
+
  #prix  label 
  {
-  margin-left: 40%;
-	display: block;
-	width: 250px;
-	float: left;
+	min-width: 100px;
+  padding :5px;
+  font-size: 24px;
  }
+ #prix  input 
+ {
+	min-width: 100px;
+  padding :5px;
+  font-size: 24px;
+ }
+
  
  #onglets
 {

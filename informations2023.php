@@ -564,23 +564,16 @@ function TableResume(IDSVG, ColimgEtapePara)
 	
 }
 
-function mapSvg(IDSVG, FileName, ColimgEtapePara)
+
+// Ajout emplacement svg lors de la création du dom
+function funAddSvg(IDSVG, FileName, ColimgEtapePara)
 {
+	console.log("funAddSvg");
+
 	indexPassage = 1;
 	TableTotal = document.createElement('Table');
 	TableTotal.style.width ="80%";
 	TableTotal.setAttribute("id", IDSVG+"ImageMap");
-	
-		if ( screen.width>  800 )
-	{
-			Width  = 800; // 1300-200; // 1300
-	}
-	else
-	{
-		Width  =  screen.width ; // 1300-200; // 1300
-	}
-	let box = document.querySelector('div');
- Width = box.offsetWidth - 200;
 
 	tr1 = document.createElement('Tr');
 	td1 = document.createElement('Td');
@@ -589,7 +582,9 @@ function mapSvg(IDSVG, FileName, ColimgEtapePara)
 	divMap = document.createElement('div');
 	divMap.style.height ="300px";
 	divMap.setAttribute("id", IDSVG+"my_osm_widget_map");
-	
+
+
+	// Ajout élément graphique
 	td1.append(divMap);
 	tr1.append(td1);
 	TableTotal.append(tr1);
@@ -597,37 +592,37 @@ function mapSvg(IDSVG, FileName, ColimgEtapePara)
 	tr2 = document.createElement('Tr');
 	td2 = document.createElement('Td');
 	
+	// Grphique de denivellé
+	
 	divGraph = document.createElement('div');
 	divGraph.style.height ="300px";
 	divGraph.setAttribute("id", IDSVG+"conteneurSVG");
-	
+	divGraph.style.height = (Height + (DecalageStartHeight*2))+'px';
+	divGraph.style.background = "lightblue";
+
+
+	// Ajout élément graphique
 	td2.append(divGraph);
 	tr2.append(td2);
 	TableTotal.append(tr2);
-	
 	ColimgEtapePara.append(TableTotal);
-	TableResume(IDSVG, ColimgEtapePara);
 
-}
-
-function AddSvg(IDSVG, FileName)
-{
+	
+	console.log("Create element")
 	/*** ZONE DE DESSIN **/
  	var GraphiqueSVG = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-
     GraphiqueSVG.style.width = (Width + (DecalageStartWidth*2) ) +'px';
     GraphiqueSVG.style.height = (Height + (DecalageStartHeight*2))+'px';
     GraphiqueSVG.id = IDSVG+'image1';
+    divGraph.appendChild(GraphiqueSVG);
+
+
+}
+// Après que le dom est crée on place l'élement carte  
+function funCreateDrawerMap(IDSVG, FileName)
+{
 	
-	var conteneur = document.getElementById(IDSVG+"conteneurSVG");
-	console.log(IDSVG+"conteneurSVG");
-	conteneur.style.height = (Height + (DecalageStartHeight*2))+'px';
-    conteneur.appendChild(GraphiqueSVG);
-
-
-	/***************************************** READ FCIHIER GPX *******************************************
-	*																															*
-	****************************************************************************************************/	
+	//READ FCIHIER GPX 	
 	var CountPassage = 0;
 	 // Create a connection to the file.
  	 var Connect = new XMLHttpRequest();
@@ -795,11 +790,11 @@ function AddSvg(IDSVG, FileName)
 
 	MedLat = Number(MedLat)+ Number(latMin);
 	MedLon = Number(MedLon)+ Number(lonMin);
-console.log("Point in");
-console.log(point.Lat + " "+ point.Lon);
-console.log(MedLat + " "+ MedLon);
-							//**** CREATION DÙNE CARTE ****/
-							var mymap = L.map(IDSVG+'my_osm_widget_map', { /* use the same name as your <div id=""> */
+	console.log(IDSVG+'my_osm_widget_map');
+	//**** CREATION DÙNE CARTE ****/
+	idMap = document.getElementById(IDSVG+'my_osm_widget_map');
+	idMap.textContent = '';
+	var mymap = L.map(IDSVG+'my_osm_widget_map', { /* use the same name as your <div id=""> */
 /*	center: [point.Lat, point.Lon],  /*set GPS Coordinates*/
 	center: [MedLat, MedLon], 
 	zoom: 14, /* define the zoom level */
@@ -808,7 +803,6 @@ console.log(MedLat + " "+ MedLon);
 	});
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	//L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/[x]/{y}.png', { /* set your personal MapBox Access Token */
 	maxZoom: 30, /* zoom limit of the map */
 	attribution: ' <a href="http://openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mymap);
 
@@ -816,7 +810,7 @@ console.log(MedLat + " "+ MedLon);
 	/********* LEcture de chaque point sur le fichier et transformation 
 	en valeur en Pourcent pour affichage
 	 au meme format de chaque fichier GPX *******/
-	 
+	 GraphiqueSVG = document.getElementById(IDSVG+'image1');
 	for (var i = 0; i < ArrayPoint.length; i++)
 	{
 		var Point = ArrayPoint[i];
@@ -840,7 +834,7 @@ console.log(MedLat + " "+ MedLon);
 		LastPoint = Point;
 	}	
 
-	/************* AJOUT LIGNE Vertical Coordonnée Y DENIVELATION **************/
+	/*********** AJOUT LIGNE Vertical Coordonnée Y DENIVELATION *************/
 
 	 intElevation = parseInt(ElevationMin / 100)
 	 // Ligne tous les 100 mètres
@@ -876,6 +870,7 @@ console.log(MedLat + " "+ MedLon);
 	{
 		AddLigneVertical(partKM * i,  GraphiqueSVG );	
 	}
+
 }
 
 
@@ -1742,7 +1737,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 						RowsTableEtape.append(ColimgEtapePara);
 						//mapSvg("Etape " +(j +1)+DepartObj.Nom, EtapeObj.GPX, ColimgEtapePara);
 
-						mapSvg(DepartObj.Nom + EtapeObj1.Nom, EtapeObj1.GPX, ColimgEtapePara);
+						funAddSvg(DepartObj.Nom + EtapeObj1.Nom, EtapeObj1.GPX, ColimgEtapePara);
 					}								
 				TableEtape.append(RowsTableEtape);			
 				DepartPara.append(TableEtape);
@@ -1793,7 +1788,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 						RowsTableEtape1.append(ColimgEtapePara1);
 						TableEtape.append(RowsTableEtape1);
 					//	mapSvg("Etape " +(j +1)+EtapeObj1.info.Nom._Value, EtapeObj1.GPX, DivimgEtapePara);
-						mapSvg(DepartObj.Nom + EtapeObj1.Nom, EtapeObj1.GPX, DivimgEtapePara);
+						funAddSvg(DepartObj.Nom + EtapeObj1.Nom, EtapeObj1.GPX, DivimgEtapePara);
 					}	
 				}
 			}						
@@ -1882,7 +1877,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 							let DivDisc = document.createElement('div');
 							DivDisc.style.width = "80%"
 							DivDisc.style.textAlign  ="center";
-							mapSvg("Disc" +(d +1)+DepartObj.info.Nom._Value, EtapeObj.GPX, DivDisc);
+							funAddSvg("Disc" +(d +1)+DepartObj.info.Nom._Value, EtapeObj.GPX, DivDisc);
 							ColimgDiscPara1.append(DivDisc);
 							RowsTableDisc1.append(ColimgDiscPara1);
 							TableDisc.append(RowsTableDisc1);	
@@ -2106,7 +2101,8 @@ for (var i = 0; i < ArrayParcours.length; i++)
 newDiv.id = "Information";
 b.append(newDiv);
 
-/************************** Apres crétion du DOm obligatoire pour fichier gpx ****************/
+/************************** Apres crétion du DOm obligatoire pour fichier gpx*/
+
 for (var i = 0; i < ArrayParcours.length; i++) 
 {
 	for (var h = 0; h < ArrayParcours[i].ArrayDepart.length; h++)
@@ -2118,7 +2114,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 				if ( ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX != null && ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX.length > 0)
 				{
 				
-					AddSvg(ArrayParcours[i].ArrayDepart[h].Nom +  ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].Nom, ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX);
+					funCreateDrawerMap(ArrayParcours[i].ArrayDepart[h].Nom +  ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].Nom, ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX);
 				}
 			}
 			if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline != null)
@@ -2127,7 +2123,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 				{
 					if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX.length > 0)
 					{
-						AddSvg("Disc" +(z +1)+ArrayParcours[i].ArrayDepart[h].Nom, ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX);
+						funCreateDrawerMap("Disc" +(z +1)+ArrayParcours[i].ArrayDepart[h].Nom, ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX);
 					}
 				}
 			}

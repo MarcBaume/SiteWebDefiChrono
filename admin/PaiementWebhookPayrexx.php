@@ -109,10 +109,9 @@ $fp = file_put_contents( 'request.log', $req_dump );
 
 // Updated Answer
 
-if($json = json_decode(file_get_contents("php://input"), true)){
-
-$data = $json;
-
+if($json = json_decode(file_get_contents("php://input"), true))
+{
+    $data = $json;
 }
 
 print_r($data);
@@ -121,6 +120,7 @@ echo "Resultat";
 
 $referenceId = $data["transaction"]["invoice"]["number"];
 $status =  $data["transaction"]["status"];
+$email =  $data["transaction"]["contact"]["email"];
 if ($status == "confirmed")
 {
 	$status = "Payé";
@@ -136,16 +136,104 @@ if (strlen($referenceId)> 0)
 	$sql = 'SELECT * FROM inscription  WHERE  OrderPayement=\''.$referenceId.'\'';
 	$result = mysqli_query($con,$sql);
 	echo  mysqli_num_rows($result);
-
-	// On affiche chaque entrée une à une
-		if ($result && mysqli_num_rows($result) > 0) 
-		{
-			$sql = 'UPDATE inscription SET Payer = \''.$status.'\'  WHERE OrderPayement=\''.$referenceId.'\''; 
-		
-			if (!mysqli_query($con,$sql))
-		{
-		echo "Error update : inscription adresse " . mysql_error();
-		}  
-	}
+    $message = '<html>
+    <head>
+    <title>Confirmation inscription(s)</title>
+    <style>
+table, td, th {
+  border: 1px solid;
+  padding : 5px;
 }
-		?>
+
+table {
+  border-collapse: collapse;
+}
+        
+    </style>
+    </head>
+  
+    <h2 style="background-color: #3D6CA4;padding : 10px ;color :#fff"  > Confirmation inscription(s) </h2></br></br>
+
+
+    <table style="border:1px"> 
+    <tr>
+        <th width="20%"> Course</th>
+        <th width="15%"> Nom</th>
+        <th width="15%"> Prénom</th>
+        <th width="15%"> Parcours </th>
+        <th width="15%">  Catégorie</th>
+        <th width="15%">  Type</th>
+        <th width="15%">  Prix</th>
+    </tr>';
+
+
+    if ($result && mysqli_num_rows($result) > 0) 
+    {
+        $sql = 'UPDATE inscription SET Payer = \''.$status.'\'  WHERE OrderPayement=\''.$referenceId.'\''; 
+
+      
+        if (!mysqli_query($con,$sql))
+        {
+             $message =  $message . "Error update : inscription adresse " .$referenceId ." " . mysql_error();
+             $headers = 'From: Defi chrono <info@defichrono.ch>'."\r\n";
+             $headers = "Content-Type: text/html; charset=utf-8\r\n";
+             
+             if ( mail( 'info@defichrono.ch' , 'Erreur update status inscription webhook'.$referenceId,$message ,$headers))
+             {
+               echo  'Envoie ok';
+             }
+        }  
+        else
+        {
+            $sql = 'SELECT * FROM inscription   WHERE OrderPayement=\''.$referenceId.'\''; 
+            $result = mysqli_query($con,$sql);
+            if ($result && mysqli_num_rows($result) > 0) 
+            {
+                while($donnees = mysqli_fetch_assoc($result)) 
+                {
+                  
+                    $message =  $message . "
+                        <tr>
+                            <td>".  $donnees['course'] ."</td>
+                            <td>".  $donnees['Nom']."</td>
+                            <td>".  $donnees['Prenom']."</td>
+                            <td>". $donnees['parcours']."</td>
+                            <td>". $donnees['NomCategorie'] ."</td>
+                            <td>". $donnees['NbrEtape']."</td>
+                            <td>". $donnees['Prix'] ."</td>
+                        </tr>";
+                        echo $message;
+                }
+             }
+             else
+             {
+                echo "Error list";
+             }
+
+        }
+    }
+    $headers = array(
+        'From' => 'Défi chrono<info@defichrono.ch>',
+        'Reply-To' => 'Défi chrono<info@defichrono.ch>',
+        'Content-Type' => 'text/html; charset=utf-8'
+    );
+    
+    $message =  $message . "</table><p> Défi Chrono vous souhaite une bonne course </p> </br></br>
+<p>
+    <img style='width:200px;'src='https://defichrono.ch/images/LogoDefiChrono2023.png'></img>
+    </p></br></br>
+    <i>
+    * Le paiement sera remboursé seulement sur présentation d'un certificat médical à transmettre par e-mail à info@juradefichrono.ch </br>
+    </i>";
+    // Envoie de email seulement si l'inscription est payé
+    if ($status == "Payé")
+    {
+        if ( mail( $email , 'Confirmation inscription(s) Défi chrono',$message ,$headers))
+        {
+        echo  'Envoie ok';
+        }
+    }
+}
+
+
+?>

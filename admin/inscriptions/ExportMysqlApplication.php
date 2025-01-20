@@ -36,10 +36,10 @@ $Nbr_etape =  $_GET["NbrEtape"] ;
 
 }
   
-$filename = "Export".$NOM_COURSE. $ANNEE_COURSE.".csv";
-if (file_exists($filename)) 
+$filenameCSV = "Export".$NOM_COURSE. $ANNEE_COURSE.".csv";
+if (file_exists($filenameCSV)) 
 {
-	unlink($filename);
+	unlink($filenameCSV);
 }
 
  
@@ -57,7 +57,7 @@ if (!$con)
 	
 	 $result = mysqli_query($con,$sql);
 	 $HeaderCol = 0;
-	  $new_csv = fopen($filename, 'w');
+	  $new_csv = fopen($filenameCSV, 'w');
 	  if ($result && mysqli_num_rows($result) > 0) 
 	  {
 		// output data of each row
@@ -89,8 +89,11 @@ if (!$con)
   
   header('Content-Type: application/octet-stream');
 header("Content-Transfer-Encoding: Binary"); 
-header("Content-disposition: attachment; filename=\"" . "Export".$NOM_COURSE. $ANNEE_COURSE.".csv". "\""); 
-readfile($filename); 
+
+$filename = "Export".$_GET['NameFile'].".csv";
+
+header("Content-disposition: attachment; filename=\"" . $filename. "\""); 
+readfile($filenameCSV); 
 
 
      // force download  

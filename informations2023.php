@@ -149,10 +149,13 @@ if ($Nbr_etape < 2)
 	</td>
 	<td style= "width:10px;">
 	</td>
+	<? if (strlen($val ["Site"]) > 0)
+	{?>
+
     <td   style= "width:50%;background:#BCDDFD; padding: 10px;" >
 		<table  style= "width:100%;">
-			<tr style= "width:50px;">
-				<td>
+			<tr>
+				<td  style= "width:50px;">
 					<center>
 						<i class="fa fa-globe" style= "font-size: 35px;"></i>
 					</center>
@@ -163,6 +166,9 @@ if ($Nbr_etape < 2)
 			</tr>
 		</table>
 	</td>
+	<?php
+	}
+	?>
 </tr>
 <tr style= "Height:20px;">
  </tr>
@@ -243,7 +249,7 @@ if ($Nbr_etape < 2)
     { ?>
       <td style= "width:10px;">
 	  </td>
-	  <td>
+	  <td style= "width:50%;background:#BCDDFD; padding: 10px;">
 			<table>
 				<tr>
 					<td>
@@ -266,35 +272,23 @@ if ($Nbr_etape < 2)
        <tr style= "Height:20px;">
         </tr>
   	  <tr>
-    	<td style= "background:#BCDDFD;padding: 10px;">
-            <center>
-            <i class="fa fa-shield" style= "font-size: 35px;"></i>
-            </center>
-        </td>
-        <td style= "background:#BCDDFD;padding: 10px;">
-        <?echo '<a href="'.$FileReglement.'"target="_blank">Règlement , Cliquer ici</a>'?>
-    
-        </td>
+		<td style= "width:50%;background:#BCDDFD; padding: 10px;">
+			<table  style= "width:100%;">
+				<tr >
+					<td style= "width:50px;">
+						<center>
+						<i class="fa fa-shield" style= "font-size: 35px;"></i>
+						</center>
+					</td>
+					<td style= "background:#BCDDFD;padding:10px;">
+					<?echo '<a href="'.$FileReglement.'"target="_blank">Règlement , Cliquer ici</a>'?>
+					</td>
+				</tr>
+			</table>
+		</td>
     <?
     } 
-
-	$FileReglement = 'courses/'.$NOM_COURSE.$ANNEE_COURSE."/info/Programme.pdf";
-    if (file_exists($FileReglement)) 
-    { ?>
-      <td style= "width:10px;">
-</td>
-    <td style= "background:#BCDDFD;padding: 10px;">
-            <center>
-            <i class="fa fa-file-text-o" style= "font-size: 35px;"></i>
-            </center>
-        </td>
-        <td style= "background:#BCDDFD;padding: 10px;">
-        <?echo '<a href="'.$FileReglement.'"target="_blank">Programme , Cliquer ici</a>'?>
-    
-        </td>
-    <?
-    } 
-    ?>
+?>
 
 </tr>
 </table>
@@ -307,7 +301,7 @@ if ($Nbr_etape < 2)
 </table>
 </center>
 <?
-if ( strlen($val ["Description"] ) > 1)
+if ( strlen($val ["Description"] ) > 2)
 { ?>
 <div class="title">Description</div>
 <center>
@@ -387,67 +381,99 @@ src="<? echo 'https://www.youtube.com/embed/'.  $val ["Video"]?>">
 
 <?php
 $sqlResult = 'SELECT * FROM Course  WHERE KeyNomCourse=\''.$val ["KeyNomCourse"].'\'' ; 
-		$resultResult = mysqli_query($con,$sqlResult);
-		if ($resultResult && mysqli_num_rows($resultResult) > 0) 
-		{
-			?>
-			<div class="title"> Résultats ancienne édition</div>
-			<Fieldset>
-				<table>
-				<?php
-			// output data of each row
-			while($valResult = mysqli_fetch_assoc($resultResult)) 
-			{?>
-			<tr>
-				<td>
-		<? $DateResult =  date_parse($valResult['Date']);	?>
-		<? 
-		$NomCourse = $valResult['Nom_Course'];
-		// si année différentes de l'année en cours
-		if ($DateResult['year']<> $ANNEE_COURSE)
-		{
-			// Multi étape 
-			if (intval($valResult['nbr_etape'])>1)
-			{
-				if ($DateResult['year']> 2021)
-				{
-					
-					?>
-					<a href="<? echo "informations2022.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" ><?	echo $valResult['Nom_Course'] . " ".  $DateResult['year'];?></a>
-					<?
-				}
-				else
-				{
-					?>
-					<a href="<? echo "informations.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" ><?	echo $valResult['Nom_Course'] . " ".  $DateResult['year'];?></a>
-						<?
-				}
-			}
-			// Selon l'année affichage des résultats
-			else if ($DateResult['year']> 2021)
-			{
-				
-				?>
-				<a href="<? echo "ResultatV4.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" ><?	echo $valResult['Nom_Course'] . " ".  $DateResult['year'];?></a>
-				<?
-			}
-			else
-			{
-				?>
-				<a href="<? echo "ResultatV3.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" ><?	echo $valResult['Nom_Course'] . " ".  $DateResult['year'];?></a>
-					<?
-			}
-			?>
-			</td>
-			</tr><?
-			}
-		}
-			?>
+$resultResult = mysqli_query($con,$sqlResult);
+if ($resultResult && mysqli_num_rows($resultResult) > 1) 
+{
+	?>
+	<div class="FieldParcours" style="margin:10px ;border-radius: 10px 0px 0px 0px;">
+		<div class="titleParcours" >
+			<Table>
+				<tr>
+					<td style="border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:10px;height:60px ">
+						<i class="fa fa-trophy" style="width:45px;font-size:30px;color:#fff;margin-left:10px" ></i> 
+					</td> 
+					<td>
+						Résultats des anciennes éditions
+					</td>
+				</tr>
 			</table>
-			</Fieldset>
+		</div>
+		<table>
+		<tr>
+		<?php
+		// output data of each row
+		while($valResult = mysqli_fetch_assoc($resultResult)) 
+		{?>
+		
+				<td>
+					
+					<? $DateResult =  date_parse($valResult['Date']);	?>
+					<? 
+					$NomCourse = $valResult['Nom_Course'];
+					// si année différentes de l'année en cours
+					if ($DateResult['year']<> $ANNEE_COURSE)
+					{
+						$count = $count +1 ;
+					
+						?>
+						<span class="dot" style="background: #BCDDFD;margin:10px;margin-left:50px;margin-right:50px; " ><?
+						// Multi étape 
+						if (intval($valResult['nbr_etape'])>1)
+						{
+							if ($DateResult['year']> 2022)
+							{
+								
+								?>
+								<a href="<? echo "Resultat2023.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 24px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+								<?
+							}
+							else   if ($DateResult['year']> 2021)
+							{
+								
+								?>
+								<a href="<? echo "ResultatV4.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 24px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+								<?
+							}
+							else
+							{
+								?>
+								<a href="<? echo "informati	ons.php?&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 24px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
+									<?
+							}
+						}
+						// Selon l'année affichage des résultats
+						else if ($DateResult['year']> 2021)
+						{
+							
+							?>
+							<a href="<? echo "Resultat2023.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 24px;margin:5px;color: black;"><?	echo $DateResult['year'];?></a>
+							<?
+						}
+						else
+						{
+							?>
+							<a href="<? echo "ResultatV3.php?Etape=0&NbrEtape=".$valResult['nbr_etape']."&DateCourse=".$valResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 24px;margin:5px;color: black;"><?	echo  $DateResult['year'];?></a>
+								<?
+						}
+						?>
+						</span><?
+					}
+					?>
+					</td><?
+					// Changement de ligne
+					if ($count > 4 )
+					{
+						$count  = 0;
+						?>
+						</tr>
+						<tr><?
+					}
+		}?>
+		</tr>
+	</table>
+</div>
 <?php
-		}
-
+}
 ?>
 
 
@@ -582,7 +608,6 @@ function funAddSvg(IDSVG, FileName, ColimgEtapePara)
 	divMap = document.createElement('div');
 	divMap.style.height ="300px";
 	divMap.setAttribute("id", IDSVG+"my_osm_widget_map");
-
 
 	// Ajout élément graphique
 	td1.append(divMap);
@@ -797,7 +822,7 @@ function funCreateDrawerMap(IDSVG, FileName)
 	var mymap = L.map(IDSVG+'my_osm_widget_map', { /* use the same name as your <div id=""> */
 /*	center: [point.Lat, point.Lon],  /*set GPS Coordinates*/
 	center: [MedLat, MedLon], 
-	zoom: 14, /* define the zoom level */
+	zoom: 15, /* define the zoom level */
 	zoomControl: true, /* false = no zoom control buttons displayed */
 	scrollWheelZoom: false /* false = scrolling zoom on the map is locked */
 	});
@@ -1191,8 +1216,15 @@ foreach ($files1  as $key => $Parcours)
 			
 				Parcours.image= <?php echo json_encode($pathFileImageParcours); ?>;
 			<?
+			}
+			// GPX du parcours
+			$pathFileImageParcours = $pathfolderParcours.'/parcours.xml';
+			if (file_exists($pathFileImageParcours))
+			{?>
+			
+				Parcours.GPX= <?php echo json_encode($pathFileImageParcours); ?>;
+			<?
 			}?>
-
 			Parcours.info =  readJSON(<?php echo json_encode($pathfolderParcours); ?>+"/info.json");
 			// Ajout d'un tableau de départ au parcours
 			var ArrayDepart = [];
@@ -1344,9 +1376,11 @@ for (var i = 0; i < ArrayParcours.length; i++)
 
         ColIcone = document.createElement('td');
         ColIcone.style.textAlign ='center';
+		ColIcone.style.background = '#3D6CA4';
         Icone = document.createElement('a');
         Icone.style.fontSize="30px" ;
-		Icone.innerHTML = '<i class="fa fa-flag"></i>';
+		Icone.setAttribute('href', "#div"+ParcoursObj.nom);
+		Icone.innerHTML = "<img src='/Icones/IconeDepartBlanc.png'  style='width:30px;margin:5px;'/>";
 	
         ColIcone.append(Icone);
         LineProgramme.append(ColIcone);
@@ -1362,7 +1396,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		ColMenu = document.createElement('td');
 	
 		ParcoursMenu = document.createElement('a');
-		ParcoursMenu.innerHTML = DepartObj.Nom;
+		ParcoursMenu.innerHTML = DepartObj.info.Nom._Value;
         ParcoursMenu.style.marginLeft = "10px";
 		ParcoursMenu.style.width = "80%";
 
@@ -1395,29 +1429,55 @@ for (var i = 0; i < ArrayParcours.length; i++)
 	if (ParcoursObj.nom.length > 0 &&  ArrayParcours.length>1)// && ParcoursObj.ArrayDepart.length> 1) Correction graphique
 	{
 	
-		NomParcoursPara.textContent = "Parcours : " +ParcoursObj.nom;
+		NomParcoursPara.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeParcoursBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+ParcoursObj.info.Nom._Value +"</td></tr></table>"
 		NomParcoursPara.className += "titleParcours";
 	}
 
 	ParcoursPara.append(NomParcoursPara);
 
+// Image propre au parcours (Valable pour 1 etape )
 	if ( ParcoursObj.image != null && ParcoursObj.image.length > 0)
-		{
+	{
+			let ImageParcours = document.createElement('img');
+			ImageParcours.src =  ParcoursObj.image;
+			ImageParcours.className += "imgCenter";
+			ImageParcours.style.width = "80%";
+			ImageParcours.style.margin = "20px";
+			ImageParcours.style.marginLeft= "auto";
+			ImageParcours.style.marginRight= "auto";
+			ImageParcours.style.maxWidth = "600px";
+			ImageParcours.style.borderRadius =  "10px";
+			ImageParcours.style.textAlign  ="center";
+			ParcoursPara.append(ImageParcours);
+	}
 
-				let ImageParcours = document.createElement('img');
-				ImageParcours.src =  ParcoursObj.image;
-				ImageParcours.className += "imgCenter";
-				ImageParcours.style.width = "80%";
-				ImageParcours.style.margin = "20px";
-				ImageParcours.style.marginLeft= "auto";
-				ImageParcours.style.marginRight= "auto";
-				ImageParcours.style.maxWidth = "600px";
-				ImageParcours.style.borderRadius =  "10px";
-				ImageParcours.style.textAlign  ="center";
-				ParcoursPara.append(ImageParcours);
+	// Image propre au parcours (Valable pour 1 etape )
+	if ( ParcoursObj.GPX != null && ParcoursObj.GPX.length > 0)
+	{
 
-		}
+		let TableGpxParcours =	document.createElement('table');
+		let RowsTableEtape1 =	document.createElement('tr');
+		let ColimgEtapePara1 =	document.createElement('td');
+		let DivimgEtapePara =	document.createElement('div');
 
+		ColimgEtapePara1.width = "80%";
+		ColimgEtapePara1.append(DivimgEtapePara);
+		RowsTableEtape1.append(ColimgEtapePara1);
+		TableGpxParcours.append(RowsTableEtape1);
+			
+		console.log("Parcours");
+		console.log(ParcoursObj);
+		funAddSvg(ParcoursObj.nom, ParcoursObj.GPX, DivimgEtapePara);
+
+		TableGpxParcours.style.width = "80%";
+		TableGpxParcours.style.margin = "20px";
+		TableGpxParcours.style.marginLeft= "auto";
+		TableGpxParcours.style.marginRight= "auto";
+		TableGpxParcours.style.maxWidth = "600px";
+		TableGpxParcours.style.borderRadius =  "10px";
+		TableGpxParcours.style.textAlign  ="center";
+		ParcoursPara.append(TableGpxParcours);
+	}
 	// ************************Pour chaque départ ***********************
 	for (var h = 0; h < ParcoursObj.ArrayDepart.length; h++)
 	{
@@ -1429,44 +1489,40 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		// Créer un Div par Depart
 		let  DepartPara = document.createElement('div');
 		DepartPara.style.background =  "#BCDDFD";
-		DepartPara.style.padding = "10px";
-		DepartPara.style.paddingTop = "2px";
 		DepartPara.style.margin = "20px";
 		DepartPara.style.borderRadius = "10px";
 
+		// Title
 		let NomStartPara =	document.createElement('p');	
-		NomStartPara.className += "title";
+		NomStartPara.className += "titleParcours";
 		NomStartPara.style.margin = "0px";
+		NomStartPara.style.padding = "0px";
 
-		// Titre du départ 
-		if (DepartObj.Nom.length > 0 && ParcoursObj.ArrayDepart.length > 1)
-		{
-			let TableTitleDepart = document.createElement('table');	
+		let TableTitleDepart = document.createElement('table');	
 			TableTitleDepart.style.width = "100%";
-			TableTitleDepart.style.margin = "5px";
-			TableTitleDepart.style.marginTop = "0px";
-			TableTitleDepart.style.marginBottom = "20px";
-			TableTitleDepart.style.padding = "5px";
-			TableTitleDepart.style.background  = "#58b8e7";
 			TableTitleDepart.style.color  = "black";
 			TableTitleDepart.style.borderRadius  = "10px";
+
 			let RowsTitleDepart = document.createElement('tr');
 			let ColumnTitleDepart = document.createElement('td');
 				
+			NomDepart = "";
 			RowsTitleDepart.append(ColumnTitleDepart);
-			ColumnTitleDepart.innerHTML = "<i class='fa fa-flag'></i> "+" "+ DepartObj.Nom;
+			if (DepartObj.info.Nom._Value != ParcoursObj.info.Nom._Value )
+			{
+				NomDepart = DepartObj.info.Nom._Value ;
+			}
+			ColumnTitleDepart.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeDepartBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+
+			
+			NomDepart+"</td></tr></table>"
+		
+		//	ColumnTitleDepart.innerHTML = "<i class='fa fa-flag'></i> "+" "+ DepartObj.Nom;
 			RowsTitleDepart.append(ColumnTitleDepart);
 			TableTitleDepart.append(RowsTitleDepart);
 
 			NomStartPara.append(TableTitleDepart);
-		}
-		
-
-		// descriptif du départ
-		let TableTitleDepart = document.createElement('table');	
-			TableTitleDepart.style.width = "100%";
-			TableTitleDepart.style.marginTop = "0px";
-			let RowsTitleDepart = document.createElement('tr');
+	
+	
 
 		// SI le départ contient 1 étape on va reprendre sont heure de départ
 		if (DepartObj.ArrayEtape.length == 1 )
@@ -1512,20 +1568,111 @@ for (var i = 0; i < ArrayParcours.length; i++)
 			}
 			RowsTitleDepart.append(ColTitleEtape);
 		}
-
-		if(DepartObj.info.ListCategorie != null && DepartObj.info.ListCategorie.ListItem.length==1)
+		// Affichage information départ
+		if(DepartObj.info.ListCategorie != null )
 		{
-			Categorie = DepartObj.info.ListCategorie.ListItem[0];
+			// Si une seul catégorie
+			if (DepartObj.info.ListCategorie.ListItem.length==1)
+			{
+				Categorie = DepartObj.info.ListCategorie.ListItem[0];
+				SexeCat = Categorie.SexeCategorie._Value ;
+				
+					
+				if (Categorie.debutAnneeInternet._Value.length > 0)
+				{
+					AnneeDebutCat = Categorie.debutAnneeInternet._Value;
+				}
+				else
+				{
+					AnneeDebutCat =Categorie.debutAnnee._Value ;	
+				}
+
+				
+				if (Categorie.finAnneeInternet._Value.length > 0)
+				{
+					AnneeFinCat =  Categorie.finAnneeInternet._Value;
+				}
+				else
+				{
+					AnneeFinCat=  Categorie.finAnnee._Value;	
+				}
+
+			}
+			else // Si plusieurs categorie 
+			{
+				SexeCat = "";
+				// Valeur par défault
+				AnneeDebutCat = new Date().getFullYear();
+				AnneeFinCat = 0;
+				for (var j = 0; j < DepartObj.info.ListCategorie.ListItem.length; j++)
+				{
+					// Regarde si le départ est mixte
+					if (DepartObj.info.ListCategorie.ListItem[j].SexeCategorie._Value  == "H")
+					{
+						if (SexeCat == "")
+						{
+							SexeCat = "H";
+						}
+						else if (SexeCat == "D")
+						{
+							SexeCat = "M";
+						}
+					}
+					if (DepartObj.info.ListCategorie.ListItem[j].SexeCategorie._Value  == "D")
+					{
+						if (SexeCat == "")
+						{
+							SexeCat = "D";
+						}
+						else if (SexeCat == "H")
+						{
+							SexeCat = "M";
+						}
+					}
+
+					// SI l'année noter sur internet ne correspond pas a l'année noté afin de "tricher" les catégories sans le noter
+					if (DepartObj.info.ListCategorie.ListItem[j].debutAnneeInternet._Value.length > 0)
+					{
+						if ( DepartObj.info.ListCategorie.ListItem[j].debutAnneeInternet._Value < AnneeDebutCat)
+						{
+							AnneeDebutCat  = DepartObj.nfo.ListCategorie.ListItem[j].debutAnneeInternet._Value ;
+						}
+					}
+					else
+					{
+						if ( DepartObj.info.ListCategorie.ListItem[j].debutAnnee._Value < AnneeDebutCat)
+						{
+							AnneeDebutCat  = DepartObj.info.ListCategorie.ListItem[j].debutAnnee._Value ;
+						}
+					}
+		
+					// SI l'année noter sur internet ne correspond pas a l'année noté afin de "tricher" les catégories sans le noter
+					if (DepartObj.info.ListCategorie.ListItem[j].finAnneeInternet._Value.length > 0)
+					{
+						if ( DepartObj.info.ListCategorie.ListItem[j].finAnneeInternet._Value > AnneeFinCat)
+						{
+							AnneeFinCat  = DepartObj.info.ListCategorie.ListItem[j].finAnneeInternet._Value ;
+						}
+					}
+					else
+					{
+						if ( DepartObj.info.ListCategorie.ListItem[j].finAnnee._Value > AnneeFinCat)
+						{
+							AnneeFinCat  = DepartObj.info.ListCategorie.ListItem[j].finAnnee._Value ;
+						}
+					}
+				}
+			}
 			// Sexe
 			ColumnTitleDepart = document.createElement('td');
 			ColumnTitleDepart.style.width = "5%";
 
-			if (Categorie.SexeCategorie._Value =="H")
+			if ( SexeCat=="H")
 			{
 				ColumnTitleDepart.style.fontSize ="25px";
 				ColumnTitleDepart.innerHTML = '<i class="fa fa-male" ></i>';
 			}
-			else if (Categorie.SexeCategorie._Value  =="D")
+			else if (SexeCat =="D")
 			{
 				ColumnTitleDepart.style.fontSize ="25px";
 				ColumnTitleDepart.innerHTML = '<i class="fa fa-female" ></i>' ;
@@ -1535,20 +1682,17 @@ for (var i = 0; i < ArrayParcours.length; i++)
 				ColumnTitleDepart.style.fontSize ="25px";
 				ColumnTitleDepart.innerHTML ='<i class="fa fa-female" >' + '<i class="fa fa-male" ></i>' ;
 			}
+
+			
 			RowsTitleDepart.append(ColumnTitleDepart);
 
 			ColumnTitleDepart = document.createElement('td');
 			ColumnTitleDepart.style.width = "25%";
 			// AnneeStart
 
-			if (Categorie.debutAnneeInternet._Value.length > 0)
-			{
-			ColumnTitleDepart.innerHTML = Categorie.debutAnneeInternet._Value+ " - " + Categorie.finAnneeInternet._Value;
-			}
-			else
-			{
-				ColumnTitleDepart.innerHTML =Categorie.debutAnnee._Value+ " - " + Categorie.finAnnee._Value;	
-			}
+			
+			ColumnTitleDepart.innerHTML =AnneeDebutCat+ " - " + AnneeFinCat;	
+			
 
 			ColumnTitleDepart.style.borderBottom ="0px";
 			RowsTitleDepart.append(ColumnTitleDepart);
@@ -1989,24 +2133,36 @@ for (var i = 0; i < ArrayParcours.length; i++)
 	// ************* ARRAY TARIFS ************************
 	if (ParcoursObj.info.ListTariffZone != null && ParcoursObj.info.ListTariffZone.ListItem.length > 0 )
 	{
+		// Créer un Div Traif
+		let  DivTarifPara = document.createElement('div');
+		DivTarifPara.style.background =  "#BCDDFD";
+		DivTarifPara.style.margin = "20px";
+		DivTarifPara.style.borderRadius = "10px";
+	
+	
 		//***************** Titre de la zone de tarif ****************
 		let ZoneTaifStartPara =	document.createElement('p');	
-		ZoneTaifStartPara.className += "title";
-		ZoneTaifStartPara.style.background = "rgba(36, 174,232, 0.25)";
-		ZoneTaifStartPara.textContent = "Tarifs du parcours :  " + ParcoursObj.nom;
-		ParcoursPara.append(ZoneTaifStartPara);
+		ZoneTaifStartPara.style.padding = "0px"
+		ZoneTaifStartPara.className += "titleParcours";
+		ZoneTaifStartPara.style.margin = "0px";
+		ZoneTaifStartPara.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeMoneyBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+
+			
+		ParcoursObj.info.Nom._Value+"</td></tr></table>"
+
+		DivTarifPara.append(ZoneTaifStartPara);
+		ParcoursPara.append(DivTarifPara);
 	
 		var	ZoneTarifsObj =  new Object();
 		ZoneTarifsObj = ParcoursObj.info.ListTariffZone.ListItem[0];
 		let TableZoneTarif = document.createElement('table');			
 		TableZoneTarif.id = "TableauCat";
-		TableZoneTarif.width = "100%";
+		TableZoneTarif.style.margin = "auto";
+		TableZoneTarif.style.width = "90%";
 
-			let RowsTableTarif =	document.createElement('tr');
-	let HeaderTableTarif =	document.createElement('th');
+		let RowsTableTarif =	document.createElement('tr');
+		let HeaderTableTarif =	document.createElement('th');
 	
-		if (ZoneTarifsObj.Nom != null && ZoneTarifsObj.Nom._Value.length > 0)
-		{
+	
 			HeaderTableTarif.textContent = "Type de paiement";
 			RowsTableTarif.append(HeaderTableTarif);
 		
@@ -2032,7 +2188,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 					}
 				}
 			}
-		}
+		
 		//*********** CONTENU DU TABLEAU TARIFS****************************
 			
 		for (var p= 0; p < ParcoursObj.info.ListTariffZone.ListItem.length; p++)
@@ -2088,7 +2244,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 			TableZoneTarif.append(RowsTableTarif);
 		
 		}
-		ParcoursPara.append(TableZoneTarif);
+		DivTarifPara.append(TableZoneTarif);
 	}
 		newDiv.append(ParcoursPara);
 		//	ParcoursPara.append(TableCat);
@@ -2105,28 +2261,35 @@ b.append(newDiv);
 
 for (var i = 0; i < ArrayParcours.length; i++) 
 {
-	for (var h = 0; h < ArrayParcours[i].ArrayDepart.length; h++)
+	if (ArrayParcours[i].GPX != null && ArrayParcours[i].GPX.length > 0)
 	{
-		if ( ArrayParcours[i].ArrayDepart[h].ArrayEtape!= null)
+		funCreateDrawerMap(ArrayParcours[i].nom , ArrayParcours[i].GPX);
+	}
+	else
+	{
+		for (var h = 0; h < ArrayParcours[i].ArrayDepart.length; h++)
 		{
-			for (var j = 0; j < ArrayParcours[i].ArrayDepart[h].ArrayEtape.length; j++)
+			if ( ArrayParcours[i].ArrayDepart[h].ArrayEtape!= null)
 			{
-				if ( ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX != null && ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX.length > 0)
+				for (var j = 0; j < ArrayParcours[i].ArrayDepart[h].ArrayEtape.length; j++)
 				{
-				
-					funCreateDrawerMap(ArrayParcours[i].ArrayDepart[h].Nom +  ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].Nom, ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX);
-				}
-			}
-			if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline != null)
-			{
-				for (var z = 0; z < ArrayParcours[i].ArrayDepart[h].ArrayDiscipline.ListItem.length; z++)
-				{
-					if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX.length > 0)
+					if ( ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX != null && ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX.length > 0)
 					{
-						funCreateDrawerMap("Disc" +(z +1)+ArrayParcours[i].ArrayDepart[h].Nom, ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX);
+					
+						funCreateDrawerMap(ArrayParcours[i].ArrayDepart[h].Nom +  ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].Nom, ArrayParcours[i].ArrayDepart[h].ArrayEtape[j].GPX);
 					}
 				}
-			}
+				if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline != null)
+				{
+					for (var z = 0; z < ArrayParcours[i].ArrayDepart[h].ArrayDiscipline.ListItem.length; z++)
+					{
+						if ( ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX.length > 0)
+						{
+							funCreateDrawerMap("Disc" +(z +1)+ArrayParcours[i].ArrayDepart[h].Nom, ArrayParcours[i].ArrayDepart[h].ArrayDiscipline[z].GPX);
+						}
+					}
+				}
+			}	
 		}
 	}
 }

@@ -95,7 +95,7 @@ function SearchCoureur() {
 	RowHeader.append(ColHeader);
 
 	FormValue = document.getElementById("FormListCoureur");
-	FormValue.action="ReadInscriptionMysql.php"
+	FormValue.action="ReadInscriptionMysqlAdministrator.php"
 
 	console.log(FormValue);
 
@@ -154,7 +154,7 @@ function SearchCoureur() {
                         col1.style.background = "Orange";
                     }
                     
-					col1.innerHTML = Coureur.sexe;
+					col1.innerHTML = Coureur.Payer;
 					RowsCoureur.append(col1);
 			
 					col1 = document.createElement('td');
@@ -181,14 +181,6 @@ function SearchCoureur() {
 					col1.addEventListener("click", function() { SelectCoureur(this.dataset.value); } );
 					RowsCoureur.append(col1);
 
-					
-					col1 = document.createElement('td');
-					col1.style.color = "black";
-					col1.style.fontSize = "12px";
-					col1.dataset.value = Coureur.ID ;
-					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-trash"></i> 	';
-					col1.addEventListener("click", function() { DeleteCoureur(this.dataset.value); } );
-					RowsCoureur.append(col1);
 
 				
 		

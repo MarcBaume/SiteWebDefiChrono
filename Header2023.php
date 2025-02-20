@@ -1,4 +1,5 @@
 <?php $today = date("Y-m-d H:i:s"); 
+ini_set('session.save_path', 'tmp');
 date_default_timezone_set('Europe/Paris');
   session_start();
 // --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()

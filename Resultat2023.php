@@ -621,7 +621,7 @@ if ($Depart != null)
 		<?php
 		 $chemin= $pathfolder."//Etape". $Etape."//images/Etape.xml";
 
-		if (file_exists($chemin) && false) {
+		if (file_exists($chemin)) {
 		?>
 		    mapSvg('Test', PathFolder +"//Etape"+ PathEtape+ "//images/Etape.xml", DivimgEtapePara);
             <?
@@ -2278,10 +2278,10 @@ if ($Depart != null)
 				
 
 					// afin de mettre le texte au mileux du texte on va calculer le mileux selon la catégorie
-					// TOdo
-					var DistanceEntreChaquePoint = (Parcours.info.ListLivePointDePassage[i].Distance -Parcours.info.ListLivePointDePassage[i-1].Distance) /2;
 
-					AddTextCoureurRestantPointDePassage(parseFloat(DistanceEntreChaquePoint) + parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance),  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length);	
+					var DistanceEndPoint = (Parcours.info.ListLivePointDePassage[i].Distance ) ;
+
+					AddTextCoureurRestantPointDePassage( parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance), parseFloat(DistanceEndPoint) ,  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length);	
 
 
 				}
@@ -2297,140 +2297,196 @@ if ($Depart != null)
 		var posXMin = 100000000000000;
 		var posYMax = -100000000000000;
 		var posYMin = 100000000000000;
-		/***** FUNCTION AJOUT DE POINT SUR LES DESSINS ****/
-		function AddPoint(LastPoint, Point  , GraphiqueSVG, xStart, xFinish)
+	/***** FUNCTION AJOUT DE POINT SUR LES DESSINS ****/
+	function AddPoint(LastPoint, Point  , GraphiqueSVG, xStart, xFinish)
+	{
+		// Position de la ligne déniveller 
+		posX1 = TransformDistanceEnPxl(LastPoint.KM) + DecalageStartWidth;
+		posY1 =	TransformElevationEnPxl(LastPoint.elevation) + DecalageStartHeight;
+		posX2 =	TransformDistanceEnPxl(Point.KM) + DecalageStartWidth;
+		Posy2 =	TransformElevationEnPxl(Point.elevation) + DecalageStartHeight;
+		
+
+		/****** AJOUT LIGNE DU GRAPHIQUE ELEVATION****/
+		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
+
+		// POsition Maximal et minimum
+		if (posX1 > posXMax)
 		{
-			// Position de la ligne déniveller 
-			posX1 = TransformDistanceEnPxl(LastPoint.KM) + DecalageStartWidth;
-			posY1 =	TransformElevationEnPxl(LastPoint.elevation) + DecalageStartHeight;
-			posX2 =	TransformDistanceEnPxl(Point.KM) + DecalageStartWidth;
-			Posy2 =	TransformElevationEnPxl(Point.elevation) + DecalageStartHeight;
-			
-
-			/****** AJOUT LIGNE DU GRAPHIQUE ELEVATION****/
-			var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
-
-			// POsition Maximal et minimum
-			if (posX1 > posXMax)
-			{
-				posXMax = posX1;
-			}
-			if (posX1 < posXMin)
-			{
-				posXMin = posX1;
-			}
-
-			if (posY1 > posYMax)
-			{
-				posYMax = posY1;
-			}
-			if (posY1 < posYMin)
-			{
-				posYMin = posY1;
-			}
-
-			maLigne1.setAttribute('id', 'LineElevation'+ Point.index );
-			maLigne1.setAttribute('x1', posX1+ 'px');
-			maLigne1.setAttribute('y1', posY1 + 'px');
-			maLigne1.setAttribute('x2', posX2 +'px');
-			maLigne1.setAttribute('y2', Posy2 +'px');
-			maLigne1.setAttribute('stroke','#2680fb');
-			maLigne1.setAttribute('stroke-width',3);
-			maLigne1.setAttribute('stroke-linecap','round');
-			
-			GraphiqueSVG.appendChild(maLigne1);
-
-			/* Evénement ligne elevation */
-			document.getElementById('LineElevation'+ Point.index).addEventListener('click', function(e) 
-			{
-				e.currentTarget.setAttribute('stroke', '#ff00cc');
-				e.currentTarget.setAttribute('stroke-width', 10);
-				document.getElementById("Lat").value = LastPoint.Lat ;
-				document.getElementById("Len").value = LastPoint.Lon;
-				document.getElementById("ele").value = LastPoint.elevation;
-				document.getElementById("dist").value = LastPoint.KM;
-			});
-			
-			
+			posXMax = posX1;
 		}
-	
-		/** FUNCTION DESSINER LA LIGNE DE DISTANCE *************/
-		function AddLigneVertical( value, GraphiqueSVG )
+		if (posX1 < posXMin)
 		{
-				
-			var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
+			posXMin = posX1;
+		}
+
+		if (posY1 > posYMax)
+		{
+			posYMax = posY1;
+		}
+		if (posY1 < posYMin)
+		{
+			posYMin = posY1;
+		}
+
+		maLigne1.setAttribute('id', 'LineElevation'+ Point.index );
+		maLigne1.setAttribute('x1', posX1+ 'px');
+		maLigne1.setAttribute('y1', posY1 + 'px');
+		maLigne1.setAttribute('x2', posX2 +'px');
+		maLigne1.setAttribute('y2', Posy2 +'px');
+		maLigne1.setAttribute('stroke','#2680fb');
+		maLigne1.setAttribute('stroke-width',3);
+		maLigne1.setAttribute('stroke-linecap','round');
+		
+		GraphiqueSVG.appendChild(maLigne1);
+
+		/* Evénement ligne elevation */
+		document.getElementById('LineElevation'+ Point.index).addEventListener('click', function(e) 
+		{
+			e.currentTarget.setAttribute('stroke', '#ff00cc');
+			e.currentTarget.setAttribute('stroke-width', 10);
+			document.getElementById("Lat").value = LastPoint.Lat ;
+			document.getElementById("Len").value = LastPoint.Lon;
+			document.getElementById("ele").value = LastPoint.elevation;
+			document.getElementById("dist").value = LastPoint.KM;
+		});
+		
+		
+	}
+
+	/** FUNCTION DESSINER LA LIGNE DE DISTANCE *************/
+	function AddLigneVertical( value, GraphiqueSVG )
+	{
+			
+		var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
+		/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
+		var HeightLine = Height + DecalageStartHeight;
+		var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
+		newText.setAttributeNS(null,"x", (DistancenPxl -10) +'px');     
+		newText.setAttributeNS(null,"y", (HeightLine+20) +'px'); 
+		newText.setAttributeNS(null,"font-size","12");
+		
+		var textNode = document.createTextNode(Math.round(value));
+		newText.appendChild(textNode);
+		GraphiqueSVG.appendChild(newText);
+
+
+		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
+		maLigne1.setAttribute('x1', DistancenPxl + 'px');
+		maLigne1.setAttribute('y1', (HeightLine -10) + 'px');
+		maLigne1.setAttribute('x2', DistancenPxl + 'px');
+		maLigne1.setAttribute('y2',  (HeightLine+10) +'px');
+		maLigne1.setAttribute('stroke','#000000');
+		maLigne1.setAttribute("style","opacity:0.2");
+		maLigne1.setAttribute('stroke-width',1);
+		maLigne1.setAttribute('stroke-linecap','round');
+		GraphiqueSVG.appendChild(maLigne1);
+	}
+
+	/** FUNCTION DESSINER LA LIGNE DE DISTANCE *************/
+	function AddLigneVerticalPointDePassage( value, GraphiqueSVG ,Text)
+	{
+		var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
+
 			/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
 			var HeightLine = Height + DecalageStartHeight;
-			var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
-			newText.setAttributeNS(null,"x", (DistancenPxl -10) +'px');     
-			newText.setAttributeNS(null,"y", (HeightLine+20) +'px'); 
-			newText.setAttributeNS(null,"font-size","12");
-			
-			var textNode = document.createTextNode(Math.round(value));
-			newText.appendChild(textNode);
-			GraphiqueSVG.appendChild(newText);
-
-
-			var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
-			maLigne1.setAttribute('x1', DistancenPxl + 'px');
-			maLigne1.setAttribute('y1', (HeightLine -10) + 'px');
-			maLigne1.setAttribute('x2', DistancenPxl + 'px');
-			maLigne1.setAttribute('y2',  (HeightLine+10) +'px');
-			maLigne1.setAttribute('stroke','#000000');
-			maLigne1.setAttribute("style","opacity:0.2");
-			maLigne1.setAttribute('stroke-width',1);
-			maLigne1.setAttribute('stroke-linecap','round');
-			GraphiqueSVG.appendChild(maLigne1);
-		}
-
-		/** FUNCTION DESSINER LA LIGNE DE DISTANCE *************/
-		function AddLigneVerticalPointDePassage( value, GraphiqueSVG ,Text)
-		{
-			var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
-
-				/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
-				var HeightLine = Height + DecalageStartHeight;
-			var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
-			newText.setAttributeNS(null,"x", (DistancenPxl-20 ) +'px');     
-			newText.setAttributeNS(null,"y", (Height-100) +'px'); 
-			newText.setAttributeNS(null,"font-size","12");
-			
-			var textNode = document.createTextNode(Text);
-			newText.appendChild(textNode);
-			GraphiqueSVG.appendChild(newText);
+		var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
+		newText.setAttributeNS(null,"x", (DistancenPxl-20 ) +'px');     
+		newText.setAttributeNS(null,"y", (Height-100) +'px'); 
+		newText.setAttributeNS(null,"font-size","12");
 		
-			var HeightLine = Height + DecalageStartHeight;
-			var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
-			maLigne1.setAttribute('x1', DistancenPxl + 'px');
-			maLigne1.setAttribute('y1', (HeightLine) + 'px');
-			maLigne1.setAttribute('x2', DistancenPxl + 'px');
-			maLigne1.setAttribute('y2',  (Height -90) +'px');
-			maLigne1.setAttribute('stroke','#000000');
-			maLigne1.setAttribute("style","opacity:1");
-			maLigne1.setAttribute('stroke-width',1);
-			maLigne1.setAttribute('stroke-linecap','round');
-			GraphiqueSVG.appendChild(maLigne1);
+		var textNode = document.createTextNode(Text);
+		newText.appendChild(textNode);
+		GraphiqueSVG.appendChild(newText);
+	
+		var HeightLine = Height + DecalageStartHeight;
+		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
+		maLigne1.setAttribute('x1', DistancenPxl + 'px');
+		maLigne1.setAttribute('y1', (HeightLine) + 'px');
+		maLigne1.setAttribute('x2', DistancenPxl + 'px');
+		maLigne1.setAttribute('y2',  (Height -90) +'px');
+		maLigne1.setAttribute('stroke','#000000');
+		maLigne1.setAttribute("style","opacity:1");
+		maLigne1.setAttribute('stroke-width',1);
+		maLigne1.setAttribute('stroke-linecap','round');
+		GraphiqueSVG.appendChild(maLigne1);
 
-		}
+	}
 
-		// Ajout texte entre chaque point passage
-		function AddTextCoureurRestantPointDePassage( value, GraphiqueSVG ,Text)
+	// Ajout texte entre chaque point passage
+	function AddTextCoureurRestantPointDePassage( valueStart, valueEnd, GraphiqueSVG ,Text)
+	{
+		if (Text > 0)
 		{
-			var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
-			console.log(DistancenPxl);
+			console.log("funAddTextCoureurRestantPointDePassage");
+
+			var StartPxl = TransformDistanceEnPxl(valueStart) + DecalageStartWidth;
+			var EndPxl = TransformDistanceEnPxl(valueEnd) + DecalageStartWidth;
+			console.log(StartPxl);
+			console.log(EndPxl);
+			
 			var HeightLine = Height + DecalageStartHeight;
 			var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
-            if (DistancenPxl.length >0)
-            {
-			newText.setAttributeNS(null,"x", (DistancenPxl-20 ) +'px');     
-			newText.setAttributeNS(null,"y", (Height-100) +'px'); 
-			newText.setAttributeNS(null,"font-size","16");
-            }
-			var textNode = document.createTextNode(Text);
-			newText.appendChild(textNode);
-			GraphiqueSVG.appendChild(newText);
+
+			// 100 % des coureurs = Height-100;
+			// 
+			HeightPourCent =100 /( Parcours.info.ListLivePointDePassage[0].ListCoureursArrivee.length / Text)
+			console.log(HeightPourCent)
+			var Rectangle1 = document.createElementNS("http://www.w3.org/2000/svg",'rect');
+			Rectangle1.setAttribute('x', (StartPxl +10)+ 'px');
+			Rectangle1.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
+			Rectangle1.setAttribute('width', EndPxl - StartPxl-20+ 'px');
+			Rectangle1.setAttribute('height',  (HeightPourCent) +'px');
+			Rectangle1.setAttribute('fill','#3fbf9f');
+			Rectangle1.setAttribute("style","opacity:0.3");
+			Rectangle1.setAttribute('stroke-width',1);
+			Rectangle1.setAttribute('stroke-linecap','round');
+			GraphiqueSVG.appendChild(Rectangle1);
+
+			DistancenPxl = StartPxl + ((EndPxl -StartPxl) /2)
+
+			var RectangleText = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+			RectangleText.setAttribute('x', (DistancenPxl-15)+ 'px');
+			RectangleText.setAttribute('y', ((HeightLine - HeightPourCent)-40 )+'px');
+			RectangleText.setAttribute('width',  '30px');
+			RectangleText.setAttribute('height', '30px');
+			RectangleText.setAttribute('fill','#3fbf9f');
+			RectangleText.setAttribute("style", "background-color: red;");
+			RectangleText.setAttribute("style","opacity:1");
+			RectangleText.setAttribute('stroke-width',1);
+			RectangleText.setAttribute('stroke-linecap','round');
+			
+			var CircleSVG = document.createElementNS('http://www.w3.org/2000/svg', 'round');
+			CircleSVG.setAttribute('fill',"blue");
+			CircleSVG.setAttribute('x','0');
+			CircleSVG.setAttribute('y','0');
+			CircleSVG.setAttribute('rx','20px');
+			RectangleText.appendChild(CircleSVG);
+			var useSVG = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+		useSVG.setAttribute('href','Coureurs.png');
+		useSVG.setAttribute('x','0');
+		useSVG.setAttribute('y','0');
+
+		useSVG.setAttribute('width','30');
+		useSVG.setAttribute('height','30');
+
+		newText.setAttributeNS(null,"x", (DistancenPxl-13)+ 'px');    
+			newText.setAttributeNS(null,"y", ((HeightLine - HeightPourCent)-27)+'px');
+			newText.setAttributeNS(null,"font-size","12");
+			console.log(newText);
+			
 		
+			var textNode = document.createTextNode(Text);
+				newText.appendChild(textNode);
+
+		RectangleText.appendChild(useSVG);
+
+			
+				
+			GraphiqueSVG.appendChild(RectangleText);
+			GraphiqueSVG.appendChild(newText);
 		}
+	}
 
 	/** FUNCTION DESSINER LA LIGNE   ELEVATION D+ *************/
 	function AddLigneElevation( value, GraphiqueSVG )
@@ -2447,9 +2503,11 @@ if ($Depart != null)
 		newText.appendChild(textNode);
 		GraphiqueSVG.appendChild(newText);
 
+
+
 		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
 
-		maLigne1.setAttribute('x1',  (DecalageStartWidth - 10) +'px');
+		maLigne1.setAttribute('x1',  (DecalageStartWidth - 50) +'px');
 		maLigne1.setAttribute('y1', ELevationPxl+ 'px');
 		maLigne1.setAttribute('x2', (Width + DecalageStartWidth)+'px');
 		maLigne1.setAttribute('y2',  ELevationPxl +'px');

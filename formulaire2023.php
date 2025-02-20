@@ -404,6 +404,17 @@ else
 									
 									</tr>
 								</table>
+								<table id="RowEntreprise" style="visibility:hidden; display:none;">
+									<tr>
+										<td style ="width:50px;">
+											<input  type="radio" name="Equipe"  style="  height:30px;font-size:130%;" value="3"  >
+										</td>
+										<td style ="width:300px;">
+											<label  for="RowEntreprise">Je cours  avec mon entreprise</label>
+										</td>
+									
+									</tr>
+								</table>
 							</td>
 						</tr>
 					</table>
@@ -1679,6 +1690,9 @@ function ChoiceDepart(f)
 					document.getElementById("TableEquipe").style.visibility = "hidden" ;
 					document.getElementById("TableEquipe").style.display  = "none" ;
 						
+					document.getElementById("RowEntreprise").style.visibility = "hidden" ;
+					document.getElementById("RowEntreprise").style.display  = "none" ;
+
 					document.getElementById("RowDuo").style.visibility = "hidden" ;
 					document.getElementById("RowDuo").style.display  = "none" ;
 			
@@ -1835,6 +1849,8 @@ function ChoiceDepart(f)
 						{
 							document.getElementById("RowDuo").style.visibility = "visible" ;
 							document.getElementById("RowDuo").style.display  = "block" ;
+							document.getElementById("RowEntreprise").style.visibility = "visible" ;
+							document.getElementById("RowEntreprise").style.display  = "block" ;
 						}
 						if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 						{

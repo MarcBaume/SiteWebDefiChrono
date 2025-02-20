@@ -450,10 +450,12 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 <script type="text/javascript">
 
 
-		function ClickRows( )
+
+	function ClickRows( )
     {  
 
-		window.open('http://www.'+ <?php echo json_encode($Site ); ?> , '_blank');
+			window.open('http://www.'+ <?php echo json_encode($Site ); ?> , '_blank');
+		
 	}
 	function ClickRowsListe(elmnt )
     {  

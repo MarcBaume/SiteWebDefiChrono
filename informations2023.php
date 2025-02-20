@@ -161,7 +161,15 @@ if ($Nbr_etape < 2)
 					</center>
 				</td>
 				<td style= "background:#BCDDFD;padding:10px;">
-					<a target="_blank" href=<?php echo "http://www.". $val ["Site"] ?>><?php echo "www.". $val ["Site"] ?> </a>
+					<?
+					if(strpos($val ["Site"] , "http") >-1)
+					{?>
+						<a target="_blank" href=<?php echo $val ["Site"] ?>><?php echo $val ["Site"] ?> </a><?
+					}
+					else
+					{?>
+					<a target="_blank" href=<?php echo "http://www.". $val ["Site"] ?>><?php echo "www.". $val ["Site"] ?> </a><?
+					}?>
 				</td>
 			</tr>
 		</table>
@@ -1388,9 +1396,11 @@ for (var i = 0; i < ArrayParcours.length; i++)
         
         ColHoure = document.createElement('td');
         Hour = document.createElement('a');
+		console.log(DepartObj);
 		Hour.innerHTML = '<i class="fa fa-clock-o" ></i>    ' + DepartObj.ArrayEtape[0].info.HeureDepart._Value;
         Hour.style.marginLeft = "10px";
         ColHoure.append(Hour);
+		
         LineProgramme.append(ColHoure);
 
 		ColMenu = document.createElement('td');

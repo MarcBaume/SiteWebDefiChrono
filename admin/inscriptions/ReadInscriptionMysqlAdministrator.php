@@ -32,7 +32,7 @@ else
 			while($donnees = mysqli_fetch_assoc($result)) 
 			{
                     $i  = $i  + 1 ;
-                    if ($i > 20)
+                    if ($i > 50)
                     {
                          break;
                     }

@@ -9,6 +9,7 @@
 ______________________________________________________________________*/
 
 
+header('Content-Type: application/json');
 
     $login = $_REQUEST['Login'];
 
@@ -35,22 +36,57 @@ ______________________________________________________________________*/
     else
     {
 
-        $message = '<html>
+        $message = 
+        '<html>
         <head>
-        <title></title>
+        <title>Réinitialisation du mot de passe</title>
+        <style>
+    table, td, th {
+      border: 1px solid;
+      padding : 5px;
+    }
+    
+    table {
+      border-collapse: collapse;
+    }
+            
+        </style>
         </head>
-        <body>
-        Bonjour '.$login.'</br></br>
-        Veuillez suivre ce lien pour réinitialiser votre mot de passe </br></br>
-        <a style="color:blue" href="https://juradefichrono.ch/InitialisationPassword.php?Login='. $login.'&ID='.$OrderID.'">lien pour réinitialiser votre mot de passe</a>"
-        </body>
+      
+        <h2 style="background-color: #3D6CA4;padding : 10px ;color :#fff"  > Réinitialisation du mot de passe </h2>
+    
+        <p>Bonjour '.$login.'</p>
+    <p>
+         Utilise ce lien pour réinitialiser ton mot de passe </br></br></p>
+  <p>
+    <a href="https://defichrono.ch/InitialisationPassword.php?Login='. $login.'&ID='.$OrderID.'">Clique ici  </a>
+    </p>  
+    <p> Défi Chrono te souhaite d\'excellentes courses</p> </br></br>
+
+
+        <img style="width:200px;"src="https://defichrono.ch/images/LogoDefiChrono2023.png"></img>
         </html>';
+        
+     
+        $from = "webmaster@defichrono.ch";
+        $headers = array(
+            'From' => 'Défi chrono<info@defichrono.ch>',
+            'Reply-To' => 'Défi chrono<info@defichrono.ch>',
+            'Content-Type' => 'text/html; charset=utf-8'
+        );
 
-        $headers = "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $to = $login ;
+        $subject = "Réinitialisation de mot de passe";
 
-         mail($_REQUEST['Login'], 'mot de passe oublié',$message ,$headers);
+        if (  mail($to,$subject,$message, $headers))
 
-         print( 1); // New password 
+        {
+            print( 1); // New password 
+        }
+        else
+        {
+            print(2);
+        } 
 	 
     }
 

@@ -58,12 +58,55 @@ $login = $_POST["login"];
 
 	$result = mysqli_query($con,$sql);
 
-    mail($_POST['login'], 'Confirmation création de compte jura défi chrono',
-	"Bonjour ".$_POST['login']."\n".
-	"Vous pouvez dès à présent enregistrer vos coureurs en vous connectant sur la page d'accueil\n
-	Quand vos coureurs seront enregistrés, il est possible de les inscrire à la course que vous désirez\n \n 
-	Jura Défi chrono vous souhaite de bonnes courses à nos divers évènements." );
-	 
+	
+	$message = 
+	'<html>
+	<head>
+	<title>Nouveau compte défi chrono</title>
+	<style>
+table, td, th {
+  border: 1px solid;
+  padding : 5px;
+}
+
+table {
+  border-collapse: collapse;
+}
+		
+	</style>
+	</head>
+  
+	<h2 style="background-color: #3D6CA4;padding : 10px ;color :#fff"  > Création d\'un nouveau compte</h2>
+
+	<p>Bonjour '.$_POST['login'].'</p>
+<p>
+	Bienvenue dans l\'univers de défi chrono </br></br>
+	
+	Voici les avantages de la création de ce compte :</p>
+	<ul>
+  <li>Enregistrer ses athlètes pour facilier l\'inscription des prochaines courses</li>
+  <li>Voir la liste des résultats obtenus par vos coureurs</li>
+</ul>
+<p>
+</p>  
+<p> Défi Chrono te souhaite d\'excellentes courses</p> </br></br>
+
+
+	<img style="width:200px;"src="https://defichrono.ch/images/LogoDefiChrono2023.png"></img>
+	</html>';
+	
+ 
+	$from = "webmaster@defichrono.ch";
+	$headers = array(
+		'From' => 'Defi chrono<info@defichrono.ch>',
+		'Reply-To' => 'Defi chrono<info@defichrono.ch>',
+		'Content-Type' => 'text/html; charset=utf-8'
+	);
+
+	$to = $_POST['login'];
+	$subject = "Nouveau compte defi chrono";
+
+    mail($to,$subject,$message, $headers);
 	
 	session_start();
 

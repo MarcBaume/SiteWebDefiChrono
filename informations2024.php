@@ -218,7 +218,6 @@ if ($Nbr_etape < 2)
 						Les inscriptions en ligne sont ouvertes jusqu'au : 
 						<?php
 							echo strftime('%A %d %B %Y       %H:%M',strtotime($val ["DATE_END_INSCRIPTION"])) ;
-
 						?>
 
 						<?php 
@@ -233,14 +232,8 @@ if ($Nbr_etape < 2)
 						{
 						?>
 						Les inscriptions sur place sont aussi possibles mais peuvent entraîner une majoration de prix</br>
+
 						<?php	
-						}
-						
-						if ( strlen(  $val ["FichierInscription"])> 2)
-						{
-						?><br>
-						<? echo $val ["FichierInscription"]?></br>
-						<?php
 						}
 					}
 					if (! strlen($val ["InscriptionExtern"] ))
@@ -431,7 +424,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 1)
 						$count = $count +1 ;
 					
 						?>
-						<span class="dot" style="background: #BCDDFD;margin:10px;margin-left:50px;margin-right:50px; " ><?
+						<span class="dot" style="background: #BCDDFD;margin:10px;margin-left:50px;margin-right:50px; width:50%;" ><?
 						// Multi étape 
 						if (intval($valResult['nbr_etape'])>1)
 						{
@@ -613,18 +606,19 @@ function funAddSvg(IDSVG, FileName, ColimgEtapePara)
 
 	indexPassage = 1;
 	TableTotal = document.createElement('Table');
-	TableTotal.style.width ="80%";
+	TableTotal.style.width ="100%";
+	TableTotal.margin ="auto"
 	TableTotal.setAttribute("id", IDSVG+"ImageMap");
 
 	tr1 = document.createElement('Tr');
 	td1 = document.createElement('Td');
 	
-	
 	divMap = document.createElement('div');
 	divMap.style.height ="300px";
+	divMap.style.width ="100%";
 	divMap.setAttribute("id", IDSVG+"my_osm_widget_map");
 
-	// Ajout élément graphique
+	// Ajout élément carte
 	td1.append(divMap);
 	tr1.append(td1);
 	TableTotal.append(tr1);
@@ -633,26 +627,23 @@ function funAddSvg(IDSVG, FileName, ColimgEtapePara)
 	td2 = document.createElement('Td');
 	
 	// Grphique de denivellé
-	
 	divGraph = document.createElement('div');
-	divGraph.style.height ="300px";
 	divGraph.setAttribute("id", IDSVG+"conteneurSVG");
 	divGraph.style.height = (Height + (DecalageStartHeight*2))+'px';
 	divGraph.style.background = "lightblue";
-
 
 	// Ajout élément graphique
 	td2.append(divGraph);
 	tr2.append(td2);
 	TableTotal.append(tr2);
-	ColimgEtapePara.append(TableTotal);
 
-	
+	ColimgEtapePara.append(TableTotal);
 	console.log("Create element")
 	/*** ZONE DE DESSIN **/
  	var GraphiqueSVG = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-    GraphiqueSVG.style.width = (Width + (DecalageStartWidth*2) ) +'px';
-    GraphiqueSVG.style.height = (Height + (DecalageStartHeight*2))+'px';
+    GraphiqueSVG.style.width = '100%';
+    GraphiqueSVG.style.height =(Height + (DecalageStartHeight*2))+'px';
+	GraphiqueSVG.style.background ='red';
     GraphiqueSVG.id = IDSVG+'image1';
     divGraph.appendChild(GraphiqueSVG);
 
@@ -706,7 +697,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 			for (var j = 0; j < Trk.children.length; j++)
 			{
 				var TrkSeg = Trk.children[j];
-			//console.log(TrkSeg);
 				for (var m = 0; m < TrkSeg.children.length; m++)
 				{
 					// ** Modifier comparer a read gpx du tour du jura
@@ -723,7 +713,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 							ElevationMin = elevation;							
 						}
 						// ****** CALCUL ELEVATION MAX *******/
-						
 						if (parseFloat(elevation) > ElevationMax)
 						{
 							ElevationMax = elevation;
@@ -738,7 +727,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 						{
 							var KM =	distance(LastPoint.Lat , LastPoint.Lon,lat,lon);
 							point.elevation = elevation;
-							
 							TotalKM = TotalKM+ KM;
 							DiffElevation = 0;
 							DiffDiminution = 0;
@@ -768,8 +756,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 							point.Lon = lon;
 							point.KM = 0;
 							StartElevation = elevation;
-
-
 						}
 						// AJout du ponit au tableau
 						point.index = ArrayPoint.length;
@@ -805,7 +791,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 
 			FeneterElevation = (ElevationMax - ElevationMin);
 
-
 		/*	var TxtTotalKM = document.getElementById(IDSVG+"TotalKM");
 			TxtTotalKM.innerHTML  = (parseInt(TotalKM *10)/10) + ' km';
 			var TxtElevationMin = document.getElementById(IDSVG+"ElevationMin");
@@ -822,15 +807,13 @@ function funCreateDrawerMap(IDSVG, FileName)
 	LastPoint = null;
 	/*____________________________________________________________________________________________
 	*																															*
-		CREATION AFFICHAGE SELON LE TABLEAU DE POINT LU DANS LE FICHIER GPX 
-
+		CREATION CARTE SELON LE TABLEAU DE POINT LU DANS LE FICHIER GPX 
 	_____________________________________________________________________________________*/	
 	let MedLat = ((Number(latMax)- Number(latMin )) / 2)  ;
 	let MedLon = ((Number(lonMax) - Number(lonMin)) / 2);
 
 	MedLat = Number(MedLat)+ Number(latMin);
 	MedLon = Number(MedLon)+ Number(lonMin);
-	console.log(IDSVG+'my_osm_widget_map');
 	//**** CREATION DÙNE CARTE ****/
 	idMap = document.getElementById(IDSVG+'my_osm_widget_map');
 	idMap.textContent = '';
@@ -928,7 +911,6 @@ function AddPoint(LastPoint, Point ,mymap , GraphiqueSVG, xStart, xFinish)
 	posY1 =	TransformElevationEnPxl(LastPoint.elevation) + DecalageStartHeight;
 	posX2 =	TransformDistanceEnPxl(Point.KM) + DecalageStartWidth;
 	Posy2 =	TransformElevationEnPxl(Point.elevation) + DecalageStartHeight;
-	
 	
 	// AJOUT LIGNE ENTRE POINT PRECEDENT ET POINT SUIVANT  SUR LA CARTE
 	var polylinePoints = [
@@ -1034,8 +1016,7 @@ L.marker([Point.Lat -0.0005, Point.Lon-0.0005], {
  
 /** FUNCTION DESSINER LA LIGNE DE DISTANCE *************/
 function AddLigneVertical( value, GraphiqueSVG )
-{
-		
+{	
 	var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
 	/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
 	var HeightLine = Height + DecalageStartHeight;
@@ -1048,7 +1029,6 @@ function AddLigneVertical( value, GraphiqueSVG )
 	newText.appendChild(textNode);
 	GraphiqueSVG.appendChild(newText);
 
-
 	var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
     maLigne1.setAttribute('x1', DistancenPxl + 'px');
     maLigne1.setAttribute('y1', (HeightLine -10) + 'px');
@@ -1060,12 +1040,12 @@ function AddLigneVertical( value, GraphiqueSVG )
     maLigne1.setAttribute('stroke-linecap','round');
 	GraphiqueSVG.appendChild(maLigne1);
 }
+
 /** FUNCTION DESSINER LA LIGNE   ELEVATION D+ *************/
 function AddLigneElevation( value, GraphiqueSVG )
 {
-		
 	var ELevationPxl = TransformElevationEnPxl(value) + DecalageStartHeight;
-		/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
+	/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
 	var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
 	newText.setAttributeNS(null,"x",'10px');     
 	newText.setAttributeNS(null,"y",(ELevationPxl) +'px'); 
@@ -1090,106 +1070,6 @@ function AddLigneElevation( value, GraphiqueSVG )
 	GraphiqueSVG.appendChild(maLigne1);
 }
 
-function ReadFileCoordonee()
-{
-	var ArrayPassage = [];
-	var Table = document.getElementById("TablePointPassage");
-	const reader = new FileReader(); 
-
-    reader.onload = (event) => { 
-     const file = event.target.result; 
-     const allLines = file.split(/\r\n|\n/); 
-     // Reading line by line 
-     allLines.map((line) => { 
-	 
-  
-				Table.insertRow(0);
-				// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
-				var cell3 = row.insertCell(2);
-				// Add some text to the new cells:
-				cell1.innerHTML = Linesplit[0];
-				cell2.innerHTML = Linesplit[1];
-				cell3.innerHTML =Linesplit[2];	
-				var Passage= new Object();
-			var Linesplit =	line.split(";");
-					Passage.Nom= Linesplit[0];
-					Passage.Lat = Linesplit[1];
-					Passage.Lon = Linesplit[2];
-					ArrayPassage.push(Passage);
-     }); 
-    }; 
-
-    reader.onerror = (evt) => { 
-     alert(evt.target.error.name); 
-    }; 				
-
-}
-
-function copyStylesInline(destinationNode, sourceNode) {
-   var containerElements = ["svg","g"];
-   for (var cd = 0; cd < destinationNode.childNodes.length; cd++) {
-       var child = destinationNode.childNodes[cd];
-       if (containerElements.indexOf(child.tagName) != -1) {
-            copyStylesInline(child, sourceNode.childNodes[cd]);
-            continue;
-       }
-       var style = sourceNode.childNodes[cd].currentStyle || window.getComputedStyle(sourceNode.childNodes[cd]);
-       if (style == "undefined" || style == null) continue;
-       for (var st = 0; st < style.length; st++){
-            child.style.setProperty(style[st], style.getPropertyValue(style[st]));
-       }
-   }
-}
-
-function triggerDownload (imgURI, fileName) {
-  var evt = new MouseEvent("click", {
-    view: window,
-    bubbles: false,
-    cancelable: true
-  });
-  var a = document.createElement("a");
-  a.setAttribute("download", fileName);
-  a.setAttribute("href", imgURI);
-  a.setAttribute("target", '_blank');
-  a.dispatchEvent(evt);
-}
-
-function downloadSvg( ) {
-	var svg = document.getElementById("image1");
-	var fileName = "image1.png";
-  var copy = svg.cloneNode(true);
-  copyStylesInline(copy, svg);
-  var canvas = document.createElement("canvas");
-  var bbox = svg.getBBox();
-  canvas.width = bbox.width;
-  canvas.height = bbox.height;
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, bbox.width, bbox.height);
-  var data = (new XMLSerializer()).serializeToString(copy);
-  var DOMURL = window.URL || window.webkitURL || window;
-  var img = new Image();
-  var svgBlob = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
-  var url = DOMURL.createObjectURL(svgBlob);
-  img.onload = function () {
-    ctx.drawImage(img, 0, 0);
-    DOMURL.revokeObjectURL(url);
-    if (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob)
-    {
-        var blob = canvas.msToBlob();         
-        navigator.msSaveOrOpenBlob(blob, fileName);
-    } 
-    else {
-        var imgURI = canvas
-            .toDataURL("image/png")
-            .replace("image/png", "image/octet-stream");
-        triggerDownload(imgURI, fileName);
-    }
-    document.removeChild(canvas);
-  };
-  img.src = url;
-}
 
 </script> 
 
@@ -1310,7 +1190,7 @@ foreach ($files1  as $key => $Parcours)
 									{
 										$pathfileGraphEtape = "";
 									}
-									$pathfileGpxEtape = $pathFolderEtape.'/images/Etape.xml';
+									$pathfileGpxEtape = $pathFolderEtape.'/images/Etape_1.xml';
 									if (file_exists ( $pathfileGpxEtape ) == false)
 									{
 										$pathfileGpxEtape = "";

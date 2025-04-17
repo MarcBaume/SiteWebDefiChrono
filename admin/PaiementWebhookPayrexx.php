@@ -213,8 +213,8 @@ table {
         }
     }
     $headers = array(
-        'From' => 'Défi chrono<info@defichrono.ch>',
-        'Reply-To' => 'Défi chrono<info@defichrono.ch>',
+        'From' => 'Défi chrono<webmaster@defichrono.ch>',
+        'Reply-To' => 'Défi chrono<webmaster@defichrono.ch>',
         'Content-Type' => 'text/html; charset=utf-8'
     );
     

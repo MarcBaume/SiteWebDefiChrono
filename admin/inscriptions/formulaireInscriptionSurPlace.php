@@ -20,9 +20,6 @@
 <script src="../../js/FonctionDefiChrono2.js?v=1"></script>
 </script>
 </head>
-    <body>
-        	 <!--- Couverture --->
-
 <?php
  
  if ( strlen($_POST['DateCourse'])>0)
@@ -49,10 +46,10 @@
  //$ANNEE_COURSE = $_GET['annee_course'];
  $NOM_COURSE = $_GET["NomCourse"];
  $Nbr_etape =  $_GET["NbrEtape"] ;
- 
  }
-?> 
-    <script>
+?>
+<script>
+	var CoureurFind = new Object();
 
 function isMail2(txtMail)
 {
@@ -60,283 +57,117 @@ function isMail2(txtMail)
 	return regMail.test(txtMail);
 }
 
-function AddPersonne()
-{
-	// Ajout élément au local storage 
-	var coureur = check();
-	if (coureur != false)
-	{
-		console.log(localStorage.key(localStorage.length-1));
-		var  KeyLastCoureur = 0;
-		if (localStorage.length> 0)
-		{
-			// Cherche la plus grand clé
-			for (var i = 0; i < localStorage.length; i++)
-			{
-				if  (KeyLastCoureur < parseInt(localStorage.key(i)))
-				{
-					KeyLastCoureur = parseInt(localStorage.key(i));
-				}
-	
-			}
-		}
 
 
-		
-		var NewKey = (KeyLastCoureur+1).toString();
-		console.log(NewKey);
-		localStorage.setItem(NewKey, JSON.stringify(coureur));
-		// Changement de page  
-		f1 =  document.getElementById("FormulaireCoureur");
-		f1.action = "formulaireInscriptionSurPlace_p2.php"
-		f1.submit();
-	}
-
-
-	ReadLocalStorage();
-
-}
-
-function ReadLocalStorage()
-{
-
-	TableCoureur = document.getElementById("TableCoureur");
-	TableCoureur.innerHTML = "";
-	TableCoureur.style.width ="100%";
-
-
-	// Afichage para aucun coureur inscrit 
-	var para = document.getElementById("AucuneInscription");
-	if (localStorage.length > 0)
-	{
-		para.style.display = "none";
-	}
-	else
-	{
-		para.style.display = "";
-	}
-
-for (var i = 0; i < localStorage.length; i++)
-	{
-		IndexCoureur = localStorage.key(i);
-		// Transfrome clé en objet 
-		newObject = localStorage.getItem(IndexCoureur);
-		//console.log(newObject);
-		 var ReadCoureur = JSON.parse(newObject);
-		//console.log(ReadCoureur);
-
-
-		tr1 = document.createElement('Tr');
-		tr1.style.background = "#EAEAEA";
-
-
-		td1 = document.createElement('Td');
-
-		if (ReadCoureur.sexe =="H")
-		{
-			td1.style.fontSize = "24px";
-			td1.style.color = "#059EE2";
-			td1.innerHTML ='<i class="fa fa-male" ></i>' ;
-		}
-		else
-		{
-			td1.style.fontSize = "24px";
-			td1.style.color = "#DF44E4";
-			td1.innerHTML ='<i class="fa fa-female" ></i>' ;
-		}
-		tr1.append(td1);
-
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML = ReadCoureur.nom;
-		tr1.append(td1);
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML = ReadCoureur.prenom;
-		tr1.append(td1);
-
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML = ReadCoureur.date;
-		tr1.append(td1);
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML = ReadCoureur.NomParcours;
-		tr1.append(td1);
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML =  ReadCoureur.NomDepart;
-		tr1.append(td1);
-
-		td1 = document.createElement('Td');
-		td1.style.fontSize = "24px";
-		td1.innerHTML =  ReadCoureur.NomCat;
-		tr1.append(td1);
-
-
-
-
-		td1 = document.createElement('Td');
-		ButtonDelete = document.createElement('button');
-		ButtonDelete.classList.add("ButtonResultat");
-		ButtonDelete.type = "button"
-		ButtonDelete.style.fontSize = "24px";
-		ButtonDelete.style.color = "red";
-		ButtonDelete.dataset.value = IndexCoureur;
-		ButtonDelete.innerHTML = "<i class='fa fa-trash-o' ></i>" ;
-		ButtonDelete.addEventListener("click", function() { DeleteCoureur(this.dataset.value); } );
-		td1.append(ButtonDelete);
-		tr1.append(td1);
-	
-		TableCoureur.append(tr1);
-	}
-}
-function DeleteCoureur(evt)
-{
-	console.log('DElete'+evt );
-			localStorage.removeItem(evt);
-			ReadLocalStorage();
-}
 </script>
-	<?php
-	  include("Header.php");
- 
-	  ?>
 
 <div id="corps">
 <Fieldset>
 <div id="formulaire">
-
-
-<form method="get"  id="FormulaireCoureur" name="FormulaireCoureur" action = "formualireInscriptionSurPlace_p2.php";>
-
-<!-- Tableau information de la course !-->
-
-<input type="hidden" name="idCoureur" id="idCoureur" />
+<form method="get"  id="FormulaireLastID" name="FormulaireLastID"  >
+<input type="hidden" name="LastAdresseID" id="LastAdresseID"  value= '<?php echo $_GET["LastAdresseID"] ?>' />
+</form>
+<form method="get"  id="FormulaireCoureur" name="FormulaireCoureur"  >
 	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
 	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
 	<input type="hidden" name="NumCat" id="NumCat" />
 	<input type="hidden" name="NomCat" id="NomCat" />
 	<input type="hidden" name="OnLine" id="OnLine" />
 	<input type="hidden" name="Option" id="Option" />
+	<input type="hidden" name="Find" id="Find" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
 	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
-	<input type="hidden" name="sexe" id="sexe" onchange ="liste_depart(this.form,false);"  />
+	<input type="hidden" name="IDCoureur" id="IDCoureur"  value= '<?php echo $_GET["IDCoureur"] ?>'  />
+	
 
 <!-- Tableau information du coureurs à inscrire !-->
 <div id="InformationsCoureurs">
-	<h3> Formulaire d'inscription sur place : <? echo  $_GET["NomCourse"] ?>
+	<h3> Formulaire d'inscription sur place : <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?>
 	</h3>		
 		<table width="100%">
 			<tr style="background:#C0C0C0;padding:20px;">
 
-				<td style="padding: 10px;padding-left: 20px;">Nom  * :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="last_name" id="last_name" /></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
-
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Prénom *  :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><input type="text" name="prenom" id="prenom" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Nom & prénom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /> <input type="text" name="prenom" id="prenom" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Année de Naissance * :</td><td id="td_date" style="padding:5px; Background:lightblue;">	<input   onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
+				<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date"  style="padding:5px; Background:lightblue;">	<input  style="width: 70px;" onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
-
             <tr>
 				<!-- Emplacement des coureurs trouvé -->
                 <Td colspan="2" id="TableForRunnerFind">
-
                 </td>
             </tr>
 			<tr style="background:#C0C0C0;">
-			<td><label style="vertical-alignement: center"  >Sexe * :</label></td>
-			<td>
-			<button  id= "SexeHomme" type="button" style=" font-size :24px"  onclick="SelectSexe(true)">
-				<i class='fa fa-male' ></i>
-</button>
-			<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px"  onclick="SelectSexe(false)">
-				<i class='fa fa-female' ></i>	
-</button>
-		
-				
-            	
-          
-            </td>
+				<td>
+					<label style="vertical-alignement: center" id="lblSexe" >Sexe * :</label>
+					
+					<input type="hidden" name="sexe" id="sexe"  onchange ="liste_depart(this.form,false);"  />
+				</td>
+				<td>
+					<button  id= "SexeHomme" type="button" style=" font-size :24px"  onclick="SelectSexe(true)">
+						<i class='fa fa-male' ></i>
+					</button>
 
+					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px"  onclick="SelectSexe(false)">
+						<i class='fa fa-female' ></i>	
+					</button>
+				</td>
             </tr>
-
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse * :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
+				<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">NPA & Localité * :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
-				 <input style="width: 70px;" type="text" name="zip" id="zip" /> <input type="text" name="ville" id="ville"/></td>
+				<td style="padding: 10px;padding-left: 20px;">NPA , Localité  & pays:</td><td  id="td_zip"  style="padding:5px; Background:lightblue;">
+				 <input style="width: 70px;" type="text" name="zip" id="zip" /> <input type="text" name="ville" id="ville"/><input type="text" name="pays" id="pays"/>	</td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 			<tr>
-									<!-- Emplacement des coureurs trouvé -->
-									<Td colspan="2" id="TableLocaliteFind"> </td>
-</tr>
+					<!-- Emplacement des localité  trouvé  avec le npa-->
+				<Td colspan="2" id="TableLocaliteFind"> </td>
+			</tr>
+
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Pays  * :</td><td id="td_pays"  style="padding:5px; Background:lightblue;">	<input type="text" name="pays" id="pays" value="Suisse"/>	</td>
+				<td style="padding: 10px;padding-left: 20px;">Club & Email :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	
+					<input type="text" name="club" id="club"/>
+	 <input type="text" name="email" id="email" /></td>
+		
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Club * :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	<input type="text" name="club" id="club"/></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
-
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse e-mail * :</td><td id="td_email"  style="padding:5px; Background:lightblue;">		 <input type="text" name="email" id="email" /></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
-
-
 			<tr style="background:#C0C0C0;">
 				<!-- Emplacement des départs trouvé -->
                 <Td colspan="2" >
-<table  id="TableDepartForRunner" >
-</table>
+					<table  id="TableDepartForRunner" >
+					</table>
                 </td>
             </tr>
-
-
 		</table>
-
 		<tr >
-
-				
 
 		<Table 	id="HaveAChoiceCategorie" style="visibility:hidden; display:none;width:100%; margin-top: 20px;">
 			<tr style="padding: 20px; background :#C0C0C0; width:100%">
@@ -375,7 +206,6 @@ function DeleteCoureur(evt)
 										<td style ="width:300px;">
 											<label  for="RowDuo">Je cours en DUO Mixte</label>
 										</td>
-									
 									</tr>
 								</table>
 							</td>
@@ -488,293 +318,55 @@ function DeleteCoureur(evt)
 			</td>
 		</tr>
 	</table>
-<center>
-	<input type="button" style="visibility:hidden;height:80px;font-size:30px;padding:20px;background:#FFFFFF;margin:20px;"  
-	class="ButtonResultat"  id="ButtonSendFormulaire" value="Ajouter cette inscription à mon pannier" onclick="AddPersonne()"/>  </br>
-</center>
+
+	
+	<center>
+	<table style="width:80%">
+		<tr>
+			<td>
+				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"  id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= " width: 100px; height: 50px";>  </br>
+			</td>
+			<td>
+				<button  id= "ButtonReset" type="button" style=" font-size :24px"  class="ButtonResultat" onclick="ResetCoureur()">
+						Reset
+				</button>
+			</td>
+		</tr>
+	</table>
+
+		<!----------Information Delete coureur _______________-->
+		<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblInfoDeleteCoureur">
+		<tr>
+			<td>
+			<input type="button" style="height:40px;font-size:160%;"  id="ButtonConfirmDeleteFormulaire"   class="ButtonResultat"  value="Confirmer vous la Supression du coureur" onclick="funDeleteCoureur()" style= " width: 100px; height: 50px";>  </br>
+				</td>
+		</tr>
+	</table>
+	</center>
 	<div id="HaveAChoiceTarif"style="display:none">
 
-		
-		<?php if ($NOM_COURSE == "BCJ Challenge" )
-		// LOrs du jura challenge on va changer la taille des t-shirt 
-		{
-			?>
-			<p id="lblInfoTShirt" style="display:none">
-			Merci d'indiquer votre taille de T-Shirt (Selon stock disponible)
-		</p>
-			<p id="lblTShirt"  style="visibility:hidden; display:none"><label for="TailleTShirt">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt" name="TailleTShirt" >
-				<Option value="">Sélectionner</option>
-				<Option value="SW">S Femme</option>
-				<Option value="MW">M Femme</option>
-				<Option value="LW">L Femme</option>
-				<Option value="XLW">XL Femme</option>
-				<Option value="SM">S Homme</option>
-				<Option value="MM">M Homme</option>
-				<Option value="LM">L Homme</option>
-				<Option value="XLM">XL Homme</option>
-				<Option value="XXLM">XXL Homme</option>
-			</select></p>
-			
-		<p id="lblTShirt2"  style="visibility:hidden; display:none"><label for="TailleTShirt2">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt2" name="TailleTShirt2" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt3"  style="visibility:hidden; display:none"><label for="TailleTShirt3">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt3" name="TailleTShirt3" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt4"  style="visibility:hidden; display:none"><label for="TailleTShirt4">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt4" name="TailleTShirt4" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt5"  style="visibility:hidden; display:none"><label for="TailleTShirt5">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt5" name="TailleTShirt5" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt6"  style="visibility:hidden; display:none"><label for="TailleTShirt6">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt6" name="TailleTShirt6" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-	<?	}
-		else if ($NOM_COURSE == "Course DUO" )
-		// LOrs du jura challenge on va changer la taille des t-shirt 
-		{?>
-			<p id="lblInfoTShirt" style="display:none">
-			merci d'indiquer votre taille de T-Shirt (Selon stock disponible)
-		</p>
-			<p id="lblTShirt"  style="visibility:hidden; display:none"><label for="T_Shirt">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt" name="TailleTShirt" >
-				<Option value="">Sélectionner</option>
-				<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-			</select></p>
-	
-
-		<p id="lblTShirt2"  style="visibility:hidden; display:none"><label for="TailleTShirt2">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt2" name="TailleTShirt2" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt3"  style="visibility:hidden; display:none"><label for="TailleTShirt3">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt3" name="TailleTShirt3" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt4"  style="visibility:hidden; display:none"><label for="TailleTShirt4">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt4" name="TailleTShirt4" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt5"  style="visibility:hidden; display:none"><label for="TailleTShirt5">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt5" name="TailleTShirt5" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt6"  style="visibility:hidden; display:none"><label for="TailleTShirt6">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt6" name="TailleTShirt6" >
-			<Option value="">Sélectionner</option>
-			<Option value="3-4 ans">3-4 ans</option>
-				<Option value="5-7 ans">5-7 ans</option>
-				<Option value="9-11 ans">9-11 ans</option>
-				<Option value="12-14 ans">12-14 ans</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-		</select></p><?
-		}
-		else
-		{?>
-				<p id="lblInfoTShirt" style="display:none">
-			merci d'indiquer votre taille de T-Shirt (Selon stock disponible)
-		</p>
-			<p id="lblTShirt"  style="visibility:hidden; display:none"><label for="T_Shirt">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt" name="TailleTShirt" >
-				<Option value="">Sélectionner</option>
-				<Option value="XS">XS</option>
-				<Option value="S">S</option>
-				<Option value="M">M</option>
-				<Option value="L">L</option>
-				<Option value="XL">XL</option>
-				<Option value="XXL">XXL</option>
-			</select></p>
-	
-
-		<p id="lblTShirt2"  style="visibility:hidden; display:none"><label for="TailleTShirt2">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt2" name="TailleTShirt2" >
-			<Option value="">Sélectionner</option>
-			<Option value="XS">XS</option>
-			<Option value="S">S</option>
-			<Option value="M">M</option>
-			<Option value="L">L</option>
-			<Option value="XL">XL</option>
-			<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt3"  style="visibility:hidden; display:none"><label for="TailleTShirt3">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt3" name="TailleTShirt3" >
-			<Option value="">Sélectionner</option>
-			<Option value="XS">XS</option>
-			<Option value="S">S</option>
-			<Option value="M">M</option>
-			<Option value="L">L</option>
-			<Option value="XL">XL</option>
-			<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt4"  style="visibility:hidden; display:none"><label for="TailleTShirt4">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt4" name="TailleTShirt4" >
-			<Option value="">Sélectionner</option>
-			<Option value="XS">XS</option>
-			<Option value="S">S</option>
-			<Option value="M">M</option>
-			<Option value="XL">XL</option>
-			<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt5"  style="visibility:hidden; display:none"><label for="TailleTShirt5">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt5" name="TailleTShirt5" >
-			<Option value="">Sélectionner</option>
-			<Option value="XS">XS</option>
-			<Option value="S">S</option>
-			<Option value="M">M</option>
-			<Option value="XL">XL</option>
-			<Option value="XXL">XXL</option>
-		</select></p>
-
-		<p id="lblTShirt6"  style="visibility:hidden; display:none"><label for="TailleTShirt6">Taille T-SHIRT</label><select  style="background-color:#41e063;"  id="TailleTShirt6" name="TailleTShirt6" >
-			<Option value="">Sélectionner</option>
-			<Option value="XS">XS</option>
-			<Option value="S">S</option>
-			<Option value="M">M</option>
-			<Option value="XL">XL</option>
-			<Option value="XXL">XXL</option>
-		</select></p>
-		<?
-		}?>
 </div>
-	
-			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
-
-	 <div style="display :none;" ><label for="nom">Prix:</label> <input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF</div>
-	  <center>
-	  <?
-			$pathReglement = '../../courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/info/Règlement.pdf';
-			if (!file_exists($pathReglement))
-			{
-				$pathReglement = 'Règlement.pdf';
-			}
-	  ?>
-
-	  	<h2>Liste de mes inscriptions </h2>
-		<a id="AucuneInscription" ><i > Aucune inscriptions </i></a>
-	  <table id="TableCoureur">
-
-		</table>
-
-		 
-
-	
-</div>
+	<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
+	 <div style="display :none;" ><label for="nom">Prix:</label> <input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF
 	</div>
-</div>	
-</div>
- <center>
- les champs avec un * sont obligatoires</br>
- </center>
-   </Fieldset>
 
+</div>
+<center>
 <script>
 
 	// Chargement page , inscription au evenement pour chagnement text
 	inputNom = document.getElementById("nom");
-	//inputNom.addEventListener("change", SearchDatabase);
+	inputNom.addEventListener("input", SearchDatabase);
 
 	inputPrenom = document.getElementById("prenom");
-//	inputPrenom.addEventListener("change", SearchDatabase);
+	inputPrenom.addEventListener("input", SearchDatabase);
 
 	inputLocalite = document.getElementById("zip");
 	inputLocalite.addEventListener("change", SearchLocalite);
 
 	var inputSexe = document.getElementById("sexe");
 	var inputDame = document.getElementById("SexeDame");
+	
 	inputDame.classList.add("ButtonResultat");
 	var inputHomme = document.getElementById("SexeHomme");
 	inputHomme.classList.add("ButtonResultat");
@@ -806,11 +398,147 @@ function SelectSexe(Sexe)
 	}
 	ListeDepartNoForm();
 }
+// Recherche des localité disponible avec la base de donnée avec npa 	
+function SearchLocalite(e){
 
+
+	FormValue = document.getElementById("FormulaireCoureur");
+	FormValue.method="get" ;
+	FormValue.action="ReadLocaliteSurPlace.php"
+
+	TableLoc = document.getElementById("TableLocaliteFind");
+	TableLoc.innerHTML = ""
+
+	if ( document.getElementById("zip").value.length == 4)
+	{
+		document.getElementById("pays").value = "Suisse";
+	}
+
+	$('FormulaireCoureur').request({
+			onComplete: function(transport){
+				 val =transport.responseText.evalJSON();
+
+		
+			 if (val.length == 1)
+			{
+				ville = document.getElementById("ville");
+				ville.value = val[0].Localite;
+			}
+			 else
+			{
+		        for (var j = 0; j < val.length && j < 5;j++) 
+				{
+					
+					var Localite = new Object();
+					Localite = val[j];
+
+					if (j == 0)
+					{
+						ville = document.getElementById("ville");
+						ville.value = Localite.Localite;
+					}
+					
+
+					RowsLocalite = document.createElement('tr');
+					RowsLocalite.style.background ="#00b4ff";
+					RowsLocalite.dataset.value = j ;
+				
+					RowsLocalite.addEventListener("click", function() { SelectLocalite(this.dataset.value); } );
+				
+					colLoc1 = document.createElement('td');
+					colLoc1.style.color = "white";
+					colLoc1.style.fontSize = "24px";
+					colLoc1.innerHTML = "";
+					RowsLocalite.append(colLoc1);
+
+					colLoc = document.createElement('td');
+					colLoc.style.color = "white";
+					colLoc.style.fontSize = "24px";
+					colLoc.innerHTML = Localite.Localite;
+					RowsLocalite.append(colLoc);
+				
+					TableLoc.append(RowsLocalite);
+
+				};
+			}
+			
+		}
+});
+}
+// Recherche coureur disponible sur base de donnée listePersonnes
+function SearchDatabase(e) {
+
+	console.log("Chang database");
+	ColCoureurFind = document.getElementById("TableForRunnerFind");
+	table1 = document.createElement('Table');
+
+	ColCoureurFind.innerHTML = ""
+	ColCoureurFind.append(table1);
+	
+	FormValue = document.getElementById("FormulaireCoureur");
+	FormValue.action="ReadInscriptionSurPlaceMysql.php"
+
+	$('FormulaireCoureur').request({
+			onComplete: function(transport){
+				 val =transport.responseText.evalJSON();
+				 console.log(val);
+		        for (var j = 0; j < val.length && j < 5;j++) 
+				{
+				
+					var Coureur = new Object();
+					 Coureur = val[j];
+
+					RowsCoureur = document.createElement('tr');
+					RowsCoureur.style.background ="Lightblue";
+					RowsCoureur.dataset.value = j ;
+					RowsCoureur.addEventListener("click", function() { SelectCoureur(this.dataset.value); } );
+					table1.append(RowsCoureur);
+
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "24px";
+					col1.style.padding = "5px";
+					col1.innerHTML = "<input type='button' style='height:40px;width:200px' value='C est moi'></input>";
+					RowsCoureur.append(col1);
+
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "24px";
+					col1.style.padding = "5px";
+					col1.innerHTML = Coureur.Nom;
+					RowsCoureur.append(col1);
+
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "24px";
+					col1.style.padding = "5px";
+					col1.innerHTML = Coureur.Prenom;
+					RowsCoureur.append(col1);
+
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "12px";
+					col1.style.padding = "5px";
+					col1.innerHTML = Coureur.DateNaissance;
+					RowsCoureur.append(col1);
+					
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "12px";
+					col1.style.padding = "5px";
+					col1.innerHTML = Coureur.localite;
+					RowsCoureur.append(col1);
+				};
+			
+				}
+});
+}
+
+// Sélection coureur depuis base de donnée de liste de personne
 function SelectCoureur(e) {
 	var Coureur = new Object();
-		Coureur = val[e];
-		document.getElementById("nom").value = Coureur.Nom;
+	Coureur = val[e];
+	document.getElementById("nom").value = Coureur.Nom;
 	document.getElementById("prenom").value = Coureur.Prenom;
 	document.getElementById("date").value = Coureur.DateNaissance;
 	document.getElementById("adresse").value = Coureur.adresse;
@@ -829,6 +557,7 @@ function SelectCoureur(e) {
 	ListeDepartNoForm();
 }
 
+//  Sélection des localité disponible avec la base de donnée avec npa 	
 function SelectLocalite(e) {
 
 	var Coureur = new Object();
@@ -836,76 +565,6 @@ function SelectLocalite(e) {
 		document.getElementById("ville").value = Coureur.Localite;
 
 }
-
-// Recherche des localité disponible avec la base de donnée avec npa 	
-function SearchLocalite(e){
-
- VarFieldZip = document.getElementById("zip");
-	if ( VarFieldZip.value.length > 3)
-{
-FormValue = document.getElementById("FormulaireCoureur");
-FormValue.method="get" ;
-FormValue.action="ReadLocaliteSurPlace.php"
-
-ColCoureurFind = document.getElementById("TableLocaliteFind");
-table1 = document.createElement('Table');
-ColCoureurFind.innerHTML = ""
-ColCoureurFind.append(table1);
-if ( VarFieldZip.value.length == 4)
-{
-	document.getElementById("pays").value = "Suisse";
-}
-
-$('FormulaireCoureur').request({
-		onComplete: function(transport){
-			 val =transport.responseText.evalJSON();
-
-	
-		 if (val.length == 1)
-		{
-			ville = document.getElementById("ville");
-			ville.value = val[0].Localite;
-		}
-		 else
-		{
-			for (var j = 0; j < val.length && j < 5;j++) 
-			{
-				
-				var Localite = new Object();
-				Localite = val[j];
-
-				if (j == 0)
-				{
-					ville = document.getElementById("ville");
-					ville.value = Localite.Localite;
-				}
-				
-
-				RowsCoureur = document.createElement('tr');
-				RowsCoureur.style.background ="#00b4ff";
-				RowsCoureur.dataset.value = j ;
-			
-				RowsCoureur.addEventListener("click", function() { SelectLocalite(this.dataset.value); } );
-			
-
-				col1 = document.createElement('td');
-				col1.style.color = "white";
-				col1.style.fontSize = "24px";
-				console.log("Test3");
-				col1.innerHTML = Localite.Localite;
-				RowsCoureur.append(col1);
-			
-				table1.append(RowsCoureur);
-
-			};
-		}
-		
-	}
-
-});
-}
-}
-
 
 
 function choiceOption(f)
@@ -980,55 +639,52 @@ function choiceOption(f)
 
 
 }
-
+// Fonction de vérification que c'est un e-mail
 function isMail(txtMail)
 {
-	txtMail =txtMail.trim();
-	document.getElementById("email").value = txtMail;
-
 	var regMail=new RegExp("^[0-9a-z._-]+@{1}[0-9a-z. -]{2,}[.]{1}[a-z]{2,5}$", "i");
 	return regMail.test(txtMail);
 }
+
 // SI l'on a choisie la même adresse dans la page 2 
 function funSameAdresseWithLastID()
 {
-	
-		if (localStorage.length> 0)
-		{
-			var KeyLastCoureur =0 ;
-			// Cherche la plus grand clé
-			for (var i = 0; i < localStorage.length; i++)
+
+	FormValue = document.getElementById("FormulaireLastID");
+	FormValue.action="ReadInscriptionsSurPlaceLastID.php"
+	$('FormulaireLastID').request({
+		onComplete: function(transport){
+			val =transport.responseText.evalJSON();
+			
+			if (val.length==1)
 			{
-				if  (KeyLastCoureur < parseInt(localStorage.key(i)))
-				{
-					KeyLastCoureur = parseInt(localStorage.key(i));
-					
-				}
+				console.log(val[0]);
+				LastCoureur = val[0];
+				f1 =  document.getElementById("FormulaireCoureur");
 	
+				f1.email.value = 	LastCoureur.mail ;
+				f1.zip.value = LastCoureur.npa;
+				f1.adresse.value = LastCoureur.adresse;
+				f1.ville.value = LastCoureur.localite;
 			}
-			// Transfrome clé en objet 
-			newObject = localStorage.getItem(KeyLastCoureur);
-			//console.log(newObject);
-			f1 =  document.getElementById("FormulaireCoureur");
-			 var LastCoureur = JSON.parse(newObject);
-			 console.log(LastCoureur);
-			 f1.email.value = 	LastCoureur.email ;
-			 f1.zip.value = LastCoureur.zip;
-			 f1.adresse.value = LastCoureur.adresse;
-			f1.ville.value = LastCoureur.ville;
+			else
+			{
+				console.log("not find adresse id")
+			}
+			
 		}
-
-
+	});
 }
 
 
 // Si on a sélecter la même adresse que l'ancien coureur 
 </script>
 <?
- if ($_GET["LastAdresse"]== "True")
+ if ($_GET["LastAdresseID"] > 0)
  {
 	?>
 		<script>
+		console.log("same adresse")			
 		funSameAdresseWithLastID();
 		</script>
 	<?
@@ -1036,48 +692,63 @@ function funSameAdresseWithLastID()
 
 ?>
 <script>
-
-function check() {
-  
-var coureur =  new Object();
+// Contrôle que le formulaire est remplie correctement
+function check() 
+{
+	var coureur =  new Object();
     f1 =  document.getElementById("FormulaireCoureur");
-
-	if (f1.last_name.value.length<3) {
-		alert("Merci d'indiquer votre nom");
+	
+	if (f1.nom.value.length<3) {
+		f1.nom.style.background = "red";
 		f1.nom.focus();
 		return false;
 	}
-	coureur.nom = f1.last_name.value;
+	else
+	{
+		f1.nom.style.background = "white";
+	}
 
-		if (f1.prenom.value.length<3) {
-		alert("Merci d'indiquer votre prÃ©nom");
+	coureur.nom = f1.nom.value;
+
+	if (f1.prenom.value.length<3)
+	{
+		f1.prenom.style.background = "red";
 		f1.prenom.focus();
 		return false;
 	}
+	else
+	{
+		f1.prenom.style.background = "white";
+	}
+
 	coureur.prenom = f1.prenom.value;
 
-		if (!isMail(f1.email.value)) {
-		alert("Merci d'indiquer un mail valide pour que nous puissions vous rÃ©pondre");
-		f1.email.focus();
-		return false;
-	}
 
 	coureur.email = f1.email.value;
 
 
 
-		if (f1.zip.value.length<4) {
-		alert("Merci d'indiquer votre npa");
+	if (f1.zip.value.length<4) {
+		f1.zip.style.background = "red";
 		f1.zip.focus();
 		return false;
 	}
+	else
+	{
+		f1.prenom.style.background = "white";
+	}
+
 	coureur.adresse = f1.adresse.value;
 	coureur.zip = f1.zip.value;
 
-			if (f1.ville.value.length<3) {
-		alert("Merci d'indiquer votre localite");
+	if (f1.ville.value.length<3) {
+		f1.ville.style.background = "red";
 		f1.ville.focus();
 		return false;
+	}
+	else
+	{
+		f1.ville.style.background = "white";
 	}
 
 	coureur.ville = f1.ville.value;
@@ -1096,13 +767,12 @@ var coureur =  new Object();
 		f1.NomParcours.focus();
 		return false;
 	}
-	coureur.NomCat = f1.NomCat.value;
-	coureur.NumCat = f1.NumCat.value;
+
 	coureur.NomParcours = f1.NomParcours.value;
 
 
 		if (f1.date.value.length!=4) {
-		alert("Merci d'indiquer votre annÃ©e de naissance ex: 1988");
+			alert("Merci d'indiquer votre date de naissane ex: 1988");
 		f1.date.focus();
 		return false;
 	}
@@ -1117,130 +787,81 @@ var coureur =  new Object();
 	}
 	
 	coureur.sexe = f1.sexe.value;
-	coureur.club = f1.club.value;
-	var Cat =	document.getElementById("NomDepart");
-	var tabOption = Cat.value.split(';');
-	/*var DepartObj = ArrayParcours[intselected].ArrayDepart[tabOption[0]];	
-
-	
-	/// Int cat selected 
-	if (DepartObj.info.ListCategorie.ListItem[tabOption[1]].xEquipe == "True")
-	{
-		// SI Nombre discpline > 1 
-		var NbrDiscipline = DepartObj.ArrayDiscipline.length;
-	
-		if (NbrDiscipline > 1 ) 
-		{
-				
-				if ( f1.NomEquipe.value.length <1) {
-				alert("Merci d'inqdiquer le Nom de votre équipe");
-				f1.NomEquipe.focus();
-				return false;
-			}
-			if ( f1.NomDisc1.value.length <1) {
-				alert("Merci d'inqdiquer le Nom du coureur du premier relais");
-				f1.NomDisc1.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc1.value.length <1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du premier relais");
-				f1.PrenomDisc1.focus();
-				return false;
-			}
-			
-				
-			if ( f1.NomDisc2.value.length <1) {
-				alert("Merci d'inqdiquer le Nom du coureur du deuxième relais");
-				f1.NomDisc2.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc2.value.length <1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du deuxième relais");
-				f1.PrenomDisc2.focus();
-				return false;
-			}
-		}
-		// SI Nombre discpline > 2
-		if ( NbrDiscipline > 2) 
-		{
-			if ( f1.NomDisc3.value.length<1) {
-				alert("Merci d'inqdiquer le Nom du coureur du troisième relais");
-				f1.NomDisc3.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc3.value.length<1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du troisième relais");
-				f1.PrenomDisc3.focus();
-				return false;
-			}
-		}
-		// SI Nombre discpline > 3
-		if (NbrDiscipline > 3 ) 
-		{
-			if ( f1.NomDisc4.value.length<1) {
-				alert("Merci d'inqdiquer le Nom du coureur du quatrième relais");
-				f1.NomDisc4.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc4.value.length<1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du quatrième relais");
-				f1.PrenomDisc4.focus();
-				return false;
-			}
-		}
-		// SI Nombre discpline > 4
-		if (NbrDiscipline > 4 ) 
-		{
-			if ( f1.NomDisc5.value.length<1) {
-				alert("Merci d'inqdiquer le Nom du coureur du cinquième relais");
-				f1.NomDisc5.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc5.value.length<1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du cinquième relais");
-				f1.PrenomDisc5.focus();
-				return false;
-			}
-		}
-		// SI Nombre discpline > 5
-		if (NbrDiscipline > 5 ) 
-		{
-			if ( f1.NomDisc6.value.length<1) {
-				alert("Merci d'indiquer le Nom du coureur du sixième relais");
-				f1.NomDisc6.focus();
-				return false;
-			}
-			if ( f1.PrenomDisc6.value.length<1) {
-				alert("Merci d'inqdiquer le Prénom du coureur du sixième relais");
-				f1.PrenomDisc6.focus();
-				return false;
-			}
-		}
-		
-	}*/
-	/*if ( f1.nbrEtapeInsc.value.length<1  )
-		 {
-		alert("Merci de choisir une Option");
-		f1.nbrEtapeInsc.focus();
-		return false;
-	}*/
-
-	return coureur;
-	//f1.submit();
+	var FormCoureur =document.getElementById("FormulaireCoureur");
+	AddInscriptionOrModify();
 }
 
-/*********************************************************************
- * 
- * 					Function choisir départ 
- * 
- **********************************************************************/
+// Ajout inscriptiuon ou modifie inscription existante
+function AddInscriptionOrModify()
+{
+	var FormCoureur =document.getElementById("FormulaireCoureur");
+	FormCoureur.action="CibleInscriptionSurPlaceV2.php";
+	FormCoureur.method="post" ;
+	FormCoureur.submit();
+}
 
+// Remettre vierge formulaire coureur
+function  ResetCoureur()
+{
+	document.getElementById("IDCoureur").value ="";
+	document.getElementById("num_dossard").value ="";
+	document.getElementById("nom").value ="";
+	document.getElementById("prenom").value ="";
+	document.getElementById("date").value  ="";
+	document.getElementById("adresse").value ="";
+	document.getElementById("email").value ="";
+	document.getElementById("zip").value ="";
+	document.getElementById("ville").value ="";
+	document.getElementById("club").value  ="";
+	document.getElementById("sexe").value  ="";
+	document.getElementById("NomDepart").value = "" ;
+	document.getElementById("NomParcours").value = "" ;
+	document.getElementById("NomCat").value = "" ;
+	document.getElementById("NumCat").value = "" ;	
+	
+	document.getElementById("NomEquipe").value = "" ;
+
+	document.getElementById("Paradisc1").value = "" ;
+	document.getElementById("Paradisc2").value = "" ;
+	document.getElementById("Paradisc3").value = "" ;
+	document.getElementById("Paradisc4").value = "" ;
+	document.getElementById("Paradisc5").value = "" ;
+	document.getElementById("Paradisc6").value = "" ;
+
+	document.getElementById("ParaRemarques").value = "" ;
+
+	inputHomme.classList.remove("ButtonResultatSelected");
+	inputHomme.classList.add("ButtonResultat");	
+
+	inputDame.classList.remove("ButtonResultatSelected");
+	inputDame.classList.add("ButtonResultat");	
+	
+	var tableDepart =	document.getElementById("TableDepartForRunner");
+		tableDepart.innerHTML = "";
+
+		var ColCoureurFind = document.getElementById("TableForRunnerFind");
+	ColCoureurFind.innerHTML = ""
+	
+	var lblinfo = document.getElementById("lblInformation"); 
+	lblinfo.style.visibility = "hidden" ;
+					lblinfo.style.display  = "none" ;
+					lblinfo.innerHTML = "";
+	document.getElementById("ButtonSendFormulaire").style.display  = "none" ;
+		document.getElementById("ButtonSendFormulaire").style.visibility = "hidden" ;
+		document.getElementById("ButtonDeleteFormulaire").style.display  = "none" ;
+		document.getElementById("ButtonDeleteFormulaire").style.visibility = "hidden" ;
+		document.getElementById("lblInfoDeleteCoureur").style.display  = "none" ;
+		document.getElementById("lblInfoDeleteCoureur").style.visibility = "hidden" ;
+
+}
+
+// Selon coordonnée du corueur départ disponible sans vérificatino que le champs sexe est bien remplie
 function  ListeDepartNoForm()
 {
-	console.log("funChoiceDepart");
 	liste_depart(document.getElementById("FormulaireCoureur",false));
 }
 
+// Sélection départ dans le formulaire
 function  SelectDepart(evt)
 {	
 
@@ -1252,16 +873,14 @@ function  SelectDepart(evt)
  		ButtonParcours[i].classList.remove("ButtonResultatSelected");
 
 	}
-
+	
 
 	document.getElementById(evt).classList.remove("ButtonResultat");
 	document.getElementById(evt).classList.add("ButtonResultatSelected");
-
+	
 	document.getElementById("HaveAChoiceCategorie").style.display="table";
 	document.getElementById("NomDepart").style.backgroundColor="#FFFFFF";
 	
-	var e = document.getElementById("nbrEtapeInsc");
-	e.options.length = 0;
 
 	var tabOption = evt.split(';');
 	var ParcoursObj = ArrayParcours[tabOption[6] ];
@@ -1282,9 +901,6 @@ function  SelectDepart(evt)
 		document.getElementById("Paradisc5").style.display = "none" ;
 		document.getElementById("Paradisc6").style.display = "none" ;
 		document.getElementById("ParaRemarques").style.display = "none" ;
-		document.getElementById("ButtonSendFormulaire").style.display = "block" ;
-
-		document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
 
 		document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
 		document.getElementById("Paradisc1").style.visibility = "hidden" ;
@@ -1317,7 +933,7 @@ function  SelectDepart(evt)
 			// Pour course DUO
 	/*		if (f.NomParcours.value == "TEAM")
 			{
-				document.getElementById("ParaRemarques").style.visibility = "visible" ;
+				document.getElementById("ParaRemarques").style.visibility = "visible";
 				document.getElementById("ParaRemarques").style.display  = "table" ;
 			}*/
 
@@ -1448,6 +1064,9 @@ function  SelectDepart(evt)
 		// Si Duo ou équipe // BCJ Challenge
 		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 		{
+
+			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+			document.getElementById("lblNomEquipe").style.display  = "block" ;	
 			document.getElementById("TableEquipe").style.visibility = "visible" ;
 			document.getElementById("TableEquipe").style.display  = "block" ;					
 			if (DepartObj.info.NombrePersonneMaxDuo._Value > 1)
@@ -1461,32 +1080,40 @@ function  SelectDepart(evt)
 				document.getElementById("RowEquipe").style.display  = "block" ;							
 			}
 		}
+		// Affichage bouton envoie formulaire
+		document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
+		document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
+		document.getElementById("ButtonDeleteFormulaire").style.display  = "block" ;
+		document.getElementById("ButtonDeleteFormulaire").style.visibility = "visible" ;
 }
+
 
 function addValue(Text , Value) 
 {
 	var sel = document.getElementById("NomParcours");
 	sel.options.add( new Option(Text, Value));
  }
-	
 
+	
+// Recherche les départ compatible pour la personnne inscrite
 function liste_depart(f,CheckSexe) 
 {
-   
-/* Rendre invisible les différents champs lors de l'initialisation */
+
+
+	// Rendre invisible les différents champs lors de l'initialisation 
 	document.getElementById("lblNomEquipe").style.display  = "none" ;
 	document.getElementById("Paradisc1").style.display  = "none" ;
 	document.getElementById("Paradisc2").style.display  = "none" ;
 	document.getElementById("Paradisc3").style.display  = "none" ;
 	document.getElementById("Paradisc4").style.display  = "none" ;
-	document.getElementById("ButtonSendFormulaire").style.display  = "none" ;
 	document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
 
 	document.getElementById("Paradisc1").style.visibility = "hidden" ;
 	document.getElementById("Paradisc2").style.visibility = "hidden" ;
 	document.getElementById("Paradisc3").style.visibility = "hidden" ;
 	document.getElementById("Paradisc4").style.visibility = "hidden" ;
-	
+
+
 	var sel = document.getElementById("NomDepart");
 	var lbl = document.getElementById("lblDepart");
 	var bpSend = document.getElementById("ButtonSendFormulaire");
@@ -1494,20 +1121,27 @@ function liste_depart(f,CheckSexe)
 	var bpPartenaire = document.getElementById("Partenaire");
 	var ICounterCat = 0;
 
-	if (f.date.value.length==4)
+	var MemDataSet = "";
+	// Obtention année en cours
+	var dateNow = new Date().getFullYear();
+
+	// Vérification que le champs de date est dans la plage possible
+	if (f.date.value.length==4 && parseInt(f.date.value ) > 1900  && parseInt(f.date.value) <=dateNow) 
 	{
         f.date.style.background = "white";
-		console.log(f);
-		if (f.sexe.value.length > 0)
+		
+		if (f.sexe.value.length > 0 && f.sexe.value == "D" || f.sexe.value == "H")
 		{
 			sexe = f.sexe.value;
+			document.getElementById('lblSexe').style.background = "transparent";
 
+			// Tableau depart possible pour ces indication
 			var tableDepart =	document.getElementById("TableDepartForRunner");
 				tableDepart.innerHTML = "";
 
 			var RowDepart = document.createElement("tr");
 				tableDepart.append(RowDepart);
-			var MemDataSet = "";
+
 			// Scan chaque départ
 			for(var iParcours=0; iParcours<ArrayParcours.length; ++iParcours) 
 			{
@@ -1537,40 +1171,53 @@ function liste_depart(f,CheckSexe)
 							var buttonParcours = document.createElement("button");
 							buttonParcours.type = "button";
 							buttonParcours.classList.add("ButtonResultat");
-							buttonParcours.name = "buttonParcours";
+							buttonParcours.name = "buttonParcours"; 
+							MemDataSet =  iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							buttonParcours.id = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							// Text infomratif sur le bouton
 							buttonParcours.innerHTML = ArrayParcours[iParcours].nom   + " " +Cat.NomCategorie._Value+" "+Cat.debutAnnee._Value+" - "+Cat.finAnnee._Value;
-							MemDataSet  = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
-							buttonParcours.dataset.value = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 							// Infomration du départ donnée au bouton 
 							buttonParcours.dataset.value = iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value + ";"+ ArrayParcours[iParcours].nom  + ";"+ iParcours;
 
 
+							// Comparaison si le coureur à modifié est déjà sur ce départ 
+							var sDepartCoureurFind =  CoureurFind.parcours +";" + CoureurFind.NomDepart;
+				
+							var sDepartRead =  ArrayParcours[iParcours].nom +";" + DepartObj.Nom;
 						
+							
+							if (sDepartCoureurFind == sDepartRead)
+							{
+								buttonParcours.classList.add("ButtonResultatSelected");
+							}
+							else
+							{
+								buttonParcours.classList.add("ButtonResultat");
+							}
+
 							buttonParcours.addEventListener("click", function() { SelectDepart(this.dataset.value); } );
 							ColDepart.append(buttonParcours);
-					
 							ICounterCat++;
+
 						}
 					}
 				
 				}
 
 			}
-
-
+			
+			// SI il existe aucune catégorie
 			var lblinfo = document.getElementById("lblInformation"); 
 			if (ICounterCat == 0)
 			{
 				// Valeurs incorect pour ce dÃ©part 
-				
 				bpSend.style.visibility = "hidden" ;
 				sel.style.visibility = "hidden" ;
 				document.getElementById('date').style.backgroundColor="#fa8a8a";
 				document.getElementById('NomParcours').style.backgroundColor="#fa8a8a";
 				lblinfo.style.visibility = "visible" ;
 				lblinfo.style.display  = "block" ;
+				lblinfo.value= "";
 				
 			// ajoute le noeud texte au nouveau div crÃ©Ã©
 			//	Div.value = "Aucune catÃ©gorie existe sur ce parcours pour cette annÃ©e de naissance";
@@ -1582,32 +1229,39 @@ function liste_depart(f,CheckSexe)
 			else 
 			{
 				
-				bpSend.style.visibility = "visible" ;
+			
 				lblinfo.style.visibility = "hidden" ;
 				sel.style.visibility = "visible" ;
 				lblinfo.style.display  = "none" ;
 				document.getElementById('date').style.backgroundColor="white";
 				document.getElementById('NomParcours').style.backgroundColor="white";
+				lblinfo.value= "Aucune catégorie existe sur ce parcours pour cette année de naissance";
+			}
+
+			// Plusieurs départ disponible ajouter un champs pour sélectionner le départ 
+			if (ICounterCat == 1)
+			{
+				ChoiceDepart(f);
 			}
 		}
 		else if (!CheckSexe)
 		{
-			sel.style.visibility = "hidden" ;
-			alert("Merci de choisir votre sexe");
+
+	
+		}
+		else
+		{
+			document.getElementById('lblSexe').style.background = "red";
 		}
 	}
 	else
 	{
-		sel.style.visibility = "hidden" ;
-
-			alert("Merci d'indiquer votre année de naissance ex: 1988");
-			f.date.style.background = "red";
-			f.date.focus();
+		f.date.style.background = "red";
+		f.date.focus();
 	
 	}
 }
 
-   
  </script>
 
 <!---*************************************************
@@ -1738,14 +1392,45 @@ foreach ($files1  as $key => $Parcours)
         }
     }
 }
+ 
 ?>
-<script>
+ <script>
 
 
-// LEcture au démarrage de la page web
-	ReadLocalStorage() ;
+
+// Fait apparait bouton de confirmation de supression
+function funConfirmResetCoureur()
+{
+	document.getElementById("lblInfoDeleteCoureur").style.display  = "block" ;
+		document.getElementById("lblInfoDeleteCoureur").style.visibility = "visible" ;
+}	
+// Supression coureur dans la base de donnée de la liste de départ
+function funDeleteCoureur()
+{
+	FormValue = document.getElementById("FormulaireCoureur");
+	FormValue.action="DeleteIDCoureur.php";
+	document.getElementById("lblInfoDeleteCoureur").style.display  = "none" ;
+		document.getElementById("lblInfoDeleteCoureur").style.visibility = "hidden" ;
+	$('FormulaireCoureur').request({
+			onComplete: function(transport){
+
+				val =transport.responseText.evalJSON();
+
+				console.log(val);
+
+				if (val == 1)
+				{
+
+					ResetCoureur();
+					
+				}
+
+			}
+	});
+}
+
 </script>
-    <?php include("../../sponsors.php"); ?> 
+   
 </div>
 
 </body>

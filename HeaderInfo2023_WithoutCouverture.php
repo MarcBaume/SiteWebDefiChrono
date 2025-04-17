@@ -451,11 +451,18 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 
 
 
-	function ClickRows( )
+function ClickRows( )
     {  
 
-			window.open('http://www.'+ <?php echo json_encode($Site ); ?> , '_blank');
-		
+		var site =  <?php echo json_encode($Site ); ?>;
+		if (site.indexOf("http")>-1)
+		{
+			window.open(site, '_blank');
+		}
+		else
+		{			
+			window.open('http://www.'+site , '_blank');
+		}
 	}
 	function ClickRowsListe(elmnt )
     {  

@@ -152,7 +152,7 @@ $FirstEventLastEdition = False;
 						<?
 					}?>
 				
-						<td ><p style="color:black; margin:5px;padding:15px; font-size:24px; font-weight:bold; "><?php echo  strftime ("%B",$timestamp)?> </p></td>
+						<td ><p style="color:black; margin:5px;padding:15px; font-size:24px; font-weight:bold; "><?php echo   $Year. " " .strftime ("%B",$timestamp)?> </p></td>
 					 </tr>
 
 				<?php

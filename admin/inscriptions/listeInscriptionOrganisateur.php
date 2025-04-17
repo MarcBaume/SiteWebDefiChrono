@@ -26,8 +26,6 @@
 </head>
     <body>
 <?	include("MenuInscriptions.php");
-
-
 ?>
 
     <script>
@@ -87,26 +85,21 @@ function AddPersonne()
 <table>
 	<tr>
 		<td>
-			<h3><span class="material-symbols-outlined">
-install_mobile
-</span>
+			<h3><span class="material-symbols-outlined">install_mobile</span>
 				Liste de départ  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
 			</h3>
 			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 
 		</td>
 		<td>
-
-				<Form  method="post" action="ExportMysql.php">
-						<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
-						<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
-						<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />		
+			<Form  method="post" action="ExportMysql.php">
+				<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
+				<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
+				<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />		
 				<center>
-						<input type="submit" class="ButtonResultat" value="Export Excel">
+					<input type="submit" class="ButtonResultat" value="Export Excel">
 				</center>
-					
-				</form>
-
+			</form>
 		</td>
 	</tr>
 </table>
@@ -143,32 +136,24 @@ install_mobile
 				<td style="padding: 10px;padding-left: 20px;">Année de Naissance :</td><td id="td_date"  style="padding:5px; Background:lightblue;">	<input  style="width: 70px;" onchange ="liste_depart(this.form,true);" type="text"  name="date" id="date"  /><i>Exemple : 1988</i>
 				<td style="padding: 10px;padding-left: 20px;">Genre :</td>
 				<td id="td_sexe" style="padding:5px; Background:lightblue;">
-	
-				
-				<input type="hidden" name="sexe" id="sexe"  />
-				<button  id= "SexeHomme" type="button" style=" font-size :24px" >
+					<input type="hidden" name="sexe" id="sexe"  />
+					<button  id= "SexeHomme" type="button" style=" font-size :24px" >
 						<i class='fa fa-male' ></i>
 					</button>
-
 					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px" >
 						<i class='fa fa-female' ></i>	
 					</button>
-
-				 <input type="hidden" name="adresse" id="adresse"  />
-				 <input type="hidden" name="zip" id="zip" /> 
-				 <input type="hidden" name="ville" id="ville"/>
-				 <input type="hidden" name="pays" id="pays"/>	
-				 <input type="hidden" name="email" id="email" />
-				 <input type="hidden" name="club" id="club"/>
-			</td>
-			
+					<input type="hidden" name="adresse" id="adresse"  />
+					<input type="hidden" name="zip" id="zip" /> 
+					<input type="hidden" name="ville" id="ville"/>
+					<input type="hidden" name="pays" id="pays"/>	
+					<input type="hidden" name="email" id="email" />
+					<input type="hidden" name="club" id="club"/>
+				</td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
-        
-		
-
 			<tr style="background:#C0C0C0;">
 				<!-- Emplacement des départs trouvé -->
                 <Td colspan="4" >
@@ -176,11 +161,8 @@ install_mobile
 					</table>
                 </td>
             </tr>
-
-
 		</table>
-		<tr >
-
+		<tr>
 		<Table 	id="HaveAChoiceCategorie" style="visibility:hidden; display:none;width:100%; margin-top: 20px;">
 			<tr style="padding: 20px; background :#C0C0C0; width:100%">
 				<td  >

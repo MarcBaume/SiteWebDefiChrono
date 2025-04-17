@@ -410,7 +410,7 @@ function AddPersonne()
 
 	// Chargement page , inscription au evenement pour chagnement text
 	inputNom = document.getElementById("nom");
-	inputNom.addEventListener("change", SearchDatabase);
+	inputNom.addEventListener("input", SearchDatabase);
 
 	// Inscription à l'événement de recherche
 	const textInputValue = document.getElementById('FindValue');
@@ -418,7 +418,7 @@ function AddPersonne()
 
 	console.log("salut");
 	inputPrenom = document.getElementById("prenom");
-	inputPrenom.addEventListener("change", SearchDatabase);
+	inputPrenom.addEventListener("input", SearchDatabase);
 
 	inputLocalite = document.getElementById("zip");
 	inputLocalite.addEventListener("change", SearchLocalite);

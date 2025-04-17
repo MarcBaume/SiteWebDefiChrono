@@ -8,6 +8,15 @@
 
 ______________________________________________________________________*/
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/PHPMailer.php';
+require 'path/to/PHPMailer/src/SMTP.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
 header('Content-Type: application/json');
 
@@ -41,14 +50,14 @@ header('Content-Type: application/json');
         <head>
         <title>Réinitialisation du mot de passe</title>
         <style>
-    table, td, th {
-      border: 1px solid;
-      padding : 5px;
-    }
-    
-    table {
-      border-collapse: collapse;
-    }
+        table, td, th {
+        border: 1px solid;
+        padding : 5px;
+        }
+        
+        table {
+        border-collapse: collapse;
+        }
             
         </style>
         </head>
@@ -56,27 +65,60 @@ header('Content-Type: application/json');
         <h2 style="background-color: #3D6CA4;padding : 10px ;color :#fff"  > Réinitialisation du mot de passe </h2>
     
         <p>Bonjour '.$login.'</p>
-    <p>
-         Utilise ce lien pour réinitialiser ton mot de passe </br></br></p>
-  <p>
-    <a href="https://defichrono.ch/InitialisationPassword.php?Login='. $login.'&ID='.$OrderID.'">Clique ici  </a>
-    </p>  
-    <p> Défi Chrono te souhaite d\'excellentes courses</p> </br></br>
+        <p>
+            Utilise ce lien pour réinitialiser ton mot de passe </br></br>
+        </p>
+        <p>
+        <a href="https://defichrono.ch/InitialisationPassword.php?Login='. $login.'&ID='.$OrderID.'">Clique ici  </a>
+        </p>  
+        <p> Défi Chrono te souhaite d\'excellentes courses</p> </br></br>
 
 
         <img style="width:200px;"src="https://defichrono.ch/images/LogoDefiChrono2023.png"></img>
         </html>';
         
      
-        $from = "webmaster@defichrono.ch";
-        $headers = array(
-            'From' => 'Défi chrono<info@defichrono.ch>',
-            'Reply-To' => 'Défi chrono<info@defichrono.ch>',
-            'Content-Type' => 'text/html; charset=utf-8'
-        );
 
+            
+   
         $to = $login ;
         $subject = "Réinitialisation de mot de passe";
+
+        $mail->Host = "mail.infomaniak.ch";
+        
+        $mail->Username = "webmaster@defichrono.ch";
+     
+        $mail->Password = "mot de passe";
+     
+        $mail->From = "webmaster@defichrono.ch";
+
+        $mail->FromName = "Défi chrono";
+
+        $mail->Subject =  $subject ;
+       
+        $mail->AltBody = $message;
+     
+        $mail->AddReplyTo("");
+
+        $mail->AddAttachment(");
+       
+        $mail->AddAddress($login);
+
+        $mail->IsHTML(true);
+
+        if(!$mail->Send()) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+        } else {
+            echo "Le message à bien été envoyé";
+        } 
+    }
+?>
+
+
+
+
+
+
 
         if (  mail($to,$subject,$message, $headers))
 

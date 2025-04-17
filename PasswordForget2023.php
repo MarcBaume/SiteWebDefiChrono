@@ -52,7 +52,7 @@ function checkForm(f) {
 	</div>
 	<p  id="CheckLogin"> ce login n'existe pas</p>
 
-	<p id="OkLOgin" style="visibility:collapse;"> Vous allez recevoir un e-mail avec un lien pour réinitialiser votre mot de passse, vérifier vos "SPAM"</p>
+	<p id="OkLOgin" style="visibility:collapse;"> Vous allez recevoir un e-mail avec un lien pour réinitialiser votre mot de passse, vérifier vos "SPAM", si vous n'avez rien reçu contacter info@defichrono.ch</p>
 </div>
      
  </body>

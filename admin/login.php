@@ -60,7 +60,7 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 	mysqli_select_db($con,$row['Database']);
 	if ($_SESSION['Niveau'] == 2)
 	{
-		$sql = 'SELECT * FROM Course   ORDER BY Date ASC'; 
+		$sql = 'SELECT * FROM Course   ORDER BY Date DESC'; 
 	}
 	else
 	{

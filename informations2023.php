@@ -1371,6 +1371,8 @@ foreach ($files1  as $key => $Parcours)
 <script>
  // crée un nouvel élément div
 let b = document.body;
+// Si un depart à au moins plus que 1 étapes pour bcj challenge kids
+xEtape = false;
 let newDiv = document.createElement("div");
 TableProgramme = document.getElementById("TableProgramme");
 TableProgramme.style.maxWidth = "800px";
@@ -1451,9 +1453,26 @@ for (var i = 0; i < ArrayParcours.length; i++)
 	// Affichage du titre du parcours si il y a plusieurs départ
 	if (ParcoursObj.nom.length > 0 &&  ArrayParcours.length>1)// && ParcoursObj.ArrayDepart.length> 1) Correction graphique
 	{
-	
-		NomParcoursPara.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeParcoursBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+ParcoursObj.info.Nom._Value +"</td></tr></table>"
 		NomParcoursPara.className += "titleParcours";
+		TableTitleParcours= document.createElement('table');
+		RowsTitleParcours = document.createElement('tr');
+		RowsTitleParcours.style.border ="0px";
+		TableTitleParcours.style.width = "100%";
+
+		ColumnTitleParcours  = document.createElement('td'); 
+		ColumnTitleParcours.style.borderRadius ="border-radius: 10px 0px 0px 0px"
+		ColumnTitleParcours.style.background ="#3D6CA4"
+		ColumnTitleParcours.style.padding ="5px"
+		ColumnTitleParcours.style.width ="60px"
+		ColumnTitleParcours.innerHTML = "<img src='/Icones/IconeParcoursBlanc.png'  style='width:50px;margin:5px;'/>";
+		RowsTitleParcours.append(ColumnTitleParcours)
+		
+		ColumnTitleParcours  = document.createElement('td'); 
+		ColumnTitleParcours.innerHTML = ParcoursObj.info.Nom._Value;
+		RowsTitleParcours.append(ColumnTitleParcours)
+	
+		TableTitleParcours.append(RowsTitleParcours);
+		NomParcoursPara.append(TableTitleParcours);
 	}
 
 	ParcoursPara.append(NomParcoursPara);
@@ -1522,36 +1541,57 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		NomStartPara.style.padding = "0px";
 
 		let TableTitleDepart = document.createElement('table');	
-			TableTitleDepart.style.width = "100%";
-			TableTitleDepart.style.color  = "black";
-			TableTitleDepart.style.borderRadius  = "10px";
+		TableTitleDepart.style.width = "100%";
+		TableTitleDepart.style.color  = "black";
+		TableTitleDepart.style.borderRadius  = "10px";
 
-			let RowsTitleDepart = document.createElement('tr');
-			let ColumnTitleDepart = document.createElement('td');
-				
-			NomDepart = "";
-			RowsTitleDepart.append(ColumnTitleDepart);
-			if (DepartObj.info.Nom._Value != ParcoursObj.info.Nom._Value )
-			{
-				NomDepart = DepartObj.info.Nom._Value ;
-			}
-			ColumnTitleDepart.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeDepartBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+
+		let RowsTitleDepart = document.createElement('tr');
+		let ColumnTitleDepart = document.createElement('td');
 			
-			NomDepart+"</td></tr></table>"
+		NomDepart = "";
+		RowsTitleDepart.append(ColumnTitleDepart);
+		if (DepartObj.info.Nom._Value != ParcoursObj.info.Nom._Value )
+		{
+			NomDepart = DepartObj.info.Nom._Value ;
+		}
+		ColumnTitleDepart.innerHTML = "<table style='margin:0px;'><tr><td style='border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:5px;'><img src='/Icones/IconeDepartBlanc.png'  style='width:50px;margin:5px;'/></td><td style='padding: 5px'>"+
 		
-		//	ColumnTitleDepart.innerHTML = "<i class='fa fa-flag'></i> "+" "+ DepartObj.Nom;
-			RowsTitleDepart.append(ColumnTitleDepart);
-			TableTitleDepart.append(RowsTitleDepart);
-
-			NomStartPara.append(TableTitleDepart);
+		NomDepart+"</td></tr></table>"
 	
-	
+	//	ColumnTitleDepart.innerHTML = "<i class='fa fa-flag'></i> "+" "+ DepartObj.Nom;
+		RowsTitleDepart.append(ColumnTitleDepart);
+		TableTitleDepart.append(RowsTitleDepart);
 
+		NomStartPara.append(TableTitleDepart);
+
+	
+		EtapeObj1 = DepartObj.ArrayEtape[0];
 		// SI le départ contient 1 étape on va reprendre sont heure de départ
 		if (DepartObj.ArrayEtape.length == 1 )
 		{
+			// affichage dans titre parcours pour BCJ challenge kids 
+			if (xEtape && EtapeObj1.info.Date != null && EtapeObj1.info.Date._Value.length > 0)
+			{
+				let date = new Date( EtapeObj1.info.Date._Value);
+				ColTitle1Etape= document.createElement('td');
+				const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+				ColTitle1Etape.innerHTML ='<i class="fa fa-calendar" ></i>' +" "+  date.toLocaleString('fr-FR', options);
+				ColTitle1Etape.style.width = "50%";
+				ColTitle1Etape.style.borderBottom ="0px";
+				RowsTitleParcours.append(ColTitle1Etape);
+			}
+			if (xEtape &&  EtapeObj1.info.Lieu != null && EtapeObj1.info.Lieu._Value.length > 0)
+			{
+				ColTitle1Etape = document.createElement('td');
+				ColTitle1Etape.innerHTML ='<i class="fa fa-map-marker" ></i>' +" "+EtapeObj1.info.Lieu._Value;
+				ColTitle1Etape.style.width = "20%";
+				ColTitle1Etape.style.borderBottom ="0px";
+				RowsTitleParcours.append(ColTitle1Etape);
+			}
+			xEtape = false;
+			//*************************************************** */
 			ColumnTitleDepart = document.createElement('td');
-			ColumnTitleDepart.style.width = "15%";
+			ColumnTitleDepart.style.width = "20%";
 			if (DepartObj.ArrayEtape[0].info.HeureDepart._Value.length > 0)
 			{	
 			
@@ -1658,7 +1698,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 					{
 						if ( DepartObj.info.ListCategorie.ListItem[j].debutAnneeInternet._Value < AnneeDebutCat)
 						{
-							AnneeDebutCat  = DepartObj.nfo.ListCategorie.ListItem[j].debutAnneeInternet._Value ;
+							AnneeDebutCat  = DepartObj.info.ListCategorie.ListItem[j].debutAnneeInternet._Value ;
 						}
 					}
 					else
@@ -1712,8 +1752,6 @@ for (var i = 0; i < ArrayParcours.length; i++)
 			ColumnTitleDepart = document.createElement('td');
 			ColumnTitleDepart.style.width = "25%";
 			// AnneeStart
-
-			
 			ColumnTitleDepart.innerHTML =AnneeDebutCat+ " - " + AnneeFinCat;	
 			
 
@@ -1761,8 +1799,10 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		 
 			let Etapepara = document.createElement('fieldset');
 			
-			if (DepartObj.ArrayEtape.length > 1 && EtapeObj1.info != null)
+			if ((DepartObj.ArrayEtape.length > 1 ) && EtapeObj1.info != null)
 			{
+				// Si le départ a plusieur pour afficher le lieu du bcj challenge
+				xEtape = true
 				let TableTitleEtape = document.createElement('table');			
 				TableTitleEtape.style.width = "100%";
 				TableTitleEtape.style.borderStyle = "none";
@@ -1944,8 +1984,6 @@ for (var i = 0; i < ArrayParcours.length; i++)
 						ColimgEtapePara.width = "80%";
 						let ImageEtape = document.createElement('img');
 						ImageEtape.src =  EtapeObj1.Image;
-	
-
 						ImageEtape.className += "imgCenter";
 						ImageEtape.style.margin = "20px";
 						ImageEtape.style.marginLeft= "auto";
@@ -1956,8 +1994,6 @@ for (var i = 0; i < ArrayParcours.length; i++)
 						ColimgEtapePara.append(ImageEtape);
 						RowsTableEtape.append(ColimgEtapePara);
 						TableEtape.append(RowsTableEtape);			
-					
-						
 					}
 
 					if ( EtapeObj1.Graph != null && EtapeObj1.Graph.length > 0)
@@ -2115,6 +2151,7 @@ for (var i = 0; i < ArrayParcours.length; i++)
 				RowsTableCat.append(HeaderTableCat);
 				HeaderTableCat =	document.createElement('th');
 				HeaderTableCat.textContent = "Sexe";	
+				
 				RowsTableCat.append(HeaderTableCat);
 		
 				HeaderTableCat =	document.createElement('th');

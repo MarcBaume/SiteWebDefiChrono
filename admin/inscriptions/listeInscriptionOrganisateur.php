@@ -117,7 +117,6 @@ function AddPersonne()
 	<input type="hidden" name="Find" id="Find" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 	<input type="hidden" name="IDCoureur" id="IDCoureur"  value= '<?php echo $_GET["IDCoureur"] ?>'  />
 	
 
@@ -300,18 +299,19 @@ function AddPersonne()
 		<div id="ParaRemarques" style="visibility:hidden; display:none" >	
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
-</form>
-	<!---------- CHOIC TARIFS _______________-->
+			<!---------- CHOIC TARIFS _______________-->
 	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
 		<tr style="background:#C0C0C0;padding:20px;" >
 			<td style="width: 40%;padding: 10px;padding-left: 20px;">
-				Choix*:
+				Etapes:
 			</td> 
 			<td>
-				<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
+				<input type="text" name="NbrEtape" id="NbrEtape" tabindex="410"    />
 			</td>
 		</tr>
 	</table>
+</form>
+
 
 	
 	<center>
@@ -429,7 +429,9 @@ function choiceOption(f)
 	document.getElementById("lblTShirt4").style.display = "none" ;
 	document.getElementById("lblTShirt4").style.visibility = "hidden" ;
 
-		
+	document.getElementById("lblNbrEtape").style.visibility = "hidden" ;
+	document.getElementById("lblNbrEtape").style.display  = "none" 
+
 	document.getElementById("HaveAChoiceTarif").style.display = "block" ;
 	document.getElementById("formCode").style.visibility = "visible" ;
 	document.getElementById("NomCode").value = document.getElementById("nom").value ;
@@ -444,7 +446,12 @@ function choiceOption(f)
 	{
 		document.getElementById("NbrEtapeCode").value = "1" ;
 	}
-	
+
+	if (  DepartObj.ArrayEtape.length > 1 )
+	{
+		document.getElementById("lblNbrEtape").style.visibility = "visible" ;
+		document.getElementById("lblNbrEtape").style.display  = "table" 
+	}
 	document.getElementById("PrixInscription").value = tabOption[1] ;
 	console.log("log" + tabOption[3]);
 	if ( parseInt(tabOption[3])> 0)
@@ -1310,8 +1317,6 @@ function funDeleteCoureur()
 					 {
 						document.getElementById("num_dossard").style.backgroundColor = "lightgreen";
 					 }
-	
-				
 					document.getElementById("nom").value = CoureurFind.Nom;
 					document.getElementById("prenom").value = CoureurFind.Prenom;
 					document.getElementById("date").value = CoureurFind.DateNaissance;
@@ -1324,7 +1329,7 @@ function funDeleteCoureur()
 					document.getElementById("NomDepart").value = CoureurFind.NomDepart ;
 					document.getElementById("NumCat").value = CoureurFind.NumCategorie ;
 					document.getElementById("NomCat").value = CoureurFind.NomCategorie ;
-					document.getElementById("Nbretape").value = CoureurFind.NbrEtape ;
+					document.getElementById("NbrEtape").value = CoureurFind.NbrEtape ;
 
 					document.getElementById("FindValue").value = "" ;	
 
@@ -1338,6 +1343,13 @@ function funDeleteCoureur()
 					document.getElementById("TableDepartForRunner").style.visibility = "visible" ;
 					document.getElementById("sexe").value = CoureurFind.sexe;	
 
+					
+					if (  CoureurFind.NbrEtape.length > 0 )
+					{
+						document.getElementById("lblNbrEtape").style.visibility = "visible" ;
+						document.getElementById("lblNbrEtape").style.display  = "table" 
+					}	
+					 
 					if (CoureurFind.sexe == "D")
 					{
 						SelectSexe(false);
@@ -1528,7 +1540,13 @@ function ReadMysqlCoureur()
 					RowsCoureur.append(col1);
 			
 
-
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "12px";
+					col1.style.padding = "5px";;
+					col1.innerHTML = Coureur.NbrEtape;
+					RowsCoureur.append(col1);
+					
 					col1 = document.createElement('td');
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";
@@ -1537,6 +1555,8 @@ function ReadMysqlCoureur()
 					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
 				//	col1.addEventListener("click", function() { SelectCoureurInscrit(this.dataset.value); } );
 					RowsCoureur.append(col1);
+
+				
 				};
 			
 			}

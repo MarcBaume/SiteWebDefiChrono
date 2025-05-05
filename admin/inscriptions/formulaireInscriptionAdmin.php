@@ -94,7 +94,6 @@ function AddPersonne()
 	<input type="hidden" name="Find" id="Find" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 	<input type="hidden" name="IDCoureur" id="IDCoureur"  value= '<?php echo $_GET["IDCoureur"] ?>'  />
 	
 
@@ -246,6 +245,7 @@ function AddPersonne()
 				</td>
 			</tr>
 		</table>	
+
 		<table id="lblNomEquipe" style="visibility:hidden; display:none; width:100%; margin-top: 20px;">
 			<tr style="padding: 20px; background :#C0C0C0; width:100%">
 				<td style="width: 40%;">
@@ -338,18 +338,19 @@ function AddPersonne()
 		<div id="ParaRemarques" style="visibility:hidden; display:none" >	
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
-</form>
-	<!---------- CHOIC TARIFS _______________-->
+			<!---------- CHOIC TARIFS _______________-->
 	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
 		<tr style="background:#C0C0C0;padding:20px;" >
-			<td style="width: 40%;padding: 10px;padding-left: 20px;">
-				Choix*:
-			</td> 
 			<td>
-				<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
+				<p id="lblNbrEtape"><label for="lblNbrEtape"  >Nombre étape *:</label>
+			</td>
+			<td>
+				<input type="textarea" name="NbrEtape" id="Remarques" tabindex="410"   /></p>
 			</td>
 		</tr>
 	</table>
+</form>
+
 
 	
 	<center>
@@ -623,7 +624,7 @@ function SelectLocalite(e) {
 
 function choiceOption(f)
 {
-	var e = document.getElementById("nbrEtapeInsc");
+	var e = document.getElementById("nbrEtape");
 	e.setAttribute("style","background-color:#FFFFFF");
 
 	var tabOption =  e.options[e.selectedIndex].value.split(';');
@@ -1028,206 +1029,228 @@ function  SelectDepart(evt)
 	var tabOption = evt.split(';');
 	var ParcoursObj = ArrayParcours[tabOption[6] ];
 	var DepartObj = ParcoursObj.ArrayDepart[tabOption[0]];
-		
-
-		document.getElementById("NomDepart").value = tabOption[2] ;
-		document.getElementById("NomParcours").value = tabOption[5] ;
-		document.getElementById("NomCat").value = tabOption[3] ;
-		document.getElementById("NumCat").value = tabOption[4] ;	
-		
-		//********* initialisatino des champs **********************/
-		document.getElementById("lblNomEquipe").style.display = "none" ;
-		document.getElementById("Paradisc1").style.display = "none" ;
-		document.getElementById("Paradisc2").style.display = "none" ;
-		document.getElementById("Paradisc3").style.display = "none";
-		document.getElementById("Paradisc4").style.display = "none" ;
-		document.getElementById("Paradisc5").style.display = "none" ;
-		document.getElementById("Paradisc6").style.display = "none" ;
-		document.getElementById("ParaRemarques").style.display = "none" ;
-
-		document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
-		document.getElementById("Paradisc1").style.visibility = "hidden" ;
-		document.getElementById("Paradisc2").style.visibility = "hidden" ;
-		document.getElementById("Paradisc3").style.visibility = "hidden" ;
-		document.getElementById("Paradisc4").style.visibility = "hidden" ;
-		document.getElementById("Paradisc5").style.visibility = "hidden" ;
-		document.getElementById("Paradisc6").style.visibility = "hidden" ;
-		document.getElementById("ParaRemarques").style.display = "none" ;
-
-		document.getElementById("TableEquipe").style.visibility = "hidden" ;
-		document.getElementById("TableEquipe").style.display  = "none" ;
-			
-		document.getElementById("RowDuo").style.visibility = "hidden" ;
-		document.getElementById("RowDuo").style.display  = "none" ;
-
-		document.getElementById("RowEquipe").style.visibility = "hidden" ;
-		document.getElementById("RowEquipe").style.display  = "none" ;							
-
-		xEquipe = false;
-
-		var CatOBj = DepartObj.info.ListCategorie.ListItem[tabOption[1]];
-
-		// Si on peut s'inscrire par équipe dans la catégorie
-		if ((CatOBj.Equipe != null && CatOBj.Equipe.Value == true) || (CatOBj.Relais != null && CatOBj.Relais.Value == true))
-		{
-		
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "table" ;
-			// Pour course DUO
-	/*		if (f.NomParcours.value == "TEAM")
-			{
-				document.getElementById("ParaRemarques").style.visibility = "visible";
-				document.getElementById("ParaRemarques").style.display  = "table" ;
-			}*/
-
 	
-		// Si la catégorie est en relais
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "table" ;
-			xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
+	console.log("ParcoursObj")
+	console.log(ParcoursObj)
 
-			// Tableau qui regroupe toute les  discipline des étapes
-			var ArrayDiscipline = [];
-			for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
-			{
-				
-				var EtapeObj = DepartObj.ArrayEtape[j];
-				console.log(EtapeObj);
-				if (EtapeObj.info.ListDiscipline != null)
-				{
-				
-					for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
-					{
-						
-						ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
-					}
-				}
-			}
-			// affichage des champs au fromulaire pour inscrire chaque coureur
-			for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
-			{
-				Disc = new Object();
-				Disc =	ArrayDiscipline[iDiscipline];
+	document.getElementById("NomDepart").value = tabOption[2] ;
+	document.getElementById("NomParcours").value = tabOption[5] ;
+	document.getElementById("NomCat").value = tabOption[3] ;
+	document.getElementById("NumCat").value = tabOption[4] ;	
+	
+	//********* initialisatino des champs **********************/
+	document.getElementById("lblNomEquipe").style.display = "none" ;
+	document.getElementById("Paradisc1").style.display = "none" ;
+	document.getElementById("Paradisc2").style.display = "none" ;
+	document.getElementById("Paradisc3").style.display = "none";
+	document.getElementById("Paradisc4").style.display = "none" ;
+	document.getElementById("Paradisc5").style.display = "none" ;
+	document.getElementById("Paradisc6").style.display = "none" ;
+	document.getElementById("ParaRemarques").style.display = "none" ;
 
-				switch(iDiscipline) 
-				{
-					case 0:
-					if (ArrayDiscipline.length > 1)
-					{
-						document.getElementById("Paradisc1").style.visibility = "visible" ;
-						document.getElementById("Paradisc1").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null && Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc1").innerHTML = text;
-					}
-					break;
-					case 1:
-						document.getElementById("Paradisc2").style.visibility = "visible" ;
-						document.getElementById("Paradisc2").style.display  = "block" ;
-							text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc2").innerHTML = text;
-					break;
-					case 2:
-					
-						document.getElementById("Paradisc3").style.visibility = "visible" ;
-						document.getElementById("Paradisc3").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc3").innerHTML = text;
-						break;
-					case 3:
-					
-						document.getElementById("Paradisc4").style.visibility = "visible" ;
-						document.getElementById("Paradisc4").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc4").innerHTML = text;
-						break;
-					case 4:
-						document.getElementById("Paradisc5").style.visibility = "visible" ;
-						document.getElementById("Paradisc5").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc._Value.Deniv ;
-						}
-						document.getElementById("disc5").innerHTML = text;
-					break;
-					case 5:
-						document.getElementById("Paradisc6").style.visibility = "visible" ;
-						document.getElementById("Paradisc6").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc6").innerHTML = text;
-					break;
-				}
-				
-			}		
-		}
-		// Si Duo ou équipe // BCJ Challenge
-		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+	document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
+	document.getElementById("Paradisc1").style.visibility = "hidden" ;
+	document.getElementById("Paradisc2").style.visibility = "hidden" ;
+	document.getElementById("Paradisc3").style.visibility = "hidden" ;
+	document.getElementById("Paradisc4").style.visibility = "hidden" ;
+	document.getElementById("Paradisc5").style.visibility = "hidden" ;
+	document.getElementById("Paradisc6").style.visibility = "hidden" ;
+	document.getElementById("ParaRemarques").style.display = "none" ;
+
+	document.getElementById("lblNbrEtape").style.display = "none" ;
+	document.getElementById("lblNbrEtape").style.display  = "none" ;
+
+	document.getElementById("TableEquipe").style.visibility = "hidden" ;
+	document.getElementById("TableEquipe").style.display  = "none" ;
+		
+	document.getElementById("RowDuo").style.visibility = "hidden" ;
+	document.getElementById("RowDuo").style.display  = "none" ;
+
+	document.getElementById("RowEquipe").style.visibility = "hidden" ;
+	document.getElementById("RowEquipe").style.display  = "none" ;							
+
+	xEquipe = false;
+
+	var CatOBj = DepartObj.info.ListCategorie.ListItem[tabOption[1]];
+	if (  DepartObj.ArrayEtape.length > 1 )
+	{
+		document.getElementById("lblNbrEtape").style.visibility = "visible" ;
+		document.getElementById("lblNbrEtape").style.display  = "table" 
+		// cette partie du code peut être améliorer elle est pas correct mais pour le bcj challem^nge on a pas de valeur offline
+		/*console.log("listeItem");
+		console.log(ParcoursObj.info.ListTariffZone.ListItem);
+		for (var z = 0; z< ParcoursObj.info.ListTariffZone.ListItem.length; z++)
 		{
-
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "block" ;	
-			document.getElementById("TableEquipe").style.visibility = "visible" ;
-			document.getElementById("TableEquipe").style.display  = "block" ;					
-			if (DepartObj.info.NombrePersonneMaxDuo._Value > 1)
+			var TarifZone =ParcoursObj.info.ListTariffZone.ListItem[z];
+			console.log("TarifZone");
+			console.log(TarifZone);
+			for (var h = 0; h < TarifZone.ListTarif.length; h++)
 			{
-				document.getElementById("RowDuo").style.visibility = "visible" ;
-				document.getElementById("RowDuo").style.display  = "block" ;
+				var option = document.createElement("option");
+				option.text = TarifZone.ListTarif[h].NomOption._Value;
+				document.getElementById("nbrEtapeInsc").add(option);
+				
 			}
-			if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+			break;
+		}*/
+	}
+
+	// Si on peut s'inscrire par équipe dans la catégorie
+	if ((CatOBj.Equipe != null && CatOBj.Equipe.Value == true) || (CatOBj.Relais != null && CatOBj.Relais.Value == true))
+	{
+	
+		document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "table" ;
+
+
+		// Si la catégorie est en relais
+		document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "table" ;
+		xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
+
+		// Tableau qui regroupe toute les  discipline des étapes
+		var ArrayDiscipline = [];
+
+		for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
+		{
+			
+			var EtapeObj = DepartObj.ArrayEtape[j];
+			console.log(EtapeObj);
+			if (EtapeObj.info.ListDiscipline != null)
 			{
-				document.getElementById("RowEquipe").style.visibility = "visible" ;
-				document.getElementById("RowEquipe").style.display  = "block" ;							
+			
+				for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
+				{
+					
+					ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
+				}
 			}
 		}
-		// Affichage bouton envoie formulaire
-		document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
-		document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
-		document.getElementById("ButtonDeleteFormulaire").style.display  = "block" ;
-		document.getElementById("ButtonDeleteFormulaire").style.visibility = "visible" ;
+		// affichage des champs au fromulaire pour inscrire chaque coureur
+		for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
+		{
+			Disc = new Object();
+			Disc =	ArrayDiscipline[iDiscipline];
+
+			switch(iDiscipline) 
+			{
+				case 0:
+				if (ArrayDiscipline.length > 1)
+				{
+					document.getElementById("Paradisc1").style.visibility = "visible" ;
+					document.getElementById("Paradisc1").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null && Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc1").innerHTML = text;
+				}
+				break;
+				case 1:
+					document.getElementById("Paradisc2").style.visibility = "visible" ;
+					document.getElementById("Paradisc2").style.display  = "block" ;
+						text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc2").innerHTML = text;
+				break;
+				case 2:
+				
+					document.getElementById("Paradisc3").style.visibility = "visible" ;
+					document.getElementById("Paradisc3").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc3").innerHTML = text;
+					break;
+				case 3:
+				
+					document.getElementById("Paradisc4").style.visibility = "visible" ;
+					document.getElementById("Paradisc4").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc4").innerHTML = text;
+					break;
+				case 4:
+					document.getElementById("Paradisc5").style.visibility = "visible" ;
+					document.getElementById("Paradisc5").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc._Value.Deniv ;
+					}
+					document.getElementById("disc5").innerHTML = text;
+				break;
+				case 5:
+					document.getElementById("Paradisc6").style.visibility = "visible" ;
+					document.getElementById("Paradisc6").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc6").innerHTML = text;
+				break;
+			}
+			
+		}		
+	}
+	// Si Duo ou équipe // BCJ Challenge
+	if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+	{
+
+		document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "block" ;	
+		document.getElementById("TableEquipe").style.visibility = "visible" ;
+		document.getElementById("TableEquipe").style.display  = "block" ;					
+		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1)
+		{
+			document.getElementById("RowDuo").style.visibility = "visible" ;
+			document.getElementById("RowDuo").style.display  = "block" ;
+		}
+		if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+		{
+			document.getElementById("RowEquipe").style.visibility = "visible" ;
+			document.getElementById("RowEquipe").style.display  = "block" ;							
+		}
+	}
+	// Affichage bouton envoie formulaire
+	document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
+	document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
+	document.getElementById("ButtonDeleteFormulaire").style.display  = "block" ;
+	document.getElementById("ButtonDeleteFormulaire").style.visibility = "visible" ;
 }
 
 

@@ -136,10 +136,10 @@ function AddPersonne()
 				<td style="padding: 10px;padding-left: 20px;">Genre :</td>
 				<td id="td_sexe" style="padding:5px; Background:lightblue;">
 					<input type="hidden" name="sexe" id="sexe"  />
-					<button  id= "SexeHomme" type="button" style=" font-size :24px" >
+					<button  id= "SexeHomme" type="button" style=" font-size :24px" onclick="SelectSexe(true)" >
 						<i class='fa fa-male' ></i>
 					</button>
-					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px" >
+					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px" onclick="SelectSexe(false)" >
 						<i class='fa fa-female' ></i>	
 					</button>
 					<input type="hidden" name="adresse" id="adresse"  />

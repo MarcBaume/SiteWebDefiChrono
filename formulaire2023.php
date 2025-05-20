@@ -1970,6 +1970,8 @@ function ChoiceDepart(f)
 								InCheckbox.setAttribute("type", "number");
                                 InCheckbox.setAttribute("min", "0");
                                 InCheckbox.id = "DonationIDinput";
+								InCheckbox.style.width="40px";
+								InCheckbox.style.height="40px";
                                 tdReduc.appendChild(InCheckbox);
 
                                 var tdReduc = document.createElement("td");
@@ -1983,6 +1985,8 @@ function ChoiceDepart(f)
 							{
 								var InCheckbox = document.createElement("input");
 						  		 InCheckbox.onclick = function(){CheckReduc(this)};
+								InCheckbox.style.width="40px";
+								InCheckbox.style.height="40px";
 								InCheckbox.setAttribute("type", "checkbox");
 								InCheckbox.setAttribute("value", objReduction.Nom._Value+";"+ objReduction.tarif._Value);
 							                         

@@ -167,6 +167,14 @@ else
                 print(-23);
             }
 
+            $sql = 'UPDATE inscription SET TypeEquipe  =\''.$_REQUEST['TypeEquipe'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+    
+                $ResultAddInsc = mysqli_query($con,$sql);	
+                if ( $ResultAddInsc !=  1)
+               {
+                    print(-231);
+                }
             $sql = 'UPDATE inscription SET NbrEtape  =\''.$_REQUEST['NbrEtape'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
     

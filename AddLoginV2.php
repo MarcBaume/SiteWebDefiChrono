@@ -30,11 +30,29 @@ $_SESSION['DateCourse'] = $_GET['DateCourse'];?>
 		<p><a> <label for="login">Votre adresse e-mail :</label> <input type="text" name="login" id="login" tabindex="10" /> </a></p>
 		<p><a> <label for="pass">Votre mot de passe :</label> <input type="password"  name="pass" id="pass" tabindex="15" /> </a></p>
 	<p><a> <label for="pass2">Répétez  votre mot de passe :</label> <input type="password"  name="pass2" id="pass2" tabindex="15" /> </a></p>
-		<p><input type="button" onClick="check(this.form)" value="Créer mon compte"  style= " width: 200px; height: 50px";>  </p>
+		<p><a name="captcha" id="captcha" > </a></p>
+		
+	
+	
+	<p><input type="button" onClick="check(this.form)" value="Créer mon compte"  style= " width: 200px; height: 50px";>  </p>
 	 </form>
 	</div>
 </div>
-     
+     <script src='https://www.google.com/recaptcha/api.js'></script> 
+		<script> function get_action(form) 
+		{ 
+			var v = grecaptcha.getResponse();
+		 	if(v.length == 0) 
+			{ 
+				document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
+				 return false; 
+			} else 
+			{ 
+				document.getElementById('captcha').innerHTML="Captcha completed"; 
+				return true;
+			} 
+		} 
+		</script>
  </body>
 </html>
 <script>
@@ -46,21 +64,23 @@ function isMail(txtMail)
 }
 function check(f1) {
 	
+
 		if (!isMail(f1.login.value)) {
-		alert("Merci d'indiquer un mail valide");
-		f1.login.focus();
-		return false;
-	}
-	if (f1.pass.value.length<1)
-	{
-		alert("Veuillez écrire un mot de passe");
-		f1.pass.focus();
-		return false;
-	}
-	if (f1.pass.value != f1.pass2.value ) {
-		alert("votre mot de passe n'est pas identique");
-		return false;
-	}
+			alert("Merci d'indiquer un mail valide");
+			f1.login.focus();
+			return false;
+		}
+		if (f1.pass.value.length<1)
+		{
+			alert("Veuillez écrire un mot de passe");
+			f1.pass.focus();
+			return false;
+		}
+		if (f1.pass.value != f1.pass2.value ) {
+			alert("votre mot de passe n'est pas identique");
+			return false;
+		}
+
 f1.submit();
 	
 }

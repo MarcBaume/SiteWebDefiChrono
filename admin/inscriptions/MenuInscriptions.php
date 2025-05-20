@@ -51,17 +51,30 @@ if (!$con)
 // ***************************************** AFFICHAGE BASE de Donnée ***************************************
 	  // Create table de donnée du nom de parcours
 //	mysqli_select_db($con,$row['Database']);
-	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_GET["NomCourse"].'\'AND Date=\''.$_GET['DateCourse'].'\'' ; 
+	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$NOM_COURSE.'\'AND AnneeCourse=\''.$ANNEE_COURSE.'\'' ; 
 	$result = mysqli_query($con,$sql);
-	
+    ?>
+    <script>
+console.log( <?php echo json_encode( $ANNEE_COURSE);?>);
+</script>
+    <?
     if ($result && mysqli_num_rows($result) > 0) 
     {
         // output data of each row
         while($val1 = mysqli_fetch_assoc($result)) 
         {
+           
+           ?>
+            <script>
+console.log( <?php echo json_encode( $val1);?>);
+</script>
+            <?
             $val = $val1;
         }
     }
+    ?>
+        
+    <?
 }
 
 

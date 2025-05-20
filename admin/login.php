@@ -269,7 +269,7 @@ function SendForm1() {
 }
 function GoNewCompt()
 {
-		 window.location.href = "../AddLogin.php";
+		 window.location.href = "../AddLoginV2.php";
 }
 function GoForgetPassword()
 {

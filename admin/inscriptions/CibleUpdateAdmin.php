@@ -179,15 +179,23 @@ else
             $ResultAddInsc = mysqli_query($con,$sql);	
     
                 $ResultAddInsc = mysqli_query($con,$sql);	
+                if ( $ResultAddInsc != 1)
+                {
+                    print(-24);
+                }
+
+     $sql = 'UPDATE inscription SET Date  = current_timestamp   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+    
+                $ResultAddInsc = mysqli_query($con,$sql);	
                 if ( $ResultAddInsc == 1)
                 {
                     print(1);
                 }
                 else
                 {
-                    print(-24);
+                    print(-25);
                 }
-    
 
      }
      catch(Exception $e)

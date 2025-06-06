@@ -1,11 +1,14 @@
 
 
 function readJSON(file) {
+		console.log("ReadV2");
 	console.log(file);
     var request = new XMLHttpRequest();
 	var x = Math.random();
     request.open('GET', file+"?something="+x, false);
-    request.send(null);
+		console.log("ReadOpen");
+    request.send();
+		console.log("ReadSend");
     if (request.status == 200)
     {
         return JSON.parse(request.responseText);
@@ -13,6 +16,19 @@ function readJSON(file) {
 
 };
 
+
+function readJSONV2(file) {
+
+    var request = new XMLHttpRequest();
+	var x = Math.random();
+    request.open('GET', file+"?something="+x, false);
+	
+    if (request.status == 200)
+    {
+        return JSON.parse(request.responseText);
+    }
+
+};
 
 function TransformDistanceEnPxl(Value)
 {

@@ -97,8 +97,12 @@ $(function() {
 
 	<?php include("HeaderInfo2023.php"); 
 
+if ($NOM_COURSE =='Course des Quais  - Société de Gymnastique de Grandson' && $ANNEE_COURSE == 2024 )
+	{
+		header('Location: https://juradefichrono.ch/formulaire2023.php?NbrEtape=1&DateCourse=2025-07-04&Etape=1&NomCourse=Course+des+Quais++-+Soci%C3%A9t%C3%A9+de+Gymnastique+de+Grandson&ID=141'); 
 	
-if ( $today < $val ["DateStartInscription"] && $_SESSION['Niveau'] != 2 && $_SESSION['Niveau'] != 0 )
+	}
+else if ( $today < $val ["DateStartInscription"] && $_SESSION['Niveau'] != 2 && $_SESSION['Niveau'] != 0 )
 {
 	if (isset($_SESSION['Login']) || $_SESSION['Niveau'] == 1 )
 	{
@@ -990,7 +994,7 @@ else
    }
 else
 {
-    $Link= "AddLogin.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
+    $Link= "AddLoginV2.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
     // demande de connection pour inscription
 ?>
 <script>

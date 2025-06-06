@@ -23,7 +23,7 @@ else
      try
      {
           mysqli_select_db($con ,'dxvv_jurachrono' );
-		  $sql = 'SELECT * FROM inscription WHERE course= "'.$_REQUEST["NomCourse"]. $ANNEE_COURSE. '" and ( Nom  LIKE "'.$_REQUEST['Find'].'%" or NumDossard  LIKE "'.$_REQUEST['Find'].'%"  or Prenom Like "'.$_REQUEST['Find'].'%")';
+		  $sql = 'SELECT * FROM inscription WHERE course= "'.$_REQUEST["NomCourse"]. $ANNEE_COURSE. '" and ( Nom  LIKE "'.$_REQUEST['Find'].'%" or NumDossard  LIKE "'.$_REQUEST['Find'].'%"  or Prenom Like "'.$_REQUEST['Find'].'%") ORDER BY Date DESC ';
 		  $result = mysqli_query($con,$sql);
 		  $array = array();
           if ( $result )

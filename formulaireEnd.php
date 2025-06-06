@@ -89,7 +89,15 @@ Inscriptions fermées <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
    
    </fieldset>
    </div>
-    <?php include("sponsors.php"); ?>
+    <?php
+	
+if ($NOM_COURSE =='Course des Quais  - Société de Gymnastique de Grandson' && $ANNEE_COURSE == 2024 )
+	{
+		header('Location: https://juradefichrono.ch/formulaire2023.php?NbrEtape=1&DateCourse=2025-07-04&Etape=1&NomCourse=Course+des+Quais++-+Soci%C3%A9t%C3%A9+de+Gymnastique+de+Grandson&ID=141'); 
+	
+	}
+	
+	include("sponsors.php"); ?>
     </body>
 </html>
 

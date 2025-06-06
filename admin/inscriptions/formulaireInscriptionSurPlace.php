@@ -75,6 +75,7 @@ function isMail2(txtMail)
 	<input type="hidden" name="OnLine" id="OnLine" />
 	<input type="hidden" name="Option" id="Option" />
 	<input type="hidden" name="Find" id="Find" />
+		<input type="hidden" name="email" id="email" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
 	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
@@ -88,7 +89,11 @@ function isMail2(txtMail)
 		<table width="100%">
 			<tr style="background:#C0C0C0;padding:20px;">
 
-				<td style="padding: 10px;padding-left: 20px;">Nom & prénom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /> <input type="text" name="prenom" id="prenom" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Nom:</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /> </td>
+			</tr>
+			<tr style="background:#C0C0C0;padding:20px;">
+
+				<td style="padding: 10px;padding-left: 20px;">Prénom:</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="prenom" id="prenom" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
@@ -145,10 +150,16 @@ function isMail2(txtMail)
 
 
 			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Club & Email :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	
+				<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;">	
 					<input type="text" name="club" id="club"/>
-	 <input type="text" name="email" id="email" /></td>
+				</td>
+			</tr>
+			<tr style="background:#C0C0C0;">
+				<td style="padding: 10px;padding-left: 20px;">Email :</td><td id="td_email"  style="padding:5px; Background:lightblue;">	
+						 <input style="width:200px;" type="text" name="email1" id="email1" /><b style="font-size:36px;"> @ </b><input type="text" name="email2" id="email2" style="width:200px;"/></td></td>
 		
+				</td>
+
 			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
@@ -542,7 +553,13 @@ function SelectCoureur(e) {
 	document.getElementById("prenom").value = Coureur.Prenom;
 	document.getElementById("date").value = Coureur.DateNaissance;
 	document.getElementById("adresse").value = Coureur.adresse;
-	document.getElementById("email").value = Coureur.mail ;
+
+	arCoureurEmail =Coureur.mail.split("@");
+	document.getElementById("email1").value =arCoureurEmail[0];
+	if (arCoureurEmail.length > 1)
+	{
+		document.getElementById("email2").value =arCoureurEmail[1] ;	
+	}
 	document.getElementById("zip").value = Coureur.npa ;
 	document.getElementById("ville").value = Coureur.localite ;
 	document.getElementById("club").value = Coureur.club ;
@@ -796,6 +813,10 @@ function AddInscriptionOrModify()
 {
 	var FormCoureur =document.getElementById("FormulaireCoureur");
 	FormCoureur.action="CibleInscriptionSurPlaceV2.php";
+	if (document.getElementById("email1").value.length > 1)
+	{
+		document.getElementById("email").value =document.getElementById("email1").value + "@"+document.getElementById("email2").value;
+	}
 	FormCoureur.method="post" ;
 	FormCoureur.submit();
 }
@@ -810,6 +831,8 @@ function  ResetCoureur()
 	document.getElementById("date").value  ="";
 	document.getElementById("adresse").value ="";
 	document.getElementById("email").value ="";
+	document.getElementById("email1").value ="";
+	document.getElementById("email2").value ="";
 	document.getElementById("zip").value ="";
 	document.getElementById("ville").value ="";
 	document.getElementById("club").value  ="";

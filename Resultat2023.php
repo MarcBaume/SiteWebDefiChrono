@@ -78,8 +78,12 @@
 	$Classement = $_GET['Classement'];
 	$Depart = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
+	if ($NOM_COURSE =='Course des Quais  - Société de Gymnastique de Grandson' && $ANNEE_COURSE == 2025 )
+	{
+		header('Location: https://juradefichrono.ch/formulaire2023.php?NbrEtape=1&DateCourse=2025-07-04&Etape=1&NomCourse=Course+des+Quais++-+Soci%C3%A9t%C3%A9+de+Gymnastique+de+Grandson&ID=141'); 
 	
-	 if ($NOM_COURSE =='Jura Défi'  )
+	}
+	 else if ($NOM_COURSE =='Jura Défi'  )
 	{
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	
@@ -1443,7 +1447,7 @@ if ($Depart != null)
 											ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" )
 											{
 												//Ligne En tête heure de départ
-												if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage != undefined && ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "1")
+												if ((ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Départ" &&  ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == numEtape)||ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage != undefined && ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "1")
 												{
 													var Temps = ListCoureurs[i].Coureur.ListTempsPointPassage[j].HeurePassage;
 													para = document.createElement('p');
@@ -1462,7 +1466,7 @@ if ($Depart != null)
 													colonne1.appendChild(para);
 
 												}
-												if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == undefined || ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "2")
+												if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage != "Départ" && ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == undefined || ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "2")
 												{
 										
 													h = h+1;
@@ -1497,28 +1501,50 @@ if ($Depart != null)
 												colonne.style.width = "50px";
 												if (h >  1)
 												{
-
-													if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].Position < 0)
+													lastPosPointPassage = 0;
+													for (let m = j-1; m >0; m--) 
+                                        			{
+														if ( ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage == undefined ||
+														(ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage != 1 ))
+														{
+															if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+															{
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].Position;
+															}
+															else if (FormTypeClassement.value == "Sexe")
+															{
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].PositionsSexe;
+															}
+															else if (FormTypeClassement.value == "Categorie")
+															{
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].PositionCategorie;
+															}
+															break;
+														}
+													}
+													if (lastPosPointPassage > 0)
+													{
+													if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage < 0)
 													{
 														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
 													}
-													else if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].Position > 0)
+													else if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage > 0)
 													{
 														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
 													}
-													else if ((FormTypeClassement.value == "Sexe") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].PositionSexe < 0)
+													else if ((FormTypeClassement.value == "Sexe") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage< 0)
 													{
 														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
 													}
-													else if ((FormTypeClassement.value == "Sexe" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].PositionSexe > 0)
+													else if ((FormTypeClassement.value == "Sexe" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage> 0)
 													{
 														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
 													}
-													else if ((FormTypeClassement.value == "Categorie") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie - ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].PositionCategorie < 0)
+													else if ((FormTypeClassement.value == "Categorie") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie - lastPosPointPassage< 0)
 													{
 														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
 													}
-													else if ((FormTypeClassement.value == "Categorie" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie- ListCoureurs[i].Coureur.ListTempsPointPassage[j-1].PositionCategorie > 0)
+													else if ((FormTypeClassement.value == "Categorie" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie- lastPosPointPassage> 0)
 													{
 														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
 													}
@@ -1526,6 +1552,7 @@ if ($Depart != null)
 													{
 														colonne.innerHTML  = " <i style='font-size:20px; color:blue;' class='fa fa-arrow-right' ></i> ";
 													}
+												}
 												}
 												rowsPassage.appendChild(colonne);
 

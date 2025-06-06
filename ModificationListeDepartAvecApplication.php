@@ -93,14 +93,14 @@ function majuscules($inChaine)
 							if (intval($data[0]) > 0)
 							{
 								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE  course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
-												
+								$sql1 = 'DELETE FROM inscription   WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND NumDossard = \''.$data[0].'\' AND  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
+								echo "Dossard_". $data[0];
+				
 							}
 							else // Si la personne a déjà un numéro de dossard on va supprimer seulement ces data
 							{
 								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND NumDossard = \''.$data[0].'\' AND  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
-												
+								$sql1 = 'DELETE FROM inscription   WHERE  course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
 							}
 
 							$result1 = mysqli_query($con,$sql1);   

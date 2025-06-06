@@ -23,7 +23,7 @@ $_SESSION['DateCourse'] = $_GET['DateCourse'];?>
 <img src="images/FilRougeInscription2.png" style="width: 100%"  >
 	<div id="formulaire">
 	<div class="title"> Créer un compte : </div>
-	  <form method="post" action="CibleAddLogin.php">
+	  <form method="post" action="CibleAddLoginV2.php">
 	  	<input type="hidden" name="date_course" id="date_course"   value= '<?php echo $_GET['DateCourse'] ?>' />
 		<input type="hidden" name="nom_course" id="nom_course"  value= '<?php echo $_GET['NomCourse'] ?>' />
 		<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET['Nbretape'] ?>' />

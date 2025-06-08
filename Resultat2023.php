@@ -1753,10 +1753,10 @@ if ($Depart != null)
 										}
 									}
 									console.log(" Nombre classement de passage" + nbrClassementPassage);
-                                    if  ( nbrClassementPassage > 1)
+                                    if  ( nbrClassementPassage > 1 )
                                     {
 										
-										if (nbrPointPassage < 2)
+										if (nbrPointPassage < 2 )
 										{
 											console.log("add plus");
 											// Ajout bouton plus 
@@ -1806,8 +1806,9 @@ if ($Depart != null)
 
                                         for (let j = 0; j < ListCoureurs[i].Coureur.ListClassementPointPassage.length; j++) 
                                         {
-											if (ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage == undefined 
+											if ((ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage == undefined 
 											|| ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage != 1)
+											&& ListCoureurs[i].Coureur.ListClassementPointPassage[j].IDEtape == numEtape )
 											{
 												//Ligne passage
 												rowsPassage = document.createElement('tr');

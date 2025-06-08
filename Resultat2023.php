@@ -1373,7 +1373,15 @@ if ($Depart != null)
 								}
 								
 								rows.appendChild(colonne);
-								numEtape = document.getElementById("FormEtape").value ;
+								if (document.getElementById("FormEtape").value.length > 0)
+								{
+									numEtape = document.getElementById("FormEtape").value ;
+								}
+								else
+								{
+									numEtape = 1;
+								}
+		
                                 // Classement Point de passage
                                 // Ajout point de passage du coureur 
                                 if (  ListCoureurs[i].Coureur.ListTempsPointPassage != undefined )
@@ -1382,25 +1390,28 @@ if ($Depart != null)
 									for (let z = 0; z < ListCoureurs[i].Coureur.ListTempsPointPassage.length; z++) 
                                     {
 										if (ListCoureurs[i].Coureur.ListTempsPointPassage[z].IDEtape == numEtape
-										 || ListCoureurs[i].Coureur.ListTempsPointPassage[z].IDEtape == 0  
-										|| ListCoureurs[i].Coureur.ListTempsPointPassage[z].NomPointPassage == "Arrivée")
+										|| ListCoureurs[i].Coureur.ListTempsPointPassage[z].IDEtape == 0  
+										|| ListCoureurs[i].Coureur.ListTempsPointPassage[z].NomPointPassage != "Arrivée")
 										{
 											nbrPointPassage++;
 										}
 									}
+									console.log("Nombre temps point de passage" + nbrPointPassage)
+									// affichage des temps de point de passage seulement si il y a plus que un point
                                     if ( nbrPointPassage > 1)
                                     {
                                         // Ajout bouton plus 
-                                        colonne = document.createElement('td');
-				
-                                        colonne.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
-                                        rows.appendChild(colonne);
+                                        colonnePlus = document.createElement('td');
+                                        colonnePlus.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
+                                        rows.appendChild(colonnePlus);
+
                                         // Ajout tableau point de passage 
                                         rows = document.createElement('tr');
                                         rows.style.background = "white";
                                         rows.style.display = "none";
                                         rows.id = "TableauPointPassage"+ idCoureur;
                                         TableResult.appendChild(rows);
+										
                                         // Décalage avec position
                                         colonne = document.createElement('td');
                                         rows.appendChild(colonne);
@@ -1437,26 +1448,39 @@ if ($Depart != null)
                                         colonne1.colSpan = 10;
                                         rows.appendChild(colonne1);
 
-									
 										createTitlePointPassage = false;
 										h= 0;
                                         for (let j = 0; j < ListCoureurs[i].Coureur.ListTempsPointPassage.length; j++) 
                                         {
-											if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == numEtape || 
-											ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == 0  || 
-											ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" )
+											// Si point de passage départ et de la même étape
+											if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == numEtape &&
+											
+											(ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Départ" 
+											|| (ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage != undefined
+											&& ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "1")))
 											{
-												//Ligne En tête heure de départ
-												if ((ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Départ" &&  ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == numEtape)||ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage != undefined && ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "1")
-												{
-													var Temps = ListCoureurs[i].Coureur.ListTempsPointPassage[j].HeurePassage;
-													para = document.createElement('p');
-													para.innerHTML = "<i style='font-size:20px; color:blue;' class='fa fa-clock-o' ></i>"+ " Heure de départ : " + Temps
-													rows1.style.height = "20px";
-													colonne2.appendChild(para);
-													
-												}
+												var Temps = ListCoureurs[i].Coureur.ListTempsPointPassage[j].HeurePassage;
+												para = document.createElement('p');
+												para.innerHTML = "<i style='font-size:20px; color:blue;' class='fa fa-clock-o' ></i>"+ " Heure de départ : " + Temps
+												rows1.style.height = "20px";
+												colonne2.appendChild(para);
+											
+											}
+											// Si point de passage départ d'une autre étape ne pas afficher
+											else if ((ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Départ" 
+											&& ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape != numEtape)
+											|| ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage != undefined
+											&& ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "1")
+											{
 
+											}
+											// point de passage 
+											else if ((ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == numEtape || 
+											ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == 0  )
+											||( ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" && ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape != numEtape))
+											{
+												console.log("add point");
+												//Ligne En tête heure de départ
 												if (!createTitlePointPassage)
 												{
 													createTitlePointPassage = true;
@@ -1464,17 +1488,13 @@ if ($Depart != null)
 													para = document.createElement('p');
 													para.innerHTML = "<i style='font-size:20px; color:blue;' class='fa fa-clock-o' ></i>"+ " Temps de passage"
 													colonne1.appendChild(para);
-
 												}
-												if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage != "Départ" && ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == undefined || ListCoureurs[i].Coureur.ListTempsPointPassage[j].TypePointPassage == "2")
-												{
-										
-													h = h+1;
+				
+												h = h+1;
 												//Ligne passage
 												rowsPassage = document.createElement('tr');
-												
 												tablePassage.appendChild(rowsPassage);
-										
+									
 												colonne = document.createElement('td');
 												colonne.style.paddingLeft = "10px";
 												colonne.style.paddingRight = "10px";
@@ -1490,20 +1510,20 @@ if ($Depart != null)
 												{
 													colonne.innerText = ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe;
 												}
-											
 												else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == ""  )
 												{
 													colonne.innerText = ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position;
 												}
-												
+											
 												rowsPassage.appendChild(colonne);
 												colonne = document.createElement('td');
 												colonne.style.width = "50px";
+												// Si deuxième point de passage afficher progression
 												if (h >  1)
 												{
 													lastPosPointPassage = 0;
 													for (let m = j-1; m >0; m--) 
-                                        			{
+													{
 														if ( ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage == undefined ||
 														(ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage != 1 ))
 														{
@@ -1524,48 +1544,48 @@ if ($Depart != null)
 													}
 													if (lastPosPointPassage > 0)
 													{
-													if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage < 0)
-													{
-														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+														if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage < 0)
+														{
+															colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+														}
+														else if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage > 0)
+														{
+															colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+														}
+														else if ((FormTypeClassement.value == "Sexe") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage< 0)
+														{
+															colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+														}
+														else if ((FormTypeClassement.value == "Sexe" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage> 0)
+														{
+															colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+														}
+														else if ((FormTypeClassement.value == "Categorie") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie - lastPosPointPassage< 0)
+														{
+															colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+														}
+														else if ((FormTypeClassement.value == "Categorie" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie- lastPosPointPassage> 0)
+														{
+															colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+														}
+														else 
+														{
+															colonne.innerHTML  = " <i style='font-size:20px; color:blue;' class='fa fa-arrow-right' ></i> ";
+														}
 													}
-													else if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage > 0)
-													{
-														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
-													}
-													else if ((FormTypeClassement.value == "Sexe") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage< 0)
-													{
-														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
-													}
-													else if ((FormTypeClassement.value == "Sexe" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionSexe - lastPosPointPassage> 0)
-													{
-														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
-													}
-													else if ((FormTypeClassement.value == "Categorie") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie - lastPosPointPassage< 0)
-													{
-														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
-													}
-													else if ((FormTypeClassement.value == "Categorie" ) && ListCoureurs[i].Coureur.ListTempsPointPassage[j].PositionCategorie- lastPosPointPassage> 0)
-													{
-														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
-													}
-													else 
-													{
-														colonne.innerHTML  = " <i style='font-size:20px; color:blue;' class='fa fa-arrow-right' ></i> ";
-													}
-												}
 												}
 												rowsPassage.appendChild(colonne);
 
 												colonne = document.createElement('td');
-									
-												if ( ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" )
+												if ( ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" && ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape != numEtape && document.getElementById("FormEtape").value.length > 0)
 												{
-													colonne.innerText ="Etape " +ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape
+													colonne.innerText = "étape " + ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape ;
 												}
 												else
 												{
 													colonne.innerText = ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage;
 												}
+											
 												rowsPassage.appendChild(colonne);
 
 												// Affichage heure de passage
@@ -1690,50 +1710,80 @@ if ($Depart != null)
 													}
 												}
 												// Afficher tous les coureurs dans le scratch
-												else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+											else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+											{
+												if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.indexOf(".") > -1)
 												{
-													if (ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.indexOf(".") > -1)
-													{
-														ecart = ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.substring(0,ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.indexOf("."));
-													}
-													else
-													{
-														ecart = ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart;
-													}
-												}
-												if (ecart.indexOf('00:') == 0)
-												{
-													colonne.innerText =  ecart.slice(3,25);
+													ecart = ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.substring(0,ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart.indexOf("."));
 												}
 												else
 												{
-													colonne.innerText = ecart;
-												}
-												rowsPassage.appendChild(colonne);
+													ecart = ListCoureurs[i].Coureur.ListTempsPointPassage[j].Ecart;
 												}
 											}
-										}	
-                                    }
+											if (ecart.indexOf('00:') == 0)
+											{
+												colonne.innerText =  ecart.slice(3,25);
+											}
+											else
+											{
+												colonne.innerText = ecart;
+											}
+											rowsPassage.appendChild(colonne);
+											}
+										}
+									}	
+                                    
                                 }
                                 // Classement Point de passage
                                 // Ajout point de passage du coureur 
                                 if (  ListCoureurs[i].Coureur.ListClassementPointPassage != undefined  )
                                 {
-									nbrPointPassage = 0;
-								
+									nbrClassementPassage = 0;
+									console.log("Calcul Nombre point de passage");
 									//ne pas afficher les  points  de passage départ
 									for (let z = 0;z < ListCoureurs[i].Coureur.ListClassementPointPassage.length; z++) 
 									{
+										console.log(ListCoureurs[i].Coureur.ListClassementPointPassage[z].IDEtape + " / " + numEtape + " / " + ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassag);
 										if ( ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassage == undefined ||
 										(ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassage != 1 &&
-										 ListCoureurs[i].Coureur.ListClassementPointPassage[z].IDEtape != numEtape))
+										 ListCoureurs[i].Coureur.ListClassementPointPassage[z].IDEtape == numEtape))
 										{
-											nbrPointPassage++;
+											nbrClassementPassage++;
 										}
 									}
-                                    if  (ListCoureurs[i].Coureur.ListClassementPointPassage.length > 1 && nbrPointPassage > 1)
+									console.log(" Nombre classement de passage" + nbrClassementPassage);
+                                    if  ( nbrClassementPassage > 1)
                                     {
 										
+										if (nbrPointPassage < 2)
+										{
+											console.log("add plus");
+											// Ajout bouton plus 
+											colonnePlus = document.createElement('td');
+											colonnePlus.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
+											rows.appendChild(colonnePlus);
+											// Ajout tableau point de passage 
+											rows = document.createElement('tr');
+											rows.style.background = "white";
+											rows.style.display = "none";
+											rows.id = "TableauPointPassage"+ idCoureur;
+											TableResult.appendChild(rows);
+											// Décalage avec position
+											colonne = document.createElement('td');
+											rows.appendChild(colonne);
+
+											colonne = document.createElement('td');
+											colonne.colSpan = 10;
+											rows.appendChild(colonne);
+
+											// Tableau point de passage
+											tablePassage = document.createElement('table');
+											tablePassage.style.width = "100%"
+											tablePassage.style.background = "#E1E1E1";
+											tablePassage.style.padding = "10px";
+											colonne.appendChild(tablePassage);
+										}
                                      // Ajout tableau point de passage 
                                          rows = document.createElement('tr');
                                         rows.style.background = "white";
@@ -1756,7 +1806,8 @@ if ($Depart != null)
 
                                         for (let j = 0; j < ListCoureurs[i].Coureur.ListClassementPointPassage.length; j++) 
                                         {
-											if (ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage == undefined || ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage != 1)
+											if (ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage == undefined 
+											|| ListCoureurs[i].Coureur.ListClassementPointPassage[j].TypePointPassage != 1)
 											{
 												//Ligne passage
 												rowsPassage = document.createElement('tr');
@@ -1792,19 +1843,11 @@ if ($Depart != null)
 
 												// Nom du point de passage 
 												colonne = document.createElement('td');
-												if ( ListCoureurs[i].Coureur.ListClassementPointPassage[j].NomPointPassage == "Arrivée" )
-													{
-														colonne.innerText ="Etape " +ListCoureurs[i].Coureur.ListClassementPointPassage[j].IDEtape
-
-													}
-													else
-													{
-														colonne.innerText = ListCoureurs[i].Coureur.ListClassementPointPassage[j].NomPointPassage;
-													}
-														rowsPassage.appendChild(colonne);
+												colonne.innerText = ListCoureurs[i].Coureur.ListClassementPointPassage[j].NomPointPassage;
+												rowsPassage.appendChild(colonne);
 
 
-																//Colonne vide
+												//Colonne vide
 												colonne = document.createElement('td');
 												colonne.style.paddingLeft = "10px";
 												colonne.style.paddingRight = "10px";
@@ -1943,9 +1986,7 @@ if ($Depart != null)
 											}
 										}
 									}
-                                    
-                             }
-
+                             	}
 							}
 						}
 					}
@@ -1963,7 +2004,7 @@ if ($Depart != null)
 		{  
 			document.getElementById("FormParcours").value =sParcours;
 			document.getElementById("FormDepart").value ="";
-			document.getElementById("FormEtape").value ="";
+			document.getElementById("FormEtape").value ="1";
 			elmnt = document.getElementById("FormSendIndfo");
 			elmnt.submit();
 		}

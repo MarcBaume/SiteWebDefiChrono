@@ -303,8 +303,29 @@ if ($Nbr_etape < 2)
 		</td>
     <?
     } 
-?>
 
+   $FileReglement = 'courses/'.$NOM_COURSE.$ANNEE_COURSE."/info/Programme.pdf";
+    if (file_exists($FileReglement)) 
+    { ?>
+   <td style= "width:10px;">
+	  </td>
+		<td style= "width:50%;background:#BCDDFD; padding: 10px;">
+			<table  style= "width:100%;">
+				<tr >
+					<td style= "width:50px;">
+						<center>
+						<i class="fa fa-file-o" style= "font-size: 35px;"></i>
+						</center>
+					</td>
+					<td style= "background:#BCDDFD;padding:10px;">
+					<?echo '<a href="'.$FileReglement.'"target="_blank">Programme , Cliquer ici</a>'?>
+					</td>
+				</tr>
+			</table>
+		</td>
+    <?
+    } 
+?>
 </tr>
 </table>
 </center>

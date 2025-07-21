@@ -74,16 +74,16 @@
 	  include("HeaderInfo2023_WithoutCouverture.php"); 
 	
 
-	$Parcours = $_GET['Parcours'];
-	$Classement = $_GET['Classement'];
-	$Depart = $_GET['Depart'];
+	$indexParcoursSelected= $_GET['Parcours'];
+	$indexDepartSelected = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
-	if ($NOM_COURSE =='Course des Quais  - Société de Gymnastique de Grandson' && $ANNEE_COURSE == 2025 )
+	$Classement = $_GET['Classement'];
+	if ($Etape ==0)
 	{
-		header('Location: https://juradefichrono.ch/formulaire2023.php?NbrEtape=1&DateCourse=2025-07-04&Etape=1&NomCourse=Course+des+Quais++-+Soci%C3%A9t%C3%A9+de+Gymnastique+de+Grandson&ID=141'); 
-	
+		$Etape =1 ;
 	}
-	 else if ($NOM_COURSE =='Jura Défi'  )
+	
+	  if ($NOM_COURSE =='Jura Défi'  )
 	{
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	
@@ -101,18 +101,13 @@
 		<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["DateCourse"] ?>' />
 		<input type="hidden" name="NomCourse" id="FormNomCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["NomCourse"] ?>' />
 		<input type="hidden" name="NbrEtape" id="FormNbrEtape" tabindex="10"  size="60"  value= '<?php echo $_GET["NbrEtape"] ?>' />
-		<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $Depart ?>' />
-		<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60"  value= '<?php echo $Parcours ?>' />
+		<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $indexDepartSelected ?>' />
+		<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60" value= '<?php echo $indexParcoursSelected ?>'/>
 		<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $_GET["PointPassage"]?>' />
 		<input type="hidden" name="TypeClassement" id="FormTypeClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["TypeClassement"]?>'/>
 		<input type="hidden" name="NomClassement" id="FormNomClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["NomClassement"]?>' />
 		<input type="hidden" name="Etape" id="FormEtape" tabindex="10"  size="60"  value= '<?php echo $Etape ?>' />
 	</form>
-	<p>
-
-</p>
-
-
 <?php 
 $row = 1;
 $start_array = false;
@@ -130,7 +125,6 @@ $arEtape = array();
 // Calcul du nombre de parcours
 foreach ($files1  as $key => $value) 
 { 
-
    if(is_dir($pathfolder .'/'.$value))
    {
 		// Affichage dans la liste des départ dans le menu 
@@ -146,79 +140,56 @@ foreach ($files1  as $key => $value)
 // SI il y plus que 1 parcours affichage d'un menu pour le choix du départ
 if (count($arParcours) > 1)
 {?>
-
-	<? if ($Parcours == null)
-	{?>
-		<fieldset class="fieldsetResultat">
-			<Legend  class="LegendResultat">
-				Sélectionner un parcours
-			</Legend>
-
-	<?	
-	}?>
-	
-		<table  class="menu_vertical" style="margin-top : 15px;">
-			<tr >
-				<? 
-				foreach($arParcours as $Parcours1)
+	<fieldset class="fieldsetResultat">
+		<Legend  class="LegendResultat">
+			Parcours
+		</Legend>
+		<select  onchange='ChangParcours(this);' id="SelectParcours" >
+			<option value="0" >Sélectionne un parcours</option><?
+			foreach($arParcours as $Parcours1)
+			{
+				$IndexParcours++;
+				if ($indexParcoursSelected != $IndexParcours)
+				{ ?>		
+					<option value=<?php echo $IndexParcours?>><? echo $Parcours1 ?></option>
+				<?
+				}
+				else
 				{
-					$IndexParc++;
-					?>
-							
-					<td onClick='ChangParcours(<?php echo json_encode($Parcours1)?>);'  style="cursor: pointer; background: #96C9FA;" > 
-					
-					<? if ($Parcours != $Parcours1)
-					{ ?>
-					<span class="dot">
-						<p style="color : #3d6ca4;  background: transparent;">
-				
-							<i class="fa fa-map" style= "color : #3d6ca4;font-size: 25px;margin:5px;"></i>
-						
-						<? echo $Parcours1 ?>
-					</p>
-					</span>
+					$Parcours =  $Parcours1?>
+					<option selected value=<?php echo $IndexParcours?>><? echo $Parcours1 ?></option>
 				<?
-					}
-					else
-					{  ?>
-					<span class="dotDisplayed">
-						<p  style=" background: transparent;">
-						
-									<i class="fa fa-map" style= "color :#BCDDFD;font-size: 25px;margin:5px;"></i>
-						
-						<? echo $Parcours1 ?>
-					</p>
-					</span>
-				<?
-					}?>
-
-					</td><?
-				}?>
-			</tr>
-		</table>
-	<? if ($Parcours == null)
+				}
+			}?>
+		</select>
+	</fieldset>
+	<? 
+	// Acun parcours sélectionné
+	if ($indexParcoursSelected == 0)
 	{?>
-		</fieldset>
+		
 		<?php include("sponsors2023.php"); ?> 
 	<?	
-	}?>
-<?php
+	}
 }
 else
 {
-	// si il y a que un départ ;
-	$Parcours =$ParcoursTampon;
+	$Parcours =  $arParcours[0];
+	$indexParcoursSelected = 1;
 }
 
 /***************************** Depart ************************************/
 /* Actualiser lors de chaque changement de parcours
 /* DEPART avec Parcours sélectionné ************************************/
 
-if ($Parcours != null)
-{
-
+if ($indexParcoursSelected > 0)
+{?>
+	<script>
+		console.log("Parcours")
+	</script>
+	<?
 	// Afficher la liste des départ Dossier dans la course ;
-	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$Parcours;
+	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1];
 	// Création de la liste de toutes les Dossier = Depart 
 	$files1 = scandir($pathfolder);
 	
@@ -230,75 +201,54 @@ if ($Parcours != null)
 			if (strlen($value) >2 && $value != "info") 
 			{
 				$arDepart[] =  $value;
-				$DepartTampon = $value;
 			}		
 		}
 	}
 	// SI il y plus que 1 départ affichage d'un menu pour le choix du départ
 	if (count($arDepart) > 1)
 	{?>
-	<script>
-
+		<script>
+			console.log("Departs");
 		</script>
-		<? if ($Depart == null)
-		{?>
-			<fieldset class="fieldsetResultat">
-				<Legend  class="LegendResultat">
-					Sélectionner un départ
-				</Legend>
-		<?	
-		}?>
-		<table class="menu_vertical">
-		<tr>
-		<? 
-		foreach($arDepart as $Depart1)
-		{
-			$IndexDep++;
-			?>
-			<td onClick='ChangDepart(<?php echo json_encode($Depart1)?>);'  style="cursor: pointer; background: #96C9FA;" > 
+		<fieldset class="fieldsetResultat">
+			<Legend  class="LegendResultat">
+				Départ
+			</Legend>
 
-			<? if ($Depart == $Depart1)
-			{ ?>
-			<span class="dotDisplayed">
-				<p style="color : #BCDDFD;  background: transparent;">
-				
-							<i class="fa fa-flag" style= "color :#BCDDFD;font-size: 25px;margin:5px;"> </i>
+			<select onchange='ChangDepart(this);'  id="SelectDepart"   style="cursor: pointer;" > 
+			<option value="0" >Sélectionne un départs</option><?
 			
-					<? echo $Depart1 ?>
-				</p>
-				</span>
-			<?
-			}
-			else
-			{  ?>
-			<span class="dot">
-				<p style="  background: transparent;">
+			foreach($arDepart as $Depart1)
+			{
+				$IndexDep++;
+				if ($indexDepartSelected != $IndexDep)
+				{ ?>
+					<option  value=<?php echo $IndexDep?> >	<? echo $Depart1 ?></option>
+				<?
+				}
+				else
+				{ 
+					$Depart =  $Depart1
+				?>
+					<option selected value=<?php echo $IndexDep?> >	<? echo $Depart1 ?></option>
+				<?
+				}
 				
-							<i class="fa fa-flag" style= "color : #3d6ca4;font-size: 25px;margin:5px;"></i>
-				
-					<? echo $Depart1 ?>
-				</p>
-				</span>
-			<?
 			}?>
-			
-			</td><?
-		}?>
-		</tr>
-		</table>	
-		<? if ($Depart == null)
+			</select>	
+			<? if ($indexDepartSelected == 0)
 			{?>
-				</fieldset>
 				<?php include("sponsors2023.php"); ?> 
 			<?	
 			}?>
+		</fieldset>
 	<?php
 	}
 	else
 	{
-	
+		$Depart =  $arDepart[0];
 		// si il y a que un départ ;
-		$Depart =$DepartTampon;
+		$indexDepartSelected  = 1;
 	}
 }
 
@@ -306,14 +256,12 @@ if ($Parcours != null)
 /* Actualiser lors de chaque changement de départ
 /* Etape avec Parcours sélectionné ************************************/
 
-if ($Depart != null)
+if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepartSelected > 0 && $indexParcoursSelected  > 0 )
 {
-
 	// Afficher la liste des départ Dossier dans la course ;
-	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$Parcours.'/'.$Depart;
+	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1].'/'.$arDepart[$indexDepartSelected-1];
 	// Création de la liste de toutes les Dossier = Depart 
 	$files1 = scandir($pathfolder);
-	
 	foreach ($files1  as $key => $value) 
 	{ 
 	   if(is_dir($pathfolder .'/'.$value))
@@ -328,171 +276,75 @@ if ($Depart != null)
 	}
 	// SI il y plus que 1 étape affichage d'un menu pour le choix du départ
 	if (count($arEtape) > 1)
-	{?>
-					<? if ($Etape == null || $Etape == 0)
-				{?>
-								
-					<fieldset class="fieldsetResultat">
-						<Legend  class="LegendResultat">
-							Sélectionner une étape
-						</Legend>
-				<?	
-				}?>
-		<table class="menu_vertical">
-		<tr>
-		<? 
-		$IndexDep = 0;
-		// Affichage du bouton de la liste des étapes
-		foreach($arEtape as $Etape1)
-		{
-		
+	{?>							
+		<fieldset class="fieldsetResultat">
+			<Legend  class="LegendResultat">
+				<i class="fa fa-trophy" style= "fontSize: 25px;margin:5px;"></i>étape
+			</Legend>
+			<select  onchange='ChangEtape(this);' id="SelectEtape"   style="cursor: pointer;">
+			<? 
+			$IndexDep = 0;
+			// Affichage du bouton de la liste des étapes
+			foreach($arEtape as $Etape1)
+			{
 			// Obtention des informations de chaque étape
-			?>
-			<script>
-			Etape =  readJSON(<?php echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
-			console.log(Etape);
-			</script>
+			?>	
+				<script>
+				console.log("Read info" + <?php echo json_encode($pathfolder.'//'.$Etape1)?>);
+				Etape =  readJSON(<?php  echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
+				console.log(Etape);
+				</script>
 			<?
-				if ($Etape1 == "General")
-				{
-					$IndexDep=99;
-				}
-				else
-				{
-					$IndexDep++;
-				}
-
-			?>
-			<td onClick='ChangEtape(<?php echo json_encode($IndexDep)?>);'  style="cursor: pointer; background: #96C9FA;" > 
-			<? if ($Etape != $IndexDep)
-			{ ?>
-				<span  class="dot">
-				
-				<Table>
-					<tr>
-					<td>
-					<? if ($Etape1 == 'General')
-						{?>
-							<i class="fa fa-trophy" style= "fontSize: 25px;margin:5px;"></i><?
-						}
-						else
-						{?>
-							<i  id="<?php echo "ButtonEtape".$IndexDep ?>"> </i>
-							<script>
-								LogoEtape(<?php echo json_encode( "ButtonEtape".$IndexDep); ?>,Etape);
-							</script><?
-						}?>
-					</td>
-					<td>
-						<table>
-							<tr>
-								<td>
-								<? if ($Etape1 == 'General')
-									{
-									echo 'Général';
-									}
-									else
-									{
-									echo 'Etape '. $IndexDep ;
-									}?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-								<script>
-									if (Etape != null)
-									{
-									document.write(Etape.Lieu._Value);
-									}
-								</script>
-								</td>
-							</tr>
-						</table>
-					</td>
-					</tr>
-				</table>
-			
-			</span>
-			<?
+			if ($Etape1 == "General")
+			{
+				$IndexDep=99;
 			}
 			else
-			{  ?>
-				<span class="dotDisplayed">
-				<Table>
-					<tr>
-					<td>
-					<? if ($Etape1 == 'General')
-						{?>
-							<i class="fa fa-trophy" style= "fontSize: 25px;margin:5px;"></i><?
-						}
-						else
-						{?>
-							<i  id="<?php echo "ButtonEtape".$IndexDep ?>"> </i>
-							<script>
-								LogoEtape(<?php echo json_encode( "ButtonEtape".$IndexDep); ?>,Etape);
-							</script><?
-						}?>
-					</td>
-					<td>
-						<table>
-							<tr>
-								<td>
-								<? if ($Etape1 == 'General')
-									{
-									echo 'Général';
-									}
-									else
-									{
-									echo 'Etape '. $IndexDep ;
-									}?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-								<script>
-									if (Etape != null)
-									{
-									document.write(Etape.Lieu._Value);
-									}
-								</script>
-								</td>
-							</tr>
-						</table>
-					</td>
-					</tr>
-				</table>
-				</span>
-			<?
-			}?>
-			</td><?
-		}?>
-		</tr>
-		</table>
-		<? if ($Etape == null || $Etape == 0)
+			{
+				$IndexDep++;
+			}
+			if ($IndexDep != 99)
+			{
+				if ($Etape != $IndexDep)
+				{?>
+					<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+					</option>
+				<?
+				}
+				else
+				{  ?>
+					<option selected value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+					</option>
+				<?
+				}?>
+				<?
+			}
+			else if ($Etape == 99)
+			{
+				?>
+				<option selected value=<?php echo $IndexDep?>> <? 	echo 'Général'?>
+				</option><?
+			}
+			else
 			{?>
-							
-			</fieldset>
-		
-			<?	
-			}?>
-	<?php
+				<option value=<?php echo $IndexDep?>> <? 	echo 'Général'?>
+				</option><?
+			}
+		}
+			?>
+		</select>
+		</fieldset><?
 	}
 	else
 	{
-	
 		// si il y a que un départ ;
 		$Etape ="1";
 	}
-}
-
-	?>
-
+}?>
 <div id="ViewAllEtapes">
-
 </div>
 </div>
 <div id="ViewGraphique">
-
 </div>
 <!--<div   class="menu_vertical" style="margin-bottom:5px;" id="Allpointpassage">
 </div>-->
@@ -517,30 +369,22 @@ if ($Depart != null)
 
 <div id="ViewLiveCoureur">
 </div>
-
 <script>
-		var ListNomClassement = [];
-		var NbrEtape=parseInt(<?php echo json_encode($_GET['NbrEtape']); ?> );
-		
-		var PathFolder=<?php echo json_encode($pathfolder); ?> ;
-
-		var PathEtape=<?php echo json_encode($Etape); ?> ;
-		
-		
-		var Etape= new Object();	
+	var ListNomClassement = [];
+	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )
+{
+	console.log("Function Read File Resultat");
+	
+	var Etape= new Object();	
 	// Lecture du fichier " info étape "
-		Etape =  readJSON(PathFolder +"//Etape"+ PathEtape+ "//info.json");
-		console.log("Read File Json Etape");
-		console.log(PathFolder +"//Etape"+ PathEtape+ "//info.json");
-		console.log(Etape);
-		var ListPointPassage  = [];
-		if (Etape != undefined)
-		{
-	
-			AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
-	
-
-
+	Etape =  readJSON(PathFolderDepart + "/Etape"+NumEtape+"/info.json");
+	console.log("Read File Json Etape");
+	console.log(PathFolderDepart + "/Etape"+NumEtape+ "/info.json");
+	console.log(Etape);
+	var ListPointPassage  = [];
+	if (Etape != undefined )
+	{
+		AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
 		// Graphique Vertical avec point de passage noter dans le graphique 
 		var ArrayCoureurs = [];
 		var ArrayParcours = [];
@@ -568,16 +412,14 @@ if ($Depart != null)
 		ViewGraphique.append(RowsTableEtape1);
 
 		var LastPoint = true;
-
 		var DivAllPoint= document.getElementById('Allpointpassage');
-
 		var Parcours= new Object();	
        
 		CountCoureurTotal = 0;
 
 
 		// lecture fichier JSON des résultats de la course
-		Parcours.info =  readJSON(PathFolder +"//Etape"+ PathEtape+ "//ResultatsV2.json");
+		Parcours.info =  readJSON(PathFolderDepart +"/Etape"+ NumEtape+ "/ResultatsV2.json");
 		console.log("ResultatsV2.json");
 		console.log(Parcours.info);
 		if (Parcours.info != undefined)
@@ -585,15 +427,11 @@ if ($Depart != null)
 			// Affichage du live des coureurs de chaque point de passage 
 			for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
 			{
-				console.log("ListLivePoint");
-				console.log(Parcours.info.ListLivePointDePassage[i].NameDepart + <?php echo json_encode($Depart)?>);
-                console.log(Parcours.info.ListLivePointDePassage[i]);
 				if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
 				{
 					// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
 					if (LastPoint)
 					{
-
 						var ListCoureurs = Parcours.info.ListLivePointDePassage[i].ListCoureursArrivee;
 
 					}
@@ -631,12 +469,13 @@ if ($Depart != null)
             <?
         }?>
 	}
+}
+
 
 	function AddButtonTypeResultat(PointDePassageInfo)
 	{
 		console.log("Add Button type resultat");
 		DivTypeClassement= document.getElementById('TypeClassement');
-
 		// Affichage du bouton de chaque type de classement proposé par ce point de passage 
 		const buttonTypeClassement = document.createElement('button');
 		if (FormTypeClassement.value == "Categorie" )
@@ -719,24 +558,22 @@ if ($Depart != null)
 		 ***************************************************/
 		if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
 		{
-			// Afficher la liste des résultats spéciaux 
-			$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$Parcours.'/'.$Depart;
 			if ($numetape >0 && $numetape <99)
 			{
-				$pathfolder = $pathfolder   .'/Etape'.$numetape;
+				$pathfolderStep = $pathfolder   .'/Etape'.$numetape;
 			}
 			elseif ($numetape == 99)
 			{
 			
-				$pathfolder = $pathfolder .'/General/ResultatWeb' ;
+				$pathfolderStep = $pathfolder .'/General/ResultatWeb' ;
 			}
 			else
 			{
-				$pathfolder = $pathfolder   .'/Etape1';
+				$pathfolderStep = $pathfolder   .'/Etape1';
 			}
-			$pathfolder = $pathfolder   .'/ResultatWeb';
+			$pathfolderStep = $pathfolderStep   .'/ResultatWeb';
 			// Création de la liste de toutes les Dossier = Depart 
-			$files1 = scandir($pathfolder);
+			$files1 = scandir($pathfolderStep);
 			// Lecture de chaques dossier Pacours Exemple Adultes / Enfants 
 			foreach ($files1  as $key => $value) 
 			{ 
@@ -777,8 +614,6 @@ if ($Depart != null)
 		function AddButtonPointdePassage(PointDePassageInfo)
 		{
 				// Création bouton par nouveau point de passage 
-				console.log("Add button point de passage");
-				console.log(PointDePassageInfo);
 				const button = document.createElement('button');
 				var FormPointPassage= document.getElementById('FormPointPassage');
 				var FormTypeClassement= document.getElementById('FormTypeClassement');
@@ -920,6 +755,7 @@ if ($Depart != null)
 		}
 		
 		function ListCoureurLiveToTable(LivePointPassage, ListCoureurs, LastPointDePassage , idPointPassage)
+
 		{
         
 			// Trie selon le type de classement ( Scratch , Categorie , Sexe)
@@ -979,11 +815,7 @@ if ($Depart != null)
 						LivePointPassage.ListCoureursArrivee.sort((a,b) => a.Coureur.NumCategorie < b.Coureur.NumCategorie  ? -1 : 1);
 						console.log(LivePointPassage.ListCoureursArrivee);
 					}
-
-				
-
 					// Affichage du classement seulement si il est de type scratch ou si on a choisie un nom de classement
-
 					// Table du classement sélectionné 
 					const TableResult = document.createElement("Table");
 					TableResult.id = "TableResult";
@@ -995,7 +827,6 @@ if ($Depart != null)
 					{
 					
                         idCoureur = (idPointPassage *100) + i;
-                        console.log(idCoureur);
 						// Si détection contient un coureur 
 						if (ListCoureurs[i].Coureur != null)
 						{
@@ -1007,10 +838,6 @@ if ($Depart != null)
 								if( ListCoureurs[i].Coureur.NumCategorie == FormNomClassement.value )
 								{
 									AddCoureur = true;
-								}
-								else
-								{
-									console.log(ListCoureurs[i].Coureur.NumCategorie);
 								}
 							}
 							// Si le coureur dans le même sexe que afficher 
@@ -1211,7 +1038,6 @@ if ($Depart != null)
 								}
 								else
 								{
-									console.log(ListCoureurs[i].Coureur.AnneeNaissance);
 									colonne.innerText = ListCoureurs[i].Coureur.AnneeNaissance;
 								}
 								
@@ -1396,7 +1222,7 @@ if ($Depart != null)
 											nbrPointPassage++;
 										}
 									}
-									console.log("Nombre temps point de passage" + nbrPointPassage)
+
 									// affichage des temps de point de passage seulement si il y a plus que un point
                                     if ( nbrPointPassage > 1)
                                     {
@@ -1479,7 +1305,6 @@ if ($Depart != null)
 											ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape == 0  )
 											||( ListCoureurs[i].Coureur.ListTempsPointPassage[j].NomPointPassage == "Arrivée" && ListCoureurs[i].Coureur.ListTempsPointPassage[j].IDEtape != numEtape))
 											{
-												console.log("add point");
 												//Ligne En tête heure de départ
 												if (!createTitlePointPassage)
 												{
@@ -1740,11 +1565,10 @@ if ($Depart != null)
                                 if (  ListCoureurs[i].Coureur.ListClassementPointPassage != undefined  )
                                 {
 									nbrClassementPassage = 0;
-									console.log("Calcul Nombre point de passage");
+									
 									//ne pas afficher les  points  de passage départ
 									for (let z = 0;z < ListCoureurs[i].Coureur.ListClassementPointPassage.length; z++) 
 									{
-										console.log(ListCoureurs[i].Coureur.ListClassementPointPassage[z].IDEtape + " / " + numEtape + " / " + ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassag);
 										if ( ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassage == undefined ||
 										(ListCoureurs[i].Coureur.ListClassementPointPassage[z].TypePointPassage != 1 &&
 										 ListCoureurs[i].Coureur.ListClassementPointPassage[z].IDEtape == numEtape))
@@ -1752,13 +1576,11 @@ if ($Depart != null)
 											nbrClassementPassage++;
 										}
 									}
-									console.log(" Nombre classement de passage" + nbrClassementPassage);
+								
                                     if  ( nbrClassementPassage > 1 )
                                     {
-										
 										if (nbrPointPassage < 2 )
 										{
-											console.log("add plus");
 											// Ajout bouton plus 
 											colonnePlus = document.createElement('td');
 											colonnePlus.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
@@ -2001,26 +1823,29 @@ if ($Depart != null)
 			IconFavori.style.color = 'Yellow';
 		}
 
-		function ChangParcours(sParcours)
+		function ChangParcours(selectObject)
 		{  
-			document.getElementById("FormParcours").value =sParcours;
-			document.getElementById("FormDepart").value ="";
-			document.getElementById("FormEtape").value ="1";
+			console.log("Fonction changParcours");
+			document.getElementById("FormParcours").value =selectObject.value;
+			document.getElementById("FormDepart").value ="0";
+			document.getElementById("FormEtape").value ="0";
 			elmnt = document.getElementById("FormSendIndfo");
 			elmnt.submit();
 		}
 
-		function ChangDepart(sDepart)
+		function ChangDepart(selectObject)
 		{  
-			document.getElementById("FormEtape").value ="";
-			document.getElementById("FormDepart").value =sDepart;
+
+			console.log("Fonction changDepart");
+			document.getElementById("FormEtape").value ="0";
+			document.getElementById("FormDepart").value = selectObject.value;
 			elmnt = document.getElementById("FormSendIndfo");
 			elmnt.submit();
 		}
 
-		function ChangEtape(sEtape)
+		function ChangEtape(selectObject)
 		{  
-			document.getElementById("FormEtape").value =sEtape;
+			document.getElementById("FormEtape").value =selectObject.value;
 			
 			if (document.getElementById("TypeClassement").length = 0)
 			{
@@ -2030,12 +1855,8 @@ if ($Depart != null)
 			elmnt.submit();
 		}
 		var DivViewLiveCoureur= document.getElementById('ViewLiveCoureur');
-	
-
-
 		function ViewDetailCoureur(Coureur)
 		{
-			console.log(Coureur);
 			var TableDetailCoureur= document.getElementById("TableauPointPassage"+ Coureur);
 			if (TableDetailCoureur.style.display == "none")
             {
@@ -2145,11 +1966,7 @@ if ($Depart != null)
 			TableTotal.append(tr2);
 			
 			ColimgEtapePara.append(TableTotal);
-
-
-
 			TableResume(IDSVG, ColimgEtapePara);
-			
 			AddSvg(IDSVG, FileName);
 		}
 
@@ -2488,7 +2305,7 @@ if ($Depart != null)
 		var DistancenPxl = TransformDistanceEnPxl(value) + DecalageStartWidth;
 
 			/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
-			var HeightLine = Height + DecalageStartHeight;
+		var HeightLine = Height + DecalageStartHeight;
 		var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
 		newText.setAttributeNS(null,"x", (DistancenPxl-20 ) +'px');     
 		newText.setAttributeNS(null,"y", (Height-100) +'px'); 
@@ -2562,26 +2379,20 @@ if ($Depart != null)
 			CircleSVG.setAttribute('rx','20px');
 			RectangleText.appendChild(CircleSVG);
 			var useSVG = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-		useSVG.setAttribute('href','Coureurs.png');
-		useSVG.setAttribute('x','0');
-		useSVG.setAttribute('y','0');
+			useSVG.setAttribute('href','Coureurs.png');
+			useSVG.setAttribute('x','0');
+			useSVG.setAttribute('y','0');
 
-		useSVG.setAttribute('width','30');
-		useSVG.setAttribute('height','30');
+			useSVG.setAttribute('width','30');
+			useSVG.setAttribute('height','30');
 
-		newText.setAttributeNS(null,"x", (DistancenPxl-13)+ 'px');    
+			newText.setAttributeNS(null,"x", (DistancenPxl-13)+ 'px');    
 			newText.setAttributeNS(null,"y", ((HeightLine - HeightPourCent)-27)+'px');
 			newText.setAttributeNS(null,"font-size","12");
-			console.log(newText);
-			
-		
+	
 			var textNode = document.createTextNode(Text);
-				newText.appendChild(textNode);
-
-		RectangleText.appendChild(useSVG);
-
-			
-				
+			newText.appendChild(textNode);
+			RectangleText.appendChild(useSVG);	
 			GraphiqueSVG.appendChild(RectangleText);
 			GraphiqueSVG.appendChild(newText);
 		}
@@ -2590,7 +2401,6 @@ if ($Depart != null)
 	/** FUNCTION DESSINER LA LIGNE   ELEVATION D+ *************/
 	function AddLigneElevation( value, GraphiqueSVG )
 	{
-			
 		var ELevationPxl = TransformElevationEnPxl(value) + DecalageStartHeight;
 			/*** AFFICHAGE TEXT AU DöBUT DE LA LIGNE *****/
 		var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
@@ -2602,10 +2412,7 @@ if ($Depart != null)
 		newText.appendChild(textNode);
 		GraphiqueSVG.appendChild(newText);
 
-
-
 		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
-
 		maLigne1.setAttribute('x1',  (DecalageStartWidth - 50) +'px');
 		maLigne1.setAttribute('y1', ELevationPxl+ 'px');
 		maLigne1.setAttribute('x2', (Width + DecalageStartWidth)+'px');
@@ -2683,6 +2490,23 @@ if ($Depart != null)
 	}
 
 	
+function AddMember()
+{
+	// Appelle fonction php pour ajouter un
+
+$('formChoiceMember').request({
+			onComplete: function(transport){
+				 val =transport.responseText.evalJSON();
+
+				console.log(val);
+				if (val == "1")
+				{
+					location.reload();
+				}
+				}
+			});
+}
+
     </script>
 
 
@@ -2821,4 +2645,16 @@ document.getElementById("GoToTop").style.visibility = "hidden";
 }
 
 };
+
 </script>
+<?php
+if ($indexDepartSelected > 0 && $indexParcoursSelected > 0 && $Etape > 0)
+{?>
+<script>
+
+		console.log("Call Function Read File Resultat");
+	readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?> )
+</script>
+<?php
+}?>
+<script>

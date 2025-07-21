@@ -77,13 +77,10 @@ if ( strlen ($_REQUEST['Code'])>2)
 								// Reduction par etape et non en franc 
 					
 									print(json_encode(	$val["ReductionCHF"] ));
+							
 									goto a;	
 							}
-							else 
-							{
-								print( -2);
-								goto a;	
-							}
+
 						}
 						else
 						{

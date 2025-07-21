@@ -80,7 +80,7 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
 <center>
 
    <h3>
-Inscriptions fermées <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
+Inscriptions en ligne fermées </br></br> il est toujours possible de s'inscrire sur place 1 heure avant le départ
    </h3>
    <Fieldset>
  

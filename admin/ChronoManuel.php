@@ -38,7 +38,6 @@ function onReset(event) {
             document.getElementById("Dossard").select();
 }
 function onChange(event) {
-  console.log(event.value)
 	document.getElementById("Temps").value =document.getElementById("Clock").innerHTML;
 
 
@@ -102,9 +101,6 @@ function TableauDetection(val)
 	</script>
  </head>
  <body>
- <?php
-   include("HeaderAdmin.php"); 
-?>
 <form id="FormulaireDossard" method="get" action="CibleChronoManuel.php" >
 <table style="width:100%">
 <tr>
@@ -126,7 +122,7 @@ function TableauDetection(val)
       <input type="button" style="height:70px; font-size:25px; margin:20px; " onClick="onReset(this)"    value="Reset"></input>    
       </td>
   <td>
-      <input type="button" style="font-size:40px;margin:20px;padding:40px;width:50%;"    onClick="onChange(this)" value="Valider"></input>
+      <input type="button" style="font-size:40px;margin:20px;padding:40px;width:50%;" id="ButtonValid"   onClick="onChange(this)" value="Valider"></input>
       </td>
 
     </tr>
@@ -140,4 +136,18 @@ function TableauDetection(val)
 </div>
 </body>
 </html>
+<script>
+  // Get the input field
+var input = document.getElementById("Dossard");
 
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("ButtonValid").click();
+  }
+});
+</script>

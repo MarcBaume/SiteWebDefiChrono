@@ -80,40 +80,48 @@ function majuscules($inChaine)
 
 					// Recherche si le numéro d'id existe
 					$IDCoureur = $data[17];
-				
-                    $sql = 'SELECT * FROM inscription WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'AND DateNaissance = \''.$data[6].'\'';
 					
+					$sql = 'SELECT * FROM inscription WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'AND NumCategorie = \''.$data[9].'\'AND DateNaissance = \''.$data[6].'\'';
 					$result4 = mysqli_query($con,$sql);	
-
 					if ($result4 ) 
-					{				
+					{	
+						// si course à plusieurs étape on a plusieur départ différent ne pas les supprimer tous		
+						// Si la personne existe déjà 	dans ce parcours
 						if (  mysqli_num_rows($result4) > 0)
 						{
-							// SI un dossard est déjà attribué a cette personne
-							if (intval($data[0]) > 0)
+							// Affichage de chaque donnée trouver et nombre restant actuel
+							while($val = mysqli_fetch_assoc($result4)) 
 							{
-								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND NumDossard = \''.$data[0].'\' AND  Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
-								echo "Dossard_". $data[0];
-				
-							}
-							else // Si la personne a déjà un numéro de dossard on va supprimer seulement ces data
-							{
-								// Si la donnée existe déjà la supprimer
-								$sql1 = 'DELETE FROM inscription   WHERE  course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND NomDepart = \''.$data[13].'\' AND Nom = \''.$Nom.'\'AND Prenom = \''.$Prenom.'\'AND DateNaissance = \''.$data[6].'\'';
-							}
-
-							$result1 = mysqli_query($con,$sql1);   
-
-                            if ($result1)
-                            {
-                                echo "Delete _";
-                            }
-                            else
-                            {
-                                echo "Error Delete Delete _";
-                                echo $result1;
-                            }
+								if ($val["NumDossard"]== 0)
+								{
+									$sql1 = 'DELETE FROM inscription   WHERE ID=\''.$val["ID"].'\'';
+									$result1 = mysqli_query($con,$sql1);   
+									if ($result1)
+									{
+										echo "Delete Dossard_0".$val["Nom"];
+									}
+									else
+									{
+										echo "Error Delete ";
+										echo $result1;
+									}
+								}
+								elseif ($val["NumDossard"]== $data[0])
+								{
+									$sql1 = 'DELETE FROM inscription   WHERE ID=\''.$val["ID"].'\'';
+									$result1 = mysqli_query($con,$sql1);   
+									if ($result1)
+									{
+										echo "Delete Dossard_existant".$val["Nom"];
+									}
+									else
+									{
+										echo "Error Delete ";
+										echo $result1;
+									}
+								
+								}
+							}							
 						}
 					}
 					/*		// Mise a jour entrée base de donnée Nombre crédit restant dans l'application

@@ -78,7 +78,6 @@ function isMail2(txtMail)
 		<input type="hidden" name="email" id="email" />
 	<input type="hidden"  id="NomParcours" name="NomParcours" />
 	<input type="hidden"  id="NomDepart" name="NomDepart" />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 	<input type="hidden" name="IDCoureur" id="IDCoureur"  value= '<?php echo $_GET["IDCoureur"] ?>'  />
 	
 
@@ -235,7 +234,17 @@ function isMail2(txtMail)
 				</td>
 			</tr>
 		</table>
-
+		<!---------- CHOIC TARIFS _______________-->
+		<table 	style="width:100%;margin-top: 20px;display:none;" id="lblNbrEtape">
+			<tr style="background:#C0C0C0;padding:20px;" >
+				<td style="width: 40%;padding: 10px;padding-left: 20px;">
+					Nombre étapes*:
+				</td> 
+				<td>
+					<input type="text"  style="width: 90%;" name="NbrEtape" id="NbrEtape" tabindex="410" ></input>
+				</td>
+			</tr>
+		</table>
 		<div id="Paradisc1" style="visibility:hidden; display:none" >	
             <h2 id="disc1" > </h2>
             <p  id="lblNomDisc1" ><label for="NomDisc1" >Nom *:</label> <input type="text" name="NomDisc1" id="NomDisc1" tabindex="202"   /></p>
@@ -318,17 +327,7 @@ function isMail2(txtMail)
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
 </form>
-	<!---------- CHOIC TARIFS _______________-->
-	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
-		<tr style="background:#C0C0C0;padding:20px;" >
-			<td style="width: 40%;padding: 10px;padding-left: 20px;">
-				Choix*:
-			</td> 
-			<td>
-				<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
-			</td>
-		</tr>
-	</table>
+
 
 	
 	<center>
@@ -338,7 +337,7 @@ function isMail2(txtMail)
 				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"  id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= " width: 100px; height: 50px";>  </br>
 			</td>
 			<td>
-				<button  id= "ButtonReset" type="button" style=" font-size :24px"  class="ButtonResultat" onclick="ResetCoureur()">
+				<button  id= "ButtonDeleteFormulaire" type="button" style=" font-size :24px"  class="ButtonResultat" onclick="ResetCoureur()">
 						Reset
 				</button>
 			</td>
@@ -541,7 +540,7 @@ function SearchDatabase(e) {
 					RowsCoureur.append(col1);
 				};
 			
-				}
+			}
 });
 }
 
@@ -739,11 +738,7 @@ function check()
 	}
 
 	coureur.prenom = f1.prenom.value;
-
-
 	coureur.email = f1.email.value;
-
-
 
 	if (f1.zip.value.length<4) {
 		f1.zip.style.background = "red";
@@ -825,7 +820,6 @@ function AddInscriptionOrModify()
 function  ResetCoureur()
 {
 	document.getElementById("IDCoureur").value ="";
-	document.getElementById("num_dossard").value ="";
 	document.getElementById("nom").value ="";
 	document.getElementById("prenom").value ="";
 	document.getElementById("date").value  ="";
@@ -867,14 +861,16 @@ function  ResetCoureur()
 	
 	var lblinfo = document.getElementById("lblInformation"); 
 	lblinfo.style.visibility = "hidden" ;
-					lblinfo.style.display  = "none" ;
-					lblinfo.innerHTML = "";
+	lblinfo.style.display  = "none" ;
+	lblinfo.innerHTML = "";
+
 	document.getElementById("ButtonSendFormulaire").style.display  = "none" ;
-		document.getElementById("ButtonSendFormulaire").style.visibility = "hidden" ;
-		document.getElementById("ButtonDeleteFormulaire").style.display  = "none" ;
-		document.getElementById("ButtonDeleteFormulaire").style.visibility = "hidden" ;
-		document.getElementById("lblInfoDeleteCoureur").style.display  = "none" ;
-		document.getElementById("lblInfoDeleteCoureur").style.visibility = "hidden" ;
+	document.getElementById("ButtonSendFormulaire").style.visibility = "hidden" ;
+	document.getElementById("ButtonDeleteFormulaire").style.display  = "none" ;
+	document.getElementById("ButtonDeleteFormulaire").style.visibility = "hidden" ;
+	document.getElementById("lblInfoDeleteCoureur").style.display  = "none" ;
+	document.getElementById("lblNbrEtape").style.display  = "none" ;
+	document.getElementById("lblInfoDeleteCoureur").style.visibility = "hidden" ;
 
 }
 
@@ -965,124 +961,132 @@ function  SelectDepart(evt)
 			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
 			document.getElementById("lblNomEquipe").style.display  = "table" ;
 			xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
-
-			// Tableau qui regroupe toute les  discipline des étapes
-			var ArrayDiscipline = [];
-			for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
+		}
+		// Tableau qui regroupe toute les  discipline des étapes
+		var ArrayDiscipline = [];
+		console.log("Etape");
+		console.log(DepartObj.ArrayEtape);
+		if ( DepartObj.ArrayEtape.length > 1)
+		{
+			document.getElementById("lblNbrEtape").style.display  = "table" ;	
+		}
+		else
+		{
+			document.getElementById("lblNbrEtape").style.display  = "none" ;	
+		}
+		for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
+		{
+			
+			var EtapeObj = DepartObj.ArrayEtape[j];
+			console.log(EtapeObj);
+			if (EtapeObj.info.ListDiscipline != null)
 			{
-				
-				var EtapeObj = DepartObj.ArrayEtape[j];
-				console.log(EtapeObj);
-				if (EtapeObj.info.ListDiscipline != null)
+			
+				for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
 				{
-				
-					for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
-					{
-						
-						ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
-					}
+					
+					ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
 				}
 			}
-			// affichage des champs au fromulaire pour inscrire chaque coureur
-			for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
-			{
-				Disc = new Object();
-				Disc =	ArrayDiscipline[iDiscipline];
+		}
+		// affichage des champs au fromulaire pour inscrire chaque coureur
+		for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
+		{
+			Disc = new Object();
+			Disc =	ArrayDiscipline[iDiscipline];
 
-				switch(iDiscipline) 
+			switch(iDiscipline) 
+			{
+				case 0:
+				if (ArrayDiscipline.length > 1)
 				{
-					case 0:
-					if (ArrayDiscipline.length > 1)
+					document.getElementById("Paradisc1").style.visibility = "visible" ;
+					document.getElementById("Paradisc1").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null && Disc.Distance._Value.length > 0)
 					{
-						document.getElementById("Paradisc1").style.visibility = "visible" ;
-						document.getElementById("Paradisc1").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null && Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc1").innerHTML = text;
+					text	+" / "+ Disc.Distance._Value ;
 					}
-					break;
-					case 1:
-						document.getElementById("Paradisc2").style.visibility = "visible" ;
-						document.getElementById("Paradisc2").style.display  = "block" ;
-							text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc2").innerHTML = text;
-					break;
-					case 2:
-					
-						document.getElementById("Paradisc3").style.visibility = "visible" ;
-						document.getElementById("Paradisc3").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc3").innerHTML = text;
-						break;
-					case 3:
-					
-						document.getElementById("Paradisc4").style.visibility = "visible" ;
-						document.getElementById("Paradisc4").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc4").innerHTML = text;
-						break;
-					case 4:
-						document.getElementById("Paradisc5").style.visibility = "visible" ;
-						document.getElementById("Paradisc5").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc._Value.Deniv ;
-						}
-						document.getElementById("disc5").innerHTML = text;
-					break;
-					case 5:
-						document.getElementById("Paradisc6").style.visibility = "visible" ;
-						document.getElementById("Paradisc6").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc6").innerHTML = text;
-					break;
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc1").innerHTML = text;
 				}
+				break;
+				case 1:
+					document.getElementById("Paradisc2").style.visibility = "visible" ;
+					document.getElementById("Paradisc2").style.display  = "block" ;
+						text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc2").innerHTML = text;
+				break;
+				case 2:
 				
-			}		
+					document.getElementById("Paradisc3").style.visibility = "visible" ;
+					document.getElementById("Paradisc3").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc3").innerHTML = text;
+					break;
+				case 3:
+				
+					document.getElementById("Paradisc4").style.visibility = "visible" ;
+					document.getElementById("Paradisc4").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc4").innerHTML = text;
+					break;
+				case 4:
+					document.getElementById("Paradisc5").style.visibility = "visible" ;
+					document.getElementById("Paradisc5").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc._Value.Deniv ;
+					}
+					document.getElementById("disc5").innerHTML = text;
+				break;
+				case 5:
+					document.getElementById("Paradisc6").style.visibility = "visible" ;
+					document.getElementById("Paradisc6").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc6").innerHTML = text;
+				break;
+			}
 		}
 		// Si Duo ou équipe // BCJ Challenge
 		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
@@ -1259,12 +1263,6 @@ function liste_depart(f,CheckSexe)
 				document.getElementById('date').style.backgroundColor="white";
 				document.getElementById('NomParcours').style.backgroundColor="white";
 				lblinfo.value= "Aucune catégorie existe sur ce parcours pour cette année de naissance";
-			}
-
-			// Plusieurs départ disponible ajouter un champs pour sélectionner le départ 
-			if (ICounterCat == 1)
-			{
-				ChoiceDepart(f);
 			}
 		}
 		else if (!CheckSexe)

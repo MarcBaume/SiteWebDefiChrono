@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" title="defaut" media="screen" href="../styleV6.css" type="text/css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../js/prototype.js" ></script>
+<script src="../../js/FonctionDefiChrono2.js?v=1"></script>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 <!-- initilisation de variable -->
@@ -69,6 +72,22 @@
             document.getElementById("lblInformation").innerHTML="les informations du coureur n'ont pas encore été validées"
             document.getElementById("lblInformation").style.background="#fa8a8a";
         }
+    }
+
+    function AddEquipe(f1)
+    {
+        $('FormAddEquipe').request({
+                onComplete: function(transport){
+
+                    val =transport.responseText.evalJSON();
+                    console.log(val);
+                    if (val== 1 )
+                    {
+                        window.location.reload();
+                    }
+                    
+                }
+            });
     }
 </script>
 
@@ -140,9 +159,6 @@
 	else
 	{
 		mysqli_select_db($con ,'dxvv_jurachrono' );
-		// Create table de donnée du nom de parcours
-		mysqli_select_db($con,$row['Database']);
-
 		$sql = 'SELECT * FROM Membres  WHERE LoginCompte=\''.$_SESSION['Login'].'\''; 
 
 		//echo $sql;
@@ -152,79 +168,65 @@
 		{
             $c= 0;
             // de type entreprise
-            if ($_SESSION['Niveau'] == "1")
-            {
-            	header('Location: membres_entreprise.php'); 
-            }
-            else
+
+            $sqlLogin = 'SELECT * FROM Login  WHERE Login=\''.$_SESSION['Login'].'\''; 
+            $resultLogin = mysqli_query($con,$sqlLogin);
+            
+            while($ValLogin = mysqli_fetch_assoc($resultLogin)) 
             {?>
-                 <h2> Liste d'athlète(s) :</h2>
-                <?
-            }?>
-           
+                <h2> Liste d'athlète(s) dans l'entreprise <? echo $ValLogin["NomEntreprise"]?></h2> 
+
+                <a href="inscriptions/formulaireAddMembre.php?login=<?echo $_SESSION['Login']?>"> Liens de partage ajouts athlètes </a>
             <?
+            }
 			//Chaque athlète on va créer un nom 
 			while($val = mysqli_fetch_assoc($result)) 
 			{?>
                <Fieldset   id="<?php echo "user".$c ?>" onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;Display:inline-grid;cursor: pointer; width:20%;  " >
 				<span class="dotMember"  > 
-
-                <?
-                    $c++
-                ?> 
-
-				<?php 
-				if ($val['Valider'])
+                <?php
+                $c++;
+				if ($val["Valider"])
 				{
                     $CmptValider++?>
-                   
-                    <Table >
+                    <table>
                         <tr>
                             <td>
-                              
                                 <?php if ($val ["sexe"] == "D")
                                 {?>
                                      <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #d48def;"></i>
-<?
+                                <?
                                 }
                                 else
                                 {?>
-                              <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #4095f5;"></i>
-                               <? }?>
-                             
-                            
+                                    
+                                    <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #4095f5;"></i>
+                               <?}?>
                             </td>
                             <td>
-                              
                                 <table>
                                     <tr>
-                                        <td>
-                                          
+                                        <td>    
                                         <? echo $val ["Nom"]?>
                                         </td>
-                                  </tr>
-                                  <tr>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             <? echo $val ["Prenom"]?>
                                         </td>
                                     </tr>
-                                </table>
-                           	
+                                </table> 	
                             </td>		
                         </tr>
                     </table>
-                    
-                    <?
+                <?
                 }
 				else
 				{?>
-               
                     <Table>
                         <tr>
                             <td>
-                               
                                 <i class="fa fa-user" style= "font-size: 22px;margin:9px;color: red;"></i>
-                             
                             </td>
                             <td>
                                 <table>
@@ -239,11 +241,10 @@
                                 </table>
                             </td>		
                         </tr>
-                    </table>
-                    
+                    </table> 
                 <?php	
                 }
-?>
+                ?>
             <script>
                 var Coureur= new Object();
                 Coureur.Valider = <?php echo json_encode($val ["Valider"]); ?>;
@@ -273,21 +274,111 @@
         <?php
         }
     }
+   
+/*******************************************************************************************************************
+ * 
+ * Affichage liste des course
+ * 
+ ********************************************************************************************************************/
+?>
+<div id="divAddEquipe"  style="padding:2px; margin:20%;  margin-top :10px;margin-bottom :10px ;radius :10px; background: #ccc ">
+   
+    <h2> Ajouts d'une équipe</h2>
 
+    <form id="FormAddEquipe" name="FormAddEquipe" method="get"  action="CibleAddEquipe.php"  >
+        <input type="hidden" name="ID" id="ID"   />
+        <input type="text" name="LoginEntreprise" id="LoginEntreprise" value="<?php echo $_SESSION['Login'];?>"  />
+        <p><label style="vertical-alignement: center" for="nom">Nom équipe:</label> <input type="text" name="NomEquipes" id="NomEquipes" tabindex="10"   /></p>
+        <p><label style="vertical-alignement: center" for="prenom">Course :</label> 
+        <select  name="TypeCourse" id="TypeCourse" tabindex="20">
+        <?php
+            mysqli_select_db($con ,'dxvv_jurachrono' );
+            $sql = 'SELECT * FROM TypeEquipeEntreprise'; 
+            $resultTypeEntreprise = mysqli_query($con,$sql);
+            if ($resultTypeEntreprise && mysqli_num_rows($resultTypeEntreprise) > 0) 
+            {
+                while($valTypeEquipe = mysqli_fetch_assoc($resultTypeEntreprise)) 
+                {?>
+                    <option value=<?php echo $valTypeEquipe["ID"] ?>><?php echo $valTypeEquipe["NomType"]?> </option>
+                <?php
+                }
+            }
+        ?>
+        </select></p>
+        <!-- Bouton validation information -->
+        <button type ="button" style="margin-right :10px;"
+                onClick="AddEquipe(this.form)" title="Ajouts d'équipes" 
+                data-toggle="tooltip" data-placement="right">
+                <i class="fa fa-check" style= "font-size: 50px;margin:9px;color: #4095f5;"></i>
+        </button>
+        </a>
+    </form>	
+</div>
+<div id="divListeEquipe">
+    
+    <p> Listes de mes équipes </p>
+    <?php
+            mysqli_select_db($con ,'dxvv_jurachrono' );
+            $sql = 'SELECT * FROM EquipesEntreprises WHERE  LoginEntreprise	=\''.$_SESSION['Login'].'\''; 
+            $resultListeEquipe = mysqli_query($con,$sql);
+            if ($resultListeEquipe && mysqli_num_rows($resultListeEquipe) > 0) 
+            {
+                while($valEquipe = mysqli_fetch_assoc($resultListeEquipe)) 
+                {
+                    $c++;?>
+                    <div>
+                        <?php 
+                            $sqlType = 'SELECT * FROM TypeEquipeEntreprise WHERE  ID=\''.$valEquipe['TypeCourse'].'\''; 
+                            $resultTypeEquipe = mysqli_query($con,$sqlType);
+                                if ($resultTypeEquipe && mysqli_num_rows($resultTypeEquipe) > 0) 
+                            {
+                                while($valTypeEquipe = mysqli_fetch_assoc($resultTypeEquipe)) 
+                                {
+                                        echo $valTypeEquipe["NomType"]. " ". $valEquipe["NomEquipe"] ;
+
+                                        break;
+                                }
+                            }
+                        ?>
+                        <table id="ListCoureurEquipe"><?php
+                          $sqlInsc = 'SELECT * FROM inscription WHERE  Course=\''.$valTypeEquipe["Course"].'\'AND NomEquipe=\''.$valEquipe["NomEquipe"] .'\''; 
+                            $resultInsc = mysqli_query($con,$sqlInsc);
+                            if ($resultInsc && mysqli_num_rows($resultInsc) > 0) 
+                            {
+                                while($valInsc = mysqli_fetch_assoc($resultInsc)) 
+                                {?>
+                                <tr>
+                                    <td><?php
+                                        echo $valInsc["Nom"]. " " . $valInsc["Prenom"];
+                                        ?>
+                                    </td><?
+                                }
+                            }?>
+                        </table>
+                         <button type ="button" style="margin-right :10px;"
+                        onClick="OpenPopUpAddEquipe" title="" 
+                        data-toggle="tooltip" data-placement="right">
+                        <i class="fa fa-check" style= "font-size: 50px;margin:9px;color: #4095f5;"></i>
+                </button>
+                    </div>
+                    <?
+                }
+            }?>
+</div>
+<?
 /*******************************************************************************************************************
  * 
  * Affichage coureur sélectionné
  * 
  ********************************************************************************************************************/
 ?>
-	<div id="formulaire">
+<div id="formulaire">
     <fiedset id='UserSelected'>
 
-    <h2> Athlète sélectionné</h2>
-        <p id="lblInformation" style=" display:block;padding:5px; border-style: solid;height:20px; border-color: black; font-size:100%; ">Aucun athlète sélectionné</p>	
-
-</h2>
-		<form method="post" action="ModificationMembres.php" id=FormInformation style="visibility:hidden; display:none" >
+        <h2> Athlète sélectionné</h2>
+            <p id="lblInformation" style=" display:block;padding:5px; border-style: solid;height:20px; border-color: black; font-size:100%; ">Aucun athlète sélectionné</p>	
+        </h2>
+        <form method="post" action="ModificationMembres.php" id=FormInformation style="visibility:hidden; display:none" >
             <input type="hidden" name="ID" id="ID"   />
             <p><label style="vertical-alignement: center" for="nom">Nom *:</label> <input type="text" name="nom" id="nom" tabindex="10"   /></p>
             <p><label style="vertical-alignement: center" for="prenom">Prénom *:</label>  <input type="text" name="prenom" id="prenom" tabindex="20" /></p>
@@ -298,37 +389,34 @@
             <p><label style="vertical-alignement: center" for="pays">Pays *:</label>  <input type="text" name="pays" id="pays"tabindex="80" /></p>	
             <p><label style="vertical-alignement: center" for="dateNaissance"> Année de Naissance * :</label> <input type="text" name="dateNaissance" id="DateNaissance"  />
             <p><label style="vertical-alignement: center" for="club">Club:</label> <input type="text" name="club" id="club"tabindex="100" /></p>
-                                
             <p><label style="vertical-alignement: center">Sexe * :</label><Select    onchange ="liste_depart(this.form);" name="sexe"   id="sexe" /> 
-                 <option style="padding : 10px" value="">Sélectionner valeur</option>
+                    <option style="padding : 10px" value="">Sélectionner valeur</option>
                 <option style="padding : 10px" value="H">Homme</option>
                 <option style="padding : 10px" value="D">Dame</option>		
             </select></p>
-
-            <a><span> </span>
+            <a>
                 <!-- Bouton validation information -->
                 <button type ="button" style="float:right; margin-right :10px;"
                         onClick="checkForm(this.form)" title="Validations Informations" 
                         data-toggle="tooltip" data-placement="right">
                         <i class="fa fa-check" style= "font-size: 50px;margin:9px;color: #4095f5;"></i>
                 </button>
+            </a>
+        </form>		
+        <form method="post" action="DeleteMembre.php" id=FormDeleteInformation style="visibility:hidden; display:none">
+            <input type="hidden" name="ID" id="IDDelete"  />
+            <a><span> </span>
+                <!-- Bouton delete information -->
+                <button type ="button" style="float:left; margin-right :100px;" 
+                    onClick="Suppform(this.form)" 
+                    title="Modifications Informations" 
+                    data-toggle="tooltip" data-placement="right">
+                    <i class="fa fa-trash" style= "font-size: 50px;margin:9px;color: #FF0000;"></i>
+                </button>
             </A>
-		</form>
-				
-				<form method="post" action="DeleteMembre.php" id=FormDeleteInformation style="visibility:hidden; display:none">
-                    <input type="hidden" name="ID" id="IDDelete"  />
-                    <a><span> </span>
-                      <!-- Bouton delete information -->
-                        <button type ="button" style="float:left; margin-right :100px;" 
-                            onClick="Suppform(this.form)" 
-                            title="Modifications Informations" 
-                            data-toggle="tooltip" data-placement="right">
-                            <i class="fa fa-trash" style= "font-size: 50px;margin:9px;color: #FF0000;"></i>
-                        </button>
-                    </A>
-				</form>
-			</fieldset>
-		</div>
+        </form>
+	</fieldset>
+</div>
 
 <Center>
 	<?php
@@ -343,23 +431,9 @@
 	?>
 </center>
 
-	</div>
-    <?php
-    // de type entreprise
-    if ($_SESSION['Niveau'] == "1")
-    {?>
-        <A> Listes des équipes </a>
-        <table > 
-            <tr>
-                <th>
-                    Nom équipes 
-                </th>
-                <
-            </tr>
-<?php
-    }?>
-
 </div>
+ 
+
     </body>
 </html>
 <?php

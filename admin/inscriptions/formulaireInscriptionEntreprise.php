@@ -116,7 +116,7 @@ function ReadLocalStorage()
 		para.style.display = "";
 	}
 
-for (var i = 0; i < localStorage.length; i++)
+	for (var i = 0; i < localStorage.length; i++)
 	{
 		IndexCoureur = localStorage.key(i);
 		// Transfrome clé en objet 
@@ -212,21 +212,9 @@ function DeleteCoureur(evt)
 
 <div id="corps">
 <Fieldset>
+	<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
 
-	
-			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
-
-	 <div style="display :none;" ><label for="nom">Prix:</label> <input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF</div>
-	  <center>
-	  <?
-			$pathReglement = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/info/Règlement.pdf';
-			if (!file_exists($pathReglement))
-			{
-				$pathReglement = 'Règlement.pdf';
-			}
-	  ?>
-
-	  	<h2>Liste de mes inscriptions </h2>
+	<h2>Liste de mes inscriptions </h2>
 		<a id="AucuneInscription" ><i > Aucune inscription </i></a>
 	<table id="TableCoureur"  >
 

@@ -154,7 +154,7 @@
             // de type entreprise
             if ($_SESSION['Niveau'] == "1")
             {
-            	header('Location: membres_entreprise.php'); 
+            	header('Location: entreprise/equipes_entreprise.php'); 
             }
             else
             {?>

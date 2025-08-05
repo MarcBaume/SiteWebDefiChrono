@@ -8,9 +8,7 @@ body
    margin-top: 0px; /* Pour �viter de coller avec le haut de la fen�tre du navigateur. Essayez d'enlever pour voir ! */
    margin-bottom: 20px;    /* Idem pour le bas du navigateur */
    background:  white;
-	font-family: Mukta,arial,"Times New Roman", Times, serif;
  }
-
 
 #connection
 {
@@ -201,12 +199,11 @@ select {
 	padding : 10px;
 	font-weight: bold;
 	font-size: 18px;
-	margin-top: 2px;
+  margin:10px;
+	margin-top: 5px;
 	margin-bottom: 5px;
-background: #BCDDFD;
-
- color: #1e8ac2;
-	padding-left : 30px;
+background: #3D6CA4;
+ color: #FFF;
 }
 
 .titleParcours
@@ -454,7 +451,17 @@ width:100%;
   width :85%;
   background-color: #FFFFFF  ;
 }
-
+.dotEquipe :hover { background-color: #BCDDFD;}
+.dotEquipe  {
+  cursor: pointer;
+  text-align: left;
+  border-radius: 5px;
+  border: 1px solid #3D6CA4;
+  padding: 5px;
+  color : #3D6CA4;
+  margin:10px;
+  background-color: #FFFFFF  ;
+}
 .dotMemberSelected :hover { background-color: #BCDDFD;}
 .dotMemberSelected  {
   cursor: pointer;
@@ -758,11 +765,13 @@ padding : 10px;
  }
  #formulaire  label 
  {
+    margin-top: 10px;
   margin-left: 20px;
-	display: block;
+    vertical-align: middle;
+    display:table-cell;
 	width: 250px;
 	float: left;
-	vertical-align:center;
+  font-size: 24px;
  }
 
  #formulaire input[type="checkbox"]

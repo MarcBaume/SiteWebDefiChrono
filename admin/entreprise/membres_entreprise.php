@@ -21,7 +21,7 @@
 <div>
 <img style='width:200px;margin:10px'src='../../images/LogoDefiChrono2023.png'></img>
 </div>
- <p class="title" style='padding:15px;margin:10px'> Formulaire d'ajout de coureur dans mon entreprise <?php echo   $_GET['login'];?></p>
+ <p class="title" style='padding:15px;margin:10px'> Formulaire d'ajout de coureur dans mon entreprise  <?php echo   $_GET['login'];?></p>
 <div id="formulaire" style='margin:10px'>
 
 		<form method="post" action="CibleAddMembreEntreprise.php" id=FormCoureurs>

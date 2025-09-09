@@ -567,7 +567,7 @@ if ($Depart != null)
 	{
 		console.log("Add Button type resultat");
 		DivTypeClassement= document.getElementById('TypeClassement');
-console.log(DivTypeClassement);
+		console.log(DivTypeClassement);
 		// Affichage du bouton de chaque type de classement proposé par ce point de passage 
 		const buttonTypeClassement = document.createElement('button');
 		if (FormTypeClassement.value == "Categorie" )

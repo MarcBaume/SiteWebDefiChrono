@@ -88,12 +88,12 @@
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	
 	}
-	else if ($Etape == 99 )
+	/*else if ($Etape == 99 )
 	{
 		
 		header('Location: Resultat2023General.php?NbrEtape='.$Nbr_etape.'&DateCourse='.$DateCourse.'&Etape=99&Depart='.$_GET['Depart'].'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''); 
 	
-	}
+	}*/
 
 	  ?>
 
@@ -156,6 +156,10 @@ if (count($arParcours) > 1)
 				}
 				else
 				{
+					?>
+					<script>
+						console.log("Parcours Find")
+					</script><?
 					$Parcours =  $Parcours1?>
 					<option selected value=<?php echo $IndexParcours?>><? echo $Parcours1 ?></option>
 				<?
@@ -288,49 +292,44 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			foreach($arEtape as $Etape1)
 			{
 			// Obtention des informations de chaque étape
-			?>	
-				<script>
-				console.log("Read info" + <?php echo json_encode($pathfolder.'//'.$Etape1)?>);
-				Etape =  readJSON(<?php  echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
-				console.log(Etape);
-				</script>
-			<?
-			if ($Etape1 == "General")
-			{
-				$IndexDep=99;
-			}
-			else
-			{
-				$IndexDep++;
-			}
-			if ($IndexDep != 99)
-			{
-				if ($Etape != $IndexDep)
-				{?>
-					<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
-					</option>
-				<?
+				if ($Etape1 == "General")
+				{
+					$IndexDep=99;
+					if ($Etape == 99)
+					{
+							?>
+					<option selected value=99> <? 	echo 'Général'?>
+					</option><?
+					}
+					else
+					{?>
+					<option value=99> <? 	echo 'Général'?>
+					</option><?
+					}
 				}
 				else
-				{  ?>
-					<option selected value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
-					</option>
-				<?
-				}?>
-				<?
+				{?>
+					
+					<script>
+						console.log("Read info" + <?php echo json_encode($pathfolder.'//'.$Etape1)?>);
+						Etape =  readJSON(<?php  echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
+					</script><?
+					$IndexDep++;
+					if ($Etape != $IndexDep)
+					{?>
+						<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+						</option>
+					<?
+					}
+					else
+					{  ?>
+						<option selected value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+						</option>
+					<?
+					}?>
+					<?
+				}
 			}
-			else if ($Etape == 99)
-			{
-				?>
-				<option selected value=<?php echo $IndexDep?>> <? 	echo 'Général'?>
-				</option><?
-			}
-			else
-			{?>
-				<option value=<?php echo $IndexDep?>> <? 	echo 'Général'?>
-				</option><?
-			}
-		}
 			?>
 		</select>
 		</fieldset><?
@@ -369,113 +368,12 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 <div id="ViewLiveCoureur">
 </div>
-<script>
-	var ListNomClassement = [];
-	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )
-{
-	console.log("Function Read File Resultat");
-	
-	var Etape= new Object();	
-	// Lecture du fichier " info étape "
-	Etape =  readJSON(PathFolderDepart + "/Etape"+NumEtape+"/info.json");
-	console.log("Read File Json Etape");
-	console.log(PathFolderDepart + "/Etape"+NumEtape+ "/info.json");
-	console.log(Etape);
-	var ListPointPassage  = [];
-	if (Etape != undefined )
+<script>		
+	function AddButtonTypeResultatGeneral()
 	{
-		AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
-		// Graphique Vertical avec point de passage noter dans le graphique 
-		var ArrayCoureurs = [];
-		var ArrayParcours = [];
-		var ICounterCoureurs = 0;
-		var TotalDiminution = 0;
-		var TotalELevation = 0;
-		var StartElevation = 0;
-		var ElevationMin = 10000;
-		var ElevationMax = 0;
-		var TotalKM = 0;
-		var Width  = 800;//133 screen.width -200; // 1300
-		var Height = (Width /100) *18;
-		var DecalageStartWidth = 50; // Valeur de décalage du commencement du graphique en horizontal
-		var DecalageStartHeight = 50; // Valeur de décalage du commencement du graphique en vertical
-		var indexPassage = 1;
-
-		// Ajout du graphique dans tableau ViewDetailCoureur
-		let RowsTableEtape1 =	document.createElement('tr');
-		let ColimgEtapePara1 =	document.createElement('td');
-		let DivimgEtapePara =	document.createElement('div');
-
-		ColimgEtapePara1.width = "80%";
-		ColimgEtapePara1.append(DivimgEtapePara);
-		RowsTableEtape1.append(ColimgEtapePara1);
-		ViewGraphique.append(RowsTableEtape1);
-
-		var LastPoint = true;
-		var DivAllPoint= document.getElementById('Allpointpassage');
-		var Parcours= new Object();	
-       
-		CountCoureurTotal = 0;
-
-
-		// lecture fichier JSON des résultats de la course
-		Parcours.info =  readJSON(PathFolderDepart +"/Etape"+ NumEtape+ "/ResultatsV2.json");
-		console.log("ResultatsV2.json");
-		console.log(Parcours.info);
-		if (Parcours.info != undefined)
-		{
-			// Affichage du live des coureurs de chaque point de passage 
-			for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
-			{
-				if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
-				{
-					// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
-					if (LastPoint)
-					{
-						var ListCoureurs = Parcours.info.ListLivePointDePassage[i].ListCoureursArrivee;
-
-					}
-					else
-					{
-
-						var ListCoureurs = Parcours.info.ListLivePointDePassage[i+1].ListCoureursRestant;
-
-					}
-
-					funMenuNomClassement(ListCoureurs);
-
-					ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
-
-					LastPoint = false;
-				}
-			}
-		}
-		else
-		{
-			document.getElementById("Informations").style.display = "";
-			document.getElementById("Informations").innerHTML = "Les résultats ne sont pas encore disponible pour ce départ";
-		}
-	
-
-        // Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
-		// Open a log file
-		// Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
-		<?php
-		 $chemin= $pathfolder."//Etape". $Etape."//images/Etape.xml";
-
-		if (file_exists($chemin)) {
-		?>
-		    mapSvg('Test', PathFolder +"//Etape"+ PathEtape+ "//images/Etape.xml", DivimgEtapePara);
-            <?
-        }?>
-	}
-}
-
-
-	function AddButtonTypeResultat(PointDePassageInfo)
-	{
-		console.log("Add Button type resultat");
+		console.log("Add Button type resultat General");
 		DivTypeClassement= document.getElementById('TypeClassement');
+		console.log(DivTypeClassement);
 		// Affichage du bouton de chaque type de classement proposé par ce point de passage 
 		const buttonTypeClassement = document.createElement('button');
 		if (FormTypeClassement.value == "Categorie" )
@@ -547,6 +445,882 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 		{
 			var FormSendIndfo= document.getElementById('FormSendIndfo');
 			FormTypeClassement.value = "Scratch";
+		//	FormSendIndfo.submit();
+		}
+	}
+
+		function ListCoureurLiveToTableGeneral( ListCoureurs)
+		{
+			// Trie selon le type de classement ( Scratch , Categorie , Sexe)
+			var FormTypeClassement= document.getElementById('FormTypeClassement');
+			console.log("Type");
+			var DivViewLiveCoureur= document.getElementById('ViewLiveCoureur');
+	
+			// SI le fichier est de type classement extern 
+			if (FormTypeClassement.value.includes("File") )
+			{
+				console.log("File");
+			
+			}
+			else
+			{
+				console.log("json");
+				// Affichage Titre point de passage et  nombre de coureur arrivée au point de passage
+				const Title = document.createElement("p");
+
+
+				DivViewLiveCoureur.appendChild(Title);
+
+				
+				if (ListCoureurs.length < 1)
+				{
+			
+					const a = document.createElement("a");
+					a.innerHTML = "aucun coureur arrivée" ;
+					DivViewLiveCoureur.appendChild(a);
+				}
+				else
+				{
+
+					var FormNomClassement= document.getElementById('FormNomClassement');
+				
+					if (FormTypeClassement.value == "Sexe" )
+					{
+						ListCoureurs.sort((a,b) => a.Coureur.Sexe._Value < b.Coureur.Sexe._Value  ? -1 : 1);
+					}
+					else 	if (FormTypeClassement.value == "Categorie" )
+					{
+						ListCoureurs.sort((a,b) => a.Coureur.Categorie.NumCategorie._Value < b.Coureur.Categorie.NumCategorie._Value  ? -1 : 1);
+					}
+
+				
+
+					// Affichage du classement seulement si il est de type scratch ou si on a choisie un nom de classement
+
+					// Table du classement sélectionné 
+					const TableResult = document.createElement("Table");
+					TableResult.id = "TableResult";
+					TableResult.style.width = "100%";
+					TableResult.classList.add("TableauResulat");
+					DivViewLiveCoureur.appendChild(TableResult);
+                    CountCoureur = 0;
+					for (let i = 0; i < ListCoureurs.length; i++) 
+					{
+					
+				
+						// Si détection contient un coureur 
+						if (ListCoureurs[i].Coureur != null)
+						{
+								// Ajout du coureur sur la page
+							AddCoureur = false;
+							// Si le coureur est dans la catégorie afficher
+							if (FormTypeClassement.value == "Categorie" )
+							{
+								if( ListCoureurs[i].Coureur.Categorie.NumCategorie._Value == FormNomClassement.value )
+								{
+									AddCoureur = true;
+								}
+								else
+								{
+									console.log(ListCoureurs[i].Coureur.Categorie.NumCategorie._Value);
+								}
+							}
+							// Si le coureur dans le même sexe que afficher 
+							else if (FormTypeClassement.value == "Sexe" && ListCoureurs[i].Coureur.Sexe._Value == FormNomClassement.value)
+							{
+								AddCoureur = true;
+							}
+							// Afficher tous les coureurs dans le scratch
+							else if (FormTypeClassement.value == "Scratch" || FormTypeClassement.value == "")
+							{
+								AddCoureur = true;
+							}
+
+							// Si le coureur est autorisé pour l'affichage 
+							if (AddCoureur)
+							{
+                                // Ajout ligne de coureur
+								rows = document.createElement('tr');
+								TableResult.appendChild(rows);
+                                if (CountCoureur % 2 > 0)
+                                {
+                                    rows.style.background = "#FFFFFF";
+                                }
+                                else
+                                {
+                                    rows.style.background = "#E6E6E6"; 
+                                }
+                                                            
+                                CountCoureur ++;
+
+								rows.addEventListener("click", function() {
+									ViewDetailCoureur(i);
+									}, false);
+
+							
+                                // Position
+								colonne = document.createElement('td');
+								colonne.style.paddingLeft = "10px";
+								colonne.style.paddingRight = "10px";
+								colonne.style.fontWeight = "bold";
+								colonne.style.fontSize = "18px";
+
+								if (FormTypeClassement.value == "Categorie" )
+								{
+									colonne.innerText =ListCoureurs[i].CLassementScratch.PositionCategorie;
+								}
+
+								// Si le coureur dans le même sexe que afficher 
+								else if (FormTypeClassement.value == "Sexe" )
+								{
+									colonne.innerText =ListCoureurs[i].CLassementScratch.PositionSexe;
+								}
+								// Afficher tous les coureurs dans le scratch
+								else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == ""  )
+								{
+									colonne.innerText =ListCoureurs[i].CLassementScratch.Position;
+								}
+							
+								rows.appendChild(colonne);
+
+								colonne = document.createElement('td');
+								colonne.style.paddingLeft = "10px";
+								colonne.style.paddingRight = "10px";
+								colonne.style.fontSize = "16px";
+								// Affichage du Nom d'équipe et le nom du coureur
+								if ( ListCoureurs[i].Coureur.NomEquipe._Value.length > 0 && ListCoureurs[i].Coureur.NomCoureur2._Value.length > 0  )
+								{
+									colonne.innerText =  ListCoureurs[i].Coureur.NomEquipe._Value;
+								}
+								else
+								{
+									colonne.innerText = ListCoureurs[i].Coureur.Nom._Value + " " + ListCoureurs[i].Coureur.Prenom._Value;
+								}
+								rows.appendChild(colonne);
+
+								colonne = document.createElement('td');
+								colonne.style.paddingLeft = "10px";
+								colonne.style.paddingRight = "10px";
+								colonne.style.fontSize = "12px";
+								colonne.style.fontWeight = "italic";
+								// Affichage du Nom d'équipe et le nom du coureur
+								if ( ListCoureurs[i].Coureur.NomEquipe._Value.length > 0 && ListCoureurs[i].Coureur.NomCoureur2._Value.length > 0  )
+								{
+									tableCoureur = document.createElement('table'); 
+							
+									// Coureur 1
+									RowCoureurCoureur = document.createElement('tr'); 
+									RowCoureurCoureur.style.height = "auto";
+									RowCoureurCoureur.style.background = "transparent";
+									RowCoureurCoureur.style.padding = "2px";
+
+									colonneC = document.createElement('td');
+									colonneC.style.fontSize = "12px";
+						
+									colonneC.style.fontWeight = "italic";
+									colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur1._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur1._Value;
+									RowCoureurCoureur.appendChild(colonneC);
+									tableCoureur.appendChild(RowCoureurCoureur);
+
+							
+									// Coureur 2
+									RowCoureurCoureur = document.createElement('tr'); 
+									RowCoureurCoureur.style.height = "auto";
+									RowCoureurCoureur.style.background = "transparent";
+									RowCoureurCoureur.style.padding = "2px";
+
+									colonneC = document.createElement('td');
+									colonneC.style.fontSize = "12px";
+									colonneC.style.fontWeight = "italic";
+									colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur2._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur2._Value;
+									RowCoureurCoureur.appendChild(colonneC);
+									tableCoureur.appendChild(RowCoureurCoureur);
+
+									// Coureur 3
+									if (ListCoureurs[i].Coureur.NomCoureur3._Value.length > 0)
+									{
+										RowCoureurCoureur = document.createElement('tr'); 
+										RowCoureurCoureur.style.height = "auto";
+										RowCoureurCoureur.style.background = "transparent";
+										RowCoureurCoureur.style.padding = "2px";
+
+										colonneC = document.createElement('td');
+										colonneC.style.fontSize = "12px";
+										colonneC.style.fontWeight = "italic";
+										colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur3._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur3._Value;
+										RowCoureurCoureur.appendChild(colonneC);
+										tableCoureur.appendChild(RowCoureurCoureur);
+									}
+
+									// Coureur 4
+									if (ListCoureurs[i].Coureur.NomCoureur4._Value.length > 0)
+									{
+										RowCoureurCoureur = document.createElement('tr'); 
+										RowCoureurCoureur.style.height = "auto";
+										RowCoureurCoureur.style.background = "transparent";
+										RowCoureurCoureur.style.padding = "2px";
+
+										colonneC = document.createElement('td');
+										colonneC.style.fontSize = "12px";
+										colonneC.style.fontWeight = "italic";
+										colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur4._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur4._Value;
+										RowCoureurCoureur.appendChild(colonneC);
+										tableCoureur.appendChild(RowCoureurCoureur);
+									}
+									// Coureur 5
+									if (ListCoureurs[i].Coureur.NomCoureur5._Value.length > 0)
+									{
+										RowCoureurCoureur = document.createElement('tr'); 
+										RowCoureurCoureur.style.height = "auto";
+										RowCoureurCoureur.style.background = "transparent";
+										RowCoureurCoureur.style.padding = "2px";
+
+										colonneC = document.createElement('td');
+										colonneC.style.fontSize = "12px";
+										colonneC.style.fontWeight = "italic";
+										colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur5._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur5._Value;
+										RowCoureurCoureur.appendChild(colonneC);
+										tableCoureur.appendChild(RowCoureurCoureur);
+									}
+									// Coureur 6
+									if (ListCoureurs[i].Coureur.NomCoureur6._Value.length > 0)
+									{
+										RowCoureurCoureur = document.createElement('tr'); 
+										RowCoureurCoureur.style.height = "auto";
+										RowCoureurCoureur.style.background = "transparent";
+										RowCoureurCoureur.style.padding = "2px";
+										colonneC = document.createElement('td');
+										colonneC.style.fontSize = "12px";
+							
+										colonneC.style.fontWeight = "italic";
+										colonneC.innerText = ListCoureurs[i].Coureur.NomCoureur6._Value + " " + ListCoureurs[i].Coureur.PrenomCoureur6._Value;
+										RowCoureurCoureur.appendChild(colonneC);
+										tableCoureur.appendChild(RowCoureurCoureur);
+									}
+
+									colonne.appendChild(tableCoureur);
+								}
+								else
+								{
+									colonne.innerText = ListCoureurs[i].Coureur.AnneeNaissance._Value;
+								}
+								rows.appendChild(colonne);
+
+								colonne = document.createElement('td');
+								tableLoc = document.createElement('Table');
+								
+								RowLoc = document.createElement('tr');
+								RowLoc.style.height = "30px";
+								tableLoc.appendChild(RowLoc);
+
+								colLoc = document.createElement('td');
+								colLoc.style.margin ="1px";
+								colonne.style.fontSize = "12px";
+								colLoc.style.fontWeight = "bold";
+								colLoc.innerText = ListCoureurs[i].Coureur.localite._Value;
+								RowLoc.appendChild(colLoc);
+
+								RowLoc = document.createElement('tr');
+								RowLoc.style.height = "30px";
+								RowLoc.style.background = "transparent";
+								tableLoc.appendChild(RowLoc);
+								colLoc = document.createElement('td');
+							
+								colLoc.style.margin ="1px";
+								colLoc.style.fontStyle = "italic";
+								colLoc.innerText = ListCoureurs[i].Coureur.Club._Value;
+								RowLoc.appendChild(colLoc);
+								colonne.appendChild(tableLoc);
+								
+								rows.appendChild(colonne);
+
+								if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+								{
+									colonne = document.createElement('td');
+									colonne.style.paddingLeft = "10px";
+									colonne.style.paddingRight = "10px";
+									colonne.style.width = "120px";
+									tableLoc = document.createElement('Table');
+
+									RowLoc = document.createElement('tr');
+									RowLoc.style.height = "30px";
+									tableLoc.appendChild(RowLoc);
+									colLoc = document.createElement('td');
+									colLoc.style.margin ="1px";
+									colLoc.style.fontSize = "14px";
+									colLoc.innerText = ListCoureurs[i].CLassementScratch.PositionCategorie +" ( cat. " +ListCoureurs[i].Coureur.Categorie.NumCategorie._Value +" ) " ;
+									RowLoc.appendChild(colLoc);
+
+									RowLoc = document.createElement('tr');
+									RowLoc.style.height = "30px";
+									RowLoc.style.background = "transparent";
+									tableLoc.appendChild(RowLoc);
+									colLoc = document.createElement('td');
+								
+									colLoc.style.margin ="1px";
+									colLoc.style.fontSize= "14px";
+									if (ListCoureurs[i].Coureur.Sexe._Value == "H")
+									{
+										
+										colLoc.innerHTML = ListCoureurs[i].CLassementScratch.PositionSexe +" <i style='font-size:20px; color:blue;' class='fa fa-male' ></i> " ;
+									}
+									else
+									{
+										
+										colLoc.innerHTML = ListCoureurs[i].CLassementScratch.PositionSexe +"  <i  style='font-size:20px; color:#FF34FE;' class='fa fa-female' ></i> " ;
+									}
+									RowLoc.appendChild(colLoc);
+									colonne.appendChild(tableLoc);
+									
+									rows.appendChild(colonne);
+								}
+
+
+								colonne = document.createElement('td');
+								colonne.style.paddingLeft = "10px";
+								colonne.style.paddingRight = "10px";
+								if (FormTypeClassement.value == "Categorie" )
+								{
+									if (ListCoureurs[i].CLassementScratch.Temps.indexOf(".")>1)
+									{
+										var Temps = ListCoureurs[i].CLassementScratch.TempsCat.substring(0,ListCoureurs[i].CLassementScratch.TempsCat.indexOf("."));
+									}
+									else
+									{
+										var Temps = ListCoureurs[i].CLassementScratch.TempsCat;
+									}
+									
+								}
+								else
+								{
+									if (ListCoureurs[i].CLassementScratch.Temps.indexOf(".")>1)
+									{
+										var Temps = ListCoureurs[i].CLassementScratch.Temps.substring(0,ListCoureurs[i].CLassementScratch.Temps.indexOf("."));
+									}
+									else
+									{
+										var Temps = ListCoureurs[i].CLassementScratch.Temps;
+									}
+								}
+								
+							
+								if (Temps.indexOf('00:') == 0)
+								{
+									colonne.innerText = Temps.slice(3,25);
+								}
+								else
+								{
+									colonne.innerText = Temps;
+								}
+								
+								rows.appendChild(colonne);
+
+								colonne = document.createElement('td');
+								colonne.style.paddingLeft = "10px";
+								colonne.style.paddingRight = "10px";
+								var ecart = '';
+								if (FormTypeClassement.value == "Categorie" )
+								{
+									if (ListCoureurs[i].CLassementScratch.EcartCategorie.indexOf(".") > -1)
+									{
+										ecart = ListCoureurs[i].CLassementScratch.EcartCategorie.substring(0,ListCoureurs[i].CLassementScratch.EcartCategorie.indexOf("."));
+									}
+									else
+									{
+										ecart = ListCoureurs[i].CLassementScratch.EcartCategorie;
+									}
+								}
+								// Si le coureur dans le même sexe que afficher 
+								else if (FormTypeClassement.value == "Sexe" )
+								{
+									if (ListCoureurs[i].CLassementScratch.EcartSexe.indexOf(".") > -1)
+									{
+										ecart = ListCoureurs[i].CLassementScratch.EcartSexe.substring(0,ListCoureurs[i].CLassementScratch.EcartSexe.indexOf("."));
+									}
+									else
+									{
+										ecart = ListCoureurs[i].CLassementScratch.EcartSexe;
+									}
+								}
+								// Afficher tous les coureurs dans le scratch
+								else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+								{
+									if (ListCoureurs[i].CLassementScratch.Ecart.indexOf(".") > -1)
+									{
+										ecart = ListCoureurs[i].CLassementScratch.Ecart.substring(0,ListCoureurs[i].CLassementScratch.Ecart.indexOf("."));
+									}
+									else
+									{
+										ecart = ListCoureurs[i].CLassementScratch.Ecart;
+									}
+								}
+								if (ecart.indexOf('00:') == 0)
+								{
+									colonne.innerText =  ecart.slice(3,25);
+								}
+								else
+								{
+									colonne.innerText = ecart;
+								}
+								
+								rows.appendChild(colonne);
+
+
+                                // Classement Point de passage
+                                // Ajout point de passage du coureur 
+                                if (  ListCoureurs[i].ListResultatEtape != undefined )
+                                {
+                                    if ( ListCoureurs[i].ListResultatEtape.length > 1 )
+                                    {
+                                        // Ajout bouton plus 
+                                        colonne = document.createElement('td');
+				
+                                        colonne.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
+                                        rows.appendChild(colonne);
+                                        // Ajout tableau point de passage 
+                                        rows = document.createElement('tr');
+                                        rows.style.background = "white";
+                                        rows.style.display = "none";
+                                        rows.id = "TableauPointPassage"+ i;
+                                        TableResult.appendChild(rows);
+                                        // Décalage avec position
+                                        colonne = document.createElement('td');
+                                        rows.appendChild(colonne);
+
+                                        colonne = document.createElement('td');
+                                        colonne.colSpan = 10;
+                                        rows.appendChild(colonne);
+
+                                        // Tableau point de passage
+                                        tablePassage = document.createElement('table');
+                                        tablePassage.style.width = "100%"
+                                        colonne.appendChild(tablePassage);
+
+                                        // Ajout tableau point de passage 
+                                        rows = document.createElement('tr');
+                                        rows.style.background = "white";
+                                        tablePassage.appendChild(rows);
+
+                                        // Décalage avec position
+                                        colonne = document.createElement('td');
+                                        colonne.colSpan = 10;
+                                        rows.appendChild(colonne);
+
+                                        //Ligne En tête 
+                                        para = document.createElement('p');
+                                        para.innerHTML = "<i style='font-size:20px; color:blue;' class='fa fa-trophy' ></i>"+ " étapes"
+                                        colonne.appendChild(para);
+
+										h= 0;
+                                        for (let j = 0; j < ListCoureurs[i].ListResultatEtape.length; j++) 
+                                        {
+											h = h+1;
+											//Ligne passage
+											rowsPassage = document.createElement('tr');
+											tablePassage.appendChild(rowsPassage);
+
+
+											colonne = document.createElement('td');
+											colonne.style.paddingLeft = "10px";
+											colonne.style.paddingRight = "10px";
+											colonne.style.fontWeight = "bold";
+											colonne.style.fontSize = "18px";
+
+											if (FormTypeClassement.value == "Categorie" )
+											{
+												colonne.innerText = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionCategorie;
+											}
+											// Si le coureur dans le même sexe que afficher 
+											else if (FormTypeClassement.value == "Sexe" )
+											{
+												colonne.innerText = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionSexe;
+											}
+										
+											else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == ""  )
+											{
+												colonne.innerText = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Position;
+											}
+										
+											rowsPassage.appendChild(colonne);
+
+											colonne = document.createElement('td');
+											colonne.style.width = "50px";
+											if (h >  1)
+											{
+
+												if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Position - ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.Position < 0)
+												{
+													colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+												}
+												else if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Position - ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.Position > 0)
+												{
+													colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+												}
+												else if ((FormTypeClassement.value == "Sexe") && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionSexe - ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.PositionSexe < 0)
+												{
+														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+												}
+												else if ((FormTypeClassement.value == "Sexe" ) && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionSexe - ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.PositionSexe > 0)
+												{
+														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+												}
+												else if ((FormTypeClassement.value == "Categorie") && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionCategorie - ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.PositionCategorie < 0)
+												{
+														colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
+												}
+												else if ((FormTypeClassement.value == "Categorie" ) && ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionCategorie- ListCoureurs[i].ListResultatEtape[j-1].CLassementScratch.PositionCategorie > 0)
+												{
+														colonne.innerHTML  = " <i style='font-size:20px; color:orange;' class='fa fa-arrow-down' ></i> ";
+												}
+												else 
+												{
+													colonne.innerHTML  = " <i style='font-size:20px; color:blue;' class='fa fa-arrow-right' ></i> ";
+												}
+											}
+											rowsPassage.appendChild(colonne);
+
+											colonne = document.createElement('td');
+											colonne.innerText = ListCoureurs[i].ListResultatEtape[j].EtapeNom;
+											rowsPassage.appendChild(colonne);
+
+											// Type d'affichage selon catégorie , sexe ,scratch
+											if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+											{
+
+												colonne = document.createElement('td');
+												colonne.style.paddingLeft = "10px";
+												colonne.style.paddingRight = "10px";
+												colonne.style.width = "120px";
+												tableLoc = document.createElement('Table');
+
+												RowLoc = document.createElement('tr');
+												RowLoc.style.height = "30px";
+												tableLoc.appendChild(RowLoc);
+												colLoc = document.createElement('td');
+												colLoc.style.margin ="1px";
+												colLoc.style.fontSize = "14px";
+												colLoc.innerText = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionCategorie +" ( cat. " +ListCoureurs[i].Coureur.Categorie.NumCategorie._Value +" ) " ;
+												RowLoc.appendChild(colLoc);
+
+												RowLoc = document.createElement('tr');
+												RowLoc.style.height = "30px";
+												RowLoc.style.background = "transparent";
+												tableLoc.appendChild(RowLoc);
+												colLoc = document.createElement('td');
+											
+												colLoc.style.margin ="1px";
+												colLoc.style.fontSize= "14px";
+												if (ListCoureurs[i].Coureur.Sexe._Value == "H")
+												{
+													
+													colLoc.innerHTML = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionSexe +" <i style='font-size:20px; color:blue;' class='fa fa-male' ></i> " ;
+												}
+												else
+												{
+													
+													colLoc.innerHTML = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.PositionSexe +"  <i  style='font-size:20px; color:#FF34FE;' class='fa fa-female' ></i> " ;
+												}
+												RowLoc.appendChild(colLoc);
+												colonne.appendChild(tableLoc);
+												
+												rowsPassage.appendChild(colonne);
+											}
+
+	
+											// Affichage temps et écart 
+											colonne = document.createElement('td');
+											colonne.style.paddingLeft = "10px";
+											colonne.style.paddingRight = "10px";
+											if (FormTypeClassement.value == "Categorie" )
+											{
+												if (ListCoureurs[i].ListResultatEtape[j].CLassementScratch.TempsCat.indexOf(".")>1)
+												{
+													var Temps = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.TempsCat.substring(0,ListCoureurs[i].ListResultatEtape[j].CLassementScratch.TempsCat.indexOf("."));
+												}
+												else
+												{
+													var Temps = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.TempsCat;
+												}
+												
+											}
+											else
+											{
+												if (ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Temps.indexOf(".")>1)
+												{
+													var Temps = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Temps.substring(0,ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Temps.indexOf("."));
+												}
+												else
+												{
+													var Temps = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Temps;
+												}
+											}
+											
+										
+											if (Temps.indexOf('00:') == 0)
+											{
+												colonne.innerText = Temps.slice(3,25);
+											}
+											else
+											{
+												colonne.innerText = Temps;
+											}
+											
+											rowsPassage.appendChild(colonne);
+
+											
+											colonne = document.createElement('td');
+											colonne.style.paddingLeft = "10px";
+											colonne.style.paddingRight = "10px";
+											var ecart = '';
+											if (FormTypeClassement.value == "Categorie" )
+											{
+												if (ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartCategorie.indexOf(".") > -1)
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartCategorie.substring(0,ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartCategorie.indexOf("."));
+												}
+												else
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartCategorie;
+												}
+											}
+											// Si le coureur dans le même sexe que afficher 
+											else if (FormTypeClassement.value == "Sexe" )
+											{
+												if (ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartSexe.indexOf(".") > -1)
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartSexe.substring(0,ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartSexe.indexOf("."));
+												}
+												else
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.EcartSexe;
+												}
+											}
+											// Afficher tous les coureurs dans le scratch
+											else if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
+											{
+												if (ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Ecart.indexOf(".") > -1)
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Ecart.substring(0,ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Ecart.indexOf("."));
+												}
+												else
+												{
+													ecart = ListCoureurs[i].ListResultatEtape[j].CLassementScratch.Ecart;
+												}
+											}
+											if (ecart.indexOf('00:') == 0)
+											{
+												colonne.innerText =  ecart.slice(3,25);
+											}
+											else
+											{
+												colonne.innerText = ecart;
+											}
+											rowsPassage.appendChild(colonne);
+										}
+                                  	}
+                            	}
+                            }
+
+						}
+					}
+				}
+			}
+		}
+
+
+	var ListNomClassement = [];
+	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )	
+	{
+		console.log("Function Read File Resultat");
+		console.log(NumEtape);
+		var Parcours = new Object();
+		var Etape= new Object();	
+		// Lecture du fichier " info étape "
+		if (NumEtape != 99)
+		{
+			Etape =  readJSON(PathFolderDepart + "/Etape"+NumEtape+"/info.json");
+			console.log("Read File Json Etape");
+			console.log(Etape);
+			// lecture fichier JSON des résultats de la coursse
+			Parcours.info =  readJSON(PathFolderDepart +"/Etape"+ NumEtape+ "/ResultatsV2.json");
+			console.log("ResultatsV2.json");
+		}	
+		else
+		{
+			Parcours.info =  readJSON(PathFolderDepart +"/General/ResultatWeb/ResultatsGeneral.json");
+			console.log("ResultatsGeneral.json");
+		}
+
+		console.log(Parcours);
+		var ListPointPassage  = [];
+		if (Etape != undefined  )
+		{
+
+			// Graphique Vertical avec point de passage noter dans le graphique 
+			var ArrayCoureurs = [];
+			var ArrayParcours = [];
+			var ICounterCoureurs = 0;
+			var TotalDiminution = 0;
+			var TotalELevation = 0;
+			var StartElevation = 0;
+			var ElevationMin = 10000;
+			var ElevationMax = 0;
+			var TotalKM = 0;
+			var Width  = 800;//133 screen.width -200; // 1300
+			var Height = (Width /100) *18;
+			var DecalageStartWidth = 50; // Valeur de décalage du commencement du graphique en horizontal
+			var DecalageStartHeight = 50; // Valeur de décalage du commencement du graphique en vertical
+			var indexPassage = 1;
+
+			// Ajout du graphique dans tableau ViewDetailCoureur
+			let RowsTableEtape1 =	document.createElement('tr');
+			let ColimgEtapePara1 =	document.createElement('td');
+			let DivimgEtapePara =	document.createElement('div');
+
+			ColimgEtapePara1.width = "80%";
+			ColimgEtapePara1.append(DivimgEtapePara);
+			RowsTableEtape1.append(ColimgEtapePara1);
+			ViewGraphique.append(RowsTableEtape1);
+
+			var LastPoint = true;
+			var DivAllPoint= document.getElementById('Allpointpassage');
+			CountCoureurTotal = 0;
+
+			if (Parcours.info != undefined)
+			{
+				if (NumEtape != 99)
+				{
+					AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
+
+					// Affichage du live des coureurs de chaque point de passage 
+					for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
+					{
+
+						if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
+						{
+							// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
+							if (LastPoint)
+							{
+								var ListCoureurs = Parcours.info.ListLivePointDePassage[i].ListCoureursArrivee;
+
+							}
+							else
+							{
+
+								var ListCoureurs = Parcours.info.ListLivePointDePassage[i+1].ListCoureursRestant;
+
+							}
+							funMenuNomClassement(ListCoureurs, false);
+							ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
+							LastPoint = false;
+						}
+					}
+				}
+				else
+				{
+					AddButtonTypeResultatGeneral();
+					funMenuNomClassement(Parcours.info,true);
+					ListCoureurLiveToTableGeneral(Parcours.info);
+				}
+				
+			
+			}
+			else
+			{
+				document.getElementById("Informations").style.display = "";
+				document.getElementById("Informations").innerHTML = "Les résultats ne sont pas encore disponible pour ce départ";
+			}
+		
+
+			// Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
+			// Open a log file
+			// Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
+			<?php
+			$chemin= $pathfolder."//Etape". $Etape."//images/Etape.xml";
+
+			if (file_exists($chemin)) {
+			?>
+				mapSvg('Test', PathFolder +"//Etape"+ PathEtape+ "//images/Etape.xml", DivimgEtapePara);
+				<?
+			}?>
+		}
+	}
+
+
+	function AddButtonTypeResultat(PointDePassageInfo)
+	{
+		console.log("Add Button type resultat");
+		DivTypeClassement= document.getElementById('TypeClassement');
+		// Affichage du bouton de chaque type de classement proposé par ce point de passage 
+		const buttonTypeClassement = document.createElement('button');
+		if (FormTypeClassement.value == "Categorie" )
+		{
+			buttonTypeClassement.classList.add("ButtonResultatSelected");
+		}
+		else
+		{
+			buttonTypeClassement.classList.add("ButtonResultat");
+		}
+		
+		buttonTypeClassement.innerHTML = "<b>Catégorie</b>" ;
+		DivTypeClassement.appendChild(buttonTypeClassement);
+
+		// évenement ajout colonne dans tableau
+		buttonTypeClassement.addEventListener("click", function()
+		{
+		// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
+		var FormSendIndfo= document.getElementById('FormSendIndfo');
+			FormTypeClassement.value = "Categorie";
+			FormSendIndfo.submit();
+		}, false);
+
+		buttonTypeClassement2 = document.createElement('button');
+		if (FormTypeClassement.value == "Sexe" )
+		{
+			buttonTypeClassement2.classList.add("ButtonResultatSelected");
+		}
+		else
+		{
+			buttonTypeClassement2.classList.add("ButtonResultat");
+		}
+
+		buttonTypeClassement2.style.fontSize= "20px";
+		buttonTypeClassement2.innerHTML = "<i class='fa fa-male' ></i><i class='fa fa-female'></i>" ;
+		DivTypeClassement.appendChild(buttonTypeClassement2);
+		// évenement ajout colonne dans tableau
+		buttonTypeClassement2.addEventListener("click", function()
+		{
+		// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
+		var FormSendIndfo= document.getElementById('FormSendIndfo');
+			FormTypeClassement.value = "Sexe";
+			FormSendIndfo.submit();
+		}, false);
+
+		buttonTypeClassement3 = document.createElement('button');
+		if (FormTypeClassement.value == "Scratch"  )
+		{
+			buttonTypeClassement3.classList.add("ButtonResultatSelected");
+		}
+		else
+		{
+			buttonTypeClassement3.classList.add("ButtonResultat");
+		}
+		buttonTypeClassement3.innerHTML = "<b>Scratch</b>" ;
+		DivTypeClassement.appendChild(buttonTypeClassement3);
+		// évenement ajout colonne dans tableau
+		buttonTypeClassement3.addEventListener("click", function()
+		{
+		// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
+		var FormSendIndfo= document.getElementById('FormSendIndfo');
+			FormTypeClassement.value = "Scratch";
+			FormSendIndfo.submit();
+		}, false);
+
+		// Si aucun type de classement est détectée, scratch = valeur par défaut
+		if (FormTypeClassement.value == null ||  FormTypeClassement.value == "")
+		{
+			var FormSendIndfo= document.getElementById('FormSendIndfo');
+			FormTypeClassement.value = "Scratch";
 			buttonTypeClassement3.classList.add("ButtonResultatSelected");
 			//FormSendIndfo.submit();
 		}
@@ -565,7 +1339,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			elseif ($numetape == 99)
 			{
 			
-				$pathfolderStep = $pathfolder .'/General/ResultatWeb' ;
+				$pathfolderStep = $pathfolder .'/General' ;
 			}
 			else
 			{
@@ -581,7 +1355,6 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 				if ($pos2 !== false) 
 				{
 					$ClassementTampon = $value;	
-				
 					?>
 
 					buttonTypeClassement3 = document.createElement('button');
@@ -661,12 +1434,13 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 				}, false);
 		}
 	
-		function funMenuNomClassement(ListCoureurs)
+		function funMenuNomClassement(ListCoureurs,general)
 		{
 			// Trie selon le type de classement ( Scratch , Categorie , Sexe)
 			var FormTypeClassement= document.getElementById('FormTypeClassement');
 			var NomClassement = "";
-			console.log(ListCoureurs);
+			console.log(FormTypeClassement.value);
+
 			if (FormTypeClassement.value == "Sexe" )
 			{
 				for (let i = 0; i < ListCoureurs.length; i++) 
@@ -674,8 +1448,17 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 					// Si détection contient un coureur 
 					if (ListCoureurs[i].Coureur != null)
 					{
-						NomClassement = ListCoureurs[i].Coureur.Sexe;
-						funAddAndVerifClassement(NomClassement );	
+						if (general)
+						{
+							NomClassement = ListCoureurs[i].Coureur.Sexe._Value;
+						}
+						else
+						{
+							NomClassement = ListCoureurs[i].Coureur.Sexe;
+						}
+						console.log("NomClassement")
+						console.log(NomClassement)
+						funAddAndVerifClassement(NomClassement ,ListCoureurs[i].Coureur ,general);	
 					}
 				}
 			}
@@ -686,8 +1469,18 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 					// Si détection contient un coureur 
 					if (ListCoureurs[i].Coureur != null)
 					{
-						NomClassement = ListCoureurs[i].Coureur.NumCategorie;	
-						funAddAndVerifClassement(NomClassement ,ListCoureurs[i].Coureur );
+						if (general)
+						{
+							NomClassement = ListCoureurs[i].Coureur.Categorie.NumCategorie._Value;	
+						
+						}
+						else
+						{
+							NomClassement = ListCoureurs[i].Coureur.NumCategorie;	
+						}
+						console.log("NomClassement")
+						console.log(NomClassement)
+						funAddAndVerifClassement(NomClassement ,ListCoureurs[i].Coureur ,general);
 					}
 				}
 			}
@@ -697,7 +1490,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 		}
 
 		// Fonction ajout de la valeur et du bouton du nom de classement
-		function funAddAndVerifClassement(NomClassement, Coureur)
+		function funAddAndVerifClassement(NomClassement, Coureur, general)
 		{
 			find = false;
 			//Vérification si existe dans la liste 
@@ -739,7 +1532,15 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 				}
 				else
 				{
+					if (general)
+					{
+					buttonNomClassement.innerHTML =  Coureur.Categorie.NomCategorie._Value + " " +Coureur.Categorie.debutAnnee._Value +" - "+ Coureur.Categorie.finAnnee._Value ;
+					}
+					else
+					{
 					buttonNomClassement.innerHTML =  Coureur.NomCategorie + " " +Coureur.debutAnnee +" - "+ Coureur.finAnnee ;
+					}
+
 				}
 				DivNomClassement= document.getElementById('NomClassement');
 				DivNomClassement.appendChild(buttonNomClassement);
@@ -755,9 +1556,8 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 		}
 		
 		function ListCoureurLiveToTable(LivePointPassage, ListCoureurs, LastPointDePassage , idPointPassage)
-
 		{
-        
+        		console.log("ListCoureurLiveToTable");
 			// Trie selon le type de classement ( Scratch , Categorie , Sexe)
 			var FormTypeClassement= document.getElementById('FormTypeClassement');
 			var DivViewLiveCoureur= document.getElementById('ViewLiveCoureur');
@@ -2529,7 +3329,6 @@ $('formChoiceMember').request({
 			$pathfolder = $pathfolder   .'/Etape1';
 		}
 		$pathfolder = $pathfolder   .'/ResultatWeb/'.$TypeClass;
-
 		if (file_exists($pathfolder))
 		{
 		
@@ -2648,13 +3447,23 @@ document.getElementById("GoToTop").style.visibility = "hidden";
 
 </script>
 <?php
-if ($indexDepartSelected > 0 && $indexParcoursSelected > 0 && $Etape > 0)
-{?>
-<script>
-
+if ($indexDepartSelected > 0  && $Etape > 0 )
+{
+	if ($indexParcoursSelected < 99  && $Etape < 99 ) 
+	{?>
+		<script>
 		console.log("Call Function Read File Resultat");
-	readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?> )
-</script>
-<?php
+		readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?> )
+		</script>
+		<?php
+	}
+	else
+	{?>
+		<script>
+		console.log("Call Function Read File Resultat General");
+		readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,99 )
+		</script>
+	<?
+	}
 }?>
 <script>

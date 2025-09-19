@@ -14,6 +14,10 @@
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 <!-- initilisation de variable -->
+ <?php
+include("HeaderEntreprise.php"); 
+include("menuEntreprise.php"); ?>
+
 <script>
 var ArrayCoureurs = [];
 
@@ -180,7 +184,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
  ********************************************************************************************************************/
 ?>
 <div >
-  <p id="LblInformation"  style="width:50%;margin:auto;text-align:center;font-size:24px;border:5px solid #3D6CA4; border-radius:20px;padding:20px;"> Sélectionne un athlète</p></br>
+  <p id="LblInformation"  style="width:50%;margin:auto;margin-top:20px;text-align:center;font-size:24px;border:5px solid #3D6CA4; border-radius:20px;padding:20px;"> Sélectionne un athlète</p></br>
   <span class="popup" id="PopupAddEquipe" style="display:block;">
     <h2> Ajouts d'une équipe</h2>
 
@@ -366,24 +370,34 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
             </table>
         </td>
         <td>
-              <Button  class="ButtonResultat"  style="cursor: pointer; background:transparent;Height: 80px;background:#fff " onClick="catSelected()">
-                    <Table >
-                        <tr>
-                        <td style="text-align: center;">
-                            <i class="fa fa-chevron-circle-right" style= "font-size: 50px;color: #00b4ff;    width:100%;"></i>
-                        </td>
-                        </tr>
-                    </table>
-                </button>
-                 <Button id="ButtonDeleteCoureur" class="ButtonResultat"  style="cursor: pointer; background:transparent;Height: 80px;background:#fff " onClick="deleteCoureur()">
-                    <Table >
-                        <tr>
-                        <td style="text-align: center;">
-                            <i class="fa fa-chevron-circle-left" style= "font-size: 50px;color: #00b4ff;    width:100%;"></i>
-                        </td>
-                        </tr>
-                    </table>
-                </button>
+            <table>
+                <tr>
+                    <td>
+                        <Button  class="ButtonResultat"  style="cursor: pointer; background:transparent;Height: 80px;background:#fff " onClick="catSelected()">
+                            <Table >
+                                <tr>
+                                    <td style="text-align: center;">
+                                     <i class="fa fa-chevron-circle-right" style= "font-size: 50px;color: #00b4ff;    width:100%;"></i>
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <Button id="ButtonDeleteCoureur" class="ButtonResultat"  style="cursor: pointer; background:transparent;Height: 80px;background:#fff " onClick="deleteCoureur()">
+                            <Table >
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <i class="fa fa-chevron-circle-left" style= "font-size: 50px;color: #00b4ff;    width:100%;"></i>
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                </tr>
+            </table>
         </td>
         <td style=" border: 1px solid #1e8ac2;   vertical-align: top;">
             <?php
@@ -503,7 +517,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
             <input type="hidden" name="NumCat" id="NumCat" />
 	        <input type="hidden" name="NomCat" id="NomCat" />
             <input type="hidden" name="IDCoureur" id="IDCoureur" />
-			Nombre étapes*:<input type="text"  style="width: 90%;" name="NbrEtape" id="NbrEtape" tabindex="410" ></input>
+			<!--Nombre étapes*:--><input type="hidden"  style="width: 90%;" name="NbrEtape" id="NbrEtape" tabindex="410" ></input>
 
         </form>		
 </div>

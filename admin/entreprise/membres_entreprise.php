@@ -14,7 +14,7 @@
 <?php
 /*******************************************************************************************************************
  * 
- * Affichage coureur sélectionné
+ * Formulaire d'ajout de coureur dans l'entreprise
  * 
  ********************************************************************************************************************/
 ?>
@@ -74,28 +74,28 @@ function checkForm(f1) {
 		return false;
 	}
 
-		if (f1.prenom.value.length<3) {
+	if (f1.prenom.value.length<3) {
 		alert("Merci d'indiquer votre prénom");
 		f1.prenom.focus();
 		return false;
 	}
 	
-		if (f1.zip.value.length<4) {
+	if (f1.zip.value.length<4) {
 		alert("Merci d'indiquer votre npa");
 		f1.zip.focus();
 		return false;
 	}
-			if (f1.ville.value.length<3) {
+	if (f1.ville.value.length<3) {
 		alert("Merci d'indiquer votre localite");
 		f1.ville.focus();
 		return false;
 	}
-			if (f1.sexe.value.length<1) {
+	if (f1.sexe.value.length<1) {
 		alert("Merci d'indiquer votre sexe");
 		f1.sexe.focus();
 		return false;
 	}
-			if (!isMail(f1.email.value)) {
+	if (!isMail(f1.email.value)) {
 		alert("Merci d'indiquer un mail valide pour que nous puissions vous répondre");
 		f1.email.focus();
 		return false;
@@ -106,7 +106,6 @@ function checkForm(f1) {
 		f1.dateNaissance.focus();
 		return false;
 	}
-
 
 	if (confirm("Etes-vous sur des informations de votre coureur?")) {
 	f1.submit();

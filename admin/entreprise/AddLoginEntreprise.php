@@ -7,23 +7,22 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../../js/prototype.js" ></script>
+<script src="../../../js/FonctionDefiChrono2.js?v=1"></script>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
-
-    <body>
-
-<?php
-  include("Header2023.php"); 
+<!-- initilisation de variable -->
+ <?php
+include("HeaderEntreprise.php"); 
   ?>
 <div id="corps"> <?
    $_SESSION['Nbretape'] =  $_GET['Nbretape'];
  	$_SESSION['Course'] =  $_GET['NomCourse']  ;
 $_SESSION['DateCourse'] = $_GET['DateCourse'];?>
-<img src="images/FilRougeInscription2.png" style="width: 100%"  >
 	<div id="formulaire">
 	<div class="title"> Créer un compte entreprise : </div>
-	  <form method="post" action="CibleAddLoginEntreprise.php">
 	  	<input type="hidden" name="date_course" id="date_course"   value= '<?php echo $_GET['DateCourse'] ?>' />
 		<input type="hidden" name="nom_course" id="nom_course"  value= '<?php echo $_GET['NomCourse'] ?>' />
 		<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET['Nbretape'] ?>' />

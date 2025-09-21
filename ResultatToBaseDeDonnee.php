@@ -36,8 +36,8 @@
 	
 	$Parcours =  $_GET["Parcours"];
 	$Depart =  $_GET["Depart"];
-	$pathfolder = 'courses/'.$_GET['NomCourse'].'/'.$Parcours.'/'.$Depart.'/Etape'.$Etape;
-	
+	//$pathfolder = 'courses/'.$_GET['NomCourse'].'/'.$Parcours.'/'.$Depart.'/Etape'.$Etape;
+	$pathfolder = 'FilesTemp';
 	if (is_dir  (  $pathfolder ))
 	{
 		// Supression de toutes les données de cette course dans la base de donnée$
@@ -48,11 +48,11 @@
 			$result = mysqli_query($con,$sql);
 			if ($result)
 			{
-					echo "Donnée supprimé" . $_GET['NomCourse'] ;
+				echo "Donnée supprimé" . $_GET['NomCourse'] ;
 			}
 			else
 			{
-						echo "Erreur supression" . $_GET['NomCourse'] ;					
+				echo "Erreur supression" . $_GET['NomCourse'] ;					
 			}
 		}
 		catch(Exception $e)
@@ -75,11 +75,10 @@
 					{
 						
 	 					// Insertion dans la base de donnée résultats AVEC BOINT DE PASSAGE
-
-							if ($data[0] == 'Header')
-							{
-								$xResultatWithPOintdePassage = true;
-							}
+						if ($data[0] == 'Header')
+						{
+							$xResultatWithPOintdePassage = true;
+						}
 							
 							if ($xResultatWithPOintdePassage )
 							{
@@ -115,7 +114,7 @@
 										$result = mysqli_query($con,$sql);
 										if ($result)
 										{
-																		echo "no" . $value;
+											echo "no" . $value;
 										}
 										else
 										{
@@ -176,7 +175,7 @@
 						}
 							
 					}
-					
+					unlink($pathFile);
 				}
 			}
 		}

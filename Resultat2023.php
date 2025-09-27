@@ -20,7 +20,15 @@
 <script src="../js/prototype.js" ></script>
 <script src="../js/FonctionDefiChrono2.js?version = 1.0.0"></script>
 <script>
-						
+	var DecalageStartWidth = 50; // Valeur de décalage du commencement du graphique en horizontal
+	var DecalageStartHeight = 50; // Valeur de décalage du commencement du graphique en vertical
+	var Width  = screen.width -200; // 1300
+	if (Width > 800)
+	{
+		Width = 800
+	}
+	var Height = (Width /100) *18;
+
 	function LogoEtape(IDButton, Etape)
 	{
 		IconeEtape = document.getElementById(IDButton);
@@ -88,13 +96,6 @@
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	
 	}
-	/*else if ($Etape == 99 )
-	{
-		
-		header('Location: Resultat2023General.php?NbrEtape='.$Nbr_etape.'&DateCourse='.$DateCourse.'&Etape=99&Depart='.$_GET['Depart'].'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''); 
-	
-	}*/
-
 	  ?>
 
 	<form method="get" action="Resultat2023.php" id="FormSendIndfo">
@@ -368,7 +369,8 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 <div id="ViewLiveCoureur">
 </div>
-<script>		
+<script>	
+
 	function AddButtonTypeResultatGeneral()
 	{
 		console.log("Add Button type resultat General");
@@ -1150,12 +1152,13 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			Parcours.info =  readJSON(PathFolderDepart +"/General/ResultatWeb/ResultatsGeneral.json");
 			console.log("ResultatsGeneral.json");
 		}
-
+		console.log("Parcours");
 		console.log(Parcours);
 		var ListPointPassage  = [];
 		if (Etape != undefined  )
 		{
-
+			console.log("Etape");
+			console.log(Etape);
 			// Graphique Vertical avec point de passage noter dans le graphique 
 			var ArrayCoureurs = [];
 			var ArrayParcours = [];
@@ -1166,10 +1169,8 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			var ElevationMin = 10000;
 			var ElevationMax = 0;
 			var TotalKM = 0;
-			var Width  = 800;//133 screen.width -200; // 1300
-			var Height = (Width /100) *18;
-			var DecalageStartWidth = 50; // Valeur de décalage du commencement du graphique en horizontal
-			var DecalageStartHeight = 50; // Valeur de décalage du commencement du graphique en vertical
+
+			
 			var indexPassage = 1;
 
 			// Ajout du graphique dans tableau ViewDetailCoureur
@@ -1240,7 +1241,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 			if (file_exists($chemin)) {
 			?>
-				mapSvg('Test', PathFolder +"//Etape"+ PathEtape+ "//images/Etape.xml", DivimgEtapePara);
+				mapSvg('Test', PathFolderDepart +"//Etape"+ NumEtape+ "//images/Etape.xml", DivimgEtapePara,Etape,Parcours);
 				<?
 			}?>
 		}
@@ -2734,22 +2735,13 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			
 		}
 
-		function mapSvg(IDSVG, FileName, ColimgEtapePara)
+		function mapSvg(IDSVG, FileName, ColimgEtapePara,Etape,Parcours)
 		{
-
+            console.log("Functionmapsvg")
 			indexPassage = 1;
 			TableTotal = document.createElement('Table');
 			TableTotal.style.width ="80%";
 			TableTotal.setAttribute("id", IDSVG+"ImageMap");
-			
-			if ( screen.width>  800 )
-			{
-				Width  = 800; // 1300-200; // 1300
-			}
-			else
-			{
-				Width  =  screen.width ; // 1300-200; // 1300
-			}
 
 			let box = document.querySelector('div');
 			Width = box.offsetWidth - 200;
@@ -2767,11 +2759,11 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			
 			ColimgEtapePara.append(TableTotal);
 			TableResume(IDSVG, ColimgEtapePara);
-			AddSvg(IDSVG, FileName);
+			AddSvg(IDSVG, FileName,Etape, Parcours);
 		}
 
 		// Ajout Graphique dénivellé verticale
-		function AddSvg(IDSVG, FileName)
+		function AddSvg(IDSVG, FileName,Etape, Parcours)
 		{
 			//Création  ZONE DE DESSIN 
 
@@ -2977,14 +2969,13 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 				AddLigneVertical(partKM * i,  GraphiqueSVG );	
 			}
 
-
+			console.log(Etape)
 			// Ajout des ligne vertical des point passage
 			for (var i = 0; i < Etape.ListPointPassage.ListItem.length ; i++)
 			{
 				AddLigneVerticalPointDePassage(Etape.ListPointPassage.ListItem[i].Distance._Value,  GraphiqueSVG ,Etape.ListPointPassage.ListItem[i].Nom._Value ) ;	
 			}
 
-			
 			// Ajout nombre de coureur restant a passer dans le point de passage sur le graphique
 			// Reprise du dernier point de passage moins le point de passage avant dernier
 			if (Parcours != undefined &&   Parcours.info != undefined && Parcours.info.ListLivePointDePassage != undefined )
@@ -2997,7 +2988,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 					var DistanceEndPoint = (Parcours.info.ListLivePointDePassage[i].Distance ) ;
 
-					AddTextCoureurRestantPointDePassage( parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance), parseFloat(DistanceEndPoint) ,  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length);	
+					AddTextCoureurRestantPointDePassage( parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance), parseFloat(DistanceEndPoint) ,  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length,Parcours);	
 
 
 				}
@@ -3130,7 +3121,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 	}
 
 	// Ajout texte entre chaque point passage
-	function AddTextCoureurRestantPointDePassage( valueStart, valueEnd, GraphiqueSVG ,Text)
+	function AddTextCoureurRestantPointDePassage( valueStart, valueEnd, GraphiqueSVG ,Text, Parcours)
 	{
 		if (Text > 0)
 		{
@@ -3153,7 +3144,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			Rectangle1.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
 			Rectangle1.setAttribute('width', EndPxl - StartPxl-20+ 'px');
 			Rectangle1.setAttribute('height',  (HeightPourCent) +'px');
-			Rectangle1.setAttribute('fill','#3fbf9f');
+			Rectangle1.setAttribute('fill','#3D6CA4');
 			Rectangle1.setAttribute("style","opacity:0.3");
 			Rectangle1.setAttribute('stroke-width',1);
 			Rectangle1.setAttribute('stroke-linecap','round');
@@ -3163,38 +3154,42 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 			var RectangleText = document.createElementNS("http://www.w3.org/2000/svg",'svg');
 			RectangleText.setAttribute('x', (DistancenPxl-15)+ 'px');
-			RectangleText.setAttribute('y', ((HeightLine - HeightPourCent)-40 )+'px');
-			RectangleText.setAttribute('width',  '30px');
+			RectangleText.setAttribute('y', ((HeightLine - HeightPourCent)-30 )+'px');
+			RectangleText.setAttribute('width',  '40px');
 			RectangleText.setAttribute('height', '30px');
-			RectangleText.setAttribute('fill','#3fbf9f');
-			RectangleText.setAttribute("style", "background-color: red;");
-			RectangleText.setAttribute("style","opacity:1");
-			RectangleText.setAttribute('stroke-width',1);
-			RectangleText.setAttribute('stroke-linecap','round');
-			
-			var CircleSVG = document.createElementNS('http://www.w3.org/2000/svg', 'round');
-			CircleSVG.setAttribute('fill',"blue");
-			CircleSVG.setAttribute('x','0');
-			CircleSVG.setAttribute('y','0');
-			CircleSVG.setAttribute('rx','20px');
-			RectangleText.appendChild(CircleSVG);
+			RectangleText.setAttribute('fill','#3D6CA4');
+
 			var useSVG = document.createElementNS('http://www.w3.org/2000/svg', 'image');
 			useSVG.setAttribute('href','Coureurs.png');
-			useSVG.setAttribute('x','0');
+			useSVG.setAttribute('fill','#3D6CA4');
+			useSVG.setAttribute('x','10');
 			useSVG.setAttribute('y','0');
-
 			useSVG.setAttribute('width','30');
 			useSVG.setAttribute('height','30');
 
+			var RectangleNbrCoureur = document.createElementNS("http://www.w3.org/2000/svg",'rect');
+			Rectangle1.setAttribute('x', (StartPxl +10)+ 'px');
+			Rectangle1.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
+			Rectangle1.setAttribute('width', EndPxl - StartPxl-20+ 'px');
+			Rectangle1.setAttribute('height',  (HeightPourCent) +'px');
+			Rectangle1.setAttribute('fill','#3D6CA4');
+			Rectangle1.setAttribute("style","opacity:0.3");
+			Rectangle1.setAttribute('stroke-width',1);
+			Rectangle1.setAttribute('stroke-linecap','round');
+			GraphiqueSVG.appendChild(Rectangle1);
+
 			newText.setAttributeNS(null,"x", (DistancenPxl-13)+ 'px');    
-			newText.setAttributeNS(null,"y", ((HeightLine - HeightPourCent)-27)+'px');
-			newText.setAttributeNS(null,"font-size","12");
+			newText.setAttributeNS(null,"y", ((HeightLine - HeightPourCent)-30 )+'px');
+			newText.setAttributeNS(null,"font-size","14");
 	
 			var textNode = document.createTextNode(Text);
 			newText.appendChild(textNode);
+
+			GraphiqueSVG.appendChild(newText);
+
 			RectangleText.appendChild(useSVG);	
 			GraphiqueSVG.appendChild(RectangleText);
-			GraphiqueSVG.appendChild(newText);
+		
 		}
 	}
 

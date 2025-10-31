@@ -25,20 +25,23 @@ else
 {
      try
      {
-        // Verification que le dossard n'existe pas
-        $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'AND NumDossard  =\''. $_REQUEST['num_dossard'].'\'AND ID  !=\'' .$_REQUEST['IDCoureur'].'\''; 
-        $ResultAddInsc = mysqli_query($con,$sql);	
-      
-        if ( $ResultAddInsc )
+        if ($_REQUEST['num_dossard'] != "0")
         {
-
-                // SI le dossard existe déjà
-            if ($ResultAddInsc && mysqli_num_rows($ResultAddInsc) > 0)
+            // Verification que le dossard n'existe pas
+            $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'AND NumDossard  =\''. $_REQUEST['num_dossard'].'\'AND ID  !=\'' .$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+        
+            if ( $ResultAddInsc )
             {
-                print(-9999);
-                exit;
+
+                    // SI le dossard existe déjà
+                if ($ResultAddInsc && mysqli_num_rows($ResultAddInsc) > 0)
+                {
+                    print(-9999);
+                    exit;
+                }
+            
             }
-          
         }
       
 

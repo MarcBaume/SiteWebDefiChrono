@@ -5,14 +5,16 @@
 	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
 	<title>Défi Chrono</title>
 	<meta charset="utf-8">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+	
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<metahttp-equiv = 'cache-control' content = 'no-cache'>
 <metahttp-equiv = 'expires' content = '0'>
 <metahttp-equiv = 'pragma' content = 'no-cache'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV6.css" type="text/css"/>
-	<!-- Import Leaflet CSS Style Sheet -->
+	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
+		<!-- Import Leaflet CSS Style Sheet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 <!-- Import Leaflet JS Library -->
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -672,9 +674,12 @@ function funAddSvg(IDSVG, FileName, ColimgEtapePara)
 	console.log("Create element")
 	/*** ZONE DE DESSIN **/
  	var GraphiqueSVG = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-    GraphiqueSVG.style.width = (Width + (DecalageStartWidth*2) ) +'px';
-    GraphiqueSVG.style.height = (Height + (DecalageStartHeight*2))+'px';
-    GraphiqueSVG.id = IDSVG+'image1';
+   // GraphiqueSVG.style.width = (Width + (DecalageStartWidth*2) ) +'px';
+   // GraphiqueSVG.style.height = (Height + (DecalageStartHeight*2))+'px';
+    svgWidth =Width + (DecalageStartWidth*2) ;
+			svgHeight = Height + (DecalageStartHeight*2);
+			GraphiqueSVG.setAttribute("viewBox", "0 0 "+ svgWidth+" "+svgHeight); 
+	GraphiqueSVG.id = IDSVG+'image1';
     divGraph.appendChild(GraphiqueSVG);
 
 

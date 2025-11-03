@@ -92,7 +92,7 @@
 		$Etape =1 ;
 	}
 	
-	  if ($NOM_COURSE =='Jura Défi'  )
+	  if ($NOM_COURSE =='Jura Défi' || $NOM_COURSE =='Trophée du Doubs DMT Microtechnique'  )
 	{
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	

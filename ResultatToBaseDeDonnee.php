@@ -48,29 +48,35 @@
 			$result = mysqli_query($con,$sql);
 			if ($result)
 			{
-				echo "Donnée supprimé" . $_GET['NomCourse'] ;
+				echo "Donnée supprimé" . $sql;
 			}
 			else
 			{
-				echo "Erreur supression" . $_GET['NomCourse'] ;					
+				echo "Erreur supression" . $sql ;					
 			}
 		}
 		catch(Exception $e)
 		{
 			die('Erreur : '.$e->getMessage());
-		}						
+		}
+			
 		// Ajout des Données de résultat
 		// Création de la liste de toutes les Dossier = Depart 
 		$files1 = scandir($pathfolder);
 		// Lecture de chaques dossier Pacours Exemple Adultes / Enfants 
-		foreach ($files1  as $key => $value) 
+		foreach ($files1  as $key => $nameFile) 
 		{ 
-			$pathFile = $pathfolder."/".$value;
+			$pathFile = $pathfolder."/".$nameFile;
 			if (file_exists($pathFile)) 
 			{
 				if (($handle = fopen( $pathFile, "r")) !== FALSE) 
 				{
 					$xResultatWithPOintdePassage = false;
+					echo " title file :" . $nameFile."<br/>";		
+					$TypeClassement1 =str_replace("classement_", "",$nameFile);
+					echo "supp title classement_ :" . $TypeClassement1 ."<br/>";;		
+					$TypeClassement =str_replace(".csv", "",$TypeClassement1);
+					echo "Ajouts données :" . $TypeClassement ."<br/>";;		
 					while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) 
 					{
 						
@@ -129,11 +135,6 @@
 							}
 							else
 							{
-								if (strlen($data[9]) > 0 && ! strstr($data[9] , 'Ecart'))
-								{
-									$TypeClassement =str_replace("classement_", "",$value);
-									$TypeClassement =str_replace(".csv", "",$TypeClassement);
-								}
 								if (strlen($data[2]) >0 )
 								{
 							// Insertion dans la base de donnée résultats sans point de passage
@@ -150,17 +151,16 @@
 								"'.$Parcours.'",
 								"'.$Depart.'",
 								"'.$Etape.'",
-									"'.$_GET["Lieu"].'",
-									"'.$_GET["Distance"].'",
-									"'.$_GET["Denivele"].'");';
-										echo "no" . $sql;
+								"'.$_GET["Lieu"].'",
+								"'.$_GET["Distance"].'",
+								"'.$_GET["Denivele"].'");';
 								try
 								{
 				
 									$result = mysqli_query($con,$sql);
 									if ($result)
 									{
-																	echo "no" . $value;
+										echo "INSERT OK " . $sql ."<br/>";
 									}
 									else
 									{
@@ -169,7 +169,7 @@
 								}
 								catch(Exception $e)
 								{
-									die('Erreur : '.$e->getMessage());
+									die('Erreur : '.$e->getMessage())  ."<br/>";
 								}
 							}
 						}

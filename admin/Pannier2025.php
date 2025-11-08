@@ -19,9 +19,6 @@ var TotalReduction = 0;
 var TotalTax = 0;
 var ArrayReduction = [];
 var Total		= 0;
-var LoginLight = "";
-var OrderId = "";
-var Login = "";	
 var linkAccept = "";
 var ListCourse =  "";
 
@@ -102,16 +99,17 @@ function AddInscription()
 {
 	document.getElementById("AddNewInscription").submit();
 }
-function ButtonPayPayrexx()
+function ButtonPayPayrexx( order,log,logLight)
 {
 	if (Total != null && document.getElementById("PrixTotal")!= null && document.getElementById("IDPayresxx")!= null)
 	{
-
-			total = parseFloat(document.getElementById("PrixTotal").value);
-			string1 = "https://defichrono.payrexx.com/fr/vpos?purpose="+OrderId+
-			"&amount="+ total  +"&invoice_currency=1&contact_forename="+
-			LoginLight +"&contact_email="+ Login;
 			
+			total = parseFloat(document.getElementById("PrixTotal").value);
+			string1 = "https://defichrono.payrexx.com/fr/vpos?purpose="+order+
+			"&amount="+ total  +"&invoice_currency=1&contact_forename="+
+			logLight +"&contact_email="+ log;
+			
+			console.log(string1);
 
 			var ValidLink =document.getElementById("IDValide");
 			var PayrexxLink =document.getElementById("IDPayresxx");
@@ -138,7 +136,41 @@ function ButtonPayPayrexx()
 			}
 	}
 }
+function funValidPaiement()
+{
+		// Appelle fonction php pour vérifier que le coupon existe
+		$('formPayrexx1').request({
+		onComplete: function(transport){
+			val =transport.responseText.evalJSON();
+			console.log(val);
+			log = document.getElementById("LoginPayrexx").value;
+			logLight = document.getElementById("LoginLightPayrexx").value;
+			order =  document.getElementById("OrderIDPayrexx").value;
+			strLinkAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login="+log +"&ID="+order;
+			strLinkRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login="+log+"&ID="+order;
+			console.log(strLinkAccept);
+			ButtonPayPayrexx( order,log,logLight);
+			console.log("jquery");
+			jQuery(".payrexx-modal-window").payrexxModal(
+			{
+				hidden: function(transaction) 
+				{
+					if (transaction.status == "confirmed") // authorized
+					{
+					//	validCode(); // Ecriture dans la base de donnée que les codes sont utilisé
+						location.href =strLinkAccept;
+					}
+					else
+					{
+						
+						location.href =strLinkRefused+ "&StatusPaiement=" + transaction.status.toString();		
+					}
+				}
+			});
+		}
+		});
 
+}
 </script>
  </head>
  <body>
@@ -163,7 +195,6 @@ if ( isset($_SESSION['Login']))
 	<?php
 	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
 	mysqli_select_db($con ,'dxvv_jurachrono' );
-
 	$Value = 'True';
 	$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION["Login"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\' AND PayementOnLine =\''.$Value.'\'';
 	$result = mysqli_query($con,$sql);
@@ -194,7 +225,6 @@ if ( isset($_SESSION['Login']))
 			<?php
 			$Background = 0;
 
-			// Mise à jour de l'ordrer ID
 			while($donnees = mysqli_fetch_assoc($result)) 
 			{
 				if ($donnees['Payer'] == "En Attente" || $donnees['Payer'] == "cancelled"  || $donnees['Payer'] == "declined" || $donnees['Payer'] == "refunded")
@@ -303,105 +333,7 @@ if ( isset($_SESSION['Login']))
 				document.getElementById("PrixTax").value = <?php echo json_encode($TotalTax ); ?> ; 
 				document.getElementById("PrixTotal").value =  <?php echo json_encode($Total ); ?> ; 
 			
-			</script>
-		<?php
-
-
-	/************************************************************************
-	 * Initialise paiement 
-	 * j'ai Fait  des test avec Datatrans paiement
-	 **************************************************************************/
-	$PaiementWithDatatrans = false;
-	if ($PaiementWithDatatrans)
-	{
-		// Initialisation transaction via CURL
-		// https://docs.datatrans.ch/docs/redirect-lightbox
-		// basicAuth : encoder le merchand id et le mot de passe en base code 64
-		//Exemple : 
-		//  1110018304:1HDt1m7dI8M1xZ9n
-		// https://www.base64encode.org/
-		//echo "Total";
-		//echo $Total ;
-
-		$ch = curl_init("https://api.sandbox.datatrans.com/v1/transactions");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Authorization: Basic MTExMDAxODMwNDoxSER0MW03ZEk4TTF4Wjlu','Content-Type: application/json')); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, '{
-			"currency": "CHF",
-			"refno": "'. $_SESSION["Login"].'",
-			"amount": '. $TotalDataTrans .',
-			"paymentMethods": ["VIS","ECA","PAP","TWI"],
-			"autoSettle": true,
-				"theme": {
-				"name": "DT2015",
-				"configuration": {
-					"brandColor": "#FFFFFF",
-					"logoBorderColor": "#A1A1A1",
-					"brandButton": "#A1A1A1",
-					"payButtonTextColor": "#FFFFFF",
-					"logoType": "circle",
-					"initialView": "list"
-				}
-			}
-		}');       
-
-		$data =curl_exec($ch);
-		if(curl_error($ch)) {
-			?>
-			<center>
-			<h2> 	Erreur transaction ID contacter : info@defichrono.ch </h2>
-			</center>
-		<?
-		}
-		else
-		{
-			
-			// echo 'ok transaction id'; 
-			$obj = json_decode($data);
-			$OrderID=  $obj->{'transactionId'};
-
-
-
-			//	 echo  $OrderID;
-		?>
-			<!-- <a href=<?php echo "https://pay.sandbox.datatrans.com/v1/start/".  $OrderID?>>Click me</a>-->
-		
-	
-			<?
-		}
-	}
-	else // Utilisation avec payrexx pas besoin d'initialiser le paiement
-	{
-		$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
-		$OrderID = $LoginLight.$CourseId . date("YmdHis");
-		
-	}
-	
-	// mise à jour sur chaque athlete de l'order ID
-	// Mise à jour de l'ordrer ID
-	$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION["Login"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\' AND PayementOnLine =\''.$Value.'\'';
-	$result = mysqli_query($con,$sql);
-	while($donnees = mysqli_fetch_assoc($result)) 
-	{
-		if ($donnees['Payer'] == "En Attente" || $donnees['Payer'] == "cancelled"  || $donnees['Payer'] == "declined" || $donnees['Payer'] == "refunded")
-		{
-	
-		// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table inscription OrderPayement
-			$sql = 'UPDATE inscription SET OrderPayement = \''.$OrderID.'\'  WHERE ID=\''.$donnees["ID"].'\''; 
-			if (!mysqli_query($con,$sql))
-			{
-				echo "Error update : Membres Nom" . mysql_error();
-			}  
-		}
-	}
-	
-	?>
-	
-	<script>
-		// Transforme variable php en javascript>
-		LoginLight = <?php echo json_encode( $LoginLight ); ?>;
-		OrderId = <?php echo json_encode( $OrderID  ); ?>;
-	</script>
+		</script>
 
 	<table>
 		<tr>
@@ -480,38 +412,21 @@ if ( isset($_SESSION['Login']))
 		</tr>
 	</table>
 			
-	<?php	$StrAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login=". $_SESSION["Login"]."&ID=".$OrderID?>
-	<?php	$StrRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login=". $_SESSION["Login"]."&ID=".$OrderID ?>
-	
-	<!-- Script lors de la validation du paiement !-->
-	<script type="text/javascript">
-		ButtonPayPayrexx();
-		linkAccept = <?php echo json_encode($StrAccept); ?>;
-		jQuery(".payrexx-modal-window").payrexxModal({
-		hidden: function(transaction) {
-			if (transaction.status == "confirmed") // authorized
-			{
-			//	validCode(); // Ecriture dans la base de donnée que les codes sont utilisé
-				location.href =<?php echo json_encode($StrAccept); ?>;
-			}
-			else
-			{
-				
-				location.href =<?php echo json_encode($StrRefused); ?>+ "&StatusPaiement=" + transaction.status.toString();		
-			}
-		}
-	});
-
-	function SubmitForm(f)
-	{
-		f.submit();
-	}
-	</script>
 	</br>	
 
 	</table>
 	</br>
 	</br>
+			<form  id="formPayrexx1" method="get" action="CibleUpdateOrdrerIDPayement.php">
+			<?php
+				$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
+				$OrderID = $LoginLight.$CourseId . date("YmdHis");?>
+			<input type="hidden" name="LoginLightPayrexx" id="LoginPayrexx"   value= '<?php echo $_SESSION['Login'] ?>' />
+			<input type="hidden" name="LoginPayrexx" id="LoginLightPayrexx"   value= '<?php echo $LoginLight ?>' />
+			<input type="text" name="OrderID1" id="OrderIDPayrexx"   value= '<?php echo $OrderID  ?>' />
+			<input class="ButtonResultat" type="button" style="cursor: pointer;  height:40px;font-size:100%; width: 160px;"  id="ButtonSend" value="Payé..." onclick="funValidPaiement()" >  </p>
+		</form>
+
 	</br>
 	</br>
 	</br>
@@ -636,13 +551,6 @@ else
 	?>
 			</table>
 
-		<script>
-		
-		function SubmitForm(f)
-		{
-			f.submit();
-		}
-		</script>
 	</br>
 		
 		</td>
@@ -957,13 +865,7 @@ else
 	?>
 			</table>
 		</div>
-		<script>
-		
-		function SubmitForm(f)
-		{
-			f.submit();
-		}
-		</script>
+
 	</br>
 		
 		</td>

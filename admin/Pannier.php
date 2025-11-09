@@ -15,162 +15,150 @@
  <script src="../js/prototype.js" ></script><script>
 
 	// Initalisation de variable
-var TotalReduction = 0;
-var TotalTax = 0;
-var ArrayReduction = [];
-var Total		= 0;
-var linkAccept = "";
-var ListCourse =  "";
-
-function funModification(id,Champ)
-{
-	document.getElementById("IDModification").value = id;
-	
-	if (Champ.search('Disc')>-1)
+	var TotalReduction = 0;
+	var TotalTax = 0;
+	var ArrayReduction = [];
+	var Total		= 0;
+	var linkAccept = "";
+	var ListCourse =  "";
+	var strLinkAccept =  "";
+	var strLinkRefused =  "";
+	function fundeleteInscription(id)
 	{
+		console.log("fundeleteInscription : " +id)
+		document.getElementById('idFormDeletePanier' ).value= id;
+		document.getElementById('formDelete' ).submit();
+	}
 		
-		document.getElementById("ChampModification").value = 'Nom'+Champ;
-		document.getElementById("ValueModification").value = document.getElementById('Nom'+Champ+id).value;
-	
-			// Appelle fonction php pour vérifier que le coupon existe
-		$('formModif').request({
-		onComplete: function(transport){
-				val =transport.responseText.evalJSON();
-			console.log(val);
-			}
-		});
-	
-			document.getElementById("ChampModification").value =  'Prenom'+Champ;
-			document.getElementById("ValueModification").value = document.getElementById('Prenom'+Champ+id).value;
+	function funModification(id,Champ)
+	{
+		console.log("funModification : " +id + Champ)
+		document.getElementById("IDModification").value = id;
+		
+		if (Champ.search('Disc')>-1)
+		{
+			document.getElementById("ChampModification").value = 'Nom'+Champ;
+			document.getElementById("ValueModification").value = document.getElementById('Nom'+Champ+id).value;
 		
 			// Appelle fonction php pour vérifier que le coupon existe
-		$('formModif').request({
-		onComplete: function(transport){
-				val =transport.responseText.evalJSON();
-			console.log(val);
-			}
-		});
+			$('formModif').request({
+			onComplete: function(transport){
+					val =transport.responseText.evalJSON();
+				console.log(val);
+				}
+			});
 		
-	}
-	else
-	{
-		document.getElementById("ChampModification").value = Champ;
-		document.getElementById("ValueModification").value = document.getElementById(Champ+id).value;
-			// Appelle fonction php pour vérifier que le coupon existe
-		$('formModif').request({
-		onComplete: function(transport){
-				val =transport.responseText.evalJSON();
-			console.log(val);
-			}
-		});
-
-		
-	}
-	
-
-	//elmnt = document.getElementById("Modification"+id);
-	//elmnt.submit();
-}
-	
-function ClickRows(event, id)
-{  
-	if (	document.getElementById("Infos"+id).style.visibility == "visible")
-	{
-		//	document.getElementById("RowRace"+id).style.backgroundColor = "#ffffff" ;
-		document.getElementById("Infos"+id).style.visibility = "collapse" ;
-		document.getElementById("IconsMinus"+id).style.visibility = "collapse" ;
-		document.getElementById("Icons"+id).style.visibility = "visible" ;
-	}
-	else
-	{
-		//	document.getElementById("RowRace"+id).style.backgroundColor = "#c9efff" ;
-		document.getElementById("Infos"+id).style.visibility = "visible" ;
-		document.getElementById("IconsMinus"+id).style.visibility = "visible" ;
-		document.getElementById("Icons"+id).style.visibility = "collapse" ;
-	}
-	event.stopPropagation(); 	
-}
-	
-function ValidInscription()
-{
-	window.location.href = linkAccept;
-}
-function AddInscription()
-{
-	document.getElementById("AddNewInscription").submit();
-}
-function ButtonPayPayrexx( order,log,logLight)
-{
-	if (Total != null && document.getElementById("PrixTotal")!= null && document.getElementById("IDPayresxx")!= null)
-	{
+				document.getElementById("ChampModification").value =  'Prenom'+Champ;
+				document.getElementById("ValueModification").value = document.getElementById('Prenom'+Champ+id).value;
 			
-			total = parseFloat(document.getElementById("PrixTotal").value);
-			string1 = "https://defichrono.payrexx.com/fr/vpos?purpose="+order+
-			"&amount="+ total  +"&invoice_currency=1&contact_forename="+
-			logLight +"&contact_email="+ log;
+				// Appelle fonction php pour vérifier que le coupon existe
+			$('formModif').request({
+			onComplete: function(transport){
+					val =transport.responseText.evalJSON();
+				console.log(val);
+				}
+			});
 			
-			console.log(string1);
-
-			var ValidLink =document.getElementById("IDValide");
-			var PayrexxLink =document.getElementById("IDPayresxx");
-			
-			console.log(total);
-			if (total > 0)
-			{
-				PayrexxLink.setAttribute('data-href',string1);
-				PayrexxLink.classList.add("payrexx-modal-window");
-				PayrexxLink.href ="#";
-				ValidLink.style.display  = "none" ;
-				ValidLink.visibility = "hidden" ;
-
-				PayrexxLink.style.display  = "block" ;
-				PayrexxLink.visibility = "visible" ;
-			}
-			else
-			{
-				ValidLink.style.display  = "block" ;
-				ValidLink.visibility = "visible" ;
-
-				PayrexxLink.style.display  = "none" ;
-				PayrexxLink.visibility = "hidden" ;
-			}
-	}
-}
-function funValidPaiement()
-{
-		// Appelle fonction php pour vérifier que le coupon existe
-		$('formPayrexx1').request({
-		onComplete: function(transport){
-			val =transport.responseText.evalJSON();
-			console.log(val);
-			log = document.getElementById("LoginPayrexx").value;
-			logLight = document.getElementById("LoginLightPayrexx").value;
-			order =  document.getElementById("OrderIDPayrexx").value;
-			strLinkAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login="+log +"&ID="+order;
-			strLinkRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login="+log+"&ID="+order;
-			console.log(strLinkAccept);
-			ButtonPayPayrexx( order,log,logLight);
-			console.log("jquery");
-			jQuery(".payrexx-modal-window").payrexxModal(
-			{
-				hidden: function(transaction) 
-				{
-					if (transaction.status == "confirmed") // authorized
-					{
-					//	validCode(); // Ecriture dans la base de donnée que les codes sont utilisé
-						location.href =strLinkAccept;
-					}
-					else
-					{
-						
-						location.href =strLinkRefused+ "&StatusPaiement=" + transaction.status.toString();		
-					}
+		}
+		else
+		{
+			document.getElementById("ChampModification").value = Champ;
+			document.getElementById("ValueModification").value = document.getElementById(Champ+id).value;
+				// Appelle fonction php pour vérifier que le coupon existe
+			$('formModif').request({
+			onComplete: function(transport){
+					val =transport.responseText.evalJSON();
+				console.log(val);
 				}
 			});
 		}
-		});
+	}
+		
+	function ClickRows(event, id)
+	{  
+		if (	document.getElementById("Infos"+id).style.visibility == "visible")
+		{
+			//	document.getElementById("RowRace"+id).style.backgroundColor = "#ffffff" ;
+			document.getElementById("Infos"+id).style.visibility = "collapse" ;
+			document.getElementById("IconsMinus"+id).style.visibility = "collapse" ;
+			document.getElementById("Icons"+id).style.visibility = "visible" ;
+		}
+		else
+		{
+			//	document.getElementById("RowRace"+id).style.backgroundColor = "#c9efff" ;
+			document.getElementById("Infos"+id).style.visibility = "visible" ;
+			document.getElementById("IconsMinus"+id).style.visibility = "visible" ;
+			document.getElementById("Icons"+id).style.visibility = "collapse" ;
+		}
+		event.stopPropagation(); 	
+	}
 
-}
+	function ValidInscription()
+	{
+		window.location.href = linkAccept;
+	}
+	function AddInscription()
+	{
+		document.getElementById("AddNewInscription").submit();
+	}
+	function ButtonPayPayrexx( order,log,logLight)
+	{
+		if (Total != null && document.getElementById("PrixTotal")!= null && document.getElementById("IDPayresxx")!= null)
+		{
+				
+				total = parseFloat(document.getElementById("PrixTotal").value);
+				string1 = "https://defichrono.payrexx.com/fr/vpos?purpose="+order+
+				"&amount="+ total  +"&invoice_currency=1&contact_forename="+
+				logLight +"&contact_email="+ log;
+				
+				console.log(string1);
+
+				var ValidLink =document.getElementById("IDValide");
+				var PayrexxLink =document.getElementById("IDPayresxx");
+				
+				console.log(total);
+				if (total > 0)
+				{
+					PayrexxLink.setAttribute('data-href',string1);
+					ValidLink.style.display  = "none" ;
+					ValidLink.visibility = "hidden" ;
+
+					PayrexxLink.style.display  = "block" ;
+					PayrexxLink.visibility = "visible" ;
+
+					console.log("Create event click");
+					// Simulate a mouse click
+					PayrexxLink.click();
+				}
+				else
+				{
+					ValidLink.style.display  = "block" ;
+					ValidLink.visibility = "visible" ;
+
+					PayrexxLink.style.display  = "none" ;
+					PayrexxLink.visibility = "hidden" ;
+				}
+		}
+	}
+	function funValidPaiement()
+	{
+			// Appelle fonction php pour vérifier que le coupon existe
+			$('formPayrexx1').request({
+			onComplete: function(transport){
+				val =transport.responseText.evalJSON();
+				console.log(val);
+				log = document.getElementById("LoginUpdateRegister").value;
+				logLight = document.getElementById("LoginLightUpdateRegister").value;
+				order =  document.getElementById("OrderIDPayrexx").value;
+				strLinkAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login="+log +"&ID="+order;
+				strLinkRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login="+log+"&ID="+order;
+				console.log(strLinkAccept);
+				ButtonPayPayrexx( order,log,logLight);
+
+			}
+			});
+
+	}
 </script>
  </head>
  <body>
@@ -199,8 +187,6 @@ if ( isset($_SESSION['Login']))
 	$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION["Login"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\' AND PayementOnLine =\''.$Value.'\'';
 	$result = mysqli_query($con,$sql);
 	$c=0;
-
-		
 	// On affiche chaque entrée une à une
 	if ($result && mysqli_num_rows($result) > 0) 
 	{
@@ -215,7 +201,6 @@ if ( isset($_SESSION['Login']))
 			<tr>
 				<th width="20%"> Course</th>
 				<th > Nom </th>
-		
 				<th width="15%"> Parcours </th>
 				<th width="15%">  Option</th>
 				<th width="15%">  Prix</th>
@@ -257,16 +242,13 @@ if ( isset($_SESSION['Login']))
 					<?php
 					if ($donnees['Payer'] !=  "Payé")
 					{?>
-						<form method="post" id="formDelete" action="DeletePanier.php">
-							<input type="hidden" name="ID" id="ID"   value= '<?php echo $donnees ["ID"] ?>' />
 							<td>
 							<a><span> </span><button type ="button" style="float:right; margin :5px;"
-							onclick="document.getElementById('formDelete').submit();">
+							onclick="fundeleteInscription('<?php echo $donnees ['ID'] ?>' )">
 								<i class="fa fa-trash" style= "font-size: 30px;margin:5px;color: #FF0000;"></i>
 							</button></a>
 							
 							</td>
-						</form>
 					<?php 
 					}?>
 						</tr>
@@ -373,6 +355,7 @@ if ( isset($_SESSION['Login']))
 				<?php
 				}
 				?>
+			<!-- Afficher seulement si il y a des inscriptions gratuites !-->
 			<td style="display:none;  height:50px;text-align: center;vertical-align: middle;" id="IDValide" >
 				<a  class="ButtonResultat"  style="cursor: pointer; Padding:10px ;color:black;  font-size:36px; text-decoration:none;" onclick="ValidInscription()" >
 					<table>
@@ -387,11 +370,10 @@ if ( isset($_SESSION['Login']))
 							</td>
 						</tr>
 					</table>
-			
-	
 				</a>
 			</td>
-			<td id="IDPayresxx" style="height:50px;text-align: center;vertical-align: middle;">
+			<!-- Afficher seulement si il y a des inscriptions payantes-->
+			<td onclick="funValidPaiement()" style="height:50px;text-align: center;vertical-align: middle;" >
 				<a  class="ButtonResultat"  style="cursor: pointer; Padding:10px ;color:black;  font-size:36px; text-decoration:none;" >			
 					<table>
 						<tr>
@@ -407,8 +389,7 @@ if ( isset($_SESSION['Login']))
 					</table>
 				</a>
 			</td>
-				
-				<td style="width:25%"></td>
+			<td style="width:25%"></td>
 		</tr>
 	</table>
 			
@@ -417,16 +398,19 @@ if ( isset($_SESSION['Login']))
 	</table>
 	</br>
 	</br>
-			<form  id="formPayrexx1" method="get" action="CibleUpdateOrdrerIDPayement.php">
-			<?php
-				$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
-				$OrderID = $LoginLight.$CourseId . date("YmdHis");?>
-			<input type="hidden" name="LoginLightPayrexx" id="LoginPayrexx"   value= '<?php echo $_SESSION['Login'] ?>' />
-			<input type="hidden" name="LoginPayrexx" id="LoginLightPayrexx"   value= '<?php echo $LoginLight ?>' />
-			<input type="text" name="OrderID1" id="OrderIDPayrexx"   value= '<?php echo $OrderID  ?>' />
-			<input class="ButtonResultat" type="button" style="cursor: pointer;  height:40px;font-size:100%; width: 160px;"  id="ButtonSend" value="Payé..." onclick="funValidPaiement()" >  </p>
-		</form>
 
+	<!--Formulaire et div invisible par l'utilisateur transfert des données pour la base de donnée inscriptions order id -->
+	<div  id="IDPayresxx" >
+	</div>
+	<?php
+		$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
+		$OrderID = $LoginLight.$CourseId . date("YmdHis");?>
+		<form  id="formPayrexx1" method="get" action="CibleUpdateOrdrerIDPayement.php">
+			<input type="hidden" name="LoginUpdateRegister" id="LoginUpdateRegister"   value= '<?php echo $_SESSION['Login'] ?>' />
+			<input type="hidden" name="LoginLightUpdateRegister" id="LoginLightUpdateRegister"   value= '<?php echo $LoginLight ?>' />
+			<input type="hidden" name="OrderIDPayrexx" id="OrderIDPayrexx"   value= '<?php echo $OrderID  ?>' />
+		</form>
+	<!----------------------------------------------------------------------------------------------->
 	</br>
 	</br>
 	</br>
@@ -452,8 +436,6 @@ else
 	$Value1 = 'False';
 	
 	/************************************** PAIEMENT PAR IBAN *******************************************/
-	
-	
 	$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION["Login"].'\'AND (PayementOnLine =\''.$Value.'\' OR PayementOnLine =\''.$Value1.'\')';
 	$result = mysqli_query($con,$sql);
 	$c=0;
@@ -527,20 +509,17 @@ else
 				if ($donnees['Payer'] !=  "Payé")
 				{
 			?>
-					<form method="post" id="formDelete" action="DeletePanier.php">
-						<input type="hidden" name="ID" id="ID"   value= '<?php echo $donnees ["ID"] ?>' />
+	
 						<td>
 						<?php if ($donnees ["Payer"] != 'Payé')
 						{?>
-							<span class="dot" onclick="document.getElementById('formDelete').submit();">
+							<span class="dot" onclick="deleteInscription(<?php echo $donnees ['ID'] ?>)">
 								<i class="fa fa-trash" style= "font-size: 20px;margin: 6px;color: #FF0000;"></i>
 							</span>
 							<?
 						}?>
-		
-						
 						</td>
-					</form>
+				
 						<?php }?>
 					</tr>
 					<?php
@@ -653,30 +632,30 @@ else
 						</tr>
 						<tr>
 							<td > Adresse :</td>
-							<td><input  ReadOnly type="text" name="adresse" id="adresse" tabindex="12" value =  '<?php echo $donnees['adresse']; ?>' />   </td>>
-							<td ><input style="width:30px" type="text" name="npa" id="npa" tabindex="13" value =  '<?php echo $donnees['npa']; ?> '/>   </td>
-							<td ><input  type="text" name="localite" id="localie" tabindex="14" value = '<?php echo $donnees['localite']; ?>' />  </td>
+							<td><input  ReadOnly type="text" name="adresse"   value =  '<?php echo $donnees['adresse']; ?>' />   </td>>
+							<td ><input style="width:30px" type="text" name="npa" value =  '<?php echo $donnees['npa']; ?> '/>   </td>
+							<td ><input  type="text" name="localite" value = '<?php echo $donnees['localite']; ?>' />  </td>
 						</tr>
 						<tr>
 							<td > Sexe :</td>
-							<td ><input ReadOnly  type="text" name="sexe" id="sexe" tabindex="16" value = '<?php echo $donnees['sexe']; ?>' /> </td>
+							<td ><input ReadOnly  type="text" name="sexe" value = '<?php echo $donnees['sexe']; ?>' /> </td>
 							<td > Année Naissance :</td>
-							<td > <input ReadOnly  style="width:35px" type="text" name="date" id="date" tabindex="15"  value = '<?php echo $donnees['DateNaissance']; ?>' /> </td>
+							<td > <input ReadOnly  style="width:35px" type="text" name="date"   value = '<?php echo $donnees['DateNaissance']; ?>' /> </td>
 						
 						</tr>
 						<tr>
 							<td > Numéro catégorie :</td>	
-							<td>  <input ReadOnly type="text" name="NumCategorie" id="NumCategorie" tabindex="18" value = '<?php echo $donnees['NumCategorie']; ?>'  /> </td>
+							<td>  <input ReadOnly type="text" name="NumCategorie"  value = '<?php echo $donnees['NumCategorie']; ?>'  /> </td>
 							<td> Nom départ</td>
-							<td>  <input ReadOnly style="width:90px"  type="text" name="NomDepart" id="NomDepart" tabindex="21" value = '<?php echo $donnees['NomDepart']; ?>'  /> </td>
+							<td>  <input ReadOnly style="width:90px"  type="text" name="NomDepart"  value = '<?php echo $donnees['NomDepart']; ?>'  /> </td>
 						</tr>
 						<tr>
 							<td > e-mail :</td>
-							<td colspan="2">  <input  type="text" name="mail" id="mail" tabindex="19" value =  '<?php echo $donnees['mail']; ?>'  /></td>
+							<td colspan="2">  <input  type="text" name="mail"  value =  '<?php echo $donnees['mail']; ?>'  /></td>
 						</tr>
 						<tr>
 							<td > Club</td>
-							<td colspan="2"> <input type="text" name="club" id="<?php  echo 'club'.$donnees['ID'] ?>" tabindex="17" value = '<?php echo $donnees['club']; ?>' />  </td>
+							<td colspan="2"> <input type="text" name="club" value = '<?php echo $donnees['club']; ?>' />  </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'club')" >
 								<span class="ButtonResultat" >
 									 <i   style=" font-size:36px; margin:5px;"  class="fa fa-save"></i>
@@ -686,9 +665,9 @@ else
 	
 						<tr>
 							<td>Type Equipe: 0 = Sans / 1 = Equipe / 2 = Duo</td>
-							<td colspan="2">   <input  type="text" name="TypeEquipe" id="TypeEquipe" tabindex="21" value = '<?php echo $donnees['TypeEquipe']; ?>'  /> </td>
+							<td colspan="2">   <input  type="text" name="TypeEquipe"  value = '<?php echo $donnees['TypeEquipe']; ?>'  /> </td>
 							<td name="lblNomEquipe" > Nom équipe :</td>
-							<td name="InputNomEquipe" >   <input  type="text" name="NomEquipe" id="<?php  echo 'NomEquipe'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomEquipe']; ?>'  /> </td>
+							<td name="InputNomEquipe" >   <input  type="text" name="NomEquipe" value = '<?php echo $donnees['NomEquipe']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'NomEquipe')" >
 								<span class="ButtonResultat" >
 									 <i  style=" font-size:36px; margin:5px;"  class="fa fa-save"></i>
@@ -702,7 +681,7 @@ else
 						</tr>
 						<tr>
 							<td > Prix Souvenir:</td>
-							<td colspan="2">   <input  type="text" name="PrixSouvenir" id="PrixSouvenir" tabindex="21" value = '<?php echo $donnees['PrixSouvenir']; ?>'  /> </td>
+							<td colspan="2">   <input  type="text" name="PrixSouvenir" value = '<?php echo $donnees['PrixSouvenir']; ?>'  /> </td>
 						</tr>
 						<?
 						if ( strlen( $donnees['NomDisc1'])>1)
@@ -719,8 +698,8 @@ else
 									echo "Coureur 1 :";									
 								}?>
 							</td>
-							<td >  <input  type="text" name="NomDisc1" id="<?php  echo 'NomDisc1'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc1']; ?>'  /> </td>
-							<td >  <input  type="text" name="PrenomDisc1" id="<?php  echo 'PrenomDisc1'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc1']; ?>'  /> </td>
+							<td >  <input  type="text" name="NomDisc1"  value = '<?php echo $donnees['NomDisc1']; ?>'  /> </td>
+							<td >  <input  type="text" name="PrenomDisc1"value = '<?php echo $donnees['PrenomDisc1']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc1')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -743,8 +722,8 @@ else
 									echo "Coureur 2 :";									
 								}?>
 							</td>
-							<td >  <input  type="text" name="NomDisc2" id="<?php  echo 'NomDisc2'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc2']; ?>'  /> </td>
-							<td >  <input  type="text" name="PrenomDisc2" id="<?php  echo 'PrenomDisc2'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc2']; ?>'  /> </td>
+							<td >  <input  type="text" name="NomDisc2" value = '<?php echo $donnees['NomDisc2']; ?>'  /> </td>
+							<td >  <input  type="text" name="PrenomDisc2"  value = '<?php echo $donnees['PrenomDisc2']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc2')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -770,8 +749,8 @@ else
 								}?>
 							
 							</td>
-							<td>  <input  type="text" name="NomDisc3" id="<?php  echo 'NomDisc3'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc3']; ?>'  /> </td>
-							<td>  <input  type="text" name="PrenomDisc3" id="<?php  echo 'PrenomDisc3'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc3']; ?>'  /> </td>
+							<td>  <input  type="text" name="NomDisc3" value = '<?php echo $donnees['NomDisc3']; ?>'  /> </td>
+							<td>  <input  type="text" name="PrenomDisc3"  value = '<?php echo $donnees['PrenomDisc3']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc3')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -794,8 +773,8 @@ else
 									echo "Coureur 4 :";									
 								}?>
 							</td>
-							<td >  <input  type="text" name="NomDisc4" id="<?php  echo 'NomDisc4'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc4']; ?>'  /> </td>
-							<td >  <input  type="text" name="PrenomDisc4" id="<?php  echo 'PrenomDisc4'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc4']; ?>'  /> </td>
+							<td >  <input  type="text" name="NomDisc4"  value = '<?php echo $donnees['NomDisc4']; ?>'  /> </td>
+							<td >  <input  type="text" name="PrenomDisc4"  value = '<?php echo $donnees['PrenomDisc4']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc4')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -818,8 +797,8 @@ else
 									echo "Coureur 5 :";									
 								}?>
 							</td>
-							<td >  <input  type="text" name="NomDisc5" id="<?php  echo 'NomDisc5'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc5']; ?>'  /> </td>
-							<td>  <input  type="text" name="PrenomDisc5" id="<?php  echo 'PrenomDisc5'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc5']; ?>'  /> </td>
+							<td >  <input  type="text" name="NomDisc5"  value = '<?php echo $donnees['NomDisc5']; ?>'  /> </td>
+							<td>  <input  type="text" name="PrenomDisc5" value = '<?php echo $donnees['PrenomDisc5']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc5')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -843,8 +822,8 @@ else
 									echo "Coureur 6:";									
 								}?>
 							</td>
-							<td >  <input  type="text" name="NomDisc6" id="<?php  echo 'NomDisc6'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['NomDisc6']; ?>'  /> </td>
-							<td>  <input  type="text" name="PrenomDisc6" id="<?php  echo 'PrenomDisc6'.$donnees['ID'] ?>" tabindex="21" value = '<?php echo $donnees['PrenomDisc6']; ?>'  /> </td>
+							<td >  <input  type="text" name="NomDisc6"  value = '<?php echo $donnees['NomDisc6']; ?>'  /> </td>
+							<td>  <input  type="text" name="PrenomDisc6"  value = '<?php echo $donnees['PrenomDisc6']; ?>'  /> </td>
 							<td  onClick="funModification( <?php echo $donnees['ID'] ?>,'Disc6')" >
 								<span class="dot2" >
 									 <i  style="  margin:5px;"  class="fa fa-edit"></i>
@@ -886,5 +865,35 @@ else
 </div>
  
 </div>
+	<form method="post" id="formDelete" action="DeletePanier.php">
+		<input type="text" name="idFormDeletePanier" id="idFormDeletePanier"   value= '' />
+	</form>
 </body>
 </html>
+	<!-- Script lors de la validation du paiement !-->
+	<script type="text/javascript">
+		var PayrexxLink =document.getElementById("IDPayresxx");
+			PayrexxLink.classList.add("payrexx-modal-window");
+			PayrexxLink.href ="#";
+			console.log("CreateButtonPayrexx");
+		jQuery(".payrexx-modal-window").payrexxModal({
+		hidden: function(transaction) {
+			console.log("jquery trans");
+			if (transaction.status == "confirmed") // authorized
+			{
+			//	validCode(); // Ecriture dans la base de donnée que les codes sont utilisé
+				location.href =strLinkAccept;
+			}
+			else if (transaction.status == "refused") // authorized
+			{
+			//	validCode(); // Ecriture dans la base de donnée que les codes sont utilisé
+				location.href =strLinkRefused;
+			}
+			else
+			{
+				window.location.reload()
+				//location.href =<?php echo json_encode($StrRefused); ?>+ "&StatusPaiement=" + transaction.status.toString();		
+			}
+		}
+	});
+</script>

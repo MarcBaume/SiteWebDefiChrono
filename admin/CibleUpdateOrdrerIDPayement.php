@@ -15,23 +15,41 @@ else
 	}
 	else
 	{
-		mysqli_select_db($con ,'dxvv_jurachrono' );
-		$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_REQUEST["LoginPayrexx"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\'';
-		$result = mysqli_query($con,$sql);
-		while($donnees = mysqli_fetch_assoc($result)) 
+		if (strlen($_REQUEST["LoginUpdateRegister"])> 4)
 		{
-			
-			if ($donnees['Payer'] == "En Attente" || $donnees['Payer'] == "cancelled"  || $donnees['Payer'] == "declined" || $donnees['Payer'] == "refunded")
+			mysqli_select_db($con ,'dxvv_jurachrono' );
+			$Value = 'True';
+			$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_REQUEST["LoginUpdateRegister"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\' AND PayementOnLine =\''.$Value.'\'';
+			$result = mysqli_query($con,$sql);
+			if ($result)
 			{
-				// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table inscription OrderPayement
-				$sql = 'UPDATE inscription SET OrderPayement = \''.$_REQUEST["OrderIDPayrexx"].'\'  WHERE ID=\''.$donnees["ID"].'\''; 
-				if (!mysqli_query($con,$sql))
+					$index = 0;
+				while($donnees = mysqli_fetch_assoc($result)) 
 				{
-					print( -1);	
-				}  
+									$index =$index +1;
+					if ($donnees['Payer'] == "En Attente" || $donnees['Payer'] == "cancelled"  || $donnees['Payer'] == "declined" || $donnees['Payer'] == "refunded")
+					{
+		
+						// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table inscription OrderPayement
+						$sql = 'UPDATE inscription SET OrderPayement = \''.$_REQUEST["OrderIDPayrexx"].'\'  WHERE ID=\''.$donnees["ID"].'\''; 
+						if (!mysqli_query($con,$sql))
+						{
+							print( -1);	
+						}  
+					}
+				}
+					print($index );
+			}
+			else
+			{
+				print(-5);;
 			}
 		}
-		print(1);	
+		else
+		{
+			print(-4);
+		}
+	
 
 	}
 }

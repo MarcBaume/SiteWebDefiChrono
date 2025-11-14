@@ -264,11 +264,13 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 			<td style="width:20%" style="width:30px;">
 				<span class="dot" style="background: #BCDDFD;margin:0px" >
 					<table  onClick="VisiblePopUPHisto()">
-						<tr>
-							<td style="width:30px">
-								<i class="fa fa-trophy" style= "font-size: 18px;margin:0px;margin-right: 9px;"></i>
+						<tr  style="width:100%">
+							<td style="text-align: center;">
+								<i class="fa fa-trophy" style= "font-size: 35px;"></i>
 							</td>
-							<td style="padding-left: 10px;font-size: 12px;font-weight :normal">
+						</tr>
+						<tr>
+							<td style="text-align: center;font-size: 12px;font-weight :normal">
 								Anciennes éditions 
 							</td>
 						</tr>
@@ -296,13 +298,15 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 			?>
 			<td class="ColMenuInfo"  onClick="ClickRows()" onmouseover="" style="cursor: pointer;">
 				<span class="dot" id="<?php echo "RowRace5".$IdRace ?>">
-					<table>
-						<tr  >
-							<td style="width:30px">
-								<i class="fa fa-globe" style= "font-size: 35px;margin:0px;margin-left: 9px;"></i>
+					<table  style="Width : 100%">
+						<tr   style="Width : 100%">
+							<td style="text-align: center;">
+								<i class="fa fa-globe" style= "font-size: 32px;margin:auto;"></i>
 							
 							</td>
-							<td style="padding-left: 10px;">
+						</tr>
+						<tr>
+							<td style="font-size:12px; text-align: center;">
 								Site 
 							</td>
 						</tr>
@@ -318,12 +322,14 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 			?>
         	<td class="ColMenuInfo" onClick="ClickRowsInformation()" onmouseover="" style="cursor: pointer;" >  
 				<span class="dot" id="<?php echo "RowRace4".$IdRace ?>">
-					<table>
-						<tr >
-							<td style="width:30px">
-								<i class="fa fa-info" style= "font-size: 35px;margin:0px; margin-left: 15px;"></i>
+					<table  style="width:100%">
+						<tr  style="width:100%">
+							<td style="text-align: center;">
+								<i class="fa fa-info" style= "font-size: 32px;margin:auto;"></i>
 							</td>
-							<td style="padding-left: 10px;">
+						</tr>
+						<tr>
+							<td style="font-size:12px; text-align: center;">
 								Informations
 							</td>
 						</tr>
@@ -339,15 +345,17 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				?>
 					<td class="ColMenuInfo"  onClick="ClickRowsListe()" onmouseover="" style="cursor: pointer;">
 						<span class="dot" id="<?php echo "RowRace".$IdRace ?>">
-							<table>
+							<table  style="width:100%">
 							
-								<tr   >
-									<td style="width:30px">
+								<tr   style="width:100%" >
+									<td style="text-align: center;">
 										
-											<i class="fa fa-list" style= "font-size: 30px;margin:2px;"></i>
+											<i class="fa fa-list" style= "font-size: 32px;margin:auto;"></i>
 									
 									</td>
-									<td style="padding-left: 10px;">
+								</tr>
+								<tr>
+									<td style="font-size:12px; text-align: center;">
 										Liste de départ
 									</td>
 								</tr>
@@ -365,18 +373,20 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				?>
 				<Td class="ColMenuInfo"   onClick="ClickRowsForm()" onmouseover="" style="cursor: pointer;">
 					<span class="dot"  id="<?php echo "RowRace3".$IdRace ?>">
-						<table>
-						
-							<tr>
-							<td style="width:30px">
+						<table  style="width:100%">
+							<tr  style="width:100%">
+								<td style="text-align: center;">
+									
+										<i class="fa fa-wpforms" style= "font-size: 32px;margin:auto;"></i>
 								
-									<i class="fa fa-wpforms" style= "font-size: 25px;margin:8px;"></i>
-							
-							</td>
-							<td style="padding-left: 10px;">
-								Inscription
-							</td>
-						</tr>
+								</td>
+							</tr>
+							<tr>
+								<td style="font-size:12px; text-align: center;">
+									Inscription
+								</td>
+
+							</tr>
 						<script>
 							getURL( "formulaire","<?php echo "RowRace3".$IdRace ?>" ) ;
 						</script>
@@ -391,15 +401,15 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				{?>
 				<td class="ColMenuInfo" onClick="ClickRowsResultat()" onmouseover="" style="cursor: pointer;">
 					<span class="dot"  id="<?php echo "RowRace2".$IdRace ?>">
-						<table>
-							<tr   >
-								<td style="width:30px">
+						<table style="width:100%">
+							<tr  style="width:100%" >
+								<td style="text-align: center;" >
 								
 										<i class="fa fa-trophy" style= "font-size: 35px;margin:2px;"></i>
 								
 								
 								</td>
-								<td style="padding-left: 10px;">
+								<td style="font-size:12px; text-align: center;">
 									Résultats
 								</td>
 							</tr>
@@ -417,15 +427,17 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 					?>
 					<td class="ColMenuInfo" onClick="ClickRowsPhotos()" onmouseover="" style="cursor: pointer;">
 					<span class="dot"  id="<?php echo "RowRace6".$IdRace ?>">
-						<table>
-							<tr   >
-								<td style="width:30px">
+						<table  style="width:100%">
+							<tr   style="width:100%" >
+								<td style="text-align: center;">
 								
-										<i class="fa fa-camera" style= "font-size: 35px;margin:2px;"></i>
+										<i class="fa fa-camera" style= "font-size: 32px;margin:auto;"></i>
 								
 								
 								</td>
-								<td style="padding-left: 10px;">
+							</tr>
+							<tr>
+								<td style="font-size:12px; text-align: center;">
 									Photos
 								</td>
 							</tr>

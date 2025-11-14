@@ -428,7 +428,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 1)
 			<Table>
 				<tr>
 					<td style="border-radius: 10px 0px 0px 0px;background:#3D6CA4;padding:10px;height:60px ">
-						<i class="fa fa-trophy" style="width:45px;font-size:30px;color:#fff;margin-left:10px" ></i> 
+						<i class="fa fa-trophy" style="width:30px;font-size:30px;color:#fff;margin-left:10px" ></i> 
 					</td> 
 					<td>
 						Résultats des anciennes éditions
@@ -454,7 +454,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 1)
 						$count = $count +1 ;
 					
 						?>
-						<span class="dot" style="background: #BCDDFD;margin:10px;margin-left:50px;margin-right:50px; " ><?
+						<span class="dot" style="background: #BCDDFD;margin:10px;margin-left:20px;margin-right:20px; " ><?
 						// Multi étape 
 						if (intval($valResult['nbr_etape'])>1)
 						{

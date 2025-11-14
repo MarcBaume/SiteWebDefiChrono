@@ -1,0 +1,5 @@
+{
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "svelte.ask-to-enable-ts-plugin": false
+}

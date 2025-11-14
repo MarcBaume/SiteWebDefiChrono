@@ -9,7 +9,6 @@
 var Prototype = {
 
   Version: '1.7.3',
-
   Browser: (function(){
     var ua = navigator.userAgent;
     var isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';

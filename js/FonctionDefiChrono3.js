@@ -16,7 +16,6 @@ function readJSON(file) {
 
 };
 
-
 function readJSONV2(file) {
 
     var request = new XMLHttpRequest();
@@ -64,7 +63,6 @@ function TransformElevationEnPxl (Value)
 	return	Height - (ValuePourCent * (Height / 100  ));
 }
 
-
 function convertNumToTime(number) {
 	
 	var hour =  0;
@@ -108,6 +106,7 @@ function Length2(value)
 	}
 	return sValue;
 }
+
 function convertNumToDate(number, HeureDepart, JourDepart, MoisDepart) {
 	
 	var hour =  0;
@@ -168,4 +167,3 @@ function distance(lat1, lng1, lat2, lng2)
          c = 2 *  Math.atan2( Math.sqrt(a),  Math.sqrt(1 - a));
        return  km = r * c;
 }
-

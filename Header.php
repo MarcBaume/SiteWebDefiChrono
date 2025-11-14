@@ -1,139 +1,20 @@
-<?php $today = date("Y-m-d H:i:s"); 
-date_default_timezone_set('Europe/Paris');
-  session_start();
-// --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
-setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
- session_start();?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
+	<title>Défi Chrono</title>
+	<meta charset="utf-8">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+	
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
+	<meta http-equiv="cache-control" content="no-cache"> <!-- tells browser not to cache -->
+	<meta http-equiv="expires" content="0"> <!-- says that the cache expires 'now' -->
+	<meta http-equiv="pragma" content="no-cache"> <!-- says not to use cached stuff, if there is any -->
 
-<Div id= "Header">
-<table style= "width: 100%;">
-<tr>
-<td>
-<Div id = "logo">
-<a href="index.php">
-<img src="logobetaDefiChrono.jpg" alt=""  style="max-width:220px;" />
-</a>
-</div>
-</td>
-<td>
-<Div id = "User">
-<table>	
-	<tr>	
-		<td> 	
-			<a href="index.php">
-				<span class="dot" >
-					<i class="fa fa-home" style= "font-size: 28px;margin:7px;margin-top:5px ; color: #4095f5;"></i>
-				</span>
-			</a>
-		</td> 		
-		<td> 
-		<a href="admin/login.php">
-			<table>
-				<tr>
-					<td>
-						<span class="dot">
-							<i class="fa fa-user-circle" style= "font-size: 25px;margin:8px; margin-top: 8px; color: #4095f5;"></i>
-						</span>
-					</td>
-				</tr>
-					
-				<?
-				if (  isset($_SESSION['Login']))
-				{
-					?>
-					<tr>
-						<td>
-							<? echo  $_SESSION['Login'];?> 
-						</td>
-					</tr>
-				<? 
-				}
-				?>
-			</table>
-		</a>
-		</td> 
-		<td> 	
-			<a href="Contact.php">
-				<span class="dot" >
-					<i class="fa fa-info-circle" style= "font-size: 28px;margin:8px; margin-top: 6px; color: #4095f5;"></i>
-				</span>
-			</a>
-		</td> 
-
-		<td>
-		
-		</td>
-	</tr>
-
-</table >
-
-</div>
-</td>
-</table>
-<span class="popupUser" id="PopUpUSer">
- 
-	<form method="post" name="FormConnect" id ="FormConnect" action="admin/CibleLoginV2.php">
-		<table>
-			<tr style= "Height : 10px">
-				<span class="dot" onclick="ClosePopUp()" onmouseover="" style="cursor: pointer;" style="float : right; margin :0px">
-					<i class="fa fa-times" style= "font-size: 20px;margin:5px;color: #4095f5"></i>
-				</span>
-			</tr>
-			<tr>
-			
-				<td>
-					<label for="Login" style="font-size:8px;">e-mail :</label>
-				</td>
-				<td>
-					<label for="password" style="font-size:8px;">Mot de passe :</label>
-				</td>
-				<td>
-				
-				</td>
-				<td>
-				
-					<a href="AddLogin.php"style="font-size:12px;">Créer un compte </a>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="text" name="login" id="login" tabindex="10" style="max-width: 120px;"/> 
-				</td>
-				<td>
-					<input type="password" name="pass" id="pass" tabindex="15" style="max-width: 100px;"/>
-				</td>
-					<td onclick=" SendForm()" onmouseover="" style="cursor: pointer;">
-						<i  class="fa fa-sign-in" style= " font-size: 20px;" ></i>
-					</td>
-				<td>
-					<a href="PasswordForget.php"style="font-size:12px;">mot de passe oublié? </a>
-				</td>
-			</tr>
-		</table>
-	</form>
- </span>
- 
-</div>
-<script>
-// When the user clicks on div, open the popup
-function ShowPopUp() {
-	 
-	var popup = document.getElementById("PopUpUSer");
-	popup.style.visibility = "visible" ;
-	 
- // popup.classList.toggle("show");
-}
-function ShowDeconnect()
-{
-		 window.location.href = "admin/login.php";
-}
-function ClosePopUp() {
-  var popup = document.getElementById("PopUpUSer");
-  popup.style.visibility = "hidden" ;
-}
-function SendForm() {
-  var popup = document.getElementById("FormConnect");
-  popup.submit();
-}
-</script>
+<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/prototype.js" ></script>
+	<script src="js/FonctionDefiChrono3.js?v=1"></script>

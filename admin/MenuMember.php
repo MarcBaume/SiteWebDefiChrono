@@ -32,15 +32,17 @@ function getURL( ValueFind, IDElement) {
 {?>
 <td style="Width : 25%" onClick="ClickColProfil()"  >
 <span class="dot" id="<?php echo "RowProfil".$IdRace ?>">
-	<table>
-			<tr   style="Width : 100%">
-			<td>
+	<table style="Width : 100%">
+		<tr   style="Width : 100%">
+			<td style="text-align: center;" >
 				
-					<i class="fa fa-user-circle" style= "font-size: 25px;margin:8px;"></i>
+					<i class="fa fa-user-circle" style= "font-size: 32px;margin:auto;"></i>
 				
 			
 			</td>
-			<td>
+		</tr>
+		<tr>
+			<td style="font-size:10px; text-align: center;">
 				Profil 
 			</td>
 		</tr>
@@ -53,13 +55,15 @@ function getURL( ValueFind, IDElement) {
 	<TD style="Width : 25%" onClick="ClickColResultat()" >
 	<a class="dot"  id="<?php echo "RowResult".$IdRace ?>">
 		<span >
-				<table>
-						<tr   style="Width : 100%">
-						<td>
+				<table  style="Width : 100%">
+					<tr   style="Width : 100%">
+						<td  style="text-align: center;">
 							
-								<i class="fa fa-trophy" style= "font-size: 20px;margin:9px;"></i>
+								<i class="fa fa-trophy" style= "font-size: 32px;margin:auto;"></i>
 						</td>
-						<td>
+					</tr>
+					<tr>
+						<td style="font-size:10px; text-align: center;" >
 				
 							Mes Resultats 
 						</td>
@@ -83,16 +87,14 @@ function getURL( ValueFind, IDElement) {
 	?>
 	<TD  style="Width : 25%" onClick="ClickColPannier()">
 		<span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>" >
-				<table>
-				
-						<tr style="Width : 100%">
-						<td>
-						
-								<i class="fa fa-shopping-cart" style= "font-size: 25px;margin:8px;"></i>
-							
-						
+				<table style="Width : 100%">
+					<tr style="Width : 100%">
+						<td style="text-align: center;">
+							<i class="fa fa-shopping-cart"  style= "font-size: 32px;margin:auto;"></i>
 						</td>
-						<td>
+					</tr>
+					<tr>
+						<td style="font-size:10px; text-align: center;">
 							Mes Inscriptions 
 						</td>
 					</tr>
@@ -110,15 +112,14 @@ if  (isset($_SESSION['Login']))
 	{?>
 	<td style="Width : 25% " onClick="ClickColDeconnect()">
 		<span class="dot"  id="<?php echo "RowRace3".$IdRace ?>">
-			<table>
-						<tr  style="Width : 100%">
-						<td>
-						
-								<i class="fa fa-sign-in" style= "font-size: 25px;margin:8px;"></i>
-							
-						
+			<table style="Width : 100%">
+					<tr  style="Width : 100%">
+						<td style="text-align: center;">
+							<i class="fa fa-sign-in" style= "font-size: 32px;margin:auto;"></i>
 						</td>
-						<td>
+					</tr>
+					<tr>
+						<td style="font-size:10px; text-align: center;">
 							Déconnexion
 						</td>
 					</tr>

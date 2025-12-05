@@ -140,6 +140,7 @@
 				}
 		}
 	}
+	
 	function funValidPaiement()
 	{
 			// Appelle fonction php pour vérifier que le coupon existe

@@ -1,7 +1,5 @@
 
-<script type="text/javascript">
-
-	
+<script type="text/javascript">	
 function dec2Hex(dec) {
     return Math.abs(dec).toString(16);
 }
@@ -110,9 +108,6 @@ $Nbr_etape =  $_GET["NbrEtape"] ;
 
 }
 
-if (strlen($ANNEE_COURSE ) > 0 )
-{
-
     session_start();
 /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
   $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
@@ -122,23 +117,48 @@ if (strlen($ANNEE_COURSE ) > 0 )
   }
   else
   {
-		mysqli_select_db($con ,'dxvv_jurachrono' );
-		// ***************************************** AFFICHAGE BASE de Donnée ***************************************
+	mysqli_select_db($con ,'dxvv_jurachrono' );
+	// ***************************************** AFFICHAGE BASE de Donnée ***************************************
+	if (strlen($NOM_COURSE)> 1)
+	{
 		$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$NOM_COURSE.'\'AND Date=\''.$DateCourse.'\'OR DateEtape2=\''.$DateCourse.'\'OR DateEtape3=\''.$DateCourse.'\'OR DateEtape4=\''.$DateCourse.'\'OR DateEtape5=\''.$DateCourse.'\'' ; 
-		$result = mysqli_query($con,$sql);
-		if ($result && mysqli_num_rows($result) > 0) 
+	?><script>
+			console.log("NomCourse")
+		</script><?php
+	}
+	else
+	{
+		$sql = 'SELECT * FROM Course  WHERE ID=\''.$_GET['IdRace'].'\'' ; 
+		?><script>
+			console.log("IDRace")
+		</script><?php
+	}
+	$result = mysqli_query($con,$sql);
+	if ($result && mysqli_num_rows($result) > 0) 
+	{
+		
+		// output data of each row
+		while($val1 = mysqli_fetch_assoc($result)) 
 		{
-			
-			// output data of each row
-			while($val1 = mysqli_fetch_assoc($result)) 
+		?><script>
+			console.log("IDResult")
+		</script><?php
+			$Site = $val1['Site'];
+			$val = $val1;
+			if (strlen($NOM_COURSE)<1)
 			{
-				$Site = $val1['Site'];
-				$val = $val1;
+				$DateCourse =  $val['Date'];
+				$Date =  date_parse($val['Date']);
+				$ANNEE_COURSE = $Date['year']; 
+				$Month = $Date['month']; 
+				$Day = $Date['day']; 
+				$NOM_COURSE = $val["Nom_Course"];
+				$Nbr_etape =  $val["nbr_etape"] ;
 			}
 		}
 	}
 
- 
+
  ?>
 
 <div class="PopupV2" style="display:none;"  id="popUPResult" >

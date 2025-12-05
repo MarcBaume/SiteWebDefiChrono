@@ -8,9 +8,35 @@ body
    margin-top: 0px; /* Pour �viter de coller avec le haut de la fen�tre du navigateur. Essayez d'enlever pour voir ! */
    margin-bottom: 20px;    /* Idem pour le bas du navigateur */
    background:  white;
+   font-size: 16px;
    font-family: Rubik,arial,"Times New Roman", Times, serif;
  }
+ul {
+  height: 100%;
+  display: flex;
+  font-size: 18px;;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  align-items : stretch;
+  justify-content: space-around;
+  list-style-position: inside;
+   list-style:none;
+}
+li{
+  border: #3D6CA4 1px solid;
+  background-size: 60px;
+  border-radius: 10px;
+  padding :5px;
+  color : #3D6CA4;
+}
 
+li::before {
+    content:url('../images/Defi_StartV2.svg');
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    padding: 0px 5px;
+}
 #connection
 {
 float: right;

@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV2.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 
@@ -19,7 +19,7 @@
   ?>
 <div id="corps">
 
-	<?php include("HeaderInfo.php"); ?>
+	<?php include("HeaderInfo2023.php"); ?>
 	<h3>Résultats  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?></h3>
 	
 <Table>

@@ -95,30 +95,24 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, '{
 		}
 	}
 }');       
-$StrAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login=". $_SESSION["Login"]."&ID=".$OrderID
-$StrRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login=". $_SESSION["Login"]."&ID=".$OrderID 
+$StrAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login=". $_SESSION["Login"]."&ID=".$OrderID;
+$StrRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login=". $_SESSION["Login"]."&ID=".$OrderID ;
 
 $data =curl_exec($ch);
-if(curl_error($ch)) {
+if(curl_error($ch))
+{
         echo 'Error';
-
 }
 else
 {
-      
      echo 'ok'; 
 	 $obj = json_decode($data);
 	$Test =  $obj->{'transactionId'};
 	// Sauvegarder le transaction Id dans la base de donnée mysql
-
-
 ?>
 	<a href=<?php echo "https://pay.sandbox.datatrans.com/v1/start/".  $Test?>>Click me</a>
 	<script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js">
 	<?
 }
 curl_close($ch);
-
-
-
 ?>

@@ -72,9 +72,6 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
 </a>
 	<?php
 	  include("Header2023.php"); 
-	  ?>
-
-<?
 	  include("HeaderInfo2023.php"); 
 	  ?>
 

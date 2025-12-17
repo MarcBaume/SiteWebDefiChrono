@@ -24,8 +24,6 @@ function getURL( ValueFind, IDElement) {
  <div id="menu_vertical" class="menu_vertical">
   <table style="Width : 100%">
   <tr>
-  
-	<li>
 	<?php 
 	 session_start();
 	if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
@@ -35,14 +33,11 @@ function getURL( ValueFind, IDElement) {
 	<table style="Width : 100%">
 		<tr   style="Width : 100%">
 			<td style="text-align: center;" >
-				
-					<i class="fa fa-user-circle" style= "font-size: 32px;margin:auto;"></i>
-				
-			
+				<i class="fa fa-user-circle" style= "font-size: 32px;margin:auto;"></i>
 			</td>
 		</tr>
 		<tr>
-			<td style="font-size:10px; text-align: center;">
+			<td class="TextButton" >
 				Profil 
 			</td>
 		</tr>
@@ -63,7 +58,7 @@ function getURL( ValueFind, IDElement) {
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:10px; text-align: center;" >
+						<td class="TextButton" >
 				
 							Mes Resultats 
 						</td>
@@ -94,7 +89,7 @@ function getURL( ValueFind, IDElement) {
 						</td>
 					</tr>
 					<tr>
-						<td style="font-size:10px; text-align: center;">
+						<td class="TextButton">
 							Mes Inscriptions 
 						</td>
 					</tr>
@@ -116,10 +111,10 @@ if  (isset($_SESSION['Login']))
 					<tr  style="Width : 100%">
 						<td style="text-align: center;">
 							<i class="fa fa-sign-in" style= "font-size: 32px;margin:auto;"></i>
-						</td>
+					</td>
 					</tr>
 					<tr>
-						<td style="font-size:10px; text-align: center;">
+						<td class="TextButton">
 							Déconnexion
 						</td>
 					</tr>
@@ -129,9 +124,6 @@ if  (isset($_SESSION['Login']))
 	</td>
 <?	}
 ?>
-
-
-   </li>
    </tr>
    </table>
 </div>

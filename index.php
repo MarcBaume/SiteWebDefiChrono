@@ -123,6 +123,7 @@ else
 								<div  style="display: flex;align-items: center">
 									<img style="margin:10px;height:30px" src="images/Defi_Calendar.svg"></img>
 									<div style="display: flex;
+												font-size: 22px;
 												height:100%;
 								 				align-items: center;"><?php echo strftime ("%d",$timestamp)." ".strftime ("%B",$timestamp)." ".strftime ("%Y",$timestamp)?>
 									</div>
@@ -130,12 +131,14 @@ else
 								<div style="display: flex;align-items: center">
 									<img style="margin:10px;height:30px" src="images/Defi_loc_bleu.svg"></img>
 									<div style="display: flex;
+									font-size: 22px;
 								height:100%;
 								 align-items: center;"><?php echo $val ["Lieu"]?></div>
 								</div>
 							</div>
 							<!-- Informatipons course -->
 							<div style="display: flex;
+							font-size: 22px;
 								height:100%;
 								 align-items: center;">
 								<?php echo $val ["PresentationAccueil"]?>

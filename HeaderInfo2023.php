@@ -172,9 +172,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 <table>
   <?php
 /**************************************************************************************************************33
-* 
-* 					HIstorique des courses
-* 
+* 					Historique des courses
 *******************************************************************************************************************/
 
 	  // output data of each row
@@ -235,9 +233,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 <?php
 }
 /**************************************************************************************************************33
-* 
 * En tête de la course
-* 
 *******************************************************************************************************************/
 ?>
 
@@ -268,8 +264,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 						console.log("10px solid "+ getPixel(<?echo json_encode($chemin) ?>, 1, 1));
 					document.getElementById("BorderLogo").style.border  = "5px solid "+ getPixel(<?echo json_encode($chemin) ?>, 1, 1);
 					document.getElementById("BorderLogo").style.borderRadius = "10px";
-					</script>
-<?
+					</script><?
 				}
 				?>
 					</td>

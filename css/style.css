@@ -1,4 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Mukta);
+:root {
+  --input-padding: 10px;
+}
 body
 {
 	width:100%;
@@ -10,8 +12,12 @@ body
    background:  white;
    font-size: 16px;
    font-family: Rubik,arial,"Times New Roman", Times, serif;
- }
-ul {
+}
+td
+{
+  font-size: 20px;
+}
+ul{
   height: 100%;
   display: flex;
   font-size: 18px;;
@@ -41,99 +47,59 @@ li::before {
 {
 float: right;
 }
-.menu_vertical li
+.menu_vertical
 {
- float: left;
-padding:0;
-padding-left:10px;
+ display: flex;
  border: 0;
 }
-#index a
+.TextButton
 {
-	float: right;
-	font-size : 8px;
-  display:inline-block;
-
+  font-size:10px; 
+  text-align: center;
 }
-#index span
+.popup
 {
-	align: center;
+margin: auto;
+left: 0;
+right: 0;
+  width: 80%;
+  max-width: 400px;
+  display: none;
+  position: absolute;
+  z-index: 9;
+  background: white;
+  border-radius: 6px;
+  border: 2px solid #3D6CA4;
 }
+ 
 
 /* Popup container */
-.popup {
-  border: solid;
-	border-color:  #00b4ff;
-	width : auto;
-  visibility: hidden;
+ .popuptext{
   background-color: #fff;
   color: #000;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  margin-left: -80px;
 }
 
+.TitlePopUP{
+  color:black;
+  font-size:18px;
+  display: flex;
+}
 
 .popup table{
 line-height: 2;
 }
 
-  .popup td{
-    text-align:right;
+.popup td{
+  text-align:right;
 
-  }
+}
 
-  a.Anchor {
+a.Anchor {
     display: block;
     position: relative;
     top: 250px;
     visibility: hidden;
 }
-/* Menu information parcours */
-.nav-colored { background-color:#b3f3fa; 
-    padding: 20px;
-    border-radius: 10px;
-	margin : 15px;
-    text-decoration:none;
-    color: #000;
-    font-size: 16px;
-    vertical-align: middle;
-}
-/* Menu information parcours */
-.nav-transparent { background-color:#1e8ac2;
-    padding: 20px;
-    border-radius: 10px;
-margin : 15px;
-text-decoration:none;
-color: #000;
-font-size: 16px;
-vertical-align: middle;
-}
-/* The actual popup (appears on top) */
-.popup .popuptext {
-  visibility: hidden;
- 
-    width:500px;
- 
-    top: 0;
-    position: absolute;
-    visibility: hidden;
-  background-color: #BCDDFD;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  border: 2px solid #3D6CA4;
-
-  padding: 8px 0;
-  position: absolute;
-  z-index: 999;
-
-}
-
 /* Popup arrow */
 .popup .popuptext::after {
   content: "";
@@ -330,7 +296,7 @@ background: #BCDDFD;
 	margin: 0;
 	border: 0px #006100 outset;
  }
-input:read-only { 
+input:read-only{ 
   background-color: #e2e2e2;
 }
 
@@ -436,18 +402,18 @@ width:100%;
 }
 .ButtonResultat :hover { background-color: #BCDDFD;}
 .ButtonResultat{
+ padding: 20px;
+ font-size:180%;
   text-align: Center;
   vertical-align: middle;
   border-radius: 5px;
   border: 1px solid #3D6CA4;
-  padding-left: 10px;
-  padding-right: 10px;
+  background: #fff;
   cursor: pointer;
   display: inline-block;
   min-width:40px;
   margin:10px;
-  min-height: 40px;
-  background-color: #FFFFFF  ;
+  min-height: 80px;
   color: #3D6CA4;
 }
 .ButtonResultatSelected{
@@ -555,13 +521,12 @@ width:100%;
     height: 20px;
     width: 20px;
 }
-
- 
- #step fieldset
+#step fieldset
 {
  background-color : #DDF1F6;
 border: 1px #006100 outset;
 }
+
 #TableauSponsors table
 {
 	font-size: 12px;
@@ -569,6 +534,7 @@ border: 1px #006100 outset;
     border-collapse: collapse;
  font-family: Arial, Helvetica, sans-serif;
 }
+
 #TableauSponsors th
 {
 width:auto;
@@ -790,36 +756,35 @@ padding : 10px;
  background: #C0C0C0;
  
  }
- #formulaire  label 
- {
-    margin-top: 10px;
-  margin-left: 20px;
-    vertical-align: middle;
-    display:table-cell;
-	width: 250px;
-	float: left;
-  font-size: 24px;
- }
 
- #formulaire input[type="checkbox"]
+label {
+  display: block;
+  margin: 0 0 3px 0;
+  font-weight: 500;
+}
+.input 
+{
+  margin: 0 0 10px 0;
+}
+.formulaire 
+{
+  margin : 5%;
+}
+input, select {
+  /* 100% width minus borders and padding */
+  width: calc(100% - 2px - 2 * var(--input-padding));
+  padding: var(--input-padding);
+  font-size : 20px;
+  font-weight: 500;
+  border-radius: 3px;
+   border : 1px solid #1e8ac2;    
+}
+input[type="checkbox"]
  {
     height:30px;
     font-size:130%;
  }
 
- #formulaire input , select
- {	
-  padding: 10px;
-  font-size : 20px;
-  font-weight: 520;
-  border-radius: 3px;
-   margin-left:5%;
-
- }
- #formulaire select
- {	
-  width: 90%;
- }
  #prix table
  {
   display: block;

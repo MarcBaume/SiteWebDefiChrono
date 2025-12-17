@@ -101,8 +101,6 @@ function SelectCourseCoureur(CourseSelected,m,LenArray)
 			
 			for (y = 0; y < CourseSelected.ArrayAnnee[l].ArrayEtape.length; y++) 
 			{
-		
-				
 				// Première étape de la l'édition 
 				if (y==0 && CourseSelected.ArrayAnnee[l].ArrayEtape.length >1)
 				{

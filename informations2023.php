@@ -439,7 +439,6 @@ if ($resultResult && mysqli_num_rows($resultResult) > 1)
 		// output data of each row
 		while($valResult = mysqli_fetch_assoc($resultResult)) 
 		{?>
-		
 				<td style=width:25%>
 					
 					<? $DateResult =  date_parse($valResult['Date']);	?>

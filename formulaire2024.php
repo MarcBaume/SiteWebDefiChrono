@@ -1,76 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="cache-control" content="no-cache"> <!-- tells browser not to cache -->
-<meta http-equiv="expires" content="0"> <!-- says that the cache expires 'now' -->
-<meta http-equiv="pragma" content="no-cache"> <!-- says not to use cached stuff, if there is any -->
-	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
-	<title>Défi Chrono</title>
-	<meta charset="utf-8">
-	<metahttp-equiv = 'cache-control' content = 'no-cache'>
-<metahttp-equiv = 'expires' content = '0'>
-<metahttp-equiv = 'pragma' content = 'no-cache'>
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV6.css" type="text/css"/>
-<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-	 </script>
-<script src="../js/prototype.js" ></script>
-<script src="../js/FonctionDefiChrono2.js?v=1"></script>
-
-</script>
-</head>
+	<?php
+  include("Header.php"); 
+  ?>
     <body>
     <script>
 function checkForm2(f1) {
+	paraInfoAdd = document.getElementById("paraInfoAdd")
+	paraInfoAdd.style.display = "block";
+	textInfoAdd = document.getElementById("textInfoAdd")
 	if (f1.nomAdd.value.length<3) {
-		alert("Merci d'indiquer votre nom");
-		f1.nom.focus();
+		textInfoAdd.value="Merci d'indiquer votre nom";
+		f1.nomAdd.focus();
 		return false;
 	}
 
 		if (f1.prenomAdd.value.length<3) {
-		alert("Merci d'indiquer votre prénom");
-		f1.prenom.focus();
+		textInfoAdd.value="Merci d'indiquer votre prénom";
+		f1.prenomAdd.focus();
 		return false;
 	}
 	
 		if (f1.zipAdd.value.length<4) {
-		alert("Merci d'indiquer votre npa");
-		f1.zip.focus();
+		textInfoAdd.value="Merci d'indiquer votre npa";
+		f1.zipAdd.focus();
 		return false;
 	}
 			if (f1.villeAdd.value.length<3) {
-		alert("Merci d'indiquer votre localite");
-		f1.ville.focus();
+		textInfoAdd.value="Merci d'indiquer votre localite";
+		f1.villeAdd.focus();
 		return false;
 	}
 			if (f1.sexeAdd.value.length<1) {
-		alert("Merci d'indiquer votre sexe");
-		f1.sexe.focus();
+		textInfoAdd.value="Merci d'indiquer votre sexe";
+		f1.sexeAdd.focus();
 		return false;
 	}
 
-	if (f1.dateNaissance.value.length!=4) {
-		alert("Merci d'indiquer votre année de naissance correct comme par exemple : 1988");
-		f1.dateNaissance.focus();
+	if (f1.dateNaissanceAdd.value.length!=4) {
+		textInfoAdd.value="Merci d'indiquer votre année de naissance correct comme par exemple : 1988";
+		f1.dateNaissanceAdd.focus();
 		return false;
 	}
 
-			if (!isMail2(f1.emailAdd.value)) {
-		alert("Merci d'indiquer un mail valide pour que nous puissions vous répondre");
-		f1.email.focus();
+	if (!isMail2(f1.emailAdd.value)) {
+		textInfoAdd.value="Merci d'indiquer un mail valide pour que nous puissions vous répondre";
+		f1.emailAdd.focus();
 		return false;
 	
 	}
+	paraInfoAdd.style.display = "none";
+	AddMember();
 	
-
-
-	if (confirm("Etes-vous sur des informations de votre coureur?")) {
-		AddMember();
-	}
 }
 
 function isMail2(txtMail)
@@ -79,14 +60,6 @@ function isMail2(txtMail)
 	return regMail.test(txtMail);
 }
 
-$(function() {
-  $("#OpenPopUpAddCoureur").click(function() {
-    $(".fullscreen-container").fadeTo(200, 1);
-  });
-  $("#ExitPopUp").click(function() {
-    $(".fullscreen-container").fadeOut(200);
-  });
-});
 </script>
 	<?php
 	  include("Header2023.php");
@@ -97,8 +70,12 @@ $(function() {
 
 	<?php include("HeaderInfo2023.php"); 
 
+if ($NOM_COURSE =='Course des Quais  - Société de Gymnastique de Grandson' && $ANNEE_COURSE == 2024 )
+	{
+		header('Location: https://juradefichrono.ch/formulaire2023.php?NbrEtape=1&DateCourse=2025-07-04&Etape=1&NomCourse=Course+des+Quais++-+Soci%C3%A9t%C3%A9+de+Gymnastique+de+Grandson&ID=141'); 
 	
-if ( $today < $val ["DateStartInscription"] && $_SESSION['Niveau'] != 2 && $_SESSION['Niveau'] != 0 )
+	}
+else if ( $today < $val ["DateStartInscription"] && $_SESSION['Niveau'] != 2 && $_SESSION['Niveau'] != 0 )
 {
 	if (isset($_SESSION['Login']) || $_SESSION['Niveau'] == 1 )
 	{
@@ -134,7 +111,6 @@ var JuraDefi = <?php echo json_encode($val["JuraDefi"]); ?>;
 
 var DateToday = <?php echo json_encode($today); ?>;
 var NombreEtapeTotal =  <?php echo json_encode($val["nbr_etape"]); ?>;
-console.log(DateToday);
 
 function EquipeChang(valueText) {
 	
@@ -145,11 +121,71 @@ function EquipeChang(valueText) {
 	}
 	});
 }
-
-
 </script>
-<Fieldset>
-<div id="formulaire">
+<!----- POP -UP AJOUT MEMBRES --------->
+<div class="popup" id="PopUpAddMember" >
+	<span class="popuptext" id="SpanPopUpAddMembre">
+		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;min-width:40px; width:40px; height:40px; margin-right :10px;" onClick="ClosePopUpAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
+		<p class="TitlePopUP"> Ajout d'un nouvel athlète </p>
+		<form style="padding: 10px" id="formAddMember" name="formAddMember" method="get" action="addMembresFormulaire.php"  >
+			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION['Login'] ?>' />
+			<div class="input">
+				<label id="lblNomAdd" for="nomAdd" >Nom</label>
+				<input type="text" name="nomAdd" id="nomAdd" tabindex="10"/>
+			</div>
+			<div class="input" >
+				<label id="lblPrenomAdd" for="prenomAdd" >Prénom</label> 
+				<input  type="text" name="prenomAdd" id="prenomAdd" tabindex="20"/>
+			</div>
+			<div class="input" >
+				<label id="lblEmailAdd" for="emailAdd"   >Adresse e-mail</label>
+				<input type="text" name="emailAdd" id="emailAdd" tabindex="40" />
+			</div>
+			<div class="input" >
+				<label id="lblAdresseAdd" for="adresseAdd"   >Adresse</label> 
+				<input type="text" name="adresseAdd" id="adresseAdd" tabindex="50" />
+			</div>
+			<div class="input" >
+				<label id="lblzipAdd" for="zipAdd">Numéro postale (npa)</label> 
+				<input type="text" name="zipAdd" id="zipAdd" tabindex="60"/>
+			</div>
+			<div class="input" >
+				<label id="lblVilleAdd" for="villeAdd">Localité</label>
+				<input type="text" name="villeAdd" id="villeAdd"tabindex="70"/>
+			</div>
+			<div class="input" >
+				<label  id="lbllPaysAdd" for="paysAdd">Pays</label>   
+				<input type="text" name="paysAdd" id="paysAdd" tabindex="80"/>
+			</div>
+			<div class="input">
+				<label  id="lbldateAdd" for="dateNaissanceAdd">Année de Naissance</label>
+				<input type="text" name="dateNaissanceAdd" 	id="dateNaissanceAdd" tabindex="90" />
+			</div>
+			<div class="input">
+				<label  id="lblClubAdd" for="clubAdd">Club</label>
+				<input type="text" name="clubAdd" id="clubAdd"tabindex="100"/>
+			</div>			
+			<div class="input">
+				<label  id="lblSexe" for="sexeAdd" >Genre</label>
+				<Select name="sexeAdd"   id="sexeAdd"> 
+				<option style="padding : 10px" value= "">Sélectionner</option>	
+				<option style="padding : 10px" value= "D">Dame</option>
+				<option style="padding : 10px" value= "H">Homme</option>				
+				</select>
+			</div>
+			<div class="input" style="display:None;" id="paraInfoAdd" >
+				<label  id="lblInfoAdd" for="textInfoAdd">Informations</label>
+				<input readonly="true"  style="color:#EF3F3F" type="textarea" name="textInfoAdd" id="textInfoAdd"/>
+			</div>
+			<span class="dot" onClick="checkForm2(this.form)" style="display:flex; justify-content: center;align-items: center;">
+				<i class="fa fa-plus-circle" style= "font-size: 50px;margin:9px;" ></i></br>
+				<a>Ajouter</a>
+			</span>	
+		</form>		
+	</span>
+</div>
+
+<div id="PageFormulaire" style="padding: 0px 20px;" >
 
 <?php
 // Si on est connecté on affiche dans une menu les coureurs de la session
@@ -163,182 +199,137 @@ if ( isset($_SESSION['Login']))
 <center>
 <img src="images/FilRougeInscription4.png" style="width: 80%" >
 </center>
-<!----- POP -UP AJOUT MEMBRES --------->
-<div class="popup" >
-  <span class="popuptext" id="myPopup">
-  		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;min-width:40px; width:40px; height:40px; margin-right :10px;" onClick="ShowPopuAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
-		  <p Style="margin-left:10px;margin-right:10px; color:black; font-size:18px"> Ajout d'un nouveau coureur </p>
-    	  <form id="formAddMember" name="formAddMember" method="get" action="addMembresFormulaire.php"  >
-		  <table >
-			<tr>
-				<td>
-       				 <table  >
-						<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION['Login'] ?>' />
-						<tr  style="padding: 10px; "><td >Nom</td> <td><input type="text" name="nom" id="nomAdd" tabindex="10" style="width:80%;margin:10px"/></td></tr>
-						<tr  style="padding: 10px; "><td >Prénom</td> <td> <input  type="text" name="prenom" id="prenomAdd" tabindex="20" style="width:80%;margin:10px"/></td></tr>
-						<tr  style="padding: 10px; "><td  >Adresse e-mail</td>  <td> <input type="text" name="email" id="emailAdd" tabindex="40" style="width:80%;margin:10px"/></td></tr>
-						<tr  style="padding: 10px; "><td  >Adresse</td> <td>  <input type="text" name="adresse" id="adresseAdd" tabindex="50" style="width:80%;margin:10px"/></td></tr>
-						<tr style="padding: 10px; "><td >NPA</td>  <td> <input type="text" name="zip" id="zipAdd" tabindex="60" style="width:80%;margin:10px"/></td></tr>
-						<tr style="padding: 10px; "><td >Localité</td>  <td> <input type="text" name="ville" id="villeAdd"tabindex="70" style="width:80%;margin:10px" /></td></tr>
-						<tr style="padding: 10px; "><td  >Pays</td>   <td> <input type="text" name="pays" id="paysAdd"tabindex="80" style="width:80%;margin:10px"/></td></tr>	
-						<tr style="padding: 10px; "><td  >Année de Naissance</td> <td><input type="text" name="dateNaissance" 	id="dateNaissanceAdd" tabindex="90" style="width:80%;margin:10px"  /><td></tr>
-
-						<tr style="padding: 10px; "><td  for="club">Club</td><td> <input type="text" name="club" id="clubAdd"tabindex="100" style="width:80%;margin:10px"/></td></tr>
-											
-						<tr style="padding: 10px; "><td >Sexe</td><td><Select name="sexe"   id="sexeAdd" style="width:80%;margin:10px"> 
-							<option style="padding : 10px" value= "">Selectionner</option>	
-							<option style="padding : 10px" value= "D">Dame</option>
-							<option style="padding : 10px" value= "H">Homme</option>				
-						</select></td></tr>
-						
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="ButtonResultat"  type ="button" style="float:right; height:80px; margin-right :10px;" onClick="checkForm2(this.form)" title="Validations Informations" data-toggle="tooltip" data-placement="right"><img src="/images/validation.jpg" width="50"></button>
-				</td>
-			</tr>
-		</table>
-
-		</form>		
-  </span>
-</div>
-
 
 <form id="VerifEquipe" method="get" action="VerifEquipe.php">
 	<input type="hidden" name="Course" id="Course"   value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />
 	<input type="hidden" name="NomEquipe" id="NomEquipe"   value=  />
 </form>
-
 <form method="post" action="ciblePanier.php" id="Formulaire" name="Formulaire" onload="Choix1Coureur()" >
-<table width="100%"  style="padding: 10px; background :#C0C0C0;">
-	<tr>
-		<td style="width: 30%;padding: 10px;padding-left: 20px;">
-<?php if ($val ["JuraDefi"] )
-{?>
-	Chef d'équipe : 
-	</td>
-	<td  style="width: 60%;"> 
-	<Select  style="width: 90%;"  onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	<?
-}
-else
-{
-	?>
-		Coureur :
+	<table width="100%"  style="padding: 10px; background :#C0C0C0;">
+		<tr>
+			<td style="width: 30%;padding: 10px;padding-left: 20px;">
+		<?php if ($val ["JuraDefi"] )
+		{?>
+			Chef d'équipe : 
+			</td>
+			<td  style="width: 60%;"> 
+			<Select  style="width: 90%;"  onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	<?
+		}
+		else
+		{
+			?>
+				Coureur :
+				</td>
+				<td style="width: 60%;"> 
+				<Select style="width: 90%;"   onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	
+			<?
+		}?>
 		</td>
-		<td style="width: 60%;"> 
-		 <Select style="width: 90%;"   onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	
-	<?
-}?>
-	</td>
-	<td style="width: 10%;"> 
-	<input type="hidden" name="idCoureur" id="idCoureur" />
-	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
-	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
-	<input type="hidden" name="NumCat" id="NumCat" />
-	<input type="hidden" name="NomCat" id="NomCat" />
-	<input type="hidden" name="OnLine" id="OnLine" />
-	<input type="hidden" name="Option" id="Option" />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
-	<?php if ($val ["JuraDefi"] )
-	{?>
-	<a ><img src="admin/images/addChef.jpg" width="60px" onclick="ShowPopuAddMember()" /></a>	<?
-	}
-	else
-	{?>
-		<a class="ButtonResultat"  style= "Height:60px" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
-		<i class="fa fa-plus-circle"  style= "font-size: 50px;margin:9px;color: #4095f5;"></i>
-		
-		
-		
-	</a>
-		<?
-	}?>
-	</td>
-</tr>
-</table>
+		<td style="width: 10%;"> 
+			<input type="hidden" name="idCoureur" id="idCoureur" />
+			<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
+			<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
+			<input type="hidden" name="NumCat" id="NumCat" />
+			<input type="hidden" name="NomCat" id="NomCat" />
+			<input type="hidden" name="OnLine" id="OnLine" />
+			<input type="hidden" name="Option" id="Option" />
+			<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
+			<?php if ($val ["JuraDefi"] )
+			{?>
+			<a><img src="admin/images/addChef.jpg" width="60px" onclick="ShowPopuAddMember()" /></a>	<?
+			}
+			else
+			{?>
+				<div class="dot" style="display:flex; flex-direction: column;justify-content: center;align-items: center;" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
+					<i class="fa fa-plus-circle" style= "font-size: 50px;margin:9px;" ></i></br>
+					<a class="TextButton" >Créer un athlète</a>
+				</div>
+				<?
+			}?>
+			</td>
+		</tr>
+	</table>
 
-<div id="InformationsCoureurs" style="display:none;">
-</br>
-		<h3>Vérfier les informations du coureur choisi, elles peuvent être modifiées ici <a  class="ButtonResultat" style="height:60px" href="admin/membres.php"> 
-		
-		<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 40px;margin:9px;color: #4095f5;"></i></a>
+	<div id="InformationsCoureurs" style="display:none;">
+		</br>
+				<h3>Vérfier les informations du coureur choisi, elles peuvent être modifiées ici <a  class="ButtonResultat" style="height:60px" href="admin/membres.php"> 
+				
+				<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 40px;margin:9px;color: #4095f5;"></i></a>
 	
-	</h3>
-		<input type="hidden" name="nom" id="nom" />
-		<input type="hidden" name="prenom" id="prenom" />
-		 <input type="hidden" name="email" id="email" />
-		 <input type="hidden" name="adresse" id="adresse"  />
-		 <input type="hidden" name="zip" id="zip" />
-		<input type="hidden" name="ville" id="ville"/>
-		<input type="hidden" name="club" id="club"/>
-		<input type="hidden" name="pays" id="pays"/>					
-		<input  type="hidden" name="sexe"   id="sexe"  /> 
-		<input   type="hidden"  name="date" id="date"  />
-		
-		<table width="100%">
-			<tr style="background:#C0C0C0;padding:20px;">
+		</h3>
+			<input type="hidden" name="nom" id="nom" />
+			<input type="hidden" name="prenom" id="prenom" />
+			<input type="hidden" name="email" id="email" />
+			<input type="hidden" name="adresse" id="adresse"  />
+			<input type="hidden" name="zip" id="zip" />
+			<input type="hidden" name="ville" id="ville"/>
+			<input type="hidden" name="club" id="club"/>
+			<input type="hidden" name="pays" id="pays"/>					
+			<input  type="hidden" name="sexe"   id="sexe"  /> 
+			<input   type="hidden"  name="date" id="date"  />
+			
+			<table width="100%">
+				<tr style="background:#C0C0C0;padding:20px;">
 
-				<td style="padding: 10px;padding-left: 20px;">Nom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><a name="tdnom" id="tdnom" ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+					<td style="padding: 10px;padding-left: 20px;">Nom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><a name="tdnom" id="tdnom" ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Prénom :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><a  name="tdprenom" id="tdprenom" ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Prénom :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><a  name="tdprenom" id="tdprenom" ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date" style="padding:5px; Background:lightblue;"><a  name="tddate" id="tddate"  ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date" style="padding:5px; Background:lightblue;"><a  name="tddate" id="tddate"  ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Sexe:</td><td  id="td_sexe" style="padding:5px; Background:lightblue;"><a  name="tdsexe" id="tdsexe"  ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Sexe:</td><td  id="td_sexe" style="padding:5px; Background:lightblue;"><a  name="tdsexe" id="tdsexe"  ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse e-mail :</td><td id="td_email"  style="padding:5px; Background:lightblue;"><a  name="tdemail" id="tdemail"  ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Adresse e-mail :</td><td id="td_email"  style="padding:5px; Background:lightblue;"><a  name="tdemail" id="tdemail"  ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;"><a  name="tdadresse" id="tdadresse"  ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;"><a  name="tdadresse" id="tdadresse"  ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Localité :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;"><a  name="tdzip" id="tdzip"  ></a> <a name="tdville" id="tdville" ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Localité :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;"><a  name="tdzip" id="tdzip"  ></a> <a name="tdville" id="tdville" ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Pays  :</td><td id="td_pays"  style="padding:5px; Background:lightblue;"><a  name="tdpays" id="tdpays" ></a></td>
-			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Pays  :</td><td id="td_pays"  style="padding:5px; Background:lightblue;"><a  name="tdpays" id="tdpays" ></a></td>
+				</tr>
+				<tr style="height: 10px;"> 
+					<td></td><td></td>
+				</tr>
 
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;"><a  name="tdclub" id="tdclub"  ></a></td>
-			</tr>
-		</table>
+				<tr style="background:#C0C0C0;">
+					<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;"><a  name="tdclub" id="tdclub"  ></a></td>
+				</tr>
+			</table>
 		</br></br>
 		<h2>Informations demandées pour votre inscription </h2>
 
@@ -779,7 +770,7 @@ else
 </div>
 		<div id="OptionReduction">
 		</div>
-			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
+			<p id="lblInformation" style=" display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
 
 	 <div style="display :none;" ><label for="nom">Prix:</label> <input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF</div>
 	  <center>
@@ -789,22 +780,30 @@ else
 			{
 				$pathReglement = 'Règlement.pdf';
 			}
-	  ?>
-	   <p> 
-	  <label> J'accepte le réglement 
-		<?echo '<a href="'.$pathReglement.'"target="_blank">ci-joint</a>'?></label>
-		<input type="checkbox" style="visibility:hidden;width:40px;height:40px"  id="Reglement" >
-
-		 </p>
-		 
-			<p>
-		<label>J'accepte de transmettre mes données à nos partenaires 	</label>
-		<input type="checkbox" style="visibility:hidden;width:40px;height:40px" checked="True" Name="Partenaire" id="Partenaire" >
-		
-		 </p>
-		
-				<!-- lit de tous les code de réduction utiliser sérialiser -->
-			<input type="hidden"  name="strCodeReduction" id="strCodeReduction" value=""  />  
+	  ?> 
+		<table 	style="width:100%; display:none; margin-top: 20px;" id="ParaReglement">
+			<tr style="background:#C0C0C0;padding:20px;" >
+				<td style="width: 40%;padding: 10px;padding-left: 20px;">
+					J'accepte le réglement 
+					<?echo '<a href="'.$pathReglement.'"target="_blank">ci-joint</a>'?>
+				</td> 
+				<td>
+					<input type="checkbox" style="width:40px;height:40px"  id="Reglement" >
+				</td>
+			</tr>
+		</table>
+		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaPartenaire">
+			<tr style="background:#C0C0C0;padding:20px;" >
+				<td style="width: 40%;padding: 10px;padding-left: 20px;">
+					J'accepte de transmettre mes données à nos partenaires
+				</td> 
+				<td>
+					<input type="checkbox" style="width:40px;height:40px" checked="True" Name="Partenaire" id="Partenaire" >
+				</td>
+			</tr>
+		</table>
+		<!-- lit de tous les code de réduction utiliser sérialiser -->
+		<input type="hidden"  name="strCodeReduction" id="strCodeReduction" value=""  />  
 		</form>	
 		<form id="formCode" method="get" action="VerifCodeReduction.php" style="visibility:collapse;">
 				<div style="display :none;" ><input type="hidden" name="NomCode" id="NomCode" style="display :none;"  readonly  /></p>
@@ -818,7 +817,7 @@ else
 				<p id="InformationCode" style="display:none; padding:5px; border-style: solid; border-color: black; font-size:160%;"></p>	
 		</form>	
 	
-		<Table style="background-color: #FFFFFF;width: 100%; visibility:hidden; display:none" id="TableReduction">
+		<table style="background-color: #FFFFFF;width: 100%; display:none" id="TableReduction">
 			<tr>
 				<th>
 					Code de réduction
@@ -828,11 +827,35 @@ else
 				</th>
 			<tr>
 		</table>
-		<p><label for="nom">Total Options et Réductions:</label> <input type="text" name="TotalReduction" id="TotalReduction"  readonly  />CHF</p>
-			
-		<p><label for="nom">Total a payer:</label> <input type="text" name="TotalPayer" id="TotalPayer"  readonly  />CHF</p>
-			  
-		 <input  class="ButtonResultat" type="button" style="padding: 20px; visibility:hidden;height:80px;font-size:180%;"  id="ButtonSendFormulaire" value="je m'inscris" onclick="check( )" style= " width: 100px; height: 50px";>  </br>
+		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaTotalReduction">
+			<tr style="background:#C0C0C0;padding:20px;" >
+				<td style="width: 40%;padding: 10px;padding-left: 20px;">
+					Total Options et Réductions:
+				</td> 
+				<td>
+				 	<input type="text" name="TotalReduction" id="TotalReduction"  readonly  />
+				</td>
+				<td width="40px">
+					CHF
+				</td>
+			</tr>
+		</table>
+		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaTotalPayer">
+			<tr style="background:#C0C0C0;padding:20px;" >
+				<td style="width: 40%;padding: 10px;padding-left: 20px;">
+					Total a payer:
+				</td> 
+				<td>
+					<input type="text" name="TotalPayer" id="TotalPayer"  readonly  />
+				</td>
+				<td width="40px">
+					CHF
+				</td>
+			</tr>
+		</table>
+ 
+		 <span  class="ButtonResultat" type="button" style="display:none;read-only:false;font-size:36px"  id="ButtonSendFormulaire" onclick="check( )" style= " width: 100px; height: 50px";>je m'inscris 
+		</span>
 	</div>
 	</div>
 </div>
@@ -982,7 +1005,7 @@ else
  <center>
  les champs avec un * sont obligatoires</br>
  Si vous avez un problème d'inscription veuillez contacter par e-mail </br>
- info@juradefichrono.ch
+ info@defichrono.ch
  </center>
    </Fieldset>
 <? 
@@ -990,7 +1013,7 @@ else
    }
 else
 {
-    $Link= "AddLogin.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
+    $Link= "AddLoginV2.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
     // demande de connection pour inscription
 ?>
 <script>
@@ -1053,10 +1076,10 @@ function SubmitLogin()
 	
 	<!-- Création Compte et garde en mémoire course -->
 	<span class="dot">
-					<p style="margin:10px;background:transparent;">
-					<a href="PasswordForget2023.php"style="font-size:12px;">réinitialiser mon mot de passe </a>
-					</p>
-				</span >
+		<p style="margin:10px;background:transparent;">
+		<a href="PasswordForget2023.php"style="font-size:12px;">réinitialiser mon mot de passe </a>
+		</p>
+	</span >
 	
   <?php
 }
@@ -1239,6 +1262,10 @@ inInfoCode.style.display  = "block" ;
 
 function  	CalculPrixTotal()
 {
+	var ParaTotalPayer = document.getElementById("ParaTotalPayer");
+	ParaTotalPayer.style.display ="table"
+	var ParaTotalReduc = document.getElementById("ParaTotalReduction");
+	ParaTotalReduc.style.display ="table"
 	var TotalReduc = document.getElementById("TotalReduction");
 	TotalReduc.value = TotalReduction;
 	
@@ -1631,7 +1658,7 @@ function ChoiceDepart(f)
 		{
 			if (f.sexe.value.length>0)
 			{
-				// Si il existe un seul parcours // d'office sélectionné
+				// Si il existe un seul parcour // d'office sélectionné
 				if (ArrayParcours.length > 1)
 				{
 					var intselected = document.getElementById("NomParcours").selectedIndex-1;
@@ -1970,6 +1997,8 @@ function ChoiceDepart(f)
 								InCheckbox.setAttribute("type", "number");
                                 InCheckbox.setAttribute("min", "0");
                                 InCheckbox.id = "DonationIDinput";
+								InCheckbox.style.width="40px";
+								InCheckbox.style.height="40px";
                                 tdReduc.appendChild(InCheckbox);
 
                                 var tdReduc = document.createElement("td");
@@ -1983,6 +2012,8 @@ function ChoiceDepart(f)
 							{
 								var InCheckbox = document.createElement("input");
 						  		 InCheckbox.onclick = function(){CheckReduc(this)};
+								InCheckbox.style.width="40px";
+								InCheckbox.style.height="40px";
 								InCheckbox.setAttribute("type", "checkbox");
 								InCheckbox.setAttribute("value", objReduction.Nom._Value+";"+ objReduction.tarif._Value);
 							                         
@@ -1994,8 +2025,9 @@ function ChoiceDepart(f)
                                 {
                                     text.textContent = objReduction.Nom._Value  ;
                                 }
-                                pReduc.appendChild(InCheckbox);
-						    	pReduc.appendChild(text);	
+                               
+						    	pReduc.appendChild(text);
+								 pReduc.appendChild(InCheckbox);	
 							}
 
 							document.getElementById("OptionReduction").appendChild(pReduc);
@@ -2089,8 +2121,8 @@ function liste_depart(f)
 	var sel = document.getElementById("NomDepart");
 	var lbl = document.getElementById("lblDepart");
 	var bpSend = document.getElementById("ButtonSendFormulaire");
-	var bpReglement = document.getElementById("Reglement");
-	var bpPartenaire = document.getElementById("Partenaire");
+	var bpReglement = document.getElementById("ParaReglement");
+	var bpPartenaire = document.getElementById("ParaPartenaire");
 	var ICounterCat = 0;
 	
 	if (f.NomParcours.value.length>0) 
@@ -2150,13 +2182,13 @@ function liste_depart(f)
 				if (ICounterCat == 0)
 				{
 					// Valeurs incorect pour ce dÃ©part 
-					bpReglement.style.visibility = "hidden" ;
-					bpPartenaire.style.visibility = "hidden" ;
-					bpSend.style.visibility = "hidden" ;
-					sel.style.visibility = "hidden" ;
+					bpReglement.style.display = "none" ;
+					bpPartenaire.style.display = "none" ;
+					bpSend.style.display = "none" ;
+					sel.style.display = "none" ;
 					document.getElementById('date').style.backgroundColor="#fa8a8a";
 					document.getElementById('NomParcours').style.backgroundColor="#fa8a8a";
-					lblinfo.style.visibility = "visible" ;
+					lblinfo.style.display = "block" ;
 					lblinfo.style.display  = "block" ;
 				 
 				// ajoute le noeud texte au nouveau div crÃ©Ã©
@@ -2164,11 +2196,11 @@ function liste_depart(f)
 				}
 				else 
 				{
-					bpReglement.style.visibility = "visible" ;
-					bpPartenaire.style.visibility = "visible" ;
-					bpSend.style.visibility = "visible" ;
-					lblinfo.style.visibility = "hidden" ;
-					sel.style.visibility = "visible" ;
+					bpReglement.style.display = "table" ;
+					bpPartenaire.style.display = "table" ;
+					bpSend.style.display = "block" ;
+					lblinfo.style.display = "none" ;
+					sel.style.display = "block" ;
 					lblinfo.style.display  = "none" ;
 					document.getElementById('date').style.backgroundColor="white";
 					document.getElementById('NomParcours').style.backgroundColor="white";
@@ -2357,12 +2389,22 @@ foreach ($files1  as $key => $Parcours)
 }
 ?>
 <script>
-
+function ClosePopUpAddMember()
+{
+	console.log("ClosePopAddMember");
+	var popup = document.getElementById("PopUpAddMember");
+    popup.style.display="none";
+	var page = document.getElementById("PageFormulaire");
+	page.style.opacity = "1";
+}
 // When the user clicks on <div>, open the popup
 function ShowPopuAddMember() 
 {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+	console.log("OpenPopAddMember");
+    var popup = document.getElementById("PopUpAddMember");
+    popup.style.display="block";
+	var page = document.getElementById("PageFormulaire");
+	page.style.opacity = "0.2";
 }
 
 for(var Parcours=0; Parcours<ArrayParcours.length; ++Parcours) 
@@ -2399,8 +2441,6 @@ var sel = document.getElementById("NomParcours");
     var radios = document.querySelectorAll('input[type=radio][name="Equipe"]');
     radios.forEach(radio => radio.addEventListener('change', () =>
 	{
-
-
 		if (radio.value> 0)
 		{
 			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
@@ -2414,8 +2454,9 @@ var sel = document.getElementById("NomParcours");
 	}));
 
 </script>
-    <?php include("sponsors.php"); ?> 
-</div>
 
+    <?php include("sponsors.php"); ?> 
+
+</div>
 </body>
 </html>

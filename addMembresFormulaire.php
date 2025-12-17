@@ -16,19 +16,19 @@ else
      try
      {
           mysqli_select_db($con ,'dxvv_jurachrono' );
-          $date = $_REQUEST["dateNaissance"].'-01-01 00:00:00';
-          $add = $_REQUEST["adresse"];
+          $date = $_REQUEST["dateNaissanceAdd"].'-01-01 00:00:00';
+          $add = $_REQUEST["adresseAdd"];
           $sql = 'INSERT INTO Membres ( `adresse`, `Nom`, `Prenom`, `npa`, `localite`, `DateNaissance`, `Sexe`, `club`, `mail`, `Pays`, `Valider` , `LoginCompte` )
           VALUES("'.$add.'",
-          "'.$_REQUEST["nom"].'",
-          "'.$_REQUEST["prenom"].'",
-          "'.$_REQUEST["zip"].'",
-          "'.$_REQUEST["ville"].'",
+          "'.$_REQUEST["nomAdd"].'",
+          "'.$_REQUEST["prenomAdd"].'",
+          "'.$_REQUEST["zipAdd"].'",
+          "'.$_REQUEST["villeAdd"].'",
           "'.$date.'",
-          "'.$_REQUEST["sexe"].'",
-          "'.$_REQUEST["club"].'",
-          "'.$_REQUEST["email"].'",
-          "'.$_REQUEST["pays"].'",
+          "'.$_REQUEST["sexeAdd"].'",
+          "'.$_REQUEST["clubAdd"].'",
+          "'.$_REQUEST["emailAdd"].'",
+          "'.$_REQUEST["paysAdd"].'",
           "1",
           "'.$_REQUEST["LoginCompte"].'");';
 

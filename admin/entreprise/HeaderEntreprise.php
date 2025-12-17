@@ -1,12 +1,22 @@
+<head>
+	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
+	<title>Défi Chrono</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" title="defaut" media="screen" href="../../css/style.css" type="text/css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../../js/prototype.js" ></script>
+<script src="../../../js/FonctionDefiChrono2.js?v=1"></script>
+<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
+</head>
 <?php $today = date("Y-m-d H:i:s"); 
 date_default_timezone_set('Europe/Paris');
   session_start();
 // --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
 setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
- session_start();
- 
- 
-  
+session_start();
 if ( strlen($_POST['DateCourse'])>0)
 {
 $DateCourse =  $_POST['DateCourse'];

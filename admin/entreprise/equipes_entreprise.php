@@ -174,8 +174,6 @@ session_start();
 if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
 {?>
 <div id="corps">
-
- 
 <?php
 /*******************************************************************************************************************
  * 
@@ -225,7 +223,6 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
  * 
  ********************************************************************************************************************/
 ?>
-
     <table style="width:90%;margin:auto;">
         <tr>
              <th style="background:#1e8ac2;color:#ffff;"> Mes athètes  </br>
@@ -264,95 +261,94 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
                     {
                         mysqli_select_db($con ,'dxvv_jurachrono' );
                         $sql = 'SELECT * FROM Membres  WHERE LoginCompte=\''.$_SESSION['Login'].'\''; 
-
                         //echo $sql;
                         $result = mysqli_query($con,$sql);
                 
                         if ($result && mysqli_num_rows($result) > 0) 
                         {
-                        //Chaque athlète on va créer un nom 
-                        while($val = mysqli_fetch_assoc($result)) 
-                        {?>
-                            <tr onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;cursor: pointer; width:20%;  " >
-                            
-                            <td class="dotMember"    id="<?php echo "user".$c ?>"  > 
-                            <?php
-                            $c++;
-                            if ($val["Valider"])
-                            {
-                                $CmptValider++?>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <?php if ($val ["sexe"] == "D")
-                                            {?>
-                                                <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #d48def;"></i>
-                                            <?
-                                            }
-                                            else
-                                            {?>
-                                                
-                                                <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #4095f5;"></i>
-                                        <?}?>
-                                        </td>
-                                        <td>
-                                            <table>
-                                                <tr>
-                                                    <td>    
-                                                    <? echo $val ["Nom"]?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <? echo $val ["Prenom"]?>
-                                                    </td>
-                                                </tr>
-                                            </table> 	
-                                        </td>		
-                                    </tr>
-                                </table>
-                            <?
-                            }
-                            else
+                            //Chaque athlète on va créer un nom 
+                            while($val = mysqli_fetch_assoc($result)) 
                             {?>
-                                <Table>
-                                    <tr>
-                                        <td>
-                                            <i class="fa fa-user" style= "font-size: 22px;margin:9px;color: red;"></i>
-                                        </td>
-                                        <td>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                <? echo $val ["Nom"]?>
-                                                    </td>
-                                                    <td>
-                                                        <? echo $val ["Prenom"]?>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>		
-                                    </tr>
-                                </table> 
-                            <?php	
-                            }
-                            ?>
-                            <script>
-                                var Coureur= new Object();
-                                Coureur.Valider = <?php echo json_encode($val ["Valider"]); ?>;
-                                Coureur.ID = <?php echo json_encode($val ["ID"]); ?>;
-                                Coureur.Nom = <?php echo json_encode($val ["Nom"]); ?>;
-                                Coureur.Prenom = <?php echo json_encode($val ["Prenom"]); ?>;
-                                Coureur.Mail = <?php echo json_encode($val ["mail"]); ?>;
-                                Coureur.Adresse = <?php echo json_encode($val ["adresse"]); ?>;
-                                Coureur.NPA = <?php echo json_encode($val ["npa"]); ?>;
-                                Coureur.Localite = <?php echo json_encode($val ["localite"]); ?>;
-                                Coureur.Sexe = <?php echo json_encode($val ["sexe"]); ?>;
-                                Coureur.Pays = <?php echo json_encode($val ["Pays"]); ?>;
-                                Coureur.DateNaissance = <?php echo json_encode( date("Y", strtotime($val ["DateNaissance"]))); ?>;
-                                Coureur.Club = <?php echo json_encode($val ["club"]); ?>;
-                                ArrayCoureurs.push(Coureur);
-                            </script>	
+                                <tr onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;cursor: pointer; width:20%;  " >
+                                
+                                <td class="dotMember" id="<?php echo "user".$c ?>"> 
+                                <?php
+                                $c++;
+                                if ($val["Valider"])
+                                {
+                                    $CmptValider++?>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <?php if ($val ["sexe"] == "D")
+                                                {?>
+                                                    <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #d48def;"></i>
+                                                <?
+                                                }
+                                                else
+                                                {?>
+                                                    
+                                                    <i class="fa fa-user" style= "font-size: 42px;margin:9px;color: #4095f5;"></i>
+                                                <?
+                                                }?>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>    
+                                                        <? echo $val ["Nom"]?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <? echo $val ["Prenom"]?>
+                                                        </td>
+                                                    </tr>
+                                                </table> 	
+                                            </td>		
+                                        </tr>
+                                    </table>
+                                <?
+                                }
+                                else
+                                {?>
+                                    <Table>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-user" style= "font-size: 22px;margin:9px;color: red;"></i>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                    <? echo $val ["Nom"]?>
+                                                        </td>
+                                                        <td>
+                                                            <? echo $val ["Prenom"]?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>		
+                                        </tr>
+                                    </table> 
+                                <?php	
+                                }?>
+                                <script>
+                                    var Coureur= new Object();
+                                    Coureur.Valider = <?php echo json_encode($val ["Valider"]); ?>;
+                                    Coureur.ID = <?php echo json_encode($val ["ID"]); ?>;
+                                    Coureur.Nom = <?php echo json_encode($val ["Nom"]); ?>;
+                                    Coureur.Prenom = <?php echo json_encode($val ["Prenom"]); ?>;
+                                    Coureur.Mail = <?php echo json_encode($val ["mail"]); ?>;
+                                    Coureur.Adresse = <?php echo json_encode($val ["adresse"]); ?>;
+                                    Coureur.NPA = <?php echo json_encode($val ["npa"]); ?>;
+                                    Coureur.Localite = <?php echo json_encode($val ["localite"]); ?>;
+                                    Coureur.Sexe = <?php echo json_encode($val ["sexe"]); ?>;
+                                    Coureur.Pays = <?php echo json_encode($val ["Pays"]); ?>;
+                                    Coureur.DateNaissance = <?php echo json_encode( date("Y", strtotime($val ["DateNaissance"]))); ?>;
+                                    Coureur.Club = <?php echo json_encode($val ["club"]); ?>;
+                                    ArrayCoureurs.push(Coureur);
+                                </script>	
                             </td>
                         </tr>
                     
@@ -558,10 +554,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
         <script>
         document.getElementById("FormAddMembres").submit();
         </script>
-        <?
+        <?php
      }
 }
 ?>
-<script type="text/javascript">
-
-</script>

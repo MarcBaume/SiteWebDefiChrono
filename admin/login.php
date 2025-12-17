@@ -100,14 +100,13 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 			<td>
 
 				<form method="get" action ="modif_informations.php">
-					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
-					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
-					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
-					<a>
+					 <input type="hidden" name="idRace" id="idRace" tabindex="10"  size="60"  value= '<?php echo $val ["ID"] ?>' />
 					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
 					<span class="dot">
 							<i class="fa fa-info"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
-					</span></button></a>
+							<a> Informations </a>
+					</span>
+					</button></a>
 				</form>
 				<!--<form method="get" action ="../formulaireV3.php">
 					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
@@ -186,33 +185,17 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 else
 {?>
 	<form method="post" name="FormConnect1" id ="FormConnect1" action="CibleLoginV2b.php">
-		<table  style="margin:20px;">
-			<tr>
-				<td>
-					<label for="Login" style="font-size:15px;">e-mail :</label>
-				</td>
-				<td>
-					<label for="password" style="font-size:15px;">Mot de passe :</label>
-				</td>
-				<td>
-				
-				</td>
-			
-			</tr>
-			<tr>
-				<td>
-					<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
-				</td>
-				<td>
-					<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
-				</td>
-				<td onclick=" SendForm1()" class="ButtonResultat"  >
-					<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
-				</td>
-			</tr>
-		
-				
-		</table>
+				<div class="input">
+				<label for="Login" style="font-size:15px;">e-mail :</label>
+				<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
+			</div>
+			<div class="input">
+				<label for="password" style="font-size:15px;">Mot de passe :</label>
+				<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
+			<div>
+			<span class="dot" onclick=" SendForm1()"   >
+				<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
+			</span >
 		<table style="margin-top:100px;">
 		<tr>
 			

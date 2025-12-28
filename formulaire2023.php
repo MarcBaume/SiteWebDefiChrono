@@ -125,7 +125,7 @@ function EquipeChang(valueText) {
 <!----- POP -UP AJOUT MEMBRES --------->
 <div class="popup" id="PopUpAddMember" >
 	<span class="popuptext" id="SpanPopUpAddMembre">
-		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;min-width:40px; width:40px; height:40px; margin-right :10px;" onClick="ClosePopUpAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
+		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;margin: 0px" onClick="ClosePopUpAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
 		<p class="TitlePopUP"> Ajout d'un nouvel athlète </p>
 		<form style="padding: 10px" id="formAddMember" name="formAddMember" method="get" action="addMembresFormulaire.php"  >
 			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION['Login'] ?>' />
@@ -186,12 +186,10 @@ function EquipeChang(valueText) {
 </div>
 
 <div id="PageFormulaire" style="padding: 0px 20px;" >
-
 <?php
-// Si on est connecté on affiche dans une menu les coureurs de la session
+// Si on est connecté on affiche dans un menu avec les coureurs de la session
 if ( isset($_SESSION['Login']))
 {
-
 	$_SESSION['Nbretape'] = $_GET["Nbretape"] ;
 	$_SESSION['Course'] = $_GET["NomCourse"] ;
 	$_SESSION['DateCourse'] = $_GET['DateCourse'];
@@ -204,28 +202,25 @@ if ( isset($_SESSION['Login']))
 	<input type="hidden" name="Course" id="Course"   value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />
 	<input type="hidden" name="NomEquipe" id="NomEquipe"   value=  />
 </form>
-<form method="post" action="ciblePanier.php" id="Formulaire" name="Formulaire" onload="Choix1Coureur()" >
-	<table width="100%"  style="padding: 10px; background :#C0C0C0;">
-		<tr>
-			<td style="width: 30%;padding: 10px;padding-left: 20px;">
-		<?php if ($val ["JuraDefi"] )
-		{?>
-			Chef d'équipe : 
-			</td>
-			<td  style="width: 60%;"> 
-			<Select  style="width: 90%;"  onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	<?
-		}
-		else
-		{
-			?>
-				Coureur :
-				</td>
-				<td style="width: 60%;"> 
-				<Select style="width: 90%;"   onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>  	
-			<?
-		}?>
-		</td>
-		<td style="width: 10%;"> 
+<form method="post" action="ciblePanier.php" id="Formulaire" name="Formulaire" >
+	<!-- Select coureur -->
+	<div class="classTitleWithButton">
+		<div class="input" style=" width: 100%;">
+			<label for="Coureur">	
+				<?php if ($val ["JuraDefi"] )
+				{?>
+					Chef d'équipe : 
+					<?
+				}
+				else
+				{
+					?>
+					Coureur :
+					<?
+				}?>
+			</label>
+			<Select  onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>
+			<!-- information coureurs masqué --> 
 			<input type="hidden" name="idCoureur" id="idCoureur" />
 			<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
 			<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
@@ -234,131 +229,76 @@ if ( isset($_SESSION['Login']))
 			<input type="hidden" name="OnLine" id="OnLine" />
 			<input type="hidden" name="Option" id="Option" />
 			<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
-			<?php if ($val ["JuraDefi"] )
-			{?>
-			<a><img src="admin/images/addChef.jpg" width="60px" onclick="ShowPopuAddMember()" /></a>	<?
-			}
-			else
-			{?>
-				<div class="dot" style="display:flex; flex-direction: column;justify-content: center;align-items: center;" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
-					<i class="fa fa-plus-circle" style= "font-size: 50px;margin:9px;" ></i></br>
-					<a class="TextButton" >Créer un athlète</a>
-				</div>
-				<?
-			}?>
-			</td>
-		</tr>
-	</table>
+		</div>
+		<?php if ($val ["JuraDefi"] )
+		{?>
+		<a><img src="admin/images/addChef.jpg" width="60px" onclick="ShowPopuAddMember()" /></a>	<?
+		}
+		else
+		{?>
+			<div class="Button" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
+				<i class="fa fa-plus-circle" style= "font-size: 50px;" ></i></br>
+			</div>
+			<?
+		}?>
+		<a  class="Button" href="admin/membres.php"> 
+			<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 50px;"></i>
+		</a>
+	
+	</div>
 
 	<div id="InformationsCoureurs" style="display:none;">
-		</br>
-				<h3>Vérfier les informations du coureur choisi, elles peuvent être modifiées ici <a  class="ButtonResultat" style="height:60px" href="admin/membres.php"> 
-				
-				<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 40px;margin:9px;color: #4095f5;"></i></a>
-	
-		</h3>
-			<input type="hidden" name="nom" id="nom" />
-			<input type="hidden" name="prenom" id="prenom" />
-			<input type="hidden" name="email" id="email" />
-			<input type="hidden" name="adresse" id="adresse"  />
-			<input type="hidden" name="zip" id="zip" />
-			<input type="hidden" name="ville" id="ville"/>
-			<input type="hidden" name="club" id="club"/>
-			<input type="hidden" name="pays" id="pays"/>					
-			<input  type="hidden" name="sexe"   id="sexe"  /> 
-			<input   type="hidden"  name="date" id="date"  />
-			
-			<table width="100%">
-				<tr style="background:#C0C0C0;padding:20px;">
 
-					<td style="padding: 10px;padding-left: 20px;">Nom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><a name="tdnom" id="tdnom" ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
 
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Prénom :</td><td id="td_prenom" style="padding:5px; Background:lightblue;" ><a  name="tdprenom" id="tdprenom" ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Année de Naissance:</td><td id="td_date" style="padding:5px; Background:lightblue;"><a  name="tddate" id="tddate"  ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Sexe:</td><td  id="td_sexe" style="padding:5px; Background:lightblue;"><a  name="tdsexe" id="tdsexe"  ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Adresse e-mail :</td><td id="td_email"  style="padding:5px; Background:lightblue;"><a  name="tdemail" id="tdemail"  ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;"><a  name="tdadresse" id="tdadresse"  ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Localité :</td><td  id="td_zip"  style="padding:5px; Background:lightblue;"><a  name="tdzip" id="tdzip"  ></a> <a name="tdville" id="tdville" ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Pays  :</td><td id="td_pays"  style="padding:5px; Background:lightblue;"><a  name="tdpays" id="tdpays" ></a></td>
-				</tr>
-				<tr style="height: 10px;"> 
-					<td></td><td></td>
-				</tr>
-
-				<tr style="background:#C0C0C0;">
-					<td style="padding: 10px;padding-left: 20px;">Club :</td><td id="td_club"  style="padding:5px; Background:lightblue;"><a  name="tdclub" id="tdclub"  ></a></td>
-				</tr>
-			</table>
-		</br></br>
+		<input type="hidden" name="nom" id="nom" />
+		<input type="hidden" name="prenom" id="prenom" />
+		<input type="hidden" name="email" id="email" />
+		<input type="hidden" name="adresse" id="adresse"  />
+		<input type="hidden" name="zip" id="zip" />
+		<input type="hidden" name="ville" id="ville"/>
+		<input type="hidden" name="pays" id="pays"/>					
+		<input type="hidden" name="sexe"   id="sexe"  /> 
+		<input  type="hidden"  name="date" id="date"  />
+		<div class="classPara">
+			<label>Année de Naissance:</label><a  name="tddate" id="tddate"  ></a>
+		</div>
+		<div class="classPara">
+			<label>Sexe:</label><a  name="tdsexe" id="tdsexe"  ></a>
+		</div>
+		<div class="classPara">
+			<label>Adresse e-mail :</label><a  name="tdemail" id="tdemail"  ></a>	
+		</div>
+		<div class="classPara">
+			<label>Adresse  :</label><a  name="tdadresse" id="tdadresse"  ></a>
+		</div>
+		<div class="classPara">
+			<label>Localité :</label><a  name="tdzip" id="tdzip"  ></a>
+		</div>	
+		<div class="classPara">
+			<label>Pays  :</label><a  name="tdpays" id="tdpays" ></a>
+		</div>	
+		<div class="classPara">
+			<label>Club :</label> <input type="text" name="club" id="club" tabindex="11"/>
+		</div>	
+		
 		<h2>Informations demandées pour votre inscription </h2>
 
-		<Table 	style="width:100%" >
-			<tr style="padding: 20px; background :#C0C0C0; width:100%">
-				<td  style="width: 40%;padding: 10px;padding-left: 20px;">
-					Parcours : 
-				</td>
-				<td>
-					<select  style="width: 90%;" onchange ="liste_depart(this.form);"  id="NomParcours" name="NomParcours" ></select>
-				</td>		
-			</tr>
-		</table>
+		<div class="input">
+			<label for="NomParcours">Parcours : </label>
+			<select onchange ="liste_depart(this.form);"  id="NomParcours" name="NomParcours" ></select>
+		</div>
 
-		<Table  id="lblDepart"style="width: 100%;visibility:hidden; display:none; margin-top: 20px;"   >
-			<tr style="padding: 20px; background :#C0C0C0; width:100%">
-				<td style="width: 40%;padding: 10px;padding-left: 20px;">
-					Catégorie : 
-				</td>
-				<td>
-					<select   style="width: 90%;" name="NomDepart" id="NomDepart" onchange="ChoiceDepart(this.form);"  ></select>
+		<div  id="lblDepart" style="display : none;" class="input">
+				<label for="NomDepart">Catégorie : </label>
+					<select name="NomDepart" id="NomDepart" onchange="ChoiceDepart(this.form);"  ></select>
 				</td>
 			</tr>
 		</table>
 
-		<Table 	id="HaveAChoiceCategorie" style="visibility:hidden; display:none;width:100%; margin-top: 20px;">
+		<Table 	id="HaveAChoiceCategorie" style="display:none;width:100%; margin-top: 20px;">
 			<tr style="padding: 20px; background :#C0C0C0; width:100%">
-				<td  >
-					<table id="TableEquipe" style="visibility:hidden; display:none;Width : 100%;">
+				<td>
+					<table id="TableEquipe" style="display:none;Width : 100%;">
 						<tr style="Width : 100%;">
 							<td  >
 								<a> Challenge Cinemont équipe/Duo mixte </a>
@@ -411,24 +351,13 @@ if ( isset($_SESSION['Login']))
 					</table>
 				</td>
 			</tr>
-		</table>	
-		<table id="lblNomEquipe" style="visibility:hidden; display:none; width:100%; margin-top: 20px;">
-			<tr style="padding: 20px; background :#C0C0C0; width:100%">
-				<td style="width: 40%;padding: 10px;padding-left: 20px;">
-					Nom d'équipe: (Facultatif)
-				</td>
-				<td>
-					 <input type="text" name="NomEquipe" id="NomEquipe" tabindex="201"    />
-				</td>
-			</tr>
-		<!--	<tr>
-				<td>
-					<table id ="TableEquipeExistante">  liste equipe existante
-						
-					</table>
-				</td>
-			</tr> -->
 		</table>
+
+		<div class="input" id="lblNomEquipe" style="display:none;">
+				<label for="NomEquipe">Nom d'équipe: (Facultatif)</label>
+				<input type="text" name="NomEquipe" id="NomEquipe" tabindex="201"    />
+		</div>
+
 
 		<div id="Paradisc1" style="visibility:hidden; display:none" >	
             <h2 id="disc1" > </h2>
@@ -512,16 +441,10 @@ if ( isset($_SESSION['Login']))
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
 	<!---------- CHOIC TARIFS _______________-->
-	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
-		<tr style="background:#C0C0C0;padding:20px;" >
-			<td style="width: 40%;padding: 10px;padding-left: 20px;">
-				Choix*:
-			</td> 
-			<td>
-				<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
-			</td>
-		</tr>
-	</table>
+	<div class="input" style="width:100%;display:none; margin-top: 20px;" id="lblNbrEtape">
+	<label>Choix*:</label>
+	<select  style="width: 90%;" name="nbrEtape" id="nbrEtapeInsc" tabindex="410"  onchange="choiceOption(this.form)" ></select>
+	</div>	
 	<?php if (strlen ($val["InformationInscription"])>1)
 	{?>
 	<p>
@@ -773,7 +696,6 @@ if ( isset($_SESSION['Login']))
 			<p id="lblInformation" style=" display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a ">Aucune catégorie existe sur ce parcours pour cette année de naissance</p>	
 
 	 <div style="display :none;" ><label for="nom">Prix:</label> <input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF</div>
-	  <center>
 	  <?
 			$pathReglement = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/info/Règlement.pdf';
 			if (!file_exists($pathReglement))
@@ -781,8 +703,32 @@ if ( isset($_SESSION['Login']))
 				$pathReglement = 'Règlement.pdf';
 			}
 	  ?> 
+	  		<!-- lit de tous les code de réduction utiliser sérialiser -->
+		<input type="hidden"  name="strCodeReduction" id="strCodeReduction" value=""  />  
+		</form>	
+		<form id="formCode" method="get" action="VerifCodeReduction.php" style="visibility:collapse;">
+				<div style="display :none;" ><input type="hidden" name="NomCode" id="NomCode" style="display :none;"  readonly  /></p>
+				<input type="hidden" name="PrenomCode" id="PrenomCode"  style="display :none;" readonly /></p>
+				<input type="hidden" name="CourseCode" id="CourseCode" style="display :none;"  value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />
+				<input type="hidden" name="NbrEtapeCode" id="NbrEtapeCode"   />
+				<input type="hidden" name="PrixInscription" id="PrixInscription"  style="display :none;"  /></div>
+				<div class="classTitleWithButton">
+					<div class="input">
+						<label for="CodeID">Code de réduction:</label> 
+						<input type="text" name="Code" id="CodeID" tabindex="500"/>	
+					</div>
+					<span class="Button" onclick="VerifCode()"  >
+						<i class="fa fa-check"></i></br>
+					</span>	
+					
+					
+				</input>
+				</div>
+				<p id="InformationCode" style="display:none; padding:5px; border-style: solid; border-color: black; font-size:160%;"></p>	
+		</form>	
+	
 		<table 	style="width:100%; display:none; margin-top: 20px;" id="ParaReglement">
-			<tr style="background:#C0C0C0;padding:20px;" >
+			<tr style="background:#ddd;padding:20px;" >
 				<td style="width: 40%;padding: 10px;padding-left: 20px;">
 					J'accepte le réglement 
 					<?echo '<a href="'.$pathReglement.'"target="_blank">ci-joint</a>'?>
@@ -793,7 +739,7 @@ if ( isset($_SESSION['Login']))
 			</tr>
 		</table>
 		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaPartenaire">
-			<tr style="background:#C0C0C0;padding:20px;" >
+			<tr style="background:#ddd;padding:20px;" >
 				<td style="width: 40%;padding: 10px;padding-left: 20px;">
 					J'accepte de transmettre mes données à nos partenaires
 				</td> 
@@ -802,21 +748,7 @@ if ( isset($_SESSION['Login']))
 				</td>
 			</tr>
 		</table>
-		<!-- lit de tous les code de réduction utiliser sérialiser -->
-		<input type="hidden"  name="strCodeReduction" id="strCodeReduction" value=""  />  
-		</form>	
-		<form id="formCode" method="get" action="VerifCodeReduction.php" style="visibility:collapse;">
-				<div style="display :none;" ><input type="hidden" name="NomCode" id="NomCode" style="display :none;"  readonly  /></p>
-				<input type="hidden" name="PrenomCode" id="PrenomCode"  style="display :none;" readonly /></p>
-				<input type="hidden" name="CourseCode" id="CourseCode" style="display :none;"  value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />
-				<input type="hidden" name="NbrEtapeCode" id="NbrEtapeCode"   />
-				<input type="hidden" name="PrixInscription" id="PrixInscription"  style="display :none;"  /></div>
 
-				<p style="background-color : #D0D0D0;" ><label for="Code">Code de réduction:</label> <input type="text" name="Code" id="CodeID" tabindex="500"   />	
-			   <input class="ButtonResultat" type="button" style="cursor: pointer;  height:40px;font-size:100%; width: 160px;"  id="ButtonSend" value="Valider votre code" onclick="VerifCode()" >  </p>
-				<p id="InformationCode" style="display:none; padding:5px; border-style: solid; border-color: black; font-size:160%;"></p>	
-		</form>	
-	
 		<table style="background-color: #FFFFFF;width: 100%; display:none" id="TableReduction">
 			<tr>
 				<th>
@@ -828,7 +760,7 @@ if ( isset($_SESSION['Login']))
 			<tr>
 		</table>
 		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaTotalReduction">
-			<tr style="background:#C0C0C0;padding:20px;" >
+			<tr style="background:#ddd;padding:20px;" >
 				<td style="width: 40%;padding: 10px;padding-left: 20px;">
 					Total Options et Réductions:
 				</td> 
@@ -841,7 +773,7 @@ if ( isset($_SESSION['Login']))
 			</tr>
 		</table>
 		<table 	style="width:100%;display:none; margin-top: 20px;" id="ParaTotalPayer">
-			<tr style="background:#C0C0C0;padding:20px;" >
+			<tr style="background:#ddd;padding:20px;" >
 				<td style="width: 40%;padding: 10px;padding-left: 20px;">
 					Total a payer:
 				</td> 
@@ -854,7 +786,10 @@ if ( isset($_SESSION['Login']))
 			</tr>
 		</table>
  
-		 <span  class="ButtonResultat" type="button" style="display:none;font-size:36px"  id="ButtonSendFormulaire" onclick="check( )" style= " width: 100px; height: 50px">je m'inscris 
+		 <span  class="Button" type="button" 
+		 style="display:none;font-size:36px" 
+		  id="ButtonSendFormulaire" 
+		  onclick="check( )">je m'inscris 
 		</span>
 	</div>
 	</div>
@@ -883,7 +818,7 @@ if ( isset($_SESSION['Login']))
 				var sel = document.getElementById("Coureur");
 				
 				sel.options.add( new Option("Sélectionner un coureur", ""));
-				sel.setAttribute("style","background-color:#41e063");
+				//qsel.setAttribute("style","background-color:#41e063");
 				
 				ICounterCoureurs++;			
 			</script>
@@ -933,14 +868,9 @@ if ( isset($_SESSION['Login']))
 				document.getElementById("club").value = Coureur.Club ;
 				document.getElementById("pays").value =  Coureur.Pays ;
 				document.getElementById("date").value = Coureur.DateNaissance ;
-
-				document.getElementById("tdnom").innerHTML = Coureur.Nom;
-				document.getElementById("tdprenom").innerHTML = Coureur.Prenom ;
 				document.getElementById("tdemail").innerHTML = Coureur.Mail ;
 				document.getElementById("tdadresse").innerHTML = Coureur.Adresse ;
-				document.getElementById("tdzip").innerHTML = Coureur.NPA  ;
-				document.getElementById("tdville").innerHTML = Coureur.Localite ;
-				document.getElementById("tdclub").innerHTML = Coureur.Club ;
+				document.getElementById("tdzip").innerHTML = Coureur.NPA + " " +  Coureur.Localite  ;
 				document.getElementById("tdpays").innerHTML =  Coureur.Pays ;
 				document.getElementById("tddate").innerHTML = Coureur.DateNaissance ;
 
@@ -1378,28 +1308,23 @@ function isMail(txtMail)
 function CalculateTotalReduction()
 {
 	TotalReduction = 0;
-   
 	/******** INFormation des Option choisie **************/
-if (ArrayListReductionActif.length > 0)
-{
-	for(var iOptionReduc=0; iOptionReduc<ArrayListReductionActif.length; ++iOptionReduc) 
+	if (ArrayListReductionActif.length > 0)
 	{
-		if (ArrayListReductionActif[iOptionReduc].Code.length > 1)
+		for(var iOptionReduc=0; iOptionReduc<ArrayListReductionActif.length; ++iOptionReduc) 
 		{
-			
+			if (ArrayListReductionActif[iOptionReduc].Code.length > 1)
+			{
 				TotalReduction = TotalReduction+ parseFloat(ArrayListReductionActif[iOptionReduc].Value);
-	
+			}
 		}
 	}
-	
-}
 }
 
 function check() {
     /******** INFormation des Option choisie **************/
     if (ArrayListReductionActif.length > 0)
     {
-
         for(var iOptionReduc=0; iOptionReduc<ArrayListReductionActif.length; ++iOptionReduc) 
         {
             if (ArrayListReductionActif[iOptionReduc].Code.length > 1)
@@ -1407,59 +1332,62 @@ function check() {
                 // Concaténation Reduction
                 document.getElementById("strCodeReduction").value = document.getElementById("strCodeReduction").value + ArrayListReductionActif[iOptionReduc].Code +";"+ ArrayListReductionActif[iOptionReduc].Value+";"+ArrayListReductionActif[iOptionReduc].Type +"\n";
             }
-        }
-        
+        }  
     }
 
     f1 =  document.getElementById("Formulaire");
-
 	if (f1.nom.value.length<3) {
-		alert("Merci d'indiquer votre nom");
+		f1.nom.style.backgroundColor = "red";
 		f1.nom.focus();
 		return false;
 	}
-
-		if (f1.prenom.value.length<3) {
-		alert("Merci d'indiquer votre prÃ©nom");
+	if (f1.prenom.value.length<3) {
+		f1.prenom.style.backgroundColor = "red";
 		f1.prenom.focus();
 		return false;
 	}
-		if (!isMail(f1.email.value)) {
-		alert("Merci d'indiquer un mail valide pour que nous puissions vous rÃ©pondre");
+	if (!isMail(f1.email.value)) {
+		f1.email.style.backgroundColor = "red";
 		f1.email.focus();
 		return false;
 	}
-		if (f1.zip.value.length<4) {
-		alert("Merci d'indiquer votre npa");
+	if (f1.zip.value.length<4) 
+	{
+		f1.zip.style.backgroundColor = "red";
 		f1.zip.focus();
 		return false;
 	}
-			if (f1.ville.value.length<3) {
-		alert("Merci d'indiquer votre localite");
+
+	if (f1.ville.value.length<3) {		
+		f1.ville.style.backgroundColor = "red";
 		f1.ville.focus();
 		return false;
 	}
-		if (f1.NomDepart.value.length<1) {
-		alert("Merci d'indiquer votre dÃ©part");
+
+	if (f1.NomDepart.value.length<1) {
+		f1.nom_depart.style.backgroundColor = "red";
 		f1.nom_depart.focus();
 		return false;
 	}
 
 	if (f1.NomParcours.value.length<1) {
-		alert("Merci d'indiquer le type de votre parcours");
+		f1.NomParcours.style.backgroundColor = "red";
 		f1.NomParcours.focus();
 		return false;
 	}
-		if (f1.date.value.length!=4) {
-		alert("Merci d'indiquer votre annÃ©e de naissance ex: 1988");
+	f1.NomParcours.style.backgroundColor = "white";
+	if (f1.date.value.length!=4) {
+		f1.date.style.backgroundColor = "red";
 		f1.date.focus();
 		return false;
 	}
-		if (f1.sexe.value.length<1) {
-		alert("Merci d'indiquer votre sexe");
+	f1.date.style.backgroundColor = "white";
+	if (f1.sexe.value.length<1) {
+		f1.sexe.style.backgroundColor = "red";
 		f1.sexe.focus();
 		return false;
 	}
+	f1.sexe.style.backgroundColor = "white";
 	if ( f1.Reglement.checked == 0) {
 		alert("Merci d'accepter le réglement");
 		f1.Reglement.focus();
@@ -1469,7 +1397,7 @@ function check() {
 	// SI Equipe
 	if (ArrayParcours.length > 1)
 	{
-	var intselected = document.getElementById("NomParcours").selectedIndex-1;
+		var intselected = document.getElementById("NomParcours").selectedIndex-1;
 	}
 	else
 	{
@@ -1502,9 +1430,7 @@ function check() {
 				alert("Merci d'inqdiquer le Prénom du coureur du premier relais");
 				f1.PrenomDisc1.focus();
 				return false;
-			}
-			
-				
+			}		
 			if ( f1.NomDisc2.value.length <1) {
 				alert("Merci d'inqdiquer le Nom du coureur du deuxième relais");
 				f1.NomDisc2.focus();
@@ -1600,14 +1526,9 @@ function ChoixCoureurs(f)
 	document.getElementById("club").value = Coureur.Club ;
 	document.getElementById("pays").value =  Coureur.Pays ;
 	document.getElementById("date").value = Coureur.DateNaissance ;
-
-	document.getElementById("tdnom").innerHTML = Coureur.Nom;
-	document.getElementById("tdprenom").innerHTML = Coureur.Prenom ;
 	document.getElementById("tdemail").innerHTML = Coureur.Mail ;
 	document.getElementById("tdadresse").innerHTML = Coureur.Adresse ;
-	document.getElementById("tdzip").innerHTML = Coureur.NPA  ;
-	document.getElementById("tdville").innerHTML = Coureur.Localite ;
-	document.getElementById("tdclub").innerHTML = Coureur.Club ;
+	document.getElementById("tdzip").innerHTML = Coureur.NPA  + " "+ Coureur.Localite;
 	document.getElementById("tdpays").innerHTML =  Coureur.Pays ;
 	document.getElementById("tddate").innerHTML = Coureur.DateNaissance ;
 
@@ -1615,33 +1536,16 @@ function ChoixCoureurs(f)
 	{
 		document.getElementById("sexe").value = "Homme" ;
 		document.getElementById("tdsexe").innerHTML = 'Homme 	<i class="fa fa-male" style= "font-size: 30px;margin:2px;"></i> ';
-		document.getElementById("td_nom").style.background = "lightblue";
-		document.getElementById("td_prenom").style.background = "lightblue";
-		document.getElementById("td_email").style.background = "lightblue";
-		document.getElementById("td_adresse").style.background ="lightblue";
-		document.getElementById("td_zip").style.background = "lightblue";
-		document.getElementById("td_club").style.background = "lightblue";
-		document.getElementById("td_pays").style.background = "lightblue";
-		document.getElementById("td_date").style.background = "lightblue";
-		document.getElementById("td_sexe").style.background = "lightblue";
+		document.getElementById("tdsexe").style.background = "lightblue";
 	}
 	else
 	{
 		
 		document.getElementById("sexe").value = "Dame" ;	
 		document.getElementById("tdsexe").innerHTML = 'Dame 	<i class="fa fa-female" style= "font-size: 30px;margin:2px;"></i>';			
-		document.getElementById("td_nom").style.background = "lightpink";
-		document.getElementById("td_prenom").style.background = "lightpink";
-		document.getElementById("td_email").style.background = "lightpink";
-		document.getElementById("td_adresse").style.background = "lightpink";
-		document.getElementById("td_zip").style.background ="lightpink";
-		document.getElementById("td_club").style.background = "lightpink";
-		document.getElementById("td_pays").style.background = "lightpink";
-		document.getElementById("td_date").style.background = "lightpink";
-		document.getElementById("td_sexe").style.background = "lightpink";
+		document.getElementById("tdsexe").style.background = "lightpink";
 	}
 
-	
 	if (ArrayParcours.length ==1 || f.NomParcours.value.length>0)
 	{
 		liste_depart(f) 
@@ -1942,25 +1846,20 @@ function ChoiceDepart(f)
 							break; // Arret de l'ajout des zone après la première zone trouver // attention mettre le fichier dans l'ordre 
 						}
 					}
-				
+
+					document.getElementById("lblNbrEtape").style.display  = "block" ;
 					if (j > 1)
 					{
-						document.getElementById("lblNbrEtape").style.display  = "table" ;
-						document.getElementById("lblNbrEtape").style.visibility = "visible" ;
 						var z = new Option("Sélectionner", "" );
-						e.setAttribute("style","background-color:#41e063");
 						e.options.add( z,0);	
 						e.selectedIndex = 0;
 					}
 					else
 					{
-						document.getElementById("lblNbrEtape").style.display  = "table" ;
-						document.getElementById("lblNbrEtape").style.visibility = "visible" ;
 						choiceOption(f);
 					}
 					
 					document.getElementById("OptionReduction").replaceChildren();
-					
 					// Pour chaque reduction créer un élement dans la paragraphe de réduction
 					for (i = 0; i <  ParcoursObj.info.ListOptionReduction.ListItem.length; i++) 
 					{
@@ -1973,6 +1872,7 @@ function ChoiceDepart(f)
 						    var pReduc = document.createElement("p");
 							const list = pReduc.classList;
 							list.add("classTitleWithCheckbox");
+
                             var text = document.createElement("label");
                             var unit = document.createElement("label");
 
@@ -2043,9 +1943,9 @@ function ChoiceDepart(f)
 }
 function CheckDonation(checkbox ) 
 {
-     ArrayListReductionActif = [];
-     TotalReduction =  0;
-var input = document.getElementById("DonationIDinput");
+    ArrayListReductionActif = [];
+    TotalReduction =  0;
+	var input = document.getElementById("DonationIDinput");
 //input.setAttribute("value", "Donation;"+ input.value);
 	if (input.value > 0)
 	{	
@@ -2107,18 +2007,20 @@ function addValue(Text , Value)
 	
 function liste_depart(f) 
 {
+	console.log("function liste départ")
 /* Rendre invisible les différents champs lors de l'initialisation */
 	document.getElementById("lblNomEquipe").style.display  = "none" ;
+	document.getElementById("lblDepart").style.display  = "none" ;
 	document.getElementById("Paradisc1").style.display  = "none" ;
 	document.getElementById("Paradisc2").style.display  = "none" ;
 	document.getElementById("Paradisc3").style.display  = "none" ;
 	document.getElementById("Paradisc4").style.display  = "none" ;
-	document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
+	document.getElementById("lblNomEquipe").style.display  = "none" ;
 
-	document.getElementById("Paradisc1").style.visibility = "hidden" ;
-	document.getElementById("Paradisc2").style.visibility = "hidden" ;
-	document.getElementById("Paradisc3").style.visibility = "hidden" ;
-	document.getElementById("Paradisc4").style.visibility = "hidden" ;
+	document.getElementById("Paradisc1").style.display  = "none" ;
+	document.getElementById("Paradisc2").style.display  = "none" ;
+	document.getElementById("Paradisc3").style.display  = "none" ;
+	document.getElementById("Paradisc4").style.display  = "none" ;
 	
 	var sel = document.getElementById("NomDepart");
 	var lbl = document.getElementById("lblDepart");
@@ -2133,10 +2035,8 @@ function liste_depart(f)
 				
 		if (f.date.value.length==4)
 		{
-			
 			if (f.sexe.value.length>0)
 			{
-
 				if (ArrayParcours.length > 1)
 				{
 					var intselected = document.getElementById("NomParcours").selectedIndex-1;
@@ -2172,12 +2072,12 @@ function liste_depart(f)
 							// Si Catégorie possible pour la personne choisie
 							if ((sexe== Cat.SexeCategorie._Value || Cat.SexeCategorie._Value == "M") &&  (  parseInt(f.date.value) >= Cat.debutAnnee._Value ) && (parseInt(f.date.value)<=  Cat.finAnnee._Value ))
 							{
+						
 								sel.options.add( new Option(Cat.NomCategorie._Value+" "+Cat.debutAnnee._Value+" - "+Cat.finAnnee._Value+ " " + DepartObj.info.Distance._Value,iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value));
 						
 								ICounterCat++;
 							}
 						}
-					
 					}
 				}
 				var lblinfo = document.getElementById("lblInformation"); 
@@ -2191,7 +2091,6 @@ function liste_depart(f)
 					document.getElementById('date').style.backgroundColor="#fa8a8a";
 					document.getElementById('NomParcours').style.backgroundColor="#fa8a8a";
 					lblinfo.style.display = "block" ;
-					lblinfo.style.display  = "block" ;
 				 
 				// ajoute le noeud texte au nouveau div crÃ©Ã©
 				//	Div.value = "Aucune catÃ©gorie existe sur ce parcours pour cette annÃ©e de naissance";
@@ -2202,7 +2101,7 @@ function liste_depart(f)
 					bpPartenaire.style.display = "table" ;
 					bpSend.style.display = "block" ;
 					lblinfo.style.display = "none" ;
-					sel.style.display = "block" ;
+					lbl.style.display = "block" ;
 					lblinfo.style.display  = "none" ;
 					document.getElementById('date').style.backgroundColor="white";
 					document.getElementById('NomParcours').style.backgroundColor="white";
@@ -2225,12 +2124,12 @@ function liste_depart(f)
 			}
 			else
 			{
-				sel.style.visibility = "hidden" ;
+				sel.style.style.display  = "none" ;
 			}
 		}
 		else
 		{
-			sel.style.visibility = "hidden" ;
+			sel.style.style.display  = "none" ;
 			if (f.date.value.length>1)
 			{
 				alert("Merci d'indiquer votre annÃ©e de naissance ex: 1988");
@@ -2240,21 +2139,10 @@ function liste_depart(f)
 	}
 	else
 	{
-		sel.style.visibility = "hidden" ;
+		lbl.style.display  = "None" ;
 	}
-
-	if (sel.style.visibility == "visible")
-	{
-		//sel.style.display  = "block" ;
-		lbl.style.display  = "table" ;
-	}
-	lbl.style.visibility =	sel.style.visibility;
 }
-
 </script>
-
-
-
 <!---*************************************************
                 Liste des parcours de la course
 *********************************************************!---->
@@ -2325,7 +2213,6 @@ foreach ($files1  as $key => $Parcours)
 					
 							if (strlen($Etape) >2 && is_dir($pathFolderEtape)&& $Etape  != "info" )
 							{
-									
 								// Lecture du fichier info.txt de l'étape 	
 								$pathFileInfoEtape = $pathFolderEtape.'/info.json';
 								if (file_exists($pathFileInfoEtape))
@@ -2366,25 +2253,20 @@ foreach ($files1  as $key => $Parcours)
                     }
                 }	
             }
-              
-                    //***************** NOMBRE DE COUREUR INSCRIT DANS LE DEPART Pour zone de tarif **********
-
-                    // Nombre de coureur dans la base de donnée
-                    $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$Parcours. '\'ORDER  BY NomDepart ASC,nom ASC';
-
-                    $result = mysqli_query($con,$sql);
-                    $NumberCoureur =mysqli_num_rows($result);
-                ?>
-                <script>
-                    Parcours.NombreCoureurInscrit = <?php echo json_encode($NumberCoureur ); ?>;
-                    console.log("Nombre coureur parcours; " + Parcours.NombreCoureurInscrit);
-                    console.log(Parcours);
-                </script>
-
-            <script>
+			//********************************************************************************
+			// 		 NOMBRE DE COUREUR INSCRIT DANS LE DEPART Pour zone de tarif 
+			// 							Limite de coureur
+			// ********************************************************************************
+			// Nombre de coureur dans la base de donnée
+			$sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$Parcours. '\'ORDER  BY NomDepart ASC,nom ASC';
+			$result = mysqli_query($con,$sql);
+			$NumberCoureur =mysqli_num_rows($result);?>
+			<script>
+				Parcours.NombreCoureurInscrit = <?php echo json_encode($NumberCoureur ); ?>;
+				console.log("Nombre coureur parcours; " + Parcours.NombreCoureurInscrit);
+				console.log(Parcours);
                 Parcours.ArrayDepart =ArrayDepart;
                 ArrayParcours.push(Parcours);
-                
             </script><?php
         }
     }
@@ -2408,12 +2290,12 @@ function ShowPopuAddMember()
 	var page = document.getElementById("PageFormulaire");
 	page.style.opacity = "0.2";
 }
-console.log(ArrayParcours);
+
 for(var Parcours=0; Parcours<ArrayParcours.length; ++Parcours) 
 {
     if (typeof ArrayParcours[Parcours].ArrayDepart != "undefined")
     {
-        addValue(ArrayParcours[Parcours].info.Nom._Value , ArrayParcours[Parcours].nom) ;
+      addValue(ArrayParcours[Parcours].info.Nom._Value , ArrayParcours[Parcours].nom) ;
     }
     else
     {
@@ -2422,22 +2304,18 @@ for(var Parcours=0; Parcours<ArrayParcours.length; ++Parcours)
 }
 var sel = document.getElementById("NomParcours");
     if (ArrayParcours.length >1)
-        {
+    {
             var opt = new Option('Sélectionner', '');
-            sel.setAttribute("style","background-color:#41e063");
+            //sel.setAttribute("style","background-color:#41e063");
             sel.insertBefore(opt, sel.firstChild);
             sel.options[0].setAttribute("selected", "selected");
             sel.ReadOnly = false;
-            
-
     }
     else
     {
-            sel.ReadOnly = true;
-            var f = document.getElementById("Formulaire");
-            
-            liste_depart(f) 
-        
+        sel.ReadOnly = true;
+        var f = document.getElementById("Formulaire");
+        liste_depart(f)  
     }
 // Quand on change la valeur des buttons radios du choix Equipe
     var radios = document.querySelectorAll('input[type=radio][name="Equipe"]');

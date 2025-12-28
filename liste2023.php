@@ -114,7 +114,7 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. 
 		$NomDepartTampon = $donnees['NomDepart'] ;
 	?>
 	<h2 style ='margin-left :5%'> 
-        <?php echo $donnees['parcours']   ?> 
+        <?php echo substr($donnees['parcours'],2)   ?> 
     </h2>
     <?php
     if ( $donnees['NomDepart'] != $donnees['parcours']   )

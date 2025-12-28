@@ -7,11 +7,10 @@
 else
 {
 	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-
 	if (!$con)
 	{
 		print( -2);	
-	die('Could not connect: ' . mysql_error());
+		die('Could not connect: ' . mysql_error());
 	}
 	else
 	{
@@ -49,8 +48,6 @@ else
 		{
 			print(-4);
 		}
-	
-
 	}
 }
 ?>

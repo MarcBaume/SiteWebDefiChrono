@@ -3,17 +3,15 @@
 <head>
 	<title>Défi Chrono</title>
 	<meta charset="utf-8">
-			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
-	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" title="defaut" media="screen" href="../css/style.css" type="text/css"/>
-	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-	 </script>
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	 <script type="text/javascript" src="https://media.payrexx.com/modal/v1/modal.min.js"></script>
- <script src="../js/prototype.js" ></script><script>
-
+ 	<script src="../js/prototype.js" ></script>
+<script>
 	// Initalisation de variable
 	var TotalReduction = 0;
 	var TotalTax = 0;
@@ -27,7 +25,16 @@
 	{
 		console.log("fundeleteInscription : " +id)
 		document.getElementById('idFormDeletePanier' ).value= id;
-		document.getElementById('formDelete' ).submit();
+		$('formDelete').request({
+			onComplete: function(transport){
+				val =transport.responseText.evalJSON();
+				console.log(val);	
+				if (val== 10)
+				{
+					location.reload();
+				}
+			}
+		});
 	}
 		
 	function funModification(id,Champ)
@@ -48,9 +55,9 @@
 				}
 			});
 		
-				document.getElementById("ChampModification").value =  'Prenom'+Champ;
-				document.getElementById("ValueModification").value = document.getElementById('Prenom'+Champ+id).value;
-			
+			document.getElementById("ChampModification").value =  'Prenom'+Champ;
+			document.getElementById("ValueModification").value = document.getElementById('Prenom'+Champ+id).value;
+		
 				// Appelle fonction php pour vérifier que le coupon existe
 			$('formModif').request({
 			onComplete: function(transport){
@@ -97,6 +104,7 @@
 	{
 		window.location.href = linkAccept;
 	}
+
 	function AddInscription()
 	{
 		document.getElementById("AddNewInscription").submit();
@@ -105,7 +113,6 @@
 	{
 		if (Total != null && document.getElementById("PrixTotal")!= null && document.getElementById("IDPayresxx")!= null)
 		{
-				
 				total = parseFloat(document.getElementById("PrixTotal").value);
 				string1 = "https://defichrono.payrexx.com/fr/vpos?purpose="+order+
 				"&amount="+ total  +"&invoice_currency=1&contact_forename="+
@@ -151,8 +158,8 @@
 				log = document.getElementById("LoginUpdateRegister").value;
 				logLight = document.getElementById("LoginLightUpdateRegister").value;
 				order =  document.getElementById("OrderIDPayrexx").value;
-				strLinkAccept =   "https://juradefichrono.ch/admin/PaiementAccepted.php?Login="+log +"&ID="+order;
-				strLinkRefused =  "https://juradefichrono.ch/admin/PaiementDecliened.php?Login="+log+"&ID="+order;
+				strLinkAccept =   "https://defichrono.ch/admin/PaiementAccepted.php?Login="+log +"&ID="+order;
+				strLinkRefused =  "https://defichrono.ch/admin/PaiementDecliened.php?Login="+log+"&ID="+order;
 				console.log(strLinkAccept);
 				ButtonPayPayrexx( order,log,logLight);
 
@@ -245,7 +252,7 @@ if ( isset($_SESSION['Login']))
 					{?>
 							<td>
 							<a><span> </span><button type ="button" style="float:right; margin :5px;"
-							onclick="fundeleteInscription('<?php echo $donnees ['ID'] ?>' )">
+							onclick="fundeleteInscription('<?php echo $donnees['ID'] ?>' )">
 								<i class="fa fa-trash" style= "font-size: 30px;margin:5px;color: #FF0000;"></i>
 							</button></a>
 							
@@ -866,7 +873,7 @@ else
 </div>
  
 </div>
-	<form method="post" id="formDelete" action="DeletePanier.php">
+	<form method="get" id="formDelete" action="DeletePanier.php">
 		<input type="text" name="idFormDeletePanier" id="idFormDeletePanier"   value= '' />
 	</form>
 </body>
@@ -895,6 +902,7 @@ else
 				window.location.reload()
 				//location.href =<?php echo json_encode($StrRefused); ?>+ "&StatusPaiement=" + transaction.status.toString();		
 			}
+			console.log(location.href);
 		}
 	});
 </script>

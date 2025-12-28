@@ -1,18 +1,36 @@
 <?php
+  // On se connecte à MySQL
+$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
 
-try
+if (!$con)
 {
- 
-	$bdd = new PDO('mysql:host=dxvv.myd.infomaniak.com;dbname=dxvv_jurachrono','dxvv_christopheJ','er3z4aet1234');
-	$req = $bdd->prepare("DELETE FROM inscription WHERE ID =:ID");
-	$req->execute(array(
-	"ID" => $_POST["ID"]
-	));
-	header("location: Pannier.php"); // Redirecting To Other Page
+
+     die('Could not connect: ' . mysql_error());
+     print(-3);
 
 }
-catch(Exception $e)
+else
 {
-    die('Erreur : '.$e->getMessage());
+     try
+     {
+          mysqli_select_db($con ,'dxvv_jurachrono' );
+          $sql = 'DELETE FROM inscription WHERE ID=\''.$_REQUEST['idFormDeletePanier'].  '\'';
+          
+          if (mysqli_query($con,$sql))
+          {
+               print(10); 
+     	  }
+          else
+          { 
+               print(-2);
+          }
+     }
+     catch(Exception $e)
+     {
+          print(-1);
+     }    
+
 }
+
+
 ?>

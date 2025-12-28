@@ -416,6 +416,21 @@ width:100%;
   min-height: 80px;
   color: #3D6CA4;
 }
+.Button{
+ padding: 10px;
+ font-size:180%;
+  text-align: Center;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: 1px solid #3D6CA4;
+  background: #fff;
+  cursor: pointer;
+  display: inline-block;
+  min-width:40px;
+  margin:10px;
+  min-height: 40px;
+  color: #3D6CA4;
+}
 .ButtonResultatSelected{
   text-align: Center;
   vertical-align: middle;
@@ -739,6 +754,7 @@ margin: 10px;
    text-align: Left;
  /*background: rgba(36, 174,232, 0.25);  Une couleur de fond pour le corps */
  }
+
  #formulaire
  {
 
@@ -761,6 +777,41 @@ label {
   display: block;
   margin: 0 0 3px 0;
   font-weight: 500;
+}
+.classPara
+{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+.classPara label
+{
+  font-size: 16px;
+}
+.classPara a
+{
+      background-color: #d6d6d6;
+  font-size: 24px;
+  padding: 5px;
+}
+.classTitleWithButton 
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.classTitleWithCheckbox 
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  padding: 2px;
+  background-color: #ddd;
 }
 .input 
 {

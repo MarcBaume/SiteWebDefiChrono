@@ -854,7 +854,7 @@ if ( isset($_SESSION['Login']))
 			</tr>
 		</table>
  
-		 <span  class="ButtonResultat" type="button" style="display:none;read-only:false;font-size:36px"  id="ButtonSendFormulaire" onclick="check( )" style= " width: 100px; height: 50px";>je m'inscris 
+		 <span  class="ButtonResultat" type="button" style="display:none;font-size:36px"  id="ButtonSendFormulaire" onclick="check( )" style= " width: 100px; height: 50px">je m'inscris 
 		</span>
 	</div>
 	</div>
@@ -1971,6 +1971,8 @@ function ChoiceDepart(f)
 						{
 							
 						    var pReduc = document.createElement("p");
+							const list = pReduc.classList;
+							list.add("classTitleWithCheckbox");
                             var text = document.createElement("label");
                             var unit = document.createElement("label");
 
@@ -2406,12 +2408,12 @@ function ShowPopuAddMember()
 	var page = document.getElementById("PageFormulaire");
 	page.style.opacity = "0.2";
 }
-
+console.log(ArrayParcours);
 for(var Parcours=0; Parcours<ArrayParcours.length; ++Parcours) 
 {
     if (typeof ArrayParcours[Parcours].ArrayDepart != "undefined")
     {
-        addValue(ArrayParcours[Parcours].nom , ArrayParcours[Parcours].nom) ;
+        addValue(ArrayParcours[Parcours].info.Nom._Value , ArrayParcours[Parcours].nom) ;
     }
     else
     {

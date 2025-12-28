@@ -12,15 +12,14 @@
  
  if ( strlen($_POST['DateCourse'])>0)
  {
- $DateCourse =  $_POST['DateCourse'];
- $Date =  date_parse($_POST['DateCourse']);
- $ANNEE_COURSE = $Date['year']; 
- $Month = $Date['month']; 
- $Day = $Date['day']; 
- 
- //$ANNEE_COURSE = $_POST['annee_course'];
- $NOM_COURSE = $_POST["NomCourse"];
- $Nbr_etape =  $_POST["NbrEtape"] ;
+    $DateCourse =  $_POST['DateCourse'];
+    $Date =  date_parse($_POST['DateCourse']);
+    $ANNEE_COURSE = $Date['year']; 
+    $Month = $Date['month']; 
+    $Day = $Date['day']; 
+    //$ANNEE_COURSE = $_POST['annee_course'];
+    $NOM_COURSE = $_POST["NomCourse"];
+    $Nbr_etape =  $_POST["NbrEtape"] ;
  
  }
  else if  ( strlen($_GET['DateCourse'])>0)

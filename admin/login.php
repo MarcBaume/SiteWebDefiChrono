@@ -99,7 +99,7 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 			$annee = $date['year'];?>
 			<td>
 
-				<form method="get" action ="modif_informations.php">
+				<!--<form method="get" action ="modif_informations.php">
 					 <input type="hidden" name="idRace" id="idRace" tabindex="10"  size="60"  value= '<?php echo $val ["ID"] ?>' />
 					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
 					<span class="dot">
@@ -108,7 +108,7 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 					</span>
 					</button></a>
 				</form>
-				<!--<form method="get" action ="../formulaireV3.php">
+				<form method="get" action ="../formulaireV3.php">
 					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
 					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
 					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />

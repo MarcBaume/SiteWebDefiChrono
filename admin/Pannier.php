@@ -177,17 +177,12 @@
 </br>
 <?	include("MenuMember.php"); ?>
 <div id="corps">
-</form>
 <?php 
 if ( isset($_SESSION['Login']))
 {?>
 	<script>
 	Login = 	<?php echo json_encode($_SESSION["Login"]); ?>;
 	</script>
-
-	</br>
-	<h3  class="title1"> <?php  echo"Vos inscriptions : ". $_SESSION['Login'] ?> </h3>
-	</br> 
 	<?php
 	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
 	mysqli_select_db($con ,'dxvv_jurachrono' );
@@ -211,7 +206,7 @@ if ( isset($_SESSION['Login']))
 				<th > Nom </th>
 				<th width="15%"> Parcours </th>
 				<th width="15%">  Option</th>
-				<th width="15%">  Prix</th>
+				<th width="100px">  Prix</th>
 				<!--<th width="15%">  Payer</th>-->
 			</tr>
 			
@@ -291,7 +286,7 @@ if ( isset($_SESSION['Login']))
 			<label for="">Prix total inscription</label>
 		</td>
 		<td>
-		<input type="text"  name="idTotalInscription" id="idTotalInscription"  readonly  >
+		<input style="width:100px" type="text"  name="idTotalInscription" id="idTotalInscription"  readonly  >
 		</td>
 		<td>
 			CHF
@@ -302,7 +297,7 @@ if ( isset($_SESSION['Login']))
 			<label for="">Frais de traitement 1CHF + 2%</label>
 		</td>
 		<td>
-		 <input type="text"  name="PrixTax" id="PrixTax" readonly  />
+		 <input type="text" style="width:100px"  name="PrixTax" id="PrixTax" readonly  />
 		</td>
 		<td>
 			CHF
@@ -313,11 +308,13 @@ if ( isset($_SESSION['Login']))
 			<label for="">Total</label>
 		</td>
 		<td>
-			<input type="text"  name="PrixTotal" id="PrixTotal"   readonly  />
+			<input type="text" style="width:100px"  name="PrixTotal" id="PrixTotal"   readonly  />
 		</td>
 		<td>
 			CHF
 		</td>
+	</tr>
+</table>
 		<script>
 				document.getElementById("idTotalInscription").value = <?php echo json_encode($TotalInscriptionPhp ); ?> ;
 				document.getElementById("PrixTax").value = <?php echo json_encode($TotalTax ); ?> ; 
@@ -325,87 +322,41 @@ if ( isset($_SESSION['Login']))
 			
 		</script>
 
-	<table>
-		<tr>
-			<td style="width:25%"></td>
 			<?php
-				// Ajout d'inscrption à la course en cours
-				if ( strlen($_SESSION['DateCourse'])> 0  && strlen($_SESSION['Course'])>0)
-				{
-				?>
-
-					<td name="PCoureurValid" id="PCoureurValid">
-					<a  class="ButtonResultat"  style="cursor: pointer; Padding:10px ;color:black;  font-size:24px; text-decoration:none;" onclick="AddInscription()" >
-					<u  style="text-decoration:none;">
-						
-					<table>
-						<tr>
-							<td>
-								<i style= "font-size: 36px;margin:5px;" class="fa fa-plus" ></i>
-							</td>
-							<td>
-								<a style= "font-size: 20px;margin:5px;">
-								Ajouter d'autre inscription à
-								<?php echo $_SESSION['Course'] ?>
-								</a>
-							</td>
-						</tr>
-					</table>
-					
-			 		</u>
-					</a>
-						<form method="get" id="AddNewInscription" action="../formulaire2023.php">
-							<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_SESSION['DateCourse'] ?>' />
-							<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_SESSION['Course']?>' />
-							<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_SESSION['Nbretape'] ?>' />
-						</form>
-					</td>
-				<?php
-				}
-				?>
+			// Ajout d'inscrption à la course en cours
+			if ( strlen($_SESSION['DateCourse'])> 0  && strlen($_SESSION['Course'])>0)
+			{
+			?>
+			<div  class="Button"  style="cursor: pointer; Padding:10px ;color:black;  font-size:24px; text-decoration:none;" onclick="AddInscription()" >
+						<i class="fa fa-plus" ></i>
+						<a>
+						Ajouter une autre inscription à
+						<?php echo $_SESSION['Course'] ?>
+						</a>
+					<form method="get" id="AddNewInscription" action="../formulaire2023.php">
+						<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_SESSION['DateCourse'] ?>' />
+						<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_SESSION['Course']?>' />
+						<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_SESSION['Nbretape'] ?>' />
+					</form>
+			</div>		
+			<?php
+			}
+			?>
 			<!-- Afficher seulement si il y a des inscriptions gratuites !-->
-			<td style="display:none;  height:50px;text-align: center;vertical-align: middle;" id="IDValide" >
-				<a  class="ButtonResultat"  style="cursor: pointer; Padding:10px ;color:black;  font-size:36px; text-decoration:none;" onclick="ValidInscription()" >
-					<table>
-						<tr>
-							<td>
-								<i style= "font-size: 36px;margin:5px;" class="fa fa-check" ></i>
-							</td>
-							<td>
-								<a style= "font-size: 24px;margin:5px;">
-								Valider mes inscriptions
-								</a>
-							</td>
-						</tr>
-					</table>
-				</a>
-			</td>
+			 <div class="Button" onclick="funValidPaiement()" style="display:none;"id="IDValide">   
+				<i style= "font-size: 36px;margin:5px;" class="fa fa-check" ></i>
+				<a style= "font-size: 24px;margin:5px;">
+					Valider mes inscriptions
+				</a>			
+			</div>
 			<!-- Afficher seulement si il y a des inscriptions payantes-->
-			<td onclick="funValidPaiement()" style="height:50px;text-align: center;vertical-align: middle;" >
-				<a  class="ButtonResultat"  style="cursor: pointer; Padding:10px ;color:black;  font-size:36px; text-decoration:none;" >			
-					<table>
-						<tr>
-							<td>
-								<i style= "font-size: 36px;margin:5px;" class="fa fa-shopping-cart" ></i>
-							</td>
-							<td>
-								<a style= "font-size: 24px;margin:5px;">
-									Payer mes inscriptions
-								</a>
-							</td>
-						</tr>
-					</table>
+			<div class="Button" onclick="funValidPaiement()">
+				<i style= "font-size: 36px;margin:5px;" class="fa fa-shopping-cart" ></i>
+				<a style= "font-size: 24px;margin:5px;">
+					Payer mes inscriptions
 				</a>
-			</td>
-			<td style="width:25%"></td>
-		</tr>
-	</table>
-			
-	</br>	
-
-	</table>
-	</br>
-	</br>
+			</div>
+		
 
 	<!--Formulaire et div invisible par l'utilisateur transfert des données pour la base de donnée inscriptions order id -->
 	<div  id="IDPayresxx" >

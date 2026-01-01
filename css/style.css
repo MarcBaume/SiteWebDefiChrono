@@ -155,7 +155,6 @@ a.Anchor {
   margin: auto; /* Pour centrer notre page */
   border: 0;
   float: right;
-  background: #BCDDFD;
    /* margin-bottom: 10px;   Idem pour le bas du navigateur */
 }
 .menu_vertical p
@@ -172,7 +171,6 @@ a.Anchor {
  margin: 0;
  border-right: 1px solid #00b4ff;
  text-decoration: none;
- vertical-align: center
 }
 
 .menu_vertical li a:hover { background-color: #FFFFFF; 
@@ -416,6 +414,7 @@ width:100%;
   color: #3D6CA4;
 }
 .Button{
+  box-shadow:  0 4px 4px 0 rgba(61, 108, 64, 0.1), 0 4px 4px 0 rgba(6, 108, 64, 0.09);
  padding: 10px;
  font-size:180%;
   text-align: Center;
@@ -556,7 +555,7 @@ width:auto;
     color: white;
   height: 30px;
     text-align: left;
-	  border-bottom: 1px solid #ddd;
+	  border-bottom: 1px solid #EBEBEB;
 }
 #TableauSponsors td
 {
@@ -564,7 +563,7 @@ width:auto;
   height: 15px;
     padding: 10px;
     text-align: Left;
- border-bottom: 1px solid #ddd;
+ border-bottom: 1px solid #EBEBEB;
 }
 #TableauSponsors tr:nth-child(even) {background-color: #f2f2f2;}
 #TableauResulat table
@@ -626,7 +625,7 @@ padding-left : 20px;
     color: white;
   height: 30px;
     text-align: left;
-	  border-bottom: 1px solid #ddd;
+	  border-bottom: 1px solid #EBEBEB;
 }
 
 #TableauResulat th
@@ -643,7 +642,7 @@ padding-left : 20px;
     padding: 10px;
     text-align: Left;
     vertical-align: middle;
- border-bottom: 1px solid #ddd;
+ border-bottom: 1px solid #EBEBEB;
 }
 .TableauResulat 
 {
@@ -655,7 +654,7 @@ padding-left : 20px;
 {
 
   margin: 10px;
-  background: #eee;
+  background: #EBEBEB;
   border: #bbb;
   border-style: solid;
   border-width: thin;
@@ -674,7 +673,7 @@ width:auto;
 padding-left : 20px;
   height: 30px;
     text-align: left;
-	  border-bottom: 1px solid #ddd;
+	  border-bottom: 1px solid #EBEBEB;
 }
 
 #TableauCat table
@@ -689,7 +688,7 @@ background: rgba(36, 174,232, 0.25);
   padding-left : 20px;
   padding: 10px;
   text-align: Left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #EBEBEB;
 }
 
 #TableauCat tr:nth-child(even) {background-color: #eee;}
@@ -706,7 +705,7 @@ background: rgba(36, 174,232, 0.25);
 
 #step input, #step textarea
 {
-background-color: #CCCCCC;
+background-color: #EBEBEB;
 }
 #image input
 {background-color:#FFFFFF;
@@ -762,13 +761,13 @@ margin: 10px;
 #formulaire p 
  {
 padding : 10px;
- background: #C0C0C0;
+ background: #EBEBEB;
  
  }
   h3
  {
 padding : 10px;
- background: #C0C0C0;
+ background: #EBEBEB;
  
  }
 

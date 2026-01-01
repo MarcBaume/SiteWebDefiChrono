@@ -242,7 +242,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	 $chemin= 'courses/'.$NOM_COURSE.$ANNEE_COURSE."/info/images/couverture.jpg";
 //	$chemin= 'images/CouvertureYetiTrail.png';
 	if (file_exists($chemin)) {
-		echo '<center><img style="margin-top :10px;margin-bottom :10px;width:100%" src="'.$chemin.'" alt=""   /></center>'; 
+		echo '<center><img style="margin-top :10px;max-height:300px; max-width:100%;margin-bottom :10px;" src="'.$chemin.'" alt=""   /></center>'; 
  }?>
  	<table  style="width:100%;Padding:0px;"  class="HeaderRace">
 		<tr style="width:100%">

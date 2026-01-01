@@ -76,7 +76,11 @@ if (strlen($ANNEE_COURSE ) > 0 )
 			{
 			?>
 			<form action ='<?php echo 'http://www.'. $Site ?>' >
-				<button type ="button" style="float:right; margin-right :10px;" onClick="checkForm(this.form)"  title="Information" data-toggle="tooltip" data-placement="right"  >Site Organisateur<img src="images/Siteweb.png" width="25"   ></button>
+				<button type ="button" 
+				style="float:right; margin-right :10px;"
+				 onClick="checkForm(this.form)" 
+				  title="Information" 
+				  data-toggle="tooltip" data-placement="right"  >Site Organisateur<img src="images/Siteweb.png" width="25"   ></button>
 			</form> 
 			<?php
 			}

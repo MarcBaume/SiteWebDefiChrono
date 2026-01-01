@@ -334,13 +334,13 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
                 }
             ?>
             </td>
-			<td style="Font-size:16px"> <?php echo $donnees['Nom']; ?></td>
-			<td  style="Font-size:16px"><?php echo $donnees['Prenom']; ?>    </td>
-			<td>
+			<td style="Font-size:18px"> <?php echo $donnees['Nom']; ?></td>
+			<td  style="Font-size:18px"><?php echo $donnees['Prenom']; ?>    </td>
+			<td style="Font-size:12px">
                 <?php echo $donnees['localite']; ?> </br>
               <b>  <?php echo $donnees['club']; ?> </b>
             </td>
-			<td > <?php echo $donnees['DateNaissance']; ?> </td>
+			<td  style="Font-size:12px"> <?php echo $donnees['DateNaissance']; ?> </td>
 			
 	
 			
@@ -349,7 +349,7 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
 		{?>
 			<td > <?php echo $donnees['NomEquipe']; ?></td><?
 		}?>
-					<td > <?php echo $donnees['NumCategorie']; ?> </td>
+					<td style="Font-size:12px"> <?php echo $donnees['NumCategorie']; ?> </td>
 		<?php	if ($val ["InscriptionWithPayment"] )
 		{
 		

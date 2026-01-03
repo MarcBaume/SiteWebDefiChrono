@@ -52,14 +52,7 @@
 
 
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-// Selecting Database
-mysqli_select_db($con ,'dxvv_jurachrono' );
-	
-if (!$con)
-{
-	die('Could not connect: ' . mysql_error());
-}
+	include("../../MysqlConnect.php");
 ?>
 <script>
 var ArCourreur = [] ;

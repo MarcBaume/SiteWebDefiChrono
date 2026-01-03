@@ -27,16 +27,7 @@ function majuscules($inChaine)
 }
 
   // On se connecte à MySQL
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-
-if (!$con)
-{
-
-     die('Could not connect: ' . mysql_error());
-	 print(-3);
-}
-else
-{
+	include("../../MysqlConnect.php");
      try
      {
           mysqli_select_db($con ,'dxvv_jurachrono' );
@@ -97,5 +88,4 @@ else
      {
 		
      }    
-
-}?>
+?>

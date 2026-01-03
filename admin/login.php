@@ -40,15 +40,7 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	}?>
 </h3>
   
-   <?php
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	if (!$con)
-	{
-	  die('Could not connect: ' . mysql_error());
-	}
-	else
-	{
-	  mysqli_select_db($con ,'dxvv_jurachrono' );
+   <?php	include("../MysqlConnect.php");
 	?>
 	<table border="0">
 	<th width="10%"> Date</th>
@@ -181,7 +173,7 @@ $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet12
 	
 	<?
     }
-}
+
 else
 {?>
 	<form method="post" name="FormConnect1" id ="FormConnect1" action="CibleLoginV2b.php">

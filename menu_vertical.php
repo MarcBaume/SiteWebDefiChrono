@@ -43,28 +43,21 @@ if (strlen($ANNEE_COURSE ) > 0 )
 {
 
 /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-   if (!$con)
-  {
-		die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-		mysqli_select_db($con ,'dxvv_jurachrono' );
-		// ***************************************** AFFICHAGE BASE de Donnée ***************************************
-		$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_GET["nom_course"].'\'AND Date=\''.$DateCourse.'\'OR DateEtape2=\''.$DateCourse.'\'OR DateEtape3=\''.$DateCourse.'\'OR DateEtape4=\''.$DateCourse.'\'OR DateEtape5=\''.$DateCourse.'\'' ; 
-		$result = mysqli_query($con,$sql);
-		if ($result && mysqli_num_rows($result) > 0) 
+	include("MysqlConnect.php");
+	// ***************************************** AFFICHAGE BASE de Donnée ***************************************
+	$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$_GET["nom_course"].'\'AND Date=\''.$DateCourse.'\'OR DateEtape2=\''.$DateCourse.'\'OR DateEtape3=\''.$DateCourse.'\'OR DateEtape4=\''.$DateCourse.'\'OR DateEtape5=\''.$DateCourse.'\'' ; 
+	$result = mysqli_query($con,$sql);
+	if ($result && mysqli_num_rows($result) > 0) 
+	{
+		
+		// output data of each row
+		while($val1 = mysqli_fetch_assoc($result)) 
 		{
-			
-			// output data of each row
-			while($val1 = mysqli_fetch_assoc($result)) 
-			{
-				$Site = $val1['Site'];
-				$val = $val1;
-			}
+			$Site = $val1['Site'];
+			$val = $val1;
 		}
 	}
+	
 
  session_start();
  

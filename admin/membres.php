@@ -134,16 +134,6 @@
 	</form>
  
    <?php
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	if (!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	else
-	{
-		mysqli_select_db($con ,'dxvv_jurachrono' );
-		// Create table de donnée du nom de parcours
-		mysqli_select_db($con,$row['Database']);
 
 		$sql = 'SELECT * FROM Membres  WHERE LoginCompte=\''.$_SESSION['Login'].'\''; 
 
@@ -274,7 +264,7 @@
             </br>Il n'existe aucun coureur pour ce compte, ajouter un coureur afin de pouvoir l'inscrire à une course</br>
         <?php
         }
-    }
+    
 
 /*******************************************************************************************************************
  * 

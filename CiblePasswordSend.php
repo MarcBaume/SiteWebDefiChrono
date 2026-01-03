@@ -17,15 +17,7 @@ if (isset($_POST['Login']))
     $login = $_POST['Login'];
 	$OrderID = $_POST['Login']. date("YmdHis");
 	
-		// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	if (!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	// Selecting Database
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-	
+	include("MysqlConnect.php");
 	// Modifier les Informations en ajoutant Le Order ID dans la Colonne de la table Login Password En changement
 	$sql = 'UPDATE Login SET Status = \''.$OrderID.'\'  WHERE Login=\''.$login.'\''; 
 	if (!mysqli_query($con,$sql))

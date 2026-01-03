@@ -138,19 +138,11 @@ return ("#"+r+g+b);
 </head>
 <body>
 	<?php
-
-  include("Header2023.php"); 
+include("Header2023.php"); 
+include("MysqlConnect.php");
   ?>
 	<?php
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-{
-  die('Could not connect: ' . mysql_error());
-}
-else
-{
-  
-	mysqli_select_db($con ,'dxvv_jurachrono' );  
+
 	$sql = "SELECT * FROM Course ORDER BY Date DESC";
 	$result = mysqli_query($con,$sql);
 	if ($result && mysqli_num_rows($result) > 0) 
@@ -180,7 +172,7 @@ else
 		<?php
 		}
 	}
-}
+
 	?>
 	
 </body>

@@ -79,17 +79,13 @@ function ClickRows(event, id)
 
 if ( isset($_SESSION['Login']))
 {
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-// CODE ORDER ID
-$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
-/************************* POUR TEST *****************************/
-$OrderID = $LoginLight. date("YmdHis");
-$RaceJD = 'JuraDéfi2021';
-
-
-
-$sql2 = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION['Login'].'\' AND course=\''.$RaceJD.'\''; 
+	include("../MysqlConnect.php");
+	// CODE ORDER ID
+	$LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
+	/************************* POUR TEST *****************************/
+	$OrderID = $LoginLight. date("YmdHis");
+	$RaceJD = 'JuraDéfi2021';
+	$sql2 = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION['Login'].'\' AND course=\''.$RaceJD.'\''; 
 	
 	//echo $sql;
 	$result2 = mysqli_query($con,$sql2);

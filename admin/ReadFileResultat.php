@@ -1,19 +1,12 @@
 <?php
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-   if (!$con)
-  {
-		die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-		mysqli_select_db($con ,'dxvv_jurachrono' );
-		// ***************************************** AFFICHAGE BASE de Donnée ***************************************
+	include("../MysqlConnect.php");
+		// ***************************************** AFFICHAGE BASE de Donnï¿½e ***************************************
 			
 		$sql = 'DELETE * FROM classement  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\AND Etape =\''.$_GET["etape"] ; 
 		$result = mysqli_query($con,$sql);
 		if ($result) 
 		{
-			// Copie du fichier reçu par le formulaire
+			// Copie du fichier reï¿½u par le formulaire
 			if (isset($_FILES['FileResult'])) 
 			{
 				$source = $_FILES['FileResult']['tmp_name'];
@@ -22,7 +15,7 @@
 					die("erreur lors de la transmission du fichier");
 				}
 				if (!move_uploaded_file($source,$destination)) {
-					die("erreur lors du déplacement du fichier");
+					die("erreur lors du dï¿½placement du fichier");
 
 				}
 				$photo = $_FILES['FileResult']['name'];
@@ -31,10 +24,10 @@
 			//$req = $bdd->prepare('UPDATE `accueil` SET `photo`=? WHERE page=\''.$_POST["page"].'\'');
 			
 	
-			// Suppression de chaque ligne qui utilise le depart et la course Selectionné
+			// Suppression de chaque ligne qui utilise le depart et la course Selectionnï¿½
 			
 			
-			// Lecture Fichier Tampon Résultat
+			// Lecture Fichier Tampon Rï¿½sultat
 			
 				// 1 : on ouvre le fichier
 				$monfichier = fopen($destination, 'r+');
@@ -84,6 +77,6 @@
 			
 				echo "Erreur Mysql Delete";
 		}
-  }
+  
   
 ?>

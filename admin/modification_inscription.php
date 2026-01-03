@@ -1,16 +1,7 @@
 
 
 <?php
-
-    // On se connecte à MySQL
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../MysqlConnect.php");
 	// Create table de donnée du nom de parcours
 	mysqli_select_db($con,$row['Database']);
 
@@ -204,7 +195,7 @@ if (!$con)
 		echo "Error update : inscription Payer" . mysql_error();
 	  }
 		mysqli_close($con);
-  }
+  
 ?>
 <body onload="document.formulaire.submit();">
 	 <form  method="post" action ="listeInscriptionOrganisateur.php" name="formulaire" >

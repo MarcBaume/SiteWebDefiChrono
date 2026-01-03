@@ -22,11 +22,8 @@
 <?php
 if (isset($_POST['login']) AND isset($_POST['pass']))
 {
-// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	// Selecting Database
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-$login = $_POST["login"];
+	include("MysqlConnect.php");
+	$login = $_POST["login"];
 // Verifier si login pas existant
 	$sql = 'SELECT * FROM Login WHERE Login=\''.$login.'\'';
 	$result = mysqli_query($con,$sql);

@@ -20,15 +20,7 @@
 <div id="corps">
 <a>
  <?php
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-	  mysqli_select_db($con ,'dxvv_jurachrono' );
-
+	include("../MysqlConnect.php");
 	//  Récupération de l'utilisateur et de son pass hashé
 	$sql ='SELECT * FROM Login  WHERE Login=\''.$_POST["login1"].'\''; 
 	//'SELECT ID, pass FROM Login WHERE Login=\''.$_POST["login"].'\''; 
@@ -77,7 +69,7 @@ if (!$con)
 			
 			header("Location: ".$url);
 	}
-}
+
 ?>
 </a>
   </body>

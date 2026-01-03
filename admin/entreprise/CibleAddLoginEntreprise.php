@@ -7,19 +7,50 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../../css/style.css" type="text/css"/>
+	<script src="../../../js/prototype.js" ></script>
+<script src="../../../js/FonctionDefiChrono2.js?version = 1.0.0"></script>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 
     <body>
+ <?php
+// Inclure un fichier de configuration
+require_once '../../config.php'; 
 
-<?php
-  include("Header2023.php"); 
+include("HeaderEntreprise.php"); 
+echo("Test1");
+echo (KEY_CAPTCHA);
   ?>
 <div id="corps">
+<script>
+function ResultCaptcha()
+{
+	console.log("Captcha Result fonction")
+    $('FormResponseCaptcha').request({
+            onComplete: function(transport){
 
+                val =transport.responseText.evalJSON();
+                console.log(val);
+            }
+        });
+}
 
+	
+</script>
+<form method="post" id="FormResponseCaptcha" action="https://www.google.com/recaptcha/api/siteverify">
+	<input type="hidden" name="secret" id="secret"   value= '6LfTKiosAAAAAFVr_Cko0pyL2H1Nus8-MtSwPQcC' />
+	<input type="hidden" name="response" id="response"  value= '<?php echo $_POST['g-recaptcha-response'] ?>' />	
+</form>
+
+<script>
+	console.log("Start");
+	ResultCaptcha()
+</script>   
 <?php
+
+
+
 if (isset($_POST['login']) AND isset($_POST['pass']))
 {
     $login = $_POST['login'];
@@ -106,9 +137,9 @@ table {
 	
 	}
 
-}
 
- ?>    
+ ?> 
+ 
  </div>
     </body>
 </html>

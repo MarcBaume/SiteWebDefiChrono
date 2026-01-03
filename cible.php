@@ -48,19 +48,9 @@ $ligne1 =  file_put_contents($pathFile, $ligne,FILE_APPEND);
 //fclose($monfichier);
 }
 
+// On se connecte à MySQL
+include("MysqlConnect.php");
 
-    // On se connecte à MySQL
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-  
-  mysqli_select_db($con ,'dxvv_jurachrono' );
-}
-  
 //ajout inscription
 try
 {

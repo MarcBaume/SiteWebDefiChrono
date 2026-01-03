@@ -1,8 +1,10 @@
 <?php
 
+// Inclure un fichier de configuration
+require_once '../../config.php'; 
 
 // On se connecte à MySQL
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
+$con = mysqli_connect(HOSTNAME_DB, USER_DB, PASSWORD_DB);
 
 if (!$con)
 {
@@ -14,7 +16,7 @@ else
 {
      try
      {
-        mysqli_select_db($con ,'dxvv_jurachrono' );
+        mysqli_select_db($con ,NAME_DB );
 		$sql = 'UPDATE Entreprises SET NomEntreprise= \''.$_REQUEST["entreprise"].'\',
 		NomContact=\''.$_REQUEST["nom"].'\',
 		PrenomContact=\''.$_REQUEST["prenom"].'\',

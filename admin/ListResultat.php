@@ -263,8 +263,7 @@ function SelectCourseCoureur(CourseSelected,m,LenArray)
 
 if ( isset($_SESSION['Login']))
 {
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+		include("../MysqlConnect.php");
 // CODE ORDER ID
 $LoginLight =substr($_SESSION['Login'], 0 ,   strpos($_SESSION['Login'], "@") ) ;
 /************************* POUR TEST *****************************/

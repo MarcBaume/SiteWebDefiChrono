@@ -13,16 +13,7 @@ $NOM_COURSE = $_REQUEST["NomCourse"];
 }
 
   // On se connecte à MySQL
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-mysqli_select_db($con ,'dxvv_jurachrono' );
-if (!$con)
-{
-
-     die('Could not connect: ' . mysql_error());
-	 print(-3);
-}
-else
-{
+	include("../../MysqlConnect.php");
      try
      {
         if ($_REQUEST['num_dossard'] != "0")
@@ -205,6 +196,4 @@ else
      {
 		print(-2);
      }    
-
-}
 ?>

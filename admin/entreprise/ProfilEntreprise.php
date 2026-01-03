@@ -21,14 +21,7 @@ include("HeaderEntreprise.php");
 include("menuEntreprise.php"); 
 
 session_start();
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-   if (!$con)
-  {
-		die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-		mysqli_select_db($con ,'dxvv_jurachrono' );
+  	include("../../MysqlConnect.php");
 //	 $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY NomDepart ASC,Nom ASC';
 $sql = 'SELECT * FROM Entreprises  WHERE Login=\''.$_SESSION['Login']. '\'';
 	
@@ -39,7 +32,6 @@ $result = mysqli_query($con,$sql);
        $donnees = $donnees1 ;
     }
 }
-  }
 /*******************************************************************************************************************
  * 
  * Formulaire de donnée de l'entreprise

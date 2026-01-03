@@ -1,18 +1,7 @@
 
 
 <?php
-
-    // On se connecte à MySQL
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  print(-9999);
-  }
-  else
-  {
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-
+	include("../MysqlConnect.php");
 	// Si on ne modifie pas une dsiciple
 	if (strlen($_REQUEST["ChampModification"])>0)
 	{
@@ -34,5 +23,5 @@ if (!$con)
 		  print(99999);
 	  }
 	
-  }
+  
 ?>

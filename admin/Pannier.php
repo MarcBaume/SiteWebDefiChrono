@@ -184,8 +184,7 @@ if ( isset($_SESSION['Login']))
 	Login = 	<?php echo json_encode($_SESSION["Login"]); ?>;
 	</script>
 	<?php
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../MysqlConnect.php");
 	$Value = 'True';
 	$sql = 'SELECT * FROM inscription  WHERE Login=\''.$_SESSION["Login"].'\'AND Payer !=\'Payé\'AND Payer !=\'Bon\' AND PayementOnLine =\''.$Value.'\'';
 	$result = mysqli_query($con,$sql);

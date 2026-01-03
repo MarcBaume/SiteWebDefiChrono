@@ -13,8 +13,7 @@
 ______________________________________________________________________*/
 if ( strlen ($_REQUEST['strCodeReduction'])>2)
 {
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
- 
+	include("../MysqlConnect.php");
  // Deserialization de chaque code de réduction 
   $ArrCode = explode(';',$_REQUEST['strCodeReduction']);
   $i = 0;
@@ -25,8 +24,6 @@ if ( strlen ($_REQUEST['strCodeReduction'])>2)
 	  print(3);
 	$IDCode = 0;
 	// Nombre de coureur dans la base de donnée
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-	
 	$sql = 'SELECT * FROM CodeReduction  WHERE  Code = \''. $ArrCode[$i]. '\'';
 	
 	$result = mysqli_query($con,$sql);

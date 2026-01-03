@@ -37,87 +37,64 @@ function getURL( ValueFind, IDElement) {
 		}
 		
     }
-function getURL2( ValueFind,  ValueFind2,IDElement) {
-
-if (window.location.href.search(ValueFind)>-1 && window.location.href.search(ValueFind2)>-1)
+function getURL2( ValueFind,  ValueFind2,IDElement) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
-	document.getElementById(IDElement).classList.add("dotDisplayed");
-	document.getElementById(IDElement).classList.remove("dot");
 
+	if (window.location.href.search(ValueFind)>-1 && window.location.href.search(ValueFind2)>-1)
+	{
+		document.getElementById(IDElement).classList.add("dotDisplayed");
+		document.getElementById(IDElement).classList.remove("dot");
+	}
+	else
+	{
+		document.getElementById(IDElement).classList.add("dot");
+		document.getElementById(IDElement).classList.remove("dotDisplayed");
+	}
 }
-else
+
+function getOrURL2( ValueFind,  ValueFind2,IDElement) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
-	document.getElementById(IDElement).classList.add("dot");
-	document.getElementById(IDElement).classList.remove("dotDisplayed");
-}
-
-}
-function getOrURL2( ValueFind,  ValueFind2,IDElement) {
-
-if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1)
-{
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
-	document.getElementById(IDElement).classList.add("dotDisplayed");
-	document.getElementById(IDElement).classList.remove("dot");
-
-}
-else
-{
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
-	document.getElementById(IDElement).classList.add("dot");
-	document.getElementById(IDElement).classList.remove("dotDisplayed");
-}
+	if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1)
+	{
+		document.getElementById(IDElement).classList.add("dotDisplayed");
+		document.getElementById(IDElement).classList.remove("dot");
+	}
+	else
+	{
+		document.getElementById(IDElement).classList.add("dot");
+		document.getElementById(IDElement).classList.remove("dotDisplayed");
+	}
 
 }
 </script>
-
-	 <!--- Couverture --->
-
 <?php
  
 if ( strlen($_POST['DateCourse'])>0)
 {
-$DateCourse =  $_POST['DateCourse'];
-$Date =  date_parse($_POST['DateCourse']);
-$ANNEE_COURSE = $Date['year']; 
-$Month = $Date['month']; 
-$Day = $Date['day']; 
-
-//$ANNEE_COURSE = $_POST['annee_course'];
-$NOM_COURSE = $_POST["NomCourse"];
-$Nbr_etape =  $_POST["NbrEtape"] ;
+	$DateCourse =  $_POST['DateCourse'];
+	$Date =  date_parse($_POST['DateCourse']);
+	$ANNEE_COURSE = $Date['year']; 
+	$Month = $Date['month']; 
+	$Day = $Date['day']; 
+	//$ANNEE_COURSE = $_POST['annee_course'];
+	$NOM_COURSE = $_POST["NomCourse"];
+	$Nbr_etape =  $_POST["NbrEtape"] ;
 
 }
 else if  ( strlen($_GET['DateCourse'])>0)
 {
-$DateCourse =  $_GET['DateCourse'];
-$Date =  date_parse($_GET['DateCourse']);
-$ANNEE_COURSE = $Date['year']; 
-$Month = $Date['month']; 
-$Day = $Date['day']; 
-
-//$ANNEE_COURSE = $_GET['annee_course'];
-$NOM_COURSE = $_GET["NomCourse"];
-$Nbr_etape =  $_GET["NbrEtape"] ;
-
+	$DateCourse =  $_GET['DateCourse'];
+	$Date =  date_parse($_GET['DateCourse']);
+	$ANNEE_COURSE = $Date['year']; 
+	$Month = $Date['month']; 
+	$Day = $Date['day']; 
+	$NOM_COURSE = $_GET["NomCourse"];
+	$Nbr_etape =  $_GET["NbrEtape"] ;
 }
 
     session_start();
-/*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-   if (!$con)
-  {
-		die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	// Connection avec la base de donnée
+	include("MysqlConnect.php");
 	// ***************************************** AFFICHAGE BASE de Donnée ***************************************
 	if (strlen($NOM_COURSE)> 1)
 	{
@@ -464,8 +441,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				</td>
 					<?php
 				}
-				
-			}
+			
 		?>
 		</tr>		
 				</table>

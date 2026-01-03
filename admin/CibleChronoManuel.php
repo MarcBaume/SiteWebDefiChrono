@@ -12,10 +12,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1
 $result_array = array();
 if ( strlen ($_REQUEST['Dossard'])>0)
 {
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
- 
-	// Nombre de coureur dans la base de donnée
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../MysqlConnect.php");
 
 	$sql = 'INSERT INTO ChronoManuel (`Dossard`,`Depart`,`Temps`)
  VALUES  

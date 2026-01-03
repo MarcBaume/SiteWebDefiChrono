@@ -28,9 +28,7 @@ $_SESSION['Login'] =$_GET["Login"];
 	</br> 
 	<?php
 	
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	mysqli_select_db($con ,'dxvv_jurachrono' );
- 
+	include("../MysqlConnect.php");
  	$Value = 'True';
 	$sql = 'SELECT * FROM inscription  WHERE OrderPayement=\''.$_GET["ID"].'\'AND PayementOnLine =\''.$Value.'\'';
 	$result = mysqli_query($con,$sql);

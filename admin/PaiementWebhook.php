@@ -90,9 +90,7 @@ $status = $data["status"];
 echo $referenceId ;
 echo $status ;
 
-// https://defichrono.ch/admin/PaiementWebhook.php?transactionId=241115121940923842&status=test
-		$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-		mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../MysqlConnect.php");
 echo $_POST["transactionId"];
 echo $_POST["status"];
 $sql = 'SELECT * FROM inscription  WHERE  OrderPayement=\''.$transactionId.'\'';

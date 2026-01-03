@@ -27,15 +27,7 @@
 	<Input style="border:83E1FF 1px solid; border-radius: 15px; font-size:24px" type="texte"></input>
 </form>-->
 	<?php
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-{
-  die('Could not connect: ' . mysqli_error());
-  echo ('Contacter info@defichrono.ch et communiquer cette erreur :'. mysqli_error());
-}
-else
-{
-	mysqli_select_db($con ,'dxvv_jurachrono' );  
+	include("MysqlConnect.php");
 	$sql = "SELECT * FROM Course ORDER BY Date DESC";
 	$result = mysqli_query($con,$sql);
 	if ($result && mysqli_num_rows($result) > 0) 
@@ -151,7 +143,7 @@ else
 		<?php
 		}
 	}
-}
+
 	?>
 	
 </body>

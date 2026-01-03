@@ -20,11 +20,7 @@ class ClassEquipe
 }
 if ( strlen ($_REQUEST['NomEquipe'])>2)
 {
-  $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
- 
-	// Nombre de coureur dans la base de donnée
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-	
+	include("../MysqlConnect.php");
 	$sql = 'SELECT * FROM inscription  WHERE course=\''.$_REQUEST['Course'].  '\'  AND NomEquipe LIKE \''. $_REQUEST['NomEquipe']. '\'';
 	$a = array();
 	$result = mysqli_query($con,$sql);

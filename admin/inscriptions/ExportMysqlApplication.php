@@ -44,13 +44,7 @@ if (file_exists($filenameCSV))
 
  
   // On se connecte à MySQL
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
+	include("../../MysqlConnect.php");
 	mysqli_select_db($con ,'dxvv_jurachrono' );
 	
      $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'ORDER BY nom ASC';
@@ -108,7 +102,7 @@ readfile($filenameCSV);
 
 	//	 readfile($filename);
 
-  }
+  
 	?>
 	 
 	 

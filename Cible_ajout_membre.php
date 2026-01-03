@@ -16,16 +16,7 @@ if (isset($_POST['login']) AND isset($_POST['pass']))
 
     $login = $_POST['login'];
     $pass_crypte = password_hash($_POST['pass'], PASSWORD_DEFAULT); // On crypte le mot de passe
-
-	
-	// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	if (!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	// Selecting Database
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("MysqlConnect.php");
 	$sql = 'INSERT INTO Login (`Login`, `Password`,`Niveau`)
 	VALUES
 	("'.$login.'", 

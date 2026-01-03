@@ -33,13 +33,7 @@ if ( strlen ($_REQUEST['Code'])>2)
 {
 	// Déserialization de la liste des courses
 	$ArrCourse = explode(';',$_REQUEST['strListCourse']);
-	
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
- 
-
-
-	// Nombre de coureur dans la base de donnée
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("MysqlConnect.php");
 	
 	$sql = 'SELECT * FROM CodeReduction  WHERE   Code = \''. $_REQUEST['Code']. '\'';
 

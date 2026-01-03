@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
-	<title>Défi Chrono</title>
+	<meta property="og:description" content="chronomï¿½trage, chrono, jura, franches-montagnes, Jura dï¿½fi, course ï¿½ pied, Sport, Jura dï¿½fi chrono" />  
+	<title>Dï¿½fi Chrono</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,26 +16,10 @@
   ?>
 </br>
 <?	include("MenuMember.php"); 
+	include("../MysqlConnect.php");
 
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-  
-  mysqli_select_db($con ,'dxvv_jurachrono' );
-  
-
-   
-    // On récupère tout le contenu de la table camp
-	
 	 $sql = 'SELECT * FROM Course  WHERE Nom_Course=\''.$NOM_COURSE.  '\'';
 	 
-	 
-
-
 ?>
 <div id="corps">
 		<form method="post" action="modification_info.php" name = "formEtape" >
@@ -48,7 +32,7 @@ if (!$con)
 	 
 	<h2>Modification informations  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>  </h2>
 	<?
-  $result = mysqli_query($con,$sql);
+  	$result = mysqli_query($con,$sql);
     
 	 if ($result && mysqli_num_rows($result) > 0) {
     // output data of each row
@@ -56,7 +40,7 @@ if (!$con)
 	<div id="Information">
 	<table>
 	<tr>
-	<!-- informations base de donnée -->
+	<!-- informations base de donnï¿½e -->
 		<td>
 			 Lieu : 
 		</td>
@@ -114,7 +98,7 @@ if (!$con)
 	
 </tr>
   <tr>
-		<Td> Date début Inscriptions : </td>
+		<Td> Date dï¿½but Inscriptions : </td>
 		<td>
 		<input type="text" name="DateStartInscription" id="DateStartInscription" tabindex="10"  
 				value= '<?php echo  strftime('%d/%m/%Y %X',strtotime($val["DateStartInscription"]));?>'  />
@@ -169,7 +153,7 @@ if (!$con)
   
 <?}
 	 }
-  }
+  
   ?>
    </p> 
 

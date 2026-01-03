@@ -22,10 +22,6 @@
 	</br> 
     <p> Lorsque nous aurions validé votre paiement celui-ci va être mis à jour </p>
 	<?php
-	
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	mysqli_select_db($con ,'dxvv_jurachrono' );
- 
  	$Value = 'True';
 	$sql = 'SELECT * FROM inscription  WHERE OrderPayement=\''.$_GET["ID"].'\'AND PayementOnLine =\''.$Value.'\'';
 	$result = mysqli_query($con,$sql);

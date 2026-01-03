@@ -72,10 +72,7 @@ header("Refresh: $sec; url=$page");
 
 <table id="mytable" style="width :100%">
 <?
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
- 
- // Nombre de coureur dans la base de donnée
- mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../MysqlConnect.php");
 
 $sql = 'SELECT * FROM ChronoManuel  ORDER  BY ID DESC';
 	

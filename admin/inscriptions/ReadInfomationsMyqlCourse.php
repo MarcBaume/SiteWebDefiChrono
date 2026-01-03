@@ -1,15 +1,7 @@
 <?php
 
 /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
-	  
-	  mysqli_select_db($con ,'dxvv_jurachrono' );
+	include("../../MysqlConnect.php");
 // ***************************************** AFFICHAGE BASE de Donnée ***************************************
 	  // Create table de donnée du nom de parcours
 //	mysqli_select_db($con,$row['Database']);
@@ -30,4 +22,4 @@ if (!$con)
     { 
          print(-2);
     }
-  }
+  

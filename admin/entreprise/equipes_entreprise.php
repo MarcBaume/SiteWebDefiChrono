@@ -193,7 +193,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
         <p><label style="vertical-alignement: center" for="prenom">Course :</label> 
         <select  name="TypeCourse" id="TypeCourse" tabindex="20">
         <?php
-            mysqli_select_db($con ,'dxvv_jurachrono' );
+
             $sql = 'SELECT * FROM TypeEquipeEntreprise'; 
             $resultTypeEntreprise = mysqli_query($con,$sql);
             if ($resultTypeEntreprise && mysqli_num_rows($resultTypeEntreprise) > 0) 
@@ -252,14 +252,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
                 <table>
                    <?php
                     $c = 0;
-                    $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-                    if (!$con)
-                    {
-                        die('Could not connect: ' . mysql_error());
-                    }
-                    else
-                    {
-                        mysqli_select_db($con ,'dxvv_jurachrono' );
+                  	include("../../MysqlConnect.php");
                         $sql = 'SELECT * FROM Membres  WHERE LoginCompte=\''.$_SESSION['Login'].'\''; 
                         //echo $sql;
                         $result = mysqli_query($con,$sql);
@@ -556,5 +549,4 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
         </script>
         <?php
      }
-}
 ?>

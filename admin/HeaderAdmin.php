@@ -1,10 +1,9 @@
 <?php $today = date("Y-m-d H:i:s"); 
 date_default_timezone_set('Europe/Paris');
-  session_start();
 // --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
 setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
- session_start();
- 
+session_start();
+include("../MysqlConnect.php");
  
   
 if ( strlen($_POST['DateCourse'])>0)

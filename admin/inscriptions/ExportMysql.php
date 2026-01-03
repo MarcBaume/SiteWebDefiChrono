@@ -32,13 +32,8 @@ if (file_exists($filename))
 	unlink($filename);
 }
   // On se connecte à MySQL
- $con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-  else
-  {
+	include("../../MysqlConnect.php");
+
 	mysqli_select_db($con ,'dxvv_jurachrono' );
 	if ($_POST['parcours']==("")){
      	$sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'ORDER BY nom ASC';
@@ -106,7 +101,7 @@ if (!$con)
 
 	//	 readfile($filename);
 
-  }
+  
 	?>
 	 
 	 

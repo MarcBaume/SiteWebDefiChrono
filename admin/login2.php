@@ -36,15 +36,7 @@ else
 // Define $username and $password
 $username=$_POST['login'];
 $password=crypt($_POST['pass']);
-// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-{
-  die('Could not connect: ' . mysql_error());
- }
-// To protect MySQL injection for Security purpose
-// Selecting Database
-	mysqli_select_db($con ,'dxvv_jurachrono' );
+include("../MysqlConnect.php");
 // SQL query to fetch information of registerd users and finds user match.
 $sql = 'SELECT * FROM Login where Password='.$password.' AND Login='.$username.'';
 

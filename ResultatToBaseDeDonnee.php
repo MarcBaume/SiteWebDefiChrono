@@ -22,14 +22,7 @@
 
 <?
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-	$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-	if (!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	// Selecting Database
-	mysqli_select_db($con ,'dxvv_jurachrono' );
-	
+	include("../MysqlConnect.php");
 	// Recolte des information transmise par l'application WPF
 	$NomCourse =   $_GET["NomCourse"];
 	$Etape =  $_GET["NbrEtape"];

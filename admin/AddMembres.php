@@ -18,14 +18,9 @@ document.formulaire.submit();
 </head>
 <body>
 	
-	<?php //création d'une base de donnée au nom de la course
-$con = mysqli_connect('dxvv.myd.infomaniak.com', 'dxvv_christopheJ', 'er3z4aet1234');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
+	<?php //crï¿½ation d'une base de donnï¿½e au nom de la course
+	include("../MysqlConnect.php");
 session_start();
-mysqli_select_db($con ,'dxvv_jurachrono' );
 
 $sql = 'INSERT INTO Membres (`LoginCompte`)
  VALUES

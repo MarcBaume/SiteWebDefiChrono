@@ -7,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="../styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../css/style.css" type="text/css"/>
+     <script src="https://www.google.com/recaptcha/api.js"></script>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
 <body>
@@ -40,8 +41,7 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	}?>
 </h3>
   
-   <?php
-	include("../MysqlConnect.php");
+   <?php	include("../MysqlConnect.php");
 	?>
 	<table border="0">
 	<th width="10%"> Date</th>
@@ -53,7 +53,7 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	mysqli_select_db($con,$row['Database']);
 	if ($_SESSION['Niveau'] == 2)
 	{
-		$sql = 'SELECT * FROM Course   ORDER BY Date ASC'; 
+		$sql = 'SELECT * FROM Course   ORDER BY Date DESC'; 
 	}
 	else
 	{
@@ -92,15 +92,14 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 			$annee = $date['year'];?>
 			<td>
 
-				<form method="get" action ="modif_informations.php">
-					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
-					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
-					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
-					<a>
+				<!--<form method="get" action ="modif_informations.php">
+					 <input type="hidden" name="idRace" id="idRace" tabindex="10"  size="60"  value= '<?php echo $val ["ID"] ?>' />
 					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
 					<span class="dot">
 							<i class="fa fa-info"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
-					</span></button></a>
+							<a> Informations </a>
+					</span>
+					</button></a>
 				</form>
 				<form method="get" action ="../formulaireV3.php">
 					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
@@ -111,8 +110,18 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 					<span class="dot">
 							<i class="fa fa-wpforms"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
 					</span></button></a>
+				</form>-->
+				<form method="get" action ="inscriptions/formulaireInscriptionSurPlace.php">
+					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
+					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
+					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
+					<a>
+					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
+					<span class="dot">
+							<i class="fa fa-wpforms"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
+					</span></button></a>
 				</form>
-				<form method="post" action ="listeInscriptionOrganisateur.php">
+				<form method="get" action ="inscriptions/listeInscriptionOrganisateur.php">
 					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
 					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
 					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
@@ -126,7 +135,7 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 			if ( $val ["Date"] == "2021-08-14" && $val ["Nom_Course"] == "JuraDéfi" )
 			{
 			?>
-				<form method="post" action ="ResultatJuraDefi2021.php">
+				<form method="get" action ="ResultatJuraDefi2021.php">
 					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
 					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
 					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
@@ -169,33 +178,17 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 else
 {?>
 	<form method="post" name="FormConnect1" id ="FormConnect1" action="CibleLoginV2b.php">
-		<table  style="margin:20px;">
-			<tr>
-				<td>
-					<label for="Login" style="font-size:15px;">e-mail :</label>
-				</td>
-				<td>
-					<label for="password" style="font-size:15px;">Mot de passe :</label>
-				</td>
-				<td>
-				
-				</td>
-			
-			</tr>
-			<tr>
-				<td>
-					<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
-				</td>
-				<td>
-					<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
-				</td>
-				<td onclick=" SendForm1()" class="ButtonResultat"  >
-					<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
-				</td>
-			</tr>
-		
-				
-		</table>
+				<div class="input">
+				<label for="Login" style="font-size:15px;">e-mail :</label>
+				<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
+			</div>
+			<div class="input">
+				<label for="password" style="font-size:15px;">Mot de passe :</label>
+				<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
+			<div>
+			<span class="dot" onclick=" SendForm1()"   >
+				<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
+			</span >
 		<table style="margin-top:100px;">
 		<tr>
 			
@@ -238,67 +231,6 @@ else
 }
    ?>
   
-  <h2>Add Facebook Login to your webpage</h2>
-
-<!-- Set the element id for the JSON response -->
-
-<p id="profile"></p>
-
-<script>
-
-  
-function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
-    }
-  }
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-      <!-- Initialize the SDK with your app and the Graph API version for your app -->
-      FB.init({
-                appId            : '3049657538507678',
-                xfbml            : true,
-                version          : 'v18.0'
-              });
-      <!-- If you are logged in, automatically get your name and email adress, your public profile information -->
-      FB.login(function(response) {
-                if (response.authResponse) {
-                     console.log('Welcome!  Fetching your information.... ');
-                     FB.api('/me', {fields: 'name, email'}, function(response) {
-                         document.getElementById("profile").innerHTML = "Good to see you, " + response.name + ". i see your email address is " + response.email
-                     });
-                } else { 
-                     <!-- If you are not logged in, the login dialog will open for you to login asking for permission to get your public profile and email -->
-                     console.log('User cancelled login or did not fully authorize.'); }
-      });
-  };
-
-</script>
-
-
-<!-- The JS SDK Login Button -->
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status">
-</div>
-
-<!-- Load the JS SDK asynchronously -->
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
 	</div>
 </div>
     </body>
@@ -313,7 +245,7 @@ function SendForm1() {
 }
 function GoNewCompt()
 {
-		 window.location.href = "../AddLogin.php";
+		 window.location.href = "../AddLoginV2.php";
 }
 function GoForgetPassword()
 {

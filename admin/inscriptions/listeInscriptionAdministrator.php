@@ -1,31 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="cache-control" content="no-cache"> <!-- tells browser not to cache -->
-<meta http-equiv="expires" content="0"> <!-- says that the cache expires 'now' -->
-<meta http-equiv="pragma" content="no-cache"> <!-- says not to use cached stuff, if there is any -->
-	<title>Défi Chrono</title>
-	<meta charset="utf-8">
-	<metahttp-equiv = 'cache-control' content = 'no-cache'>
-<metahttp-equiv = 'expires' content = '0'>
-<metahttp-equiv = 'pragma' content = 'no-cache'>
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
-<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="../../js/prototype.js" ></script>
-<script src="../../js/FonctionDefiChrono2.js?v=1"></script>
-</script>
-<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
-</head>
+
+<?	include("MenuInscriptions.php");
+?>
     <body>
-<?php
-  include("../HeaderAdmin.php"); 
-  ?>
-</br>
-<?	include("../MenuMember.php"); ?>
        	 <!--- Couverture --->
 			<Form  method="post" action="ExportMysql.php">
 		<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_POST["DateCourse"] ?>' />

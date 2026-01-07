@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../../css/style.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
  </script>
@@ -97,19 +97,17 @@ if (window.location.href.search(ValueFind)>-1)
 
     <table style="Width : 100%">
         <tr>
-
+            <td>
+                <a href="../../index.php">
+                <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
+                </a>
+            </td>
+            <td>
+                <div id="Title" style="margin: 10px;">
+                    <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
+                </div>
+            </td>
         <td>
-            <a href="../../index.php">
-              <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
-            </a>
-        </td>
-        <td>
-            <div id="Title" style="margin: 10px;">
-                 <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
-            </div>
-        </td>
-        <td>
-	       <li>
                 <td style="Width : 25%" onClick="ClickColForm()" >
                     <span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>"  >
                         <table>
@@ -146,7 +144,6 @@ if (window.location.href.search(ValueFind)>-1)
 	            	getURL( "listeInscriptionOrganisateur","<?php echo "RowList".$IdRace ?>" ) ;
 	            </script>
                 </td>
-            </li>
         </tr>
    </table>
 </div>

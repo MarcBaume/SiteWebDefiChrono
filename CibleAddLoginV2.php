@@ -10,21 +10,17 @@
 	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
-
-    <body>
-
+<body>
 <?php
   include("Header2023.php"); 
   ?>
 <div id="corps">
-
-
 <?php
 if (isset($_POST['login']) AND isset($_POST['pass']))
 {
 	include("MysqlConnect.php");
 	$login = $_POST["login"];
-// Verifier si login pas existant
+	// Verifier si login pas existant
 	$sql = 'SELECT * FROM Login WHERE Login=\''.$login.'\'';
 	$result = mysqli_query($con,$sql);
 
@@ -35,25 +31,17 @@ if (isset($_POST['login']) AND isset($_POST['pass']))
 	}
 	else
 	{
+		$login = $_POST['login'];
+		$pass_crypte = password_hash($_POST['pass'], PASSWORD_DEFAULT); // On crypte le mot de passe
 
-    $login = $_POST['login'];
-    $pass_crypte = password_hash($_POST['pass'], PASSWORD_DEFAULT); // On crypte le mot de passe
-
-	
-	
-	if (!$con)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-
-	$sql = 'INSERT INTO Login (`Login`, `Password`,`Niveau`)
-	VALUES
-	("'.$login.'", 
-	"'.$pass_crypte.'",
-	"3");';
+		$sql = 'INSERT INTO Login (`Login`, `Password`,`Niveau`)
+		VALUES
+		("'.$login.'", 
+		"'.$pass_crypte.'",
+		"3");';
 	
 
-	$result = mysqli_query($con,$sql);
+		$result = mysqli_query($con,$sql);
 
 	
 	$message = 
@@ -107,14 +95,23 @@ table {
 	
 	session_start();
 
-				$_SESSION['Course'] = $_POST["nom_course"];
-				$_SESSION['DateCourse'] = $_POST['date_course'];
-				$_SESSION['Login'] = $login;
-				$_SESSION['Niveau'] = "3";
-				$_SESSION['Nbretape'] =  $_POST['Nbretape'];
-				echo 'Vous êtes connecté !'.$_POST['nom_course'];
-				    echo 'Bonjour ' . $_SESSION['Login'];
-				  header('Location: admin/login.php'); 
+		$_SESSION['Course'] = $_POST["nom_course"];
+		$_SESSION['DateCourse'] = $_POST['date_course'];
+		$_SESSION['Login'] = $login;
+		$_SESSION['Niveau'] = "3";
+		$_SESSION['Nbretape'] =  $_POST['Nbretape'];
+		echo 'Vous êtes connecté !'.$_POST['nom_course'];
+		echo 'Bonjour ' . $_SESSION['Login'];
+		if (strlen($_SESSION['Course']) > 1)
+		{
+			$Link= "formulaire2023.php?Nbretape=".$_POST['NbrEtape']."&DateCourse=".$_POST['date_course']."&NomCourse=" .$_POST['nom_course'];
+			header('Location:'.$Link); 
+		}
+		else
+		{
+			header('Location: admin/login.php'); 
+		}	
+				 
 	
    /*echo $ton_contenu  ;
 	file_put_contents('admin/.htpasswd', $ton_contenu, FILE_APPEND);*/

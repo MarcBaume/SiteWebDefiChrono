@@ -5,6 +5,23 @@
   ?>
     <body>
     <script>
+		function ClosePopUpAddMember()
+{
+	console.log("ClosePopAddMember");
+	var popup = document.getElementById("PopUpAddMember");
+    popup.style.display="none";
+	var page = document.getElementById("PageFormulaire");
+	page.style.opacity = "1";
+}
+// When the user clicks on <div>, open the popup
+function ShowPopuAddMember() 
+{
+	console.log("OpenPopAddMember");
+    var popup = document.getElementById("PopUpAddMember");
+    popup.style.display="block";
+	var page = document.getElementById("PageFormulaire");
+	page.style.opacity = "0.2";
+}
 function checkForm2() {
 	
 	f1 = document.getElementById("formAddMember")
@@ -167,7 +184,7 @@ function EquipeChang(valueText) {
 			</div>
 			<div class="input" style="display:None;" id="paraInfoAdd" >
 				<label  id="lblInfoAdd" for="textInfoAdd">Informations :</label>
-				<input readonly="true" value="dsfs" style="color:#EF3F3F" type="textarea" name="textInfoAdd" id="textInfoAdd"/>
+				<input readonly="true" style="color:red" type="textarea" name="textInfoAdd" id="textInfoAdd"/>
 			</div>
 			<span class="dot" onClick="checkForm2()" style="display:flex; justify-content: center;align-items: center;">
 				<i class="fa fa-plus-circle" style= "font-size: 50px;margin:9px;" ></i></br>
@@ -271,7 +288,7 @@ if ( isset($_SESSION['Login']))
 
 		<h2>Informations demandées pour votre inscription </h2>
 		<div id="DivInformation"style="display:none" >	
-			<label id="lblInformation"></label><input type="textarea" name="txtInformation" id="txtInformation" value="Aucune catégorie existe sur ce parcours pour cette année de naissance"  /></p>
+			<label id="lblInformation"></label><input type="textarea" style="color:red;"name="txtInformation" id="txtInformation" value="Aucune catégorie existe sur ce parcours pour cette année de naissance"  /></p>
 		</div>
 		<div class="input">
 			<label for="NomParcours">Parcours : </label>
@@ -825,7 +842,10 @@ if ( isset($_SESSION['Login']))
 		}
 		
 		else
-		{
+		{?>
+			<script>
+			ShowPopuAddMember();
+			</script><?
 			echo "Aucun Coureur dans ce compte";
 		}
 	
@@ -837,9 +857,8 @@ if ( isset($_SESSION['Login']))
  info@defichrono.ch
  </center>
    </Fieldset>
-<? 
-		
-   }
+<? 		
+}
 else
 {
     $Link= "AddLoginV2.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
@@ -864,7 +883,7 @@ function SubmitLogin()
 }
 </script>
 <center>
-<img src="images/FilRougeInscription1.png" style="width: 80%;" >
+	<img src="images/FilRougeInscription1.png" style="width: 80%;" >
 </center>
 	
 	<form method="post" id="FormLogin" action="admin/CibleLoginV2.php">
@@ -2146,23 +2165,7 @@ foreach ($files1  as $key => $Parcours)
 }
 ?>
 <script>
-function ClosePopUpAddMember()
-{
-	console.log("ClosePopAddMember");
-	var popup = document.getElementById("PopUpAddMember");
-    popup.style.display="none";
-	var page = document.getElementById("PageFormulaire");
-	page.style.opacity = "1";
-}
-// When the user clicks on <div>, open the popup
-function ShowPopuAddMember() 
-{
-	console.log("OpenPopAddMember");
-    var popup = document.getElementById("PopUpAddMember");
-    popup.style.display="block";
-	var page = document.getElementById("PageFormulaire");
-	page.style.opacity = "0.2";
-}
+
 //******************************************************** */
 // Start UP Application
 //******************************************************** */
@@ -2193,26 +2196,22 @@ else if (ArrayParcours.length ==1)
 	var f = document.getElementById("Formulaire");
 	liste_depart(f)  
 }
-else
-{
-
-}
 
 // Quand on change la valeur des buttons radios du choix Equipe
-    var radios = document.querySelectorAll('input[type=radio][name="Equipe"]');
-    radios.forEach(radio => radio.addEventListener('change', () =>
+var radios = document.querySelectorAll('input[type=radio][name="Equipe"]');
+radios.forEach(radio => radio.addEventListener('change', () =>
+{
+	if (radio.value> 0)
 	{
-		if (radio.value> 0)
-		{
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "table" ;
-		}
-		else
-		{
-			document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
-			document.getElementById("lblNomEquipe").style.display  = "none" ;
-		}
-	}));
+		document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "table" ;
+	}
+	else
+	{
+		document.getElementById("lblNomEquipe").style.visibility = "hidden" ;
+		document.getElementById("lblNomEquipe").style.display  = "none" ;
+	}
+}));
 
 </script>
 

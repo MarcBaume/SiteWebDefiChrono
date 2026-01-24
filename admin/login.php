@@ -130,6 +130,16 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 					</span>
 					</button></a>
 				</form>
+					<form method="get" action ="inscriptions/FormulaireCodeReduction.php">
+					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
+					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
+					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
+					<a>
+					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
+					<span class="dot">
+							<i class="fa fa-gift"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
+					</span></button></a>
+				</form>
 			<?php // Seulement pour jura defi 2021
 			if ( $val ["Date"] == "2021-08-14" && $val ["Nom_Course"] == "JuraDéfi" )
 			{

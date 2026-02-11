@@ -75,9 +75,18 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
 	  include("HeaderInfo2023.php"); 
 	  ?>
 
-
 <center>
-
+<?php
+if ($val["InformationsComingSoon"])
+{
+?>
+</br>
+	<p> les informations arrivent bientôt sur cette événement 
+	</p>
+<?php
+}
+else
+{?>
 <table style="width:90%; margin-Top:120px">
 
 	<?php $Nbr_etape = intval ($val ["nbr_etape"]);		
@@ -439,6 +448,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 1)
 		// output data of each row
 		while($valResult = mysqli_fetch_assoc($resultResult)) 
 		{?>
+		
 				<td style=width:25%>
 					
 					<? $DateResult =  date_parse($valResult['Date']);	?>
@@ -2438,7 +2448,9 @@ for (var i = 0; i < ArrayParcours.length; i++)
 							
 </div>
 
- <?php include("sponsors2023info.php"); ?> 
+ <?php 
+}
+ include("sponsors2023info.php"); ?> 
 </div>
 
 </body>

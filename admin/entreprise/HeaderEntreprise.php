@@ -11,6 +11,10 @@
 <script src="../../../js/FonctionDefiChrono2.js?v=1"></script>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 </head>
+<?php
+require_once '../../config.php'; 
+include("../../MysqlConnect.php");
+?>
 <?php $today = date("Y-m-d H:i:s"); 
 date_default_timezone_set('Europe/Paris');
   session_start();
@@ -63,20 +67,18 @@ function getURLHeader( ValueFind, IDElement) {
 		
     }
 
-	function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement) {
-
-if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
+function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement) 
 {
-	document.getElementById(IDElement).classList.add("dotDisplayedHeader");
-	document.getElementById(IDElement).classList.remove("dotHeader");
-
-}
-else
-{
-
-	document.getElementById(IDElement).classList.add("dotHeader");
-	document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
-}
+		if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
+		{
+			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
+			document.getElementById(IDElement).classList.remove("dotHeader");
+		}
+		else
+		{
+			document.getElementById(IDElement).classList.add("dotHeader");
+			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
+		}
 
 }
 	</script>

@@ -26,7 +26,6 @@ function getURL( ValueFind, IDElement) {
  <div id="menu_vertical" class="menu_vertical">
     <table style="Width : 100%">
         <tr>
-	        <li>
             <?php
             if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
             {?>
@@ -89,7 +88,6 @@ function getURL( ValueFind, IDElement) {
             <?	
             }
             ?>
-            </li>
         </tr>
     </table>
 </div>

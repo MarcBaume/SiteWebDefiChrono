@@ -44,7 +44,6 @@ function  funUserSelected(IDUserSelected)
     document.getElementById("sexe").value = ArrayCoureurs[IDUserSelected].Sexe ; 
     document.getElementById("LblInformation").innerText  = "Sélectionne une équipe";
 }
-
 function AddEquipe(f1)
 {
     $('FormAddEquipe').request({
@@ -59,7 +58,6 @@ function AddEquipe(f1)
             }
         });
 }
-
 function EquipeSelected(Course,depart,parcours,NomEquipe,ID, nombreEquipe)
 {
     console.log(Course+depart+parcours+NomEquipe+"gfdg"+nombreEquipe)
@@ -95,9 +93,6 @@ function coureurEquipeSelected(ID)
     console.log(val);
           document.getElementById(val).style.background="#ffff00";
 }
-
-
-
 // Recherche les départ compatible pour la personnne inscrite
 function catSelected() 
 {
@@ -163,8 +158,6 @@ function catSelected()
          document.getElementById("LblInformation").innerText  = "Mauvais format de l'année de naissance du coureur";
     }
 }
-
-
 </script>
 
 <body>
@@ -183,7 +176,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
 ?>
 <div >
   <p id="LblInformation"  style="width:50%;margin:auto;margin-top:20px;text-align:center;font-size:24px;border:5px solid #3D6CA4; border-radius:20px;padding:20px;"> Sélectionne un athlète</p></br>
-  <span class="popup" id="PopupAddEquipe" style="display:block;">
+  <span class="popup" id="PopupAddEquipe" style="display:None;">
     <h2> Ajouts d'une équipe</h2>
 
     <form id="FormAddEquipe" name="FormAddEquipe" method="get"  action="CibleAddEquipe.php"  >

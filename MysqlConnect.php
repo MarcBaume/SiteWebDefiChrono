@@ -1,7 +1,6 @@
 <?php
 // Inclure un fichier de configuration
 require_once 'config.php'; 
-
   // On se connecte à MySQL
 $con = mysqli_connect(HOSTNAME_DB, USER_DB, PASSWORD_DB);
 if (!$con)

@@ -988,15 +988,21 @@ function VerifCode()
 		onComplete: function(transport){
 			val =transport.responseText.evalJSON();
 			console.log(val);
+
+		 	if ( val > 9000)
+			{
+				var PrixDepart = document.getElementById("PrixDepart");
+				val = (parseFloat(PrixDepart.value) / 100 ) * (val -9000);
+			}
 			// Ajout réduction Etape
-			if (val > 9990)
+			else if (val > 8000)
 			{
 				document.getElementById("nbrEtapeInsc").disabled = true;
 				
 				console.log('Nombre ' +val);
 				// Recherche réduction 
 				// Nombre Etape total - Nombre etape Réduction = Nombre ötape Paye
-				var NombreEtapeReduction =  val- 9990;
+				var NombreEtapeReduction =  val- 8000;
 				
 				console.log('Nombre Etape Reuc' +NombreEtapeReduction);
 				var NombreEtapeAPayer = NombreEtapeTotalChoisie - NombreEtapeReduction;
@@ -1025,11 +1031,7 @@ function VerifCode()
 					}
 				}
 			}
-			else if ( val > 8000)
-			{
-				var PrixDepart = document.getElementById("PrixDepart");
-				val = (parseFloat(PrixDepart.value) / 100 ) * (val -8000);
-			}
+			
 
 			// Ajout réduction 
 			if (val > 0)

@@ -182,7 +182,7 @@ select {
   border:  3px solid #3D6CA4;
    color: #3D6CA4;
   border-radius: 10px;
-  background-color: #fffff;
+  background-color: white;
 }
 .title
 {
@@ -421,13 +421,19 @@ width:100%;
   vertical-align: middle;
   border-radius: 5px;
   border: 1px solid #3D6CA4;
-  background: #fff;
+  background-color: #fff;
   cursor: pointer;
   display: inline-block;
   min-width:40px;
   margin:10px;
   min-height: 40px;
   color: #3D6CA4;
+}
+.Button:disabled {
+background-color: lightgray;
+  border: 1px solid lightgray;
+cursor: auto;
+opacity: 0.3;
 }
 .ButtonResultatSelected{
   text-align: Center;

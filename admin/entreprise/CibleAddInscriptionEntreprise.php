@@ -54,13 +54,17 @@ function majuscules($inChaine)
 			"'.$_POST['NomDepart'].'",
 			"'.$_POST['NomCat'].'",
 			"'.$_POST['NomEquipe'].'",
-			"Entreprise",
+			"Entreprise_NonValid",
 			"'.$_POST['NbrEtape'].'");';
 			$ResultAddInsc = mysqli_query($con,$sql);	
 			if ( $ResultAddInsc == 1)
 			{
 				$last_id = $con->insert_id;
+			/*****************************************************************
+			 *  Delete des les membre entreprise
+			 *******************************************************************/
 
+		
 				$sqldelete = 'DELETE FROM Membres  WHERE ID  = "'.$_POST['IDCoureur'].'"';
 				$ResultDelInsc = mysqli_query($con,$sqldelete);	
 				if ( $ResultDelInsc == 1)
@@ -70,14 +74,9 @@ function majuscules($inChaine)
 				else
 				{
 					echo "Erreur Delete";
-				}
+				} 
 			}
 			echo $sql;
-			/*****************************************************************
-			 * 
-			 *  Delete des les membre entreprise
-			 * 
-			 *******************************************************************/
 
      }
      catch(Exception $e)

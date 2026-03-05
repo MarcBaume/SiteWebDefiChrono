@@ -47,8 +47,8 @@ else
 			$sql = '   INSERT  INTO Entreprises (
 			`NomEntreprise`, 
 			`NomContact`,
-			`EmailContact`,
 			`PrenomContact`,
+			`EmailContact`,
 			`AdresseContact`,
 			`NPAContact`,
 			`LocaliteContact`,

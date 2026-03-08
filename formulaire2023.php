@@ -313,7 +313,7 @@ if ( isset($_SESSION['Login']))
 											<input  type="radio" name="Equipe" style="height:30px;font-size:130%;" Checked="true" value="0"  > 
 										</td>
 										<td  style ="width:300px;">
-											<label for="noneEquipe" style ="width:300px;">Je ne fais pas partie d'aucune équipe /Duo </label>
+											<label for="noneEquipe" style ="width:300px;">Je cours en individuel </label>
 										</td>
 									</tr>
 								</table>
@@ -323,7 +323,7 @@ if ( isset($_SESSION['Login']))
 											<input  type="radio" name="Equipe"  style=" height:30px;font-size:130%;" value="1" >
 										</td>
 										<td style ="width:300px;">
-											<label style ="width:300px;" for="RowEquipe"> Je fait partie d'une équipe </label>
+											<label style ="width:300px;" for="RowEquipe"> Je cours aussi en équipe "amis" </label>
 										</td>
 									</tr>
 								</table>
@@ -333,7 +333,7 @@ if ( isset($_SESSION['Login']))
 											<input  type="radio" name="Equipe"  style="  height:30px;font-size:130%;" value="2"  >
 										</td>
 										<td style ="width:300px;">
-											<label  for="RowDuo">Je cours en DUO Mixte</label>
+											<label  for="RowDuo">Je cours aussi en DUO Mixte</label>
 										</td>
 									</tr>
 								</table>
@@ -343,7 +343,7 @@ if ( isset($_SESSION['Login']))
 											<input  type="radio" name="Equipe"  style="  height:30px;font-size:130%;" value="3"  >
 										</td>
 										<td style ="width:300px;">
-											<label  for="RowEntreprise">Je cours  avec mon entreprise</label>
+											<label  for="RowEntreprise">Je cours  aussi en équipe "entreprise"</label>
 										</td>							
 									</tr>
 								</table>
@@ -354,7 +354,7 @@ if ( isset($_SESSION['Login']))
 			</tr>
 		</table>
 		<div class="input" id="lblNomEquipe" style="display:none;">
-				<label for="NomEquipe">Nom d'équipe: (Facultatif)</label>
+				<label for="NomEquipe" id="titleNomEquipe">Nom d'équipe*:</label>
 				<input type="text" name="NomEquipe" id="NomEquipe" tabindex="201"    />
 		</div>
 		<div id="Paradisc1" style=" display:none" >	
@@ -450,7 +450,7 @@ if ( isset($_SESSION['Login']))
 		}?>
 		<div id="HaveAChoiceTarif"style="display:none">		
 			<?php 
-			if ($NOM_COURSE == "BCJ Challenge")
+			if ($NOM_COURSE == "BCJ Challeng" )
 			// LOrs du jura challenge on va changer la taille des t-shirt 
 			{
 				?>
@@ -636,6 +636,10 @@ if ( isset($_SESSION['Login']))
 		if (!file_exists($pathReglement))
 		{
 			$pathReglement = 'Règlement.pdf';
+		}
+		if (strlen($val["SiteWebReglement"])> 0)
+		{
+			$pathReglement = $val["SiteWebReglement"];
 		}
 		?> 
 		<!-- lit de tous les code de réduction utiliser sérialiser -->
@@ -1333,7 +1337,7 @@ function check() {
 		{
 				
 				if ( f1.NomEquipe.value.length <1) {
-				alert("Merci d'inqdiquer le Nom de votre équipe");
+				alert("Merci d'indiquer le Nom de votre équipe");
 				f1.NomEquipe.focus();
 				return false;
 			}
@@ -2203,11 +2207,24 @@ else if (ArrayParcours.length ==1)
 var radios = document.querySelectorAll('input[type=radio][name="Equipe"]');
 radios.forEach(radio => radio.addEventListener('change', () =>
 {
-	if (radio.value> 0)
+	if (radio.value == 2)
 	{
+		document.getElementById("titleNomEquipe").innerHTML   = "Nom du duo mixte" ;
 		document.getElementById("lblNomEquipe").style.visibility = "visible" ;
 		document.getElementById("lblNomEquipe").style.display  = "table" ;
 	}
+	else if(radio.value == 1)
+	{
+				document.getElementById("titleNomEquipe").innerHTML   = "Nom d'équipe" ;
+				document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "table" ;
+}
+else if(radio.value == 3)
+	{
+				document.getElementById("titleNomEquipe").innerHTML   = "Nom de mon entreprise" ;
+				document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+		document.getElementById("lblNomEquipe").style.display  = "table" ;
+}
 	else
 	{
 		document.getElementById("lblNomEquipe").style.visibility = "hidden" ;

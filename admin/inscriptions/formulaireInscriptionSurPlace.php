@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="../../styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="../../css/style.css" type="text/css"/>
 <!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
 	 </script>
@@ -215,6 +215,16 @@ function isMail2(txtMail)
 										</td>
 										<td style ="width:300px;">
 											<label  for="RowDuo">Je cours en DUO Mixte</label>
+										</td>
+									</tr>
+								</table>
+									<table id="RowEntreprise" style="visibility:hidden; display:none;">
+									<tr>
+										<td style ="width:50px;">
+											<input  type="radio" name="Equipe"  style="  height:30px;font-size:130%;" value="3"  >
+										</td>
+										<td style ="width:300px;">
+											<label  for="RowEntreprise">Je cours en Entreprise</label>
 										</td>
 									</tr>
 								</table>
@@ -936,6 +946,9 @@ function  SelectDepart(evt)
 		document.getElementById("RowDuo").style.visibility = "hidden" ;
 		document.getElementById("RowDuo").style.display  = "none" ;
 
+				document.getElementById("RowEntreprise").style.visibility = "hidden" ;
+		document.getElementById("RowEntreprise").style.display  = "none" ;
+
 		document.getElementById("RowEquipe").style.visibility = "hidden" ;
 		document.getElementById("RowEquipe").style.display  = "none" ;							
 
@@ -1100,6 +1113,8 @@ function  SelectDepart(evt)
 			{
 				document.getElementById("RowDuo").style.visibility = "visible" ;
 				document.getElementById("RowDuo").style.display  = "block" ;
+				document.getElementById("RowEntreprise").style.visibility = "visible" ;
+				document.getElementById("RowEntreprise").style.display  = "block" ;
 			}
 			if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 			{

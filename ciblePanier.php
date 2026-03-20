@@ -79,8 +79,11 @@ else
 	$Status = "Bon";
 }
 
-
-
+$partenaire = 0;
+if (isset($_POST['Partenaire']) )
+{
+	$partenaire = 1;
+}
 
 $TailleTShirt = $_POST['TailleTShirt']."-".$_POST['TailleTShirt2']."-".$_POST['TailleTShirt3']."-".$_POST['TailleTShirt4']."-".$_POST['TailleTShirt5']."-".$_POST['TailleTShirt6'];
 
@@ -123,7 +126,7 @@ $arDepart = explode(";", $_POST["NomDepart"]);
 			"'.$_POST['PrenomDisc1'].'",
 			"'.$Status.'",
 			"'.$_POST['OnLine'].'",
-			"'.$_POST['Partenaire'].'",
+			"'.$partenaire.'",
 			"'.$_POST['strCodeReduction'].'",
 			"'.$_POST['Equipe'].'",
 			"'.$TailleTShirt.'",

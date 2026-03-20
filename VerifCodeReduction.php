@@ -66,7 +66,8 @@ if ( strlen ($_REQUEST['Code'])>2)
 							$NOMREQUEST = string2url($_REQUEST['NomCode']);
 							$PRENOMREQUEST = string2url($_REQUEST['PrenomCode']);
 
-							if (( $NOM  == $NOMREQUEST And  $PRENOM == $PRENOMREQUEST ) OR (strlen($val['Nom']) == 0 and strlen($val['Prenom']) ==0))
+							if (( $NOM  == $NOMREQUEST And  $PRENOM == $PRENOMREQUEST ) 
+								OR (strlen($val['Nom']) == 0 and strlen($val['Prenom']) ==0))
 							{			
 								// Reduction par etape et non en franc 
 					

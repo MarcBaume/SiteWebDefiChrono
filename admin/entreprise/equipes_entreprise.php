@@ -252,7 +252,7 @@ if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
                 <div class="Button" id="<?php echo "user".$c ?>" draggable=true onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;cursor: pointer; width:20%;  " >
                 <?php
                 $c++;
-                if ($val["Valider"])
+                if ($val["Valider"] && strlen$val["Valider"] )
                 {
                     $CmptValider++?>
                     <table>

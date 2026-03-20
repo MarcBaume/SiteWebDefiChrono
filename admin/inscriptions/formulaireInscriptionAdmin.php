@@ -226,7 +226,7 @@ function AddPersonne()
 										</td>
 										<td style ="width:300px;">
 											<label style ="width:300px;" for="RowEquipe"> Je fait partie d'une équipe </label>
-										</td>
+					
 									</tr>
 								</table>
 								<table id="RowDuo" style="visibility:hidden; display:none;">
@@ -239,6 +239,17 @@ function AddPersonne()
 										</td>
 									</tr>
 								</table>
+								<table id="RowEntreprise" style="visibility:hidden; display:none;">
+									<tr>
+										<td style ="width:50px;">
+											<input  type="radio" name="Equipe"  style="  height:30px;font-size:130%;" value="3"  >
+										</td>
+										<td style ="width:300px;">
+											<label  for="RowEntreprise">Je cours en entreprise</label>
+										</td>
+									</tr>
+								</table>
+
 							</td>
 						</tr>
 					</table>
@@ -591,7 +602,7 @@ function SearchDatabase(e) {
 }
 // Sélection coureur depuis base de donnée de liste de personne
 function SelectCoureur(e) {
-	var Coureur = new Object();
+	var Coureur = new Object();user2
 		Coureur = val[e];
 		document.getElementById("nom").value = Coureur.Nom;
 	document.getElementById("prenom").value = Coureur.Prenom;
@@ -1066,6 +1077,9 @@ function  SelectDepart(evt)
 	document.getElementById("RowDuo").style.visibility = "hidden" ;
 	document.getElementById("RowDuo").style.display  = "none" ;
 
+	document.getElementById("RowEntreprise").style.visibility = "hidden" ;
+	document.getElementById("RowEntreprise").style.display  = "none" ;
+
 	document.getElementById("RowEquipe").style.visibility = "hidden" ;
 	document.getElementById("RowEquipe").style.display  = "none" ;							
 
@@ -1239,6 +1253,8 @@ function  SelectDepart(evt)
 		{
 			document.getElementById("RowDuo").style.visibility = "visible" ;
 			document.getElementById("RowDuo").style.display  = "block" ;
+			document.getElementById("RowEntreprise").style.visibility = "visible" ;
+			document.getElementById("RowEntreprise").style.display  = "block" ;
 		}
 		if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 		{

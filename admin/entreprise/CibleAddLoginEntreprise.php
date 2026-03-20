@@ -55,9 +55,6 @@ if (isset($_POST['login']) AND isset($_POST['pass']))
 {
     $login = $_POST['login'];
     $pass_crypte = password_hash($_POST['pass'], PASSWORD_DEFAULT); // On crypte le mot de passe
-
-	
-	
 	if (!$con)
 	{
 		die('Could not connect: ' . mysql_error());

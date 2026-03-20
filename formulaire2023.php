@@ -682,7 +682,7 @@ if ( isset($_SESSION['Login']))
 					J'accepte de transmettre mes données à nos partenaires
 				</td> 
 				<td>
-					<input type="checkbox" style="width:40px;height:40px" checked="True" Name="Partenaire" id="Partenaire" >
+					<input type="checkbox" style="width:40px;height:40px" 	value="partenaire" Name="Partenaire" id="Partenaire" >
 				</td>
 			</tr>
 		</table>
@@ -993,20 +993,14 @@ function VerifCode()
 			val =transport.responseText.evalJSON();
 			console.log(val);
 
-		 	if ( val > 9000)
+		 	if ( val > 9990)
 			{
-				var PrixDepart = document.getElementById("PrixDepart");
-				val = (parseFloat(PrixDepart.value) / 100 ) * (val -9000);
-			}
-			// Ajout réduction Etape
-			else if (val > 8000)
-			{
-				document.getElementById("nbrEtapeInsc").disabled = true;
+			   document.getElementById("nbrEtapeInsc").disabled = true;
 				
 				console.log('Nombre ' +val);
 				// Recherche réduction 
 				// Nombre Etape total - Nombre etape Réduction = Nombre ötape Paye
-				var NombreEtapeReduction =  val- 8000;
+				var NombreEtapeReduction =  val- 9990;
 				
 				console.log('Nombre Etape Reuc' +NombreEtapeReduction);
 				var NombreEtapeAPayer = NombreEtapeTotalChoisie - NombreEtapeReduction;
@@ -1034,6 +1028,12 @@ function VerifCode()
 						break;
 					}
 				}
+			}
+			// Ajout réduction Etape
+			else if (val > 8000)
+			{
+				var PrixDepart = document.getElementById("PrixDepart");
+				val = (parseFloat(PrixDepart.value) / 100 ) * (val -8000);
 			}
 			
 

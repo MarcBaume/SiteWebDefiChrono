@@ -1001,10 +1001,18 @@ function VerifCode()
 				// Recherche réduction 
 				// Nombre Etape total - Nombre etape Réduction = Nombre ötape Paye
 				var NombreEtapeReduction =  val- 9990;
-				
+								/**********************************************************
+				 * 
+				 * On calcul le nombre d'étape a payé et on recherche la zone tarifaire du nombre d'étape
+				 * 
+				 * Amélioration On voudrait faire une réduction du nombre d'étape de réduction
+				 * 
+				 *********************************************************/
 				console.log('Nombre Etape Reuc' +NombreEtapeReduction);
 				var NombreEtapeAPayer = NombreEtapeTotalChoisie - NombreEtapeReduction;
+				
 				console.log('Nombre Etape Choisie' +NombreEtapeTotalChoisie);
+
 				console.log('Nombre Etape A payer' +NombreEtapeAPayer);
 				var PrixEtapeAPayer = 0;
 				var PrixAllEtape = 0;
@@ -1017,7 +1025,7 @@ function VerifCode()
 					{
 						// Prix Total Payer des Etpae a payé
 						PrixEtapeAPayer =	 	ZoneTarifsActif.ListTarif[j].tarif._Value ;
-						console.log('Etape A payer' + PrixEtapeAPayer);
+					console.log('Etape A payer ' + PrixEtapeAPayer);
 					}
 					if (ZoneTarifsActif.ListTarif[j].NomOption._Value.indexOf( NombreEtapeTotalChoisie) > -1)
 					{
@@ -1712,8 +1720,8 @@ function ChoiceDepart(f)
 						}
 						console.log("Personne max" +NombrePersonneMax + "  / " + ParcoursObj.NombreCoureurInscrit);
 
-						if ( ZoneTarifsActif.dateEndZone._Value > DateToday && ( NombrePersonneMax== 0 ||  NombrePersonneMax > ParcoursObj.NombreCoureurInscrit ) )
-						{
+						if ( ZoneTarifsActif.dateEndZone._Value > DateToday 
+						&& ( NombrePersonneMax== 0 ||  NombrePersonneMax > ParcoursObj.NombreCoureurInscrit )){
 							console.log("Tarifs ");
 							for (j = 0; j < ZoneTarifsActif.ListTarif.length; j++) 
 							{
@@ -1745,8 +1753,14 @@ function ChoiceDepart(f)
 								 }*/
 								else
 								{
-									e.options.add( new Option( tarifsActif.NomOption._Value + " - " + tarifsActif.tarif._Value + "CHF",tarifsActif.NomOption._Value + ";"+ tarifsActif.tarif._Value + ";"+ tarifsActif.OnLine.Value + ";" + tarifsActif.T_shirt._Value));
-									console.log(tarifsActif)	;
+									var ageCoureur =  2026 - f.date.value;
+	
+									if((tarifsActif.AgeMin._Value.length == 0 || ageCoureur >= parseInt(tarifsActif.AgeMin._Value) )
+										&& (tarifsActif.AgeMax._Value.length == 0 || ageCoureur <= parseInt(tarifsActif.AgeMax._Value)  ) ) 						
+									{
+										e.options.add( new Option( tarifsActif.NomOption._Value + " - " + tarifsActif.tarif._Value + "CHF",tarifsActif.NomOption._Value + ";"+ tarifsActif.tarif._Value + ";"+ tarifsActif.OnLine.Value + ";" + tarifsActif.T_shirt._Value));
+										console.log(tarifsActif)	;
+									}
 								}					
 							}
 							break; // Arret de l'ajout des zone après la première zone trouver // attention mettre le fichier dans l'ordre 

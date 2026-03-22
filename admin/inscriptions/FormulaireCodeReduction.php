@@ -47,11 +47,13 @@
             <input type="text" name="Code" id="Code" />
             <p>
 			<label>Code Nominatif</label>
-           <input type="radio" name="TypeCodeReduc" onChange="ChangeTypeNominatif()" id="ChoiceNameYes" />
-            <label for="ChoiceNameYes">Oui</label>
+           <input type="radio" name="TypeCodeReduc" onChange="ChangeTypeNominatif()" value="ChoiceNameYes" id="ChoiceNameYes" />
+            <label for="ChoiceNameYes">Code Nominatif</label>
 
-            <input type="radio" name="TypeCodeReduc" onChange="ChangeTypeNominatif()" id="ChoiceNameNo" />
+            <input type="radio" name="TypeCodeReduc" onChange="ChangeTypeNominatif()"  value="ChoiceNameNo" id="ChoiceNameNo" />
 			<label for="ChoiceNameNo">Non</label>
+              <input type="radio" name="TypeCodeReduc" onChange="ChangeTypeNominatif()" value="ChoiceTypeRandom" id="ChoiceTypeRandom" />
+			<label for="ChoiceTypeRandom">CodeRandom</label>
             </P>
             <p id="ParaTypeNominatif" style="display:none">
                     <label for="NomCode">Nom</label>

@@ -82,7 +82,6 @@
 	  include("Header2023.php"); 
 	  include("HeaderInfo2023_WithoutCouverture.php"); 
 	
-
 	$indexParcoursSelected= $_GET['Parcours'];
 	$indexDepartSelected = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
@@ -99,17 +98,17 @@
 	}
 	  ?>
 
-	<form method="get" action="Resultat2023.php" id="FormSendIndfo">
-		<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["DateCourse"] ?>' />
-		<input type="hidden" name="NomCourse" id="FormNomCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["NomCourse"] ?>' />
-		<input type="hidden" name="NbrEtape" id="FormNbrEtape" tabindex="10"  size="60"  value= '<?php echo $_GET["NbrEtape"] ?>' />
-		<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $indexDepartSelected ?>' />
-		<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60" value= '<?php echo $indexParcoursSelected ?>'/>
-		<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $_GET["PointPassage"]?>' />
-		<input type="hidden" name="TypeClassement" id="FormTypeClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["TypeClassement"]?>'/>
-		<input type="hidden" name="NomClassement" id="FormNomClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["NomClassement"]?>' />
-		<input type="hidden" name="Etape" id="FormEtape" tabindex="10"  size="60"  value= '<?php echo $Etape ?>' />
-	</form>
+<form method="get" action="Resultat2023.php" id="FormSendIndfo">
+	<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["DateCourse"] ?>' />
+	<input type="hidden" name="NomCourse" id="FormNomCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["NomCourse"] ?>' />
+	<input type="hidden" name="NbrEtape" id="FormNbrEtape" tabindex="10"  size="60"  value= '<?php echo $_GET["NbrEtape"] ?>' />
+	<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $indexDepartSelected ?>' />
+	<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60" value= '<?php echo $indexParcoursSelected ?>'/>
+	<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $_GET["PointPassage"]?>' />
+	<input type="hidden" name="TypeClassement" id="FormTypeClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["TypeClassement"]?>'/>
+	<input type="hidden" name="NomClassement" id="FormNomClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["NomClassement"]?>' />
+	<input type="hidden" name="Etape" id="FormEtape" tabindex="10"  size="60"  value= '<?php echo $Etape ?>' />
+</form>
 <?php 
 $row = 1;
 $start_array = false;
@@ -152,8 +151,9 @@ if (count($arParcours) > 1)
 			{
 				$IndexParcours++;
 				if ($indexParcoursSelected != $IndexParcours)
-				{ ?>		
-					<option value=<?php echo $IndexParcours?>><? echo $Parcours1 ?></option>
+				{
+					?>		
+					<option value=<?php echo $IndexParcours?>><? echo substr($Parcours1, strpos($Parcours1, ' '))  ?></option>
 				<?
 				}
 				else
@@ -163,7 +163,7 @@ if (count($arParcours) > 1)
 						console.log("Parcours Find")
 					</script><?
 					$Parcours =  $Parcours1?>
-					<option selected value=<?php echo $IndexParcours?>><? echo $Parcours1 ?></option>
+					<option selected value=<?php echo $IndexParcours?>><?  echo substr($Parcours1, strpos($Parcours1, ' ')) ?></option>
 				<?
 				}
 			}?>
@@ -350,25 +350,24 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 <!--<div   class="menu_vertical" style="margin-bottom:5px;" id="Allpointpassage">
 </div>-->
 <!--  Scratch , sexe , catégorie -->
-<div   class="menu_vertical" style="margin-bottom:5px;" id="TypeClassement">
+<div   style="width:100%;padding;10px;" style="margin-bottom:5px;" id="TypeClassement">
 </div>
 <!--  Home femme , Nom Catergorie  -->
-<div   class="menu_vertical" style="margin-bottom:5px;" id="NomClassement">
+<div  style="width:100%;padding;10px;"style="margin-bottom:5px;" id="NomClassement">
 </div>
-<form>
-	<Table style="margin:10px ;width:100%">
-		<tr>
-			<td>
-			<i style='font-size:24px;margin-right:5px' class='fa fa-search'></i>
-		<input type="text" id="InputSearch" style="font-size:24px;padding:5px;width:50%" onkeyup="valider()" placeholder="Nom / prénom / dossard recherché..."\>
-	</td>
+<div id="FilterDepart" style="background-color: #E8F2FF ; display:None;padding:5px;margin:auto;
+padding-right:10px
+padding-left:10px">
 	
-	</tr>
-	</table>
-	</form>
+		<i style='font-size:24px;margin-right:5px' class='fa fa-search'></i>
+		<input type="text" id="InputSearch" style="font-size:24px;padding:5px;"  onkeydown="if(event.key === 'Enter') { event.preventDefault(); return false; }" onkeyup="valider()" placeholder="Nom / prénom / dossard recherché..."\>
+	
+</div>
+<dib>
 	<p id="Informations" style="display:none"></p>
 
-<div id="ViewLiveCoureur">
+</div>
+<div style="width:100%;padding;10px;" id="ViewLiveCoureur">
 </div>
 <script>	
 
@@ -1190,6 +1189,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 
 			if (Parcours.info != undefined)
 			{
+				document.getElementById('FilterDepart').style.display ="flex";
 				if (NumEtape != 99)
 				{
 					AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
@@ -1712,10 +1712,10 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 								rows.appendChild(colonne);
 								// Numéro dossard
 								colonne = document.createElement('td');
-								colonne.style.paddingLeft = "10px";
-								colonne.style.paddingRight = "10px";
+								colonne.style.paddingLeft = "5px";
+								colonne.style.paddingRight = "5px";
 								colonne.style.fontWeight = "italic";
-								colonne.style.fontSize = "10px";
+								colonne.style.fontSize = "8px";
 								colonne.innerText =ListCoureurs[i].NumeroDossard;
 								rows.appendChild(colonne);
 

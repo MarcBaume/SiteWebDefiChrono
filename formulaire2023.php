@@ -470,6 +470,8 @@ if ( isset($_SESSION['Login']))
 						<Option value="LM">L Homme</option>
 						<Option value="XLM">XL Homme</option>
 						<Option value="XXLM">XXL Homme</option>
+						<Option value="96-104">4 ans: 96-104</option>
+					
 					</select>
 				</p>
 				<p id="lblTShirt2"  style="visibility:hidden; display:none">
@@ -556,7 +558,7 @@ if ( isset($_SESSION['Login']))
 				</p>
 				<p id="lblTShirt"  style="visibility:hidden; display:none">
 					<label for="T_Shirt">Taille T-SHIRT</label>
-					<select  style="background-color:#41e063;"  id="TailleTShirt" name="TailleTShirt" >
+					<select   id="TailleTShirt" name="TailleTShirt" >
 						<Option value="">Sélectionner</option>
 						<Option value="XS">XS</option>
 						<Option value="S">S</option>
@@ -564,6 +566,12 @@ if ( isset($_SESSION['Login']))
 						<Option value="L">L</option>
 						<Option value="XL">XL</option>
 						<Option value="XXL">XXL</option>
+							<Option value="6 ans 106-116">6 ans: 106-116</option>
+						<Option value="8 ans 118-128">8 ans: 118-128</option>
+						<Option value="10 ans 130-140">10 ans: 130-140</option>
+						<Option value="12 ans 142- 152">12 ans: 142- 152</option>
+						<Option value="14 ans XS">14 ans: XS</option>
+						<Option value="16 ans S">16 ans: S</option>
 					</select>
 				</p>
 				<p id="lblTShirt2"  style="visibility:hidden; display:none">

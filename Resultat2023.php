@@ -355,7 +355,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 <!--  Home femme , Nom Catergorie  -->
 <div  style="width:100%;padding;10px;"style="margin-bottom:5px;" id="NomClassement">
 </div>
-<div id="FilterDepart" style="background-color: #E8F2FF ; display:None;padding:5px;margin:auto;
+<div id="FilterDepart" style="background-color: #D6E9FA ; display:None;padding:5px;margin:auto;
 padding-right:10px
 padding-left:10px">
 	

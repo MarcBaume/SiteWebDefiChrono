@@ -96,20 +96,21 @@ else if  ( strlen($_GET['DateCourse'])>0)
 	// Connection avec la base de donnée
 	include("MysqlConnect.php");
 	// ***************************************** AFFICHAGE BASE de Donnée ***************************************
-	if (strlen($NOM_COURSE)> 1)
-	{
-		$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$NOM_COURSE.'\'AND Date=\''.$DateCourse.'\'OR DateEtape2=\''.$DateCourse.'\'OR DateEtape3=\''.$DateCourse.'\'OR DateEtape4=\''.$DateCourse.'\'OR DateEtape5=\''.$DateCourse.'\'' ; 
-	?><script>
-			console.log("NomCourse")
-		</script><?php
-	}
-	else
+	if (isset( $_GET['IdRace']))
 	{
 		$sql = 'SELECT * FROM Course  WHERE ID=\''.$_GET['IdRace'].'\'' ; 
 		?><script>
 			console.log("IDRace")
 		</script><?php
 	}
+	else if (strlen($NOM_COURSE)> 1)
+	{
+		$sql = 'SELECT * FROM Course  WHERE Nom_course=\''.$NOM_COURSE.'\'AND Date=\''.$DateCourse.'\'OR DateEtape2=\''.$DateCourse.'\'OR DateEtape3=\''.$DateCourse.'\'OR DateEtape4=\''.$DateCourse.'\'OR DateEtape5=\''.$DateCourse.'\'' ; 
+	?><script>
+			console.log("NomCourse")
+		</script><?php
+	}
+	
 	$result = mysqli_query($con,$sql);
 	if ($result && mysqli_num_rows($result) > 0) 
 	{
@@ -120,18 +121,17 @@ else if  ( strlen($_GET['DateCourse'])>0)
 		?><script>
 			console.log("IDResult")
 		</script><?php
-			$Site = $val1['Site'];
+			$Site = $val1["Site"];
 			$val = $val1;
-			if (strlen($NOM_COURSE)<1)
-			{
-				$DateCourse =  $val['Date'];
-				$Date =  date_parse($val['Date']);
-				$ANNEE_COURSE = $Date['year']; 
-				$Month = $Date['month']; 
-				$Day = $Date['day']; 
-				$NOM_COURSE = $val["Nom_Course"];
-				$Nbr_etape =  $val["nbr_etape"] ;
-			}
+			$IdRace =  $val["ID"];
+			$DateCourse =  $val["Date"];
+			$Date =  date_parse($val["Date"]);
+			$ANNEE_COURSE = $Date["year"]; 
+			$Month = $Date['month']; 
+			$Day = $Date['day']; 
+			$NOM_COURSE = $val["Nom_Course"];
+			$Nbr_etape =  $val["nbr_etape"] ;
+			
 		}
 	}
 
@@ -157,7 +157,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
   {?>
 	  
 	  <? $DateResult =  date_parse($valResult['Date']);	
-	  $NomCourse = $valResult['Nom_Course'];
+	  $NomCourse = $valResult["Nom_Course"];
 	  // si année différentes de l'année en cours
 	  if ($DateResult['year']<> $ANNEE_COURSE)
 	  {
@@ -216,7 +216,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 
 </div>
 <?php
-	 $chemin= 'courses/'.$NOM_COURSE.$ANNEE_COURSE."/info/images/couverture.jpg";
+	 $chemin= "courses/".$NOM_COURSE.$ANNEE_COURSE."/info/images/couverture.jpg";
 //	$chemin= 'images/CouvertureYetiTrail.png';
 	if (file_exists($chemin)) {
 		echo '<center><img style="margin-top :10px;max-height:300px; max-width:100%;margin-bottom :10px;" src="'.$chemin.'" alt=""   /></center>'; 
@@ -229,7 +229,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 					<td >
 					
 					<?php
-				$chemin= 'courses/'.$NOM_COURSE. $ANNEE_COURSE."/info/images/logo.jpg";
+				$chemin= "courses/".$NOM_COURSE. $ANNEE_COURSE."/info/images/logo.jpg";
 				if (file_exists($chemin)) {
 					?>
 					<border  >
@@ -277,6 +277,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
  	<form method="get" id="Menu" >
 				
 		<input type="hidden" name="Etape" id="Etape" value= 0 />
+		<input type="hidden" name="IdRace" id="IdRace" value= '<?php echo  $IdRace ?>' />
 		<input type="hidden" name="NbrEtape" id="NbrEtape" value= '<?php echo  $Nbr_etape ?>' />
 		<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
 		<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />				
@@ -414,7 +415,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				<?php
 				}
 
-				$chemin= 'courses/'.$NOM_COURSE. $ANNEE_COURSE."/info/Photos";
+				$chemin= "courses/".$NOM_COURSE. $ANNEE_COURSE."/info/Photos";
 				if (file_exists($chemin)) {
 					?>
 					<td class="ColMenuInfo" onClick="ClickRowsPhotos()" onmouseover="" style="cursor: pointer;">

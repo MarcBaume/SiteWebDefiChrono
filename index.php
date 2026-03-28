@@ -100,12 +100,12 @@
 						<div  style="display: flex;" >
 							<?php if (file_exists($chemin."/couvertureAccueil.jpg"))
 							{?>
-							<img style="width:200px;height:200px;margin:10px; border-radius : 10px" src='<?php echo  $chemin."/couvertureAccueil.jpg"?>'></img>
+							<img style="width:200px;height:200px;margin:10px; border-radius : 10px" src="<?php echo  $chemin.'/couvertureAccueil.jpg'?>"></img>
 							<?php
 							}
 							else
 							{?>
-								<img style="width:200px;margin:10px; border-radius : 10px" src='<?php echo  $chemin."/logo.jpg"?>'></img>
+								<img style="width:200px;margin:10px; border-radius : 10px" src="<?php echo  $chemin.'/logo.jpg'?>"></img>
 							
 							<?php
 							}?>

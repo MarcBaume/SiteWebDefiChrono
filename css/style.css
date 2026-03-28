@@ -436,6 +436,7 @@ cursor: auto;
 opacity: 0.3;
 }
 .ButtonResultatSelected{
+  font-size: 20px;
   text-align: Center;
   vertical-align: middle;
   border-radius: 5px;
@@ -445,7 +446,7 @@ opacity: 0.3;
   min-width:120px;
   padding-left: 10px;
   padding-right: 10px;
-  height: 40px;
+ min-height: 80px;
   color : #BCDDFD;
   background-color: #3D6CA4 ;
 

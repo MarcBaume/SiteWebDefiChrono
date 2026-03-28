@@ -28,24 +28,22 @@
 <div id="corps">
 	<?php include("HeaderInfo2023.php"); ?>
  </br> 
-
+<script>
+console.log()
+</script>
   <div  id="TableauResulat">
- <form method="get" action="listeV2.php">
- <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["DateCourse"] ?>' />
-<input type="hidden" name="Etape" id="Etape" value= '<?php echo $_GET["Etape"] ?>' />
-<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["NomCourse"] ?>' />
  <?php
 $row = 1;
 $start_array = false;
 $numetape = intval($_GET['Etape']);
 // Afficher la liste des départ Dossier dans la course ;
-$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE;
+$pathfolder = "courses/".$NOM_COURSE.$ANNEE_COURSE;
 // Création de la liste de toutes les Parcours
 $files1 = scandir($pathfolder);
 $Parcours = $_GET['Parcours'];
    foreach ($files1  as $key => $value) 
    { 
-	   if(is_dir($pathfolder .'/'.$value))
+	   if(is_dir($pathfolder ."/".$value))
 	   {
 			// Affichage dans la liste des départ dans le menu 
 			if (strlen($value) >2 && $value != "info") 

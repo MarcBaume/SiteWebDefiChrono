@@ -114,7 +114,7 @@ $row = 1;
 $start_array = false;
 $numetape = intval($_GET['Etape']);
 // Afficher la liste des départ Dossier dans la course ;
-$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE;
+$pathfolder = 'courses/'.$NOM_COURSE.$ANNEE_COURSE;
 
 // Création de la liste de toutes les Dossier = Depart 
 $files1 = scandir($pathfolder);
@@ -717,7 +717,7 @@ padding-left:10px">
 
 								colLoc = document.createElement('td');
 								colLoc.style.margin ="1px";
-								colonne.style.fontSize = "12px";
+								colonne.style.fontSize = "10px";
 								colLoc.style.fontWeight = "bold";
 								colLoc.innerText = ListCoureurs[i].Coureur.localite._Value;
 								RowLoc.appendChild(colLoc);
@@ -1615,8 +1615,9 @@ padding-left:10px">
 					{
 						
 						LivePointPassage.ListCoureursArrivee.sort((a,b) => a.Coureur.NumCategorie < b.Coureur.NumCategorie  ? -1 : 1);
-						console.log(LivePointPassage.ListCoureursArrivee);
+						
 					}
+					console.log(LivePointPassage.ListCoureursArrivee);
 					// Affichage du classement seulement si il est de type scratch ou si on a choisie un nom de classement
 					// Table du classement sélectionné 
 					const TableResult = document.createElement("Table");
@@ -1711,13 +1712,13 @@ padding-left:10px">
 							
 								rows.appendChild(colonne);
 								// Numéro dossard
-								colonne = document.createElement('td');
+							/*	colonne = document.createElement('td');
 								colonne.style.paddingLeft = "5px";
 								colonne.style.paddingRight = "5px";
 								colonne.style.fontWeight = "italic";
 								colonne.style.fontSize = "8px";
 								colonne.innerText =ListCoureurs[i].NumeroDossard;
-								rows.appendChild(colonne);
+								rows.appendChild(colonne);*/
 
 								colonne = document.createElement('td');
 								colonne.style.paddingLeft = "10px";
@@ -1837,13 +1838,11 @@ padding-left:10px">
 									}
 
 									colonne.appendChild(tableCoureur);
-								}
-								else
-								{
-									colonne.innerText = ListCoureurs[i].Coureur.AnneeNaissance;
+									rows.appendChild(colonne);
 								}
 								
-								rows.appendChild(colonne);
+								
+								
 
 								colonne = document.createElement('td');
 								tableLoc = document.createElement('Table');
@@ -1854,9 +1853,9 @@ padding-left:10px">
 
 								colLoc = document.createElement('td');
 								colLoc.style.margin ="1px";
-								colonne.style.fontSize = "12px";
+								colLoc.style.fontSize = "12px";
 								colLoc.style.fontWeight = "bold";
-								colLoc.innerText = ListCoureurs[i].Coureur.localite;
+								colLoc.innerText = ListCoureurs[i].Coureur.AnneeNaissance + " / " +ListCoureurs[i].Coureur.localite;
 								RowLoc.appendChild(colLoc);
 
 								RowLoc = document.createElement('tr');
@@ -1867,6 +1866,7 @@ padding-left:10px">
 							
 								colLoc.style.margin ="1px";
 								colLoc.style.fontStyle = "italic";
+								colLoc.style.fontSize = "12px";
 								colLoc.innerText = ListCoureurs[i].Coureur.Club;
 								RowLoc.appendChild(colLoc);
 								colonne.appendChild(tableLoc);
@@ -2149,28 +2149,33 @@ padding-left:10px">
 												if (h >  1)
 												{
 													lastPosPointPassage = 0;
-													for (let m = j-1; m >0; m--) 
+													for (let m = j; m >0; m--) 
 													{
-														if ( ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage == undefined ||
+														if ( ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage == undefined 
+														||
 														(ListCoureurs[i].Coureur.ListTempsPointPassage[m].TypePointPassage != 1 ))
 														{
+																
 															if (FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "")
 															{
-																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].Position;
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m-1].Position;
 															}
 															else if (FormTypeClassement.value == "Sexe")
 															{
-																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].PositionsSexe;
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m-1].PositionsSexe;
 															}
 															else if (FormTypeClassement.value == "Categorie")
 															{
-																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m].PositionCategorie;
+																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m-1].PositionCategorie;
 															}
+															console.log("Check last point pos  = "+ lastPosPointPassage);
 															break;
 														}
 													}
+												
 													if (lastPosPointPassage > 0)
 													{
+														console.log("pos point passage : "+ ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position);
 														if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage < 0)
 														{
 															colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
@@ -2378,11 +2383,11 @@ padding-left:10px">
 											nbrClassementPassage++;
 										}
 									}
-								
+									console.log("Nombre point passage" +nbrPointPassage);
+									console.log("Nombre classemement passage" +nbrClassementPassage);
                                     if  ( nbrClassementPassage > 1 )
                                     {
-										if (nbrPointPassage < 2 )
-										{
+								
 											// Ajout bouton plus 
 											colonnePlus = document.createElement('td');
 											colonnePlus.innerHTML =" <span class='dot' style='width:20px'> <i style='margin-left :5px'  class='fa fa-plus'></i></span>"
@@ -2407,7 +2412,7 @@ padding-left:10px">
 											tablePassage.style.background = "#E1E1E1";
 											tablePassage.style.padding = "10px";
 											colonne.appendChild(tablePassage);
-										}
+										
                                      // Ajout tableau point de passage 
                                          rows = document.createElement('tr');
                                         rows.style.background = "white";

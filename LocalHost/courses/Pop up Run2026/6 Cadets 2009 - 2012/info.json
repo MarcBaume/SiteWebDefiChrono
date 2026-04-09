@@ -1,0 +1,144 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription enfants"
+        },
+        "dateEndZone": {
+          "_Value": "2026-04-25 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "10"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription enfant"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "1"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription sur place"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-02 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "15"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription sur place"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": false,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassOptionReduction, ChronoV4WPF",
+        "tarif": {
+          "_Value": "8888"
+        },
+        "DateStartReduction": {
+          "_Value": "2023-01-01 23:59:59"
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Donation pour la ligue Bernoise et Jurassienne de la lutte contre le cancer"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ID": {
+    "_Value": "6"
+  },
+  "Nom": {
+    "_Value": "Cadets 2009 - 2012"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

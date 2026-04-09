@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Courbe lissée avec D3.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js" charset="utf-8"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; }
+        .line { fill: none; stroke: #4e79a7; stroke-width: 3; }
+        .dot { fill: #f28e2c; }
+        svg { border: 1px solid #eee; background: #fafafa; }
+    </style>
+</head>
+<body>
+
+<svg id="graph" width="500" height="300"></svg>
+
+<script>
+    // 1. Données brutes (x: temps/index, y: valeur)
+    const data = [
+        {x: 0, y: 30}, {x: 50, y: 80}, {x: 100, y: 45}, 
+        {x: 150, y: 90}, {x: 200, y: 20}, {x: 250, y: 60}
+    ];
+    var obj1 = new Object()
+    obj1.x = 10
+    obj1.y = 23
+    data.push(obj1)
+    const svg = d3.select("#graph");
+    const margin = 40;
+    const width = +svg.attr("width") - margin * 2;
+    const height = +svg.attr("height") - margin * 2;
+    console.log(width);
+    const g = svg.append("g")
+                 .attr("transform", `translate(${margin},${margin})`);
+
+    // 2. Échelles (pour convertir les données en pixels)
+    const xScale = d3.scaleLinear()
+        .domain([0, 250])
+        .range([0, width]);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([height, 0]);
+
+    // 3. Générateur de ligne avec LISSAGE (curveMonotoneX)
+    const line = d3.line()
+        .x(d => xScale(d.x))
+        .y(d => yScale(d.y))
+        .curve(d3.curveMonotoneX); // <--- L'astuce est ici
+
+    // 4. Tracer la ligne
+    g.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+
+    // 5. Optionnel : Ajouter les points réels pour voir la précision
+    g.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => xScale(d.x))
+        .attr("cy", d => yScale(d.y))
+        .attr("r", 4);
+</script>
+
+</body>
+</html>

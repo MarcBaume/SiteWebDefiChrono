@@ -1,0 +1,110 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Insciption en ligne"
+        },
+        "dateEndZone": {
+          "_Value": "2026-03-06 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "25"
+            },
+            "NomOption": {
+              "_Value": "Insciption en ligne"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Insciption sur place"
+        },
+        "dateEndZone": {
+          "_Value": "2026-03-07 10:30:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "NomOption": {
+              "_Value": "Insciption sur place"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": false,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": []
+  },
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "8 km"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

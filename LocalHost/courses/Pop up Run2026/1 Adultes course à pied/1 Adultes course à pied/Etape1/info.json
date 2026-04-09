@@ -1,0 +1,351 @@
+{
+  "Date": {
+    "_Value": ""
+  },
+  "xContreLaMontre": {
+    "oldValue": false,
+    "Title": "Contre la montre",
+    "Value": true,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "xClassmeentNombreTour": {
+    "oldValue": false,
+    "Title": "Nombre tour",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "HeureDepart": {
+    "_Value": "08:00 /  10:00 / 11:30 / 13:00 / 14:00 "
+  },
+  "HeureEnd": {
+    "_Value": ""
+  },
+  "Lieu": {
+    "_Value": ""
+  },
+  "ListDiscipline": {
+    "ListItem": []
+  },
+  "ListPointPassage": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 1,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF00CED1",
+        "HeureStart": {
+          "_Value": "07:59:30"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Départ"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFFFF00",
+        "HeureStart": {
+          "_Value": "08:05:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "10 km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFF0000",
+        "HeureStart": {
+          "_Value": "09:20:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "20 km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFF00FF",
+        "HeureStart": {
+          "_Value": "10:00:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "30 km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFFA500",
+        "HeureStart": {
+          "_Value": "11:00:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "40 km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF0000FF",
+        "HeureStart": {
+          "_Value": "12:00:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "50km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF32CD32",
+        "HeureStart": {
+          "_Value": "13:00:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "60km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 2,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFFFF00",
+        "HeureStart": {
+          "_Value": "14:00:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "70 km"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "structurePrintResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "structureWebResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "Path": "C:\\kDrive\\Chrono\\Pop up Run2026\\1 Adultes course à pied\\1 Adultes course à pied\\Etape1",
+  "ListNumeroDNF": [
+    295
+  ],
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Etape1"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

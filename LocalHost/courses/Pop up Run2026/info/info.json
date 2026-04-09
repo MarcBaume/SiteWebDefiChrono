@@ -1,0 +1,17 @@
+{
+  "xOptionPopUpRun": {
+    "oldValue": false,
+    "Title": "Classement point passage depart de 1 (Pop up Run)",
+    "Value": true,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "NameFileDetectionUsed": "arrivee_arrivee_arrivee__Etape1_Test1_Etape1_Etape1",
+  "GeneralParPoint": {
+    "oldValue": false,
+    "Title": "Classement par point trophée du doubs",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  }
+}

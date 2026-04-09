@@ -1,0 +1,244 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-01-31 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "20"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "1"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-03-31 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "25"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "1"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-04-25 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "1"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-02 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "35"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": false,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "1"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassOptionReduction, ChronoV4WPF",
+        "tarif": {
+          "_Value": "8888"
+        },
+        "DateStartReduction": {
+          "_Value": "2023-01-01 23:59:59"
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Donation pour la ligue Bernoise et Jurassienne de la lutte contre le cancer"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Adultes course à pied"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

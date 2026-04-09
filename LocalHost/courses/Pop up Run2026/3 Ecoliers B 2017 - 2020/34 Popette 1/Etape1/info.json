@@ -1,0 +1,111 @@
+{
+  "Date": {
+    "_Value": ""
+  },
+  "xContreLaMontre": {
+    "oldValue": false,
+    "Title": "Contre la montre",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "xClassmeentNombreTour": {
+    "oldValue": false,
+    "Title": "Nombre tour",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "HeureDepart": {
+    "_Value": "12:00"
+  },
+  "HeureEnd": {
+    "_Value": ""
+  },
+  "Lieu": {
+    "_Value": ""
+  },
+  "ListDiscipline": {
+    "ListItem": []
+  },
+  "ListPointPassage": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 2,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF90EE90",
+        "HeureStart": {
+          "_Value": ""
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Arrivée"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "structurePrintResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "structureWebResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": true,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "Path": "C:\\kDrive\\Chrono\\Pop up Run2026\\3 Ecoliers B 2017 - 2020\\34 Popette 1\\Etape1",
+  "ListNumeroDNF": null,
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Etape1"
+  },
+  "Distance": {
+    "_Value": "800 m"
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

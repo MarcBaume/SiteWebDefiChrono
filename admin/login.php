@@ -12,19 +12,21 @@
 </head>
 <body>
 <?php
-  include("HeaderAdmin.php"); 
-  ?>
+	include("HeaderAdmin.php"); 
+?>
 </br>
-<?	include("MenuMember.php"); ?>
-<div id="corps">
+<?php	
+	include("MenuMember.php"); 
+?>
+	<div id="corps">
+		<div id="index">
 
-
-<div id="index">
-<h3>
 <?php 
 session_start();
 if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
-{
+{?>
+	<h3>
+	<?
 	if ($_SESSION['Niveau'] == 2 || $_SESSION['Niveau'] ==0)
 	{
 		echo 'Course de '. $_SESSION['Login'];
@@ -38,9 +40,8 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 		header('Location: membres.php'); 
 		
 	}?>
-</h3>
-  
-   <?php	include("../MysqlConnect.php");
+	</h3>
+    <?php include("../MysqlConnect.php");
 	?>
 	<table border="0">
 	<th width="10%"> Date</th>
@@ -49,7 +50,8 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	<th width="30%"> Actions</th>
 	<?php
 	// Create table de donnée du nom de parcours
-	mysqli_select_db($con,$row['Database']);
+	// Test sans mis en commentaire je ne comprend pourquoi il y a ce code 
+	// mysqli_select_db($con,$row['Database']);
 	if ($_SESSION['Niveau'] == 2)
 	{
 		$sql = 'SELECT * FROM Course   ORDER BY Date DESC'; 
@@ -58,11 +60,9 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	{
 		$sql = 'SELECT * FROM Course  WHERE Login=\''.$_SESSION['Login'].'\' ORDER BY Date ASC'; 
 	}
-	//echo $sql;
 	$result = mysqli_query($con,$sql);
-	 
-	 if ($result && mysqli_num_rows($result) > 0) 
-	 {
+	if ($result && mysqli_num_rows($result) > 0) 
+	{
 		// output data of each row
 		$Background = 0;
 		while($val = mysqli_fetch_assoc($result)) 
@@ -70,48 +70,24 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 			if ($Background == 1)
 			{
 				$Background = 0;?>
-					<tr style="background: #ededed;"   >
-				<?
+				<tr style="background: #ededed;">
+				<?php
 			}
 			else
 			{
 				$Background = 1;?>
-				<tr style="background: #ffffff;"   >
-				<?
-			}
-				
-	  ?>
-	  
-	
-		
+				<tr style="background: #ffffff;">
+				<?php
+			}	
+	  		?>
 			<td><?php  echo  $val ["Date"]?></td>
-			<td><?PHP echo  $val ["Nom_Course"];?> </td>
-			<td><?PHP echo  $val ["Lieu"];?> </td>
-	<?PHP   $date = date_parse($val ["Date"]);
-			$annee = $date['year'];?>
+			<td><?php echo  $val ["Nom_Course"];?> </td>
+			<td><?php echo  $val ["Lieu"];?> </td>
+				<?php $date = date_parse($val ["Date"]);
+				$annee = $date['year'];?>
 			<td>
-
-				<!--<form method="get" action ="modif_informations.php">
-					 <input type="hidden" name="idRace" id="idRace" tabindex="10"  size="60"  value= '<?php echo $val ["ID"] ?>' />
-					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
-					<span class="dot">
-							<i class="fa fa-info"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
-							<a> Informations </a>
-					</span>
-					</button></a>
-				</form>
-				<form method="get" action ="../formulaireV3.php">
-					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
-					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
-					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
-					<a>
-					<button type ="button" style="float:right;margin-right :10px;" onClick="checkForm(this.form)"title="inscription" data-toggle="tooltip" data-placement="top">
-					<span class="dot">
-							<i class="fa fa-wpforms"  style= "font-size: 24px;margin:8px;margin-left:10px;color: #4095f5;"></i>
-					</span></button></a>
-				</form>-->
 				<form method="get" action ="inscriptions/formulaireInscriptionSurPlace.php">
-					 <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
+					<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Date"] ?>' />
 					<input type="hidden" name="login" id="login" tabindex="10"  size="60"  value= '<?php echo $_POST['login'] ?>' />
 					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $val ["Nom_Course"] ?>' />
 					<a>
@@ -171,7 +147,6 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 			</td>
 			</tr>
 <?php
-
 		}
 	}
 	else
@@ -180,27 +155,24 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	}
 	?>
 	 </table>
-	
 	<?
-    }
-
+}
 else
 {?>
 	<form method="post" name="FormConnect1" id ="FormConnect1" action="CibleLoginV2b.php">
-				<div class="input">
-				<label for="Login" style="font-size:15px;">e-mail :</label>
-				<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
-			</div>
-			<div class="input">
-				<label for="password" style="font-size:15px;">Mot de passe :</label>
-				<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
-			<div>
-			<span class="dot" onclick=" SendForm1()"   >
-				<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
-			</span >
+		<div class="input">
+			<label for="Login" style="font-size:15px;">e-mail :</label>
+			<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
+		</div>
+		<div class="input">
+			<label for="password" style="font-size:15px;">Mot de passe :</label>
+			<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
+		<div>
+		<span class="dot" onclick=" SendForm1()"   >
+			<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
+		</span>
 		<table style="margin-top:100px;">
-		<tr>
-			
+			<tr>	
 				<td onClick= "GoNewCompt()" >
 				<span class="dot">
 					<p style="margin:10px;background:transparent;">
@@ -208,8 +180,6 @@ else
 					</p>
 				</span >
 				</td>
-			
-		
 				<td onClick= "GoForgetPassword()">
 				<span class="dot">
 					<p style="margin:10px;background:transparent;">
@@ -217,9 +187,7 @@ else
 					</p>
 					</span >
 				</td>
-			
-		</tr>
-			
+			</tr>
 		</table>
 	</form>
 	<?
@@ -233,31 +201,31 @@ else
 	else
 	{
 		session_destroy();
-	
-	
 	}
-
 }
+
    ?>
   
 	</div>
 </div>
-    </body>
+</body>
 </html>
 <script>
-function checkForm(f) {
+function checkForm(f) 
+{
 	f.submit();
-	}
-function SendForm1() {
+}
+function SendForm1()
+{
   var popup = document.getElementById("FormConnect1");
   popup.submit();
 }
 function GoNewCompt()
 {
-		 window.location.href = "../AddLoginV2.php";
+	window.location.href = "../AddLoginV2.php";
 }
 function GoForgetPassword()
 {
-		 window.location.href = "../PasswordForget2023.php";
+	window.location.href = "../PasswordForget2023.php";
 }
 </script>

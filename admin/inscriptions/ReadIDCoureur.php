@@ -3,10 +3,9 @@
 
 <?php
   // On se connecte à MySQL
-	include("../Q../MysqlConnect.php");
+	include("../../MysqlConnect.php");
      try
      {
-          mysqli_select_db($con ,'dxvv_jurachrono' );
 		  $sql = 'SELECT * FROM inscription WHERE ID  = "'.$_REQUEST['IDCoureur'].'"';
 		  $result = mysqli_query($con,$sql);
 		  $array = array();

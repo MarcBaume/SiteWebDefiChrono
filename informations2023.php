@@ -855,7 +855,6 @@ function funCreateDrawerMap(IDSVG, FileName)
 	/*____________________________________________________________________________________________
 	*																															*
 		CREATION AFFICHAGE SELON LE TABLEAU DE POINT LU DANS LE FICHIER GPX 
-
 	_____________________________________________________________________________________*/	
 	let MedLat = ((Number(latMax)- Number(latMin )) / 2)  ;
 	let MedLon = ((Number(lonMax) - Number(lonMin)) / 2);

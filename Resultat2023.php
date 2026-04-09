@@ -1928,7 +1928,6 @@ padding-left:10px">
 									{
 										var Temps = ListCoureurs[i].CLassementScratch.TempsCat;
 									}
-									
 								}
 								else
 								{
@@ -2168,14 +2167,12 @@ padding-left:10px">
 															{
 																lastPosPointPassage = ListCoureurs[i].Coureur.ListTempsPointPassage[m-1].PositionCategorie;
 															}
-															console.log("Check last point pos  = "+ lastPosPointPassage);
 															break;
 														}
 													}
 												
 													if (lastPosPointPassage > 0)
 													{
-														console.log("pos point passage : "+ ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position);
 														if ((FormTypeClassement.value == "Scratch" ||FormTypeClassement.value == "") && ListCoureurs[i].Coureur.ListTempsPointPassage[j].Position - lastPosPointPassage < 0)
 														{
 															colonne.innerHTML = " <i style='font-size:20px; color:green;' class='fa fa-arrow-up' ></i> ";
@@ -2224,7 +2221,7 @@ padding-left:10px">
 												colonne = document.createElement('td');
 												colonne.style.paddingLeft = "10px";
 												colonne.style.paddingRight = "10px";
-												colonne.style.width = "120px"
+												colonne.style.fontSize = "10px";
 												colonne.innerHTML  = " <i style='font-size:20px; color:blue;' class='fa fa-clock-o' ></i> "+ListCoureurs[i].Coureur.ListTempsPointPassage[j].HeurePassage;
 												rowsPassage.appendChild(colonne);
 
@@ -2383,8 +2380,7 @@ padding-left:10px">
 											nbrClassementPassage++;
 										}
 									}
-									console.log("Nombre point passage" +nbrPointPassage);
-									console.log("Nombre classemement passage" +nbrClassementPassage);
+		
                                     if  ( nbrClassementPassage > 1 )
                                     {
 								
@@ -2989,17 +2985,24 @@ padding-left:10px">
 			// Reprise du dernier point de passage moins le point de passage avant dernier
 			if (Parcours != undefined &&   Parcours.info != undefined && Parcours.info.ListLivePointDePassage != undefined )
 			{
-				for (var i = 1; i < Parcours.info.ListLivePointDePassage.length ; i++)
+				console.log("Parcours info list point de passage");
+				console.log(Parcours.info.ListLivePointDePassage);
+				for (var i = 0; i < Parcours.info.ListLivePointDePassage.length ; i++)
 				{
-				
-
 					// afin de mettre le texte au mileux du texte on va calculer le mileux selon la catégorie
-
-					var DistanceEndPoint = (Parcours.info.ListLivePointDePassage[i].Distance ) ;
-
-					AddTextCoureurRestantPointDePassage( parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance), parseFloat(DistanceEndPoint) ,  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length,Parcours);	
-
-
+					var DistanceEndPoint = parseFloat(Parcours.info.ListLivePointDePassage[i].Distance ) ;
+					if (i == 0)
+					{
+						DistanceStartPoint = 0.0;
+					}
+					else
+					{
+						DistanceStartPoint = parseFloat(Parcours.info.ListLivePointDePassage[i-1].Distance);
+					}
+					console.log("DistanceEndPoint :" + DistanceEndPoint);
+					console.log("DistanceStartPoint :" + DistanceStartPoint);
+					console.log(Parcours.info.ListLivePointDePassage);
+					AddTextCoureurRestantPointDePassage( DistanceStartPoint, DistanceEndPoint,  GraphiqueSVG , Parcours.info.ListLivePointDePassage[i].ListCoureursRestant.length,Parcours);	
 				}
 			}
 		}
@@ -3135,68 +3138,65 @@ padding-left:10px">
 		if (Text > 0)
 		{
 			console.log("funAddTextCoureurRestantPointDePassage");
-
 			var StartPxl = TransformDistanceEnPxl(valueStart) + DecalageStartWidth;
 			var EndPxl = TransformDistanceEnPxl(valueEnd) + DecalageStartWidth;
 			console.log(StartPxl);
 			console.log(EndPxl);
 			
 			var HeightLine = Height + DecalageStartHeight;
-			var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
-
+		
 			// 100 % des coureurs = Height-100;
 			// 
 			HeightPourCent =100 /( Parcours.info.ListLivePointDePassage[0].ListCoureursArrivee.length / Text)
 			console.log(HeightPourCent)
-			var Rectangle1 = document.createElementNS("http://www.w3.org/2000/svg",'rect');
-			Rectangle1.setAttribute('x', (StartPxl +10)+ 'px');
-			Rectangle1.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
-			Rectangle1.setAttribute('width', EndPxl - StartPxl-20+ 'px');
-			Rectangle1.setAttribute('height',  (HeightPourCent) +'px');
-			Rectangle1.setAttribute('fill','#3D6CA4');
-			Rectangle1.setAttribute("style","opacity:0.3");
-			Rectangle1.setAttribute('stroke-width',1);
-			Rectangle1.setAttribute('stroke-linecap','round');
-			GraphiqueSVG.appendChild(Rectangle1);
 
 			DistancenPxl = StartPxl + ((EndPxl -StartPxl) /2)
 
 			var RectangleText = document.createElementNS("http://www.w3.org/2000/svg",'svg');
 			RectangleText.setAttribute('x', (DistancenPxl-15)+ 'px');
 			RectangleText.setAttribute('y', ((HeightLine - HeightPourCent)-30 )+'px');
-			RectangleText.setAttribute('width',  '40px');
-			RectangleText.setAttribute('height', '30px');
+			RectangleText.setAttribute('width',  '60px');
+			RectangleText.setAttribute('height', '60px');
 			RectangleText.setAttribute('fill','#3D6CA4');
+
+			const circle = document.createElementNS('http://www.w3.org/2000/svg', "rect");
+circle.setAttribute("x", "0");
+circle.setAttribute("y", "0");
+circle.setAttribute("width", "40");
+circle.setAttribute("height", "30");
+circle.setAttribute("fill", "steelblue");
 
 			var useSVG = document.createElementNS('http://www.w3.org/2000/svg', 'image');
 			useSVG.setAttribute('href','Coureurs.png');
 			useSVG.setAttribute('fill','#3D6CA4');
-			useSVG.setAttribute('x','10');
+			useSVG.setAttribute('x','35');
 			useSVG.setAttribute('y','0');
 			useSVG.setAttribute('width','30');
 			useSVG.setAttribute('height','30');
 
 			var RectangleNbrCoureur = document.createElementNS("http://www.w3.org/2000/svg",'rect');
-			Rectangle1.setAttribute('x', (StartPxl +10)+ 'px');
-			Rectangle1.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
-			Rectangle1.setAttribute('width', EndPxl - StartPxl-20+ 'px');
-			Rectangle1.setAttribute('height',  (HeightPourCent) +'px');
-			Rectangle1.setAttribute('fill','#3D6CA4');
-			Rectangle1.setAttribute("style","opacity:0.3");
-			Rectangle1.setAttribute('stroke-width',1);
-			Rectangle1.setAttribute('stroke-linecap','round');
-			GraphiqueSVG.appendChild(Rectangle1);
+			RectangleNbrCoureur.setAttribute('x', (StartPxl )+ 'px');
+			RectangleNbrCoureur.setAttribute('y', (HeightLine - HeightPourCent)+ 'px');
+			RectangleNbrCoureur.setAttribute('width', (EndPxl - StartPxl)+ 'px');
+			RectangleNbrCoureur.setAttribute('height',  (HeightPourCent) +'px');
+			RectangleNbrCoureur.setAttribute('fill','#3D6CA4');
+			RectangleNbrCoureur.setAttribute("style","opacity:0.3");
+			RectangleNbrCoureur.setAttribute('stroke-width',1);
+			RectangleNbrCoureur.setAttribute('stroke-linecap','round');
+			GraphiqueSVG.appendChild(RectangleNbrCoureur);
 
-			newText.setAttributeNS(null,"x", (DistancenPxl-13)+ 'px');    
-			newText.setAttributeNS(null,"y", ((HeightLine - HeightPourCent)-30 )+'px');
+	var newText = document.createElementNS("http://www.w3.org/2000/svg",'text');
+			newText.setAttributeNS(null,"x",  '5px');    
+			newText.setAttributeNS(null,"y", '20px');
 			newText.setAttributeNS(null,"font-size","14");
-	
+	newText.setAttribute('fill','#FFFFFF');
 			var textNode = document.createTextNode(Text);
 			newText.appendChild(textNode);
 
-			GraphiqueSVG.appendChild(newText);
-
-			RectangleText.appendChild(useSVG);	
+			RectangleText.appendChild(useSVG);
+			RectangleText.appendChild(circle);
+			RectangleText.appendChild(newText);
+			
 			GraphiqueSVG.appendChild(RectangleText);
 		
 		}

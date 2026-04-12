@@ -49,10 +49,8 @@ try
             print(-12);
         }
 
-
         $sql = 'UPDATE inscription SET Prenom =\''.$_REQUEST['prenom'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
         $ResultAddInsc = mysqli_query($con,$sql);	
-
         if ( $ResultAddInsc !=  1)
         {
             print(-13);
@@ -60,7 +58,6 @@ try
 
         $sql = 'UPDATE inscription SET adresse =\''.$_REQUEST['adresse'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
         $ResultAddInsc = mysqli_query($con,$sql);	
-
         if ( $ResultAddInsc != 1)
         {
             print(-14);

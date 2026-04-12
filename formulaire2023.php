@@ -566,6 +566,7 @@ if ( isset($_SESSION['Login']))
 						<Option value="L">L</option>
 						<Option value="XL">XL</option>
 						<Option value="XXL">XXL</option>
+						<Option value="96-104">4 ans: 96-104</option>
 							<Option value="6 ans 106-116">6 ans: 106-116</option>
 						<Option value="8 ans 118-128">8 ans: 118-128</option>
 						<Option value="10 ans 130-140">10 ans: 130-140</option>

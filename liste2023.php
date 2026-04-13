@@ -242,7 +242,7 @@ $relais = 0?>
 		<th width="5%"> Année</th>
 		
 			<?	// SPécial BCJ Challenge
-		if ($NOM_COURSE =="BCJ Challenge" && strpos($donnees['NomDepart'],"Course")>-1)
+		if ($NOM_COURSE =="BCJ Challenge")
 		{?>
 			<th width="15%"> Nom équipe</th>
 		<?
@@ -343,7 +343,7 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
 	
 			
 		<?	// SPécial BCJ Challenge
-		if ($NOM_COURSE =="BCJ Challenge" && strpos($donnees['NomDepart'],"Course")>-1)
+		if ($NOM_COURSE =="BCJ Challenge")
 		{?>
 			<td > <?php echo $donnees['NomEquipe']; ?></td><?
 		}?>

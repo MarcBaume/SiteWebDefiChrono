@@ -1696,7 +1696,7 @@ function ChoiceDepart(f)
 						}		
 					}
                     // Si Duo ou équipe // BCJ Challenge
-					if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+					if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1 || (DepartObj.info.NombrePersonneMaxEntreprise != undefined && DepartObj.info.NombrePersonneMaxEntreprise._Value > 1))
 					{
 						document.getElementById("TableEquipe").style.visibility = "visible" ;
 						document.getElementById("TableEquipe").style.display  = "block" ;					
@@ -1704,13 +1704,16 @@ function ChoiceDepart(f)
 						{
 							document.getElementById("RowDuo").style.visibility = "visible" ;
 							document.getElementById("RowDuo").style.display  = "block" ;
-							document.getElementById("RowEntreprise").style.visibility = "visible" ;
-							document.getElementById("RowEntreprise").style.display  = "block" ;
 						}
 						if (DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 						{
 							document.getElementById("RowEquipe").style.visibility = "visible" ;
 							document.getElementById("RowEquipe").style.display  = "block" ;							
+						}
+						if (DepartObj.info.NombrePersonneMaxEntreprise != undefined && DepartObj.info.NombrePersonneMaxEntreprise._Value > 1)
+						{
+							document.getElementById("RowEntreprise").style.visibility = "visible" ;
+							document.getElementById("RowEntreprise").style.display  = "block" ;
 						}
 					}
 						

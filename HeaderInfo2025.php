@@ -94,7 +94,7 @@ else if  ( strlen($_GET['DateCourse'])>0)
 
     session_start();
 	// Connection avec la base de donnée
-	include("MysqlConnect.php");
+	include("MysqlConnect2025.php");
 	// ***************************************** AFFICHAGE BASE de Donnée ***************************************
 	if (isset( $_GET['IdRace']))
 	{
@@ -477,6 +477,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	function ClickRowsForm(elmnt )
     {  
 	elmnt = document.getElementById("Menu");
+	
 	if (<?php echo json_encode($ANNEE_COURSE); ?> > 2022)
 		{
 			elmnt.action = "formulaire2023.php";

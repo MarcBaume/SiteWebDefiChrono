@@ -82,7 +82,7 @@ function isMail2(txtMail)
 <?php include("Header2023.php");?>
 
 <div id="corps">
-<?php include("HeaderInfo2025.php"); 
+<?php include("HeaderInfo2024.php"); 
 
 if ( $today < $val ["DateStartInscription"] && $_SESSION['Niveau'] != 2 && $_SESSION['Niveau'] != 0 )
 {
@@ -97,8 +97,8 @@ else if ( $today > $val ["DATE_END_INSCRIPTION"] )
 }
 else if ($val ["InscriptionExtern"] )
 {
-	$site = "http://www.". $val["Site"] ;
-	header("Location: " . $site );	
+	$site = 'http://www.'. $val["Site"] ;
+	header('Location: ' . $site );	
 }
 ?>
 <script>
@@ -118,7 +118,7 @@ var NombreEtapeTotal =  <?php echo json_encode($val["nbr_etape"]); ?>;
 
 function EquipeChang(valueText) {
 	document.getElementById("NomEquipe").value =valueText;
-	$("VerifEquipe").request({
+	$('VerifEquipe').request({
 		onComplete: function(transport){
 			var val =transport.responseText.evalJSON();
 	}
@@ -132,7 +132,7 @@ function EquipeChang(valueText) {
 		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;margin: 0px" onClick="ClosePopUpAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
 		<p class="TitlePopUP"> Ajout d'un nouvel athlète </p>
 		<form style="padding: 10px" id="formAddMember" name="formAddMember" method="get" action="addMembresFormulaire.php"  >
-			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION["Login"] ?>' />
+			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION['Login'] ?>' />
 			<div class="input">
 				<label id="lblNomAdd" for="nomAdd" >Nom :</label>
 				<input type="text" name="nomAdd" id="nomAdd" tabindex="10"/>
@@ -193,18 +193,18 @@ function EquipeChang(valueText) {
 <div id="PageFormulaire" style="padding: 0px 20px;" >
 <?php
 // Si on est connecté on affiche dans un menu avec les coureurs de la session
-if ( isset($_SESSION["Login"]))
+if ( isset($_SESSION['Login']))
 {
-	$_SESSION["Nbretape"] = $_GET["Nbretape"] ;
-	$_SESSION["Course"] = $_GET["NomCourse"] ;
-	$_SESSION["DateCourse"] = $_GET["DateCourse"];
+	$_SESSION['Nbretape'] = $_GET["Nbretape"] ;
+	$_SESSION['Course'] = $_GET["NomCourse"] ;
+	$_SESSION['DateCourse'] = $_GET['DateCourse'];
 ?>
 <center>
 <img src="images/FilRougeInscription4.png" style="width: 80%" >
 </center>
 
 <form id="VerifEquipe" method="get" action="VerifEquipe.php">
-	<input type="hidden" name="Course" id="Course"   value= "<?php echo $NOM_COURSE. $ANNEE_COURSE ?>" />
+	<input type="hidden" name="Course" id="Course"   value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />
 	<input type="hidden" name="NomEquipe" id="NomEquipe"   value=  />
 </form>
 <form method="post" action="ciblePanier.php" id="Formulaire" name="Formulaire" >
@@ -227,13 +227,13 @@ if ( isset($_SESSION["Login"]))
 			<Select  onchange ="ChoixCoureurs(this.form);" name="Coureur"   id="Coureur"/>
 			<!-- information coureurs masqué --> 
 			<input type="hidden" name="idCoureur" id="idCoureur" />
-			<input type="hidden" name="DateCourse" id="DateCourse"   value= "<?php echo $_GET["DateCourse"] ?>" />
-			<input type="hidden" name="NomCourse" id="NomCourse"  value= "<?php echo $NOM_COURSE?>" />
+			<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $DateCourse ?>' />
+			<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $NOM_COURSE ?>' />
 			<input type="hidden" name="NumCat" id="NumCat" />
 			<input type="hidden" name="NomCat" id="NomCat" />
 			<input type="hidden" name="OnLine" id="OnLine" />
 			<input type="hidden" name="Option" id="Option" />
-			<input type="hidden" name="Nbretape" id="Nbretape" value= "<?php echo  $_GET["NbrEtape"] ?>" />
+			<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $Nbr_etape ?>' />
 		</div>
 		<?php if ($val ["JuraDefi"] )
 		{?>
@@ -637,7 +637,7 @@ if ( isset($_SESSION["Login"]))
 			<input type="text" name="PrixDepart" id="PrixDepart" tabindex="510"  readonly  />CHF
 		</div>
 		<?
-		$pathReglement = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/info/Règlement.pdf';
+		$pathReglement = 'courses/'.$NOM_COURSE.$ANNEE_COURSE.'/info/Règlement.pdf';
 		if (!file_exists($pathReglement))
 		{
 			$pathReglement = 'Règlement.pdf';
@@ -870,7 +870,7 @@ if ( isset($_SESSION["Login"]))
 }
 else
 {
-    $Link= "AddLoginV2.php?Nbretape=".$_GET['NbrEtape']."&DateCourse=".$_GET['DateCourse']."&NomCourse=" .$_GET['NomCourse'];
+    $Link= "AddLoginV2.php?Nbretape=".$_Nbr_etape."&DateCourse=".$DateCourse."&NomCourse=" .$NOM_COURSE
     // demande de connection pour inscription
 ?>
 <script>
@@ -897,9 +897,9 @@ function SubmitLogin()
 	
 	<form method="post" id="FormLogin" action="admin/CibleLoginV2.php">
 	<!--<p><img src="images/ConnectMini.png"  ></p>-->
-	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
-	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
+	<input type="hidden" name="DateCourse" id="DateCourse"   value= "<?php echo $DateCourse ?>" />
+	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $NOM_COURSE ?>' />
+	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $Nbr_etape ?>' />
 
 		<table style="width:80%;margin:auto;">
 			<tr>
@@ -2178,18 +2178,9 @@ foreach ($files1  as $key => $Parcours)
 			// 							Limite de coureur
 			// ********************************************************************************
 			// Nombre de coureur dans la base de donnée
-			// On prépare la valeur de la course en amont
-			$nomCompletCourse = $NOM_COURSE  . $ANNEE_COURSE;
-
-			// On utilise des marqueurs (?) pour la sécurité
-			$sql = "SELECT * FROM inscription 
-					WHERE course = ? AND parcours = ? 
-					ORDER BY NomDepart ASC, nom ASC";
-			$stmt = $pdo->prepare($sql);
-			$stmt->execute([$nomCompletCourse, $Parcours]);
-			$result = $stmt->fetchAll();
-			$NumberCoureur = $stmt->rowCount(); 
-			?>
+			$sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$Parcours. '\'ORDER  BY NomDepart ASC,nom ASC';
+			$result = mysqli_query($con,$sql);
+			$NumberCoureur =mysqli_num_rows($result);?>
 			<script>
 				Parcours.NombreCoureurInscrit = <?php echo json_encode($NumberCoureur ); ?>;
 				console.log("Nombre coureur parcours; " + Parcours.NombreCoureurInscrit);

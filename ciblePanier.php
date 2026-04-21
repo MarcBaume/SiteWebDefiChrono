@@ -106,7 +106,7 @@ $arDepart = explode(";", $_POST["NomDepart"]);
 			"'.$_POST['NumCat'].'",
 			"'.$_POST['email'].'", 
 			"'.$_POST['NomParcours'].'", 
-			"'.$_POST['NomCourse'].$ANNEE_COURSE.'",
+			"'.addslashes($_POST['NomCourse']).$ANNEE_COURSE.'",
 			"'.$arDepart[2].'",
 			"'.$_POST['NomCat'].'",
 			"'.$_POST['NomEquipe'].'",
@@ -308,7 +308,7 @@ $arDepart = explode(";", $_POST["NomDepart"]);
 		
 			if ( $_POST['OnLine'] == "false" )
 			{
-					mail($_POST['email'], 'Confirmation inscription '.$_POST['NomCourse']." ".$ANNEE_COURSE, $Text,$headers);
+					mail($_POST['email'], 'Confirmation inscription '.$NOM_COURSE." ".$ANNEE_COURSE, $Text,$headers);
 			
 			}
 			else
@@ -320,7 +320,7 @@ $arDepart = explode(";", $_POST["NomDepart"]);
 				}
 				else
 				{
-					mail($_POST['email'], 'Confirmation inscription '.$_POST['NomCourse']." ".$ANNEE_COURSE, $Text,$headers);
+					mail($_POST['email'], 'Confirmation inscription '.$NOM_COURSE." ".$ANNEE_COURSE, $Text,$headers);
 				}
 			
 			}

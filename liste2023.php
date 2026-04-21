@@ -70,13 +70,13 @@ if ($nbrFile> 0)
     // On récupère tout le contenu de la table camp
 	if ($_GET['Parcours']==("")){
   //   $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'ORDER BY parcours ASC,  NomDepart ASC,ID ASC';
-$sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'ORDER BY parcours ASC, NomDepart ASC,  Nom ASC';
+$sql = 'SELECT * FROM inscription WHERE course=\''.addslashes($NOM_COURSE). $ANNEE_COURSE .'\'ORDER BY parcours ASC, NomDepart ASC,  Nom ASC';
 
 }
 	else{
 
 //	 $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY NomDepart ASC,Nom ASC';
-$sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY Nom ASC';
+$sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY Nom ASC';
 	
 }
 	 

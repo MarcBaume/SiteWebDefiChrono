@@ -273,7 +273,9 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	</table>
 
 <div  class="menu_vertical"  id= "Header" style="margin-top:10px; z-index:1040;" >
-
+	<form method="get" id="MenuIdRace" >
+		<input type="hidden" name="IdRace" id="IdRace" value= '<?php echo  $IdRace ?>' />
+	</form>
  	<form method="get" id="Menu" >
 				
 		<input type="hidden" name="Etape" id="Etape" value= 0 />
@@ -470,26 +472,14 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	
 	function ClickRowsListe(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	elmnt.action = "liste2023.php";
+		elmnt = document.getElementById("Menu");
+		elmnt.action = "liste2023.php";
 		elmnt.submit();
 	}
 	function ClickRowsForm(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	
-	if (<?php echo json_encode($ANNEE_COURSE); ?> > 2022)
-		{
-			elmnt.action = "formulaire2023.php";
-		}
-	else if (<?php echo json_encode($ANNEE_COURSE); ?> > 2021)
-		{
-			elmnt.action = "formulaireV3.php";
-		}
-		else
-		{
-			elmnt.action = "formulaireV2.php";
-		}
+		elmnt = document.getElementById("MenuIdRace");
+		elmnt.action = "formulaire2023.php";
 		elmnt.submit();
 	}
 	function ClickRowsResultat(elmnt )

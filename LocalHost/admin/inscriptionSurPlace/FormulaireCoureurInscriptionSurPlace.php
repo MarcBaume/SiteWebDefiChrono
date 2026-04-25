@@ -75,18 +75,11 @@ if (isset($_GET["LastAdresseID"]))
 						<i class='fa fa-male' ></i>
 					</button>
 
-					<button  id= "SexeDame" type="button" style="color : #DB02EB; font-size :24px"  onclick="SelectSexe(false)">
+					<button  id= "SexeDame" type="button" style="border:5px solid #DB02EB; font-size :24px"  onclick="SelectSexe(false)">
 						<i class='fa fa-female' ></i>	
 					</button>
 				</td>
             </tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
-
-			<tr style="background:#C0C0C0;">
-				<td style="padding: 10px;padding-left: 20px;">Adresse  :</td><td id="td_adresse" style="padding:5px; Background:lightblue;">	 <input type="text" name="adresse" id="adresse"  /></td>
-			</tr>
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
@@ -517,7 +510,7 @@ function SelectCoureur(e) {
 	document.getElementById("nom").value = Coureur.Nom;
 	document.getElementById("prenom").value = Coureur.Prenom;
 	document.getElementById("date").value = Coureur.DateNaissance;
-	document.getElementById("adresse").value = Coureur.adresse;
+	//document.getElementById("adresse").value = Coureur.adresse;
 
 	arCoureurEmail =Coureur.mail.split("@");
 	document.getElementById("email1").value =arCoureurEmail[0];
@@ -662,7 +655,7 @@ function funSameAdresseWithLastID()
 // Si on a sélecter la même adresse que l'ancien coureur 
 </script>
 <?
- if ($_GET["LastAdresseID"] > 0)
+ if (isset($_GET["LastAdresseID"]))
  {
 	?>
 		<script>
@@ -716,7 +709,7 @@ function check()
 		f1.prenom.style.background = "white";
 	}
 
-	coureur.adresse = f1.adresse.value;
+	//coureur.adresse = f1.adresse.value;
 	coureur.zip = f1.zip.value;
 
 	if (f1.ville.value.length<3) {
@@ -773,7 +766,7 @@ function check()
 function AddInscriptionOrModify()
 {
 	var FormCoureur =document.getElementById("FormulaireCoureur");
-	FormCoureur.action="CibleInscriptionSurPlaceV2.php";
+	FormCoureur.action="CibleInscriptionSurPlace.php";
 	if (document.getElementById("email1").value.length > 1)
 	{
 		document.getElementById("email").value =document.getElementById("email1").value + "@"+document.getElementById("email2").value;
@@ -1265,7 +1258,7 @@ function liste_depart(f,CheckSexe)
 
 <?php
 // Afficher la liste des Parcours  Dossier dans la course ;
-$pathfolder = '../../courses/'.$_GET['NomCourse'].$ANNEE_COURSE;
+$pathfolder = '../../courses/'.$NOM_COURSE.$ANNEE_COURSE;
 // CrÃ©ation de la liste de toutes les Dossier = Parcours 
 $files1 = scandir($pathfolder);
 // Liste des ficbiers 
@@ -1291,7 +1284,7 @@ foreach ($files1  as $key => $Parcours)
         <?php
             //<!--- Liste des DÃ©part !---->
             // Afficher la liste des Parcours  Dossier dans la course ;
-            $pathfolderParcours = '../../courses/'.$_GET['NomCourse'].$ANNEE_COURSE. '/'.$Parcours;
+            $pathfolderParcours = '../../courses/'.$NOM_COURSE.$ANNEE_COURSE. '/'.$Parcours;
             // CrÃ©ation de la liste de toutes les Dossier = Depart 
             $filesDepart = scandir($pathfolderParcours);
 

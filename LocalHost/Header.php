@@ -18,7 +18,8 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/prototype.js" ></script>
 	<script src="js/FonctionDefiChrono3.js?v=1"></script>
-
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js" charset="utf-8"></script>
 <?php $today = date("Y-m-d H:i:s"); 
 date_default_timezone_set('Europe/Paris');
 session_start();
@@ -30,6 +31,7 @@ include("MysqlConnect.php");
 if (isset($_GET['IdRace']))
 {
 	$sql = 'SELECT * FROM Course  WHERE ID=\''.$_GET['IdRace'].'\'' ; 
+	$IdRace = $_GET['IdRace'];
 	$result = mysqli_query($con,$sql);
     if ($result && mysqli_num_rows($result) > 0) 
     {

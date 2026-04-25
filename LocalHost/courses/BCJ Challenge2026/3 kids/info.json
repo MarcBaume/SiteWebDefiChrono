@@ -1,0 +1,122 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "En ligne"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-26 22:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "5"
+            },
+            "NomOption": {
+              "_Value": "En ligne"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Sur place"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-27 22:00:00¨"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "5"
+            },
+            "NomOption": {
+              "_Value": "Sur place"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": false,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": []
+  },
+  "ID": {
+    "_Value": "3"
+  },
+  "Nom": {
+    "_Value": "kids"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

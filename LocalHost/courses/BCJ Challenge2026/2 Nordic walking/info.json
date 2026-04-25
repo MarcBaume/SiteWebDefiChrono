@@ -1,0 +1,702 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Promo inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-03-22 23:59:59"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "25"
+            },
+            "NomOption": {
+              "_Value": "1 crédit-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "45"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "60"
+            },
+            "NomOption": {
+              "_Value": "3 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "65"
+            },
+            "NomOption": {
+              "_Value": "4 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Zone tarif"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-05 22:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "NomOption": {
+              "_Value": "1 crédit-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "21"
+            },
+            "AgeMax": {
+              "_Value": "64"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "50"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "21"
+            },
+            "AgeMax": {
+              "_Value": "64"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "65"
+            },
+            "NomOption": {
+              "_Value": "3 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "21"
+            },
+            "AgeMax": {
+              "_Value": "64"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "80"
+            },
+            "NomOption": {
+              "_Value": "4 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "21"
+            },
+            "AgeMax": {
+              "_Value": "64"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "25"
+            },
+            "NomOption": {
+              "_Value": "1 crédit étape junior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "20"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "45"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape junior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "20"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "60"
+            },
+            "NomOption": {
+              "_Value": "3 crédits-étape junior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "20"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "65"
+            },
+            "NomOption": {
+              "_Value": "4 crédits-étape-junior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "20"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "25"
+            },
+            "NomOption": {
+              "_Value": "1 crédits étape sénior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "65"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "45"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape sénior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "65"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "60"
+            },
+            "NomOption": {
+              "_Value": "3 crédits-étape sénior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "65"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "65"
+            },
+            "NomOption": {
+              "_Value": "4 crédits-étape sénior"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "65"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-12 22:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "NomOption": {
+              "_Value": "1 crédit-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "50"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "65"
+            },
+            "NomOption": {
+              "_Value": "3 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "3"
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-19 22:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "NomOption": {
+              "_Value": "1 crédit-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "50"
+            },
+            "NomOption": {
+              "_Value": "2 crédits-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "3"
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "inscription"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-26 22:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "30"
+            },
+            "NomOption": {
+              "_Value": "1 crédit-étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "3"
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassOptionReduction, ChronoV4WPF",
+        "tarif": {
+          "_Value": "-5"
+        },
+        "DateStartReduction": {
+          "_Value": "2026-05-06 00:00:00"
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "J'ai déjà un dossard"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ID": {
+    "_Value": "2"
+  },
+  "Nom": {
+    "_Value": "Nordic walking"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

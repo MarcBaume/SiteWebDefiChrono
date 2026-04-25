@@ -1,0 +1,96 @@
+{
+  "debutDossard": {
+    "_Value": ""
+  },
+  "finDossard": {
+    "_Value": ""
+  },
+  "ListCoureur": {},
+  "NombrePersonneMaxEquipe": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxDuo": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxEntreprise": {
+    "_Value": "6"
+  },
+  "Path": "C:\\kDrive\\Chrono\\BCJ Challenge2026\\2 Nordic walking\\2 Nordic walking",
+  "ListCategorie": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Nordic walking"
+        },
+        "NumCategorie": {
+          "_Value": "NW"
+        },
+        "debutAnnee": {
+          "_Value": "1904"
+        },
+        "finAnnee": {
+          "_Value": "2019"
+        },
+        "SexeCategorie": {
+          "_Value": "M"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Walking"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "NomeEtapeSelected": "Etape4",
+  "ID": {
+    "_Value": "2"
+  },
+  "Nom": {
+    "_Value": "Nordic walking"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

@@ -187,8 +187,8 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 					?>
 					</border>
 					<script>
-						console.log("10px solid "+ getPixel(<?echo json_encode($chemin) ?>, 1, 1));
-					document.getElementById("BorderLogo").style.border  = "5px solid "+ getPixel(<?echo json_encode($chemin) ?>, 1, 1);
+						console.log("10px solid "+ getPixel(<?php echo json_encode($chemin) ?>, 1, 1));
+					document.getElementById("BorderLogo").style.border  = "5px solid "+ getPixel(<?php echo json_encode($chemin) ?>, 1, 1);
 					document.getElementById("BorderLogo").style.borderRadius = "10px";
 					</script>
 <?php

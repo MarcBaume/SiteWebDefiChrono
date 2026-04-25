@@ -1,0 +1,2 @@
+22 août 2021;l'ajoulote / Mont-de-Coeuve;;;1;19:00
+Point;Arrivée;;;Arrivee;;19:30;;#FF00FFFF;False;False;False;False;False;False;;False;False;False;False;False;False;False;;False

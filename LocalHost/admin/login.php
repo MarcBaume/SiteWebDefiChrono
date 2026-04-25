@@ -10,8 +10,17 @@
 		<div id="index">
 
 <?php 
-if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
+	echo "Test1";
+if (!isset($_SESSION['Login']))
+{
+	echo "Test";
+	$_SESSION['Login'] = 'Defichrono.ch';
+	$_SESSION['Niveau'] = 2;
+}
+if (isset($_SESSION['Login']))
 {?>
+	
+	
 	<h3>
 	<?php
 	if ($_SESSION['Niveau'] == 2 || $_SESSION['Niveau'] ==0)
@@ -106,52 +115,8 @@ if (isset($_SESSION['Login']) &&$_GET['Login'] !="false")
 	 </table>
 	<?php
 }
-else
-{?>
-	<form method="post" name="FormConnect1" id ="FormConnect1" action="CibleLogin.php">
-		<div class="input">
-			<label for="Login" style="font-size:15px;">e-mail :</label>
-			<input type="text" name="login1" id="login1" tabindex="10" style= "padding:10px; font-size: 15px;" style="max-width: 250px;"/> 
-		</div>
-		<div class="input">
-			<label for="password" style="font-size:15px;">Mot de passe :</label>
-			<input type="password" name="pass1" id="pass1" tabindex="15" style= " font-size: 20px;" style="max-width: 250px;"/>
-		<div>
-		<span class="dot" onclick=" SendForm1()"   >
-			<i  class="fa fa-sign-in" style= " font-size: 40px;" ></i>
-		</span>
-		<table style="margin-top:100px;">
-			<tr>	
-				<td onClick= "GoNewCompt()" >
-				<span class="dot">
-					<p style="margin:10px;background:transparent;">
-						Créer un compte 
-					</p>
-				</span >
-				</td>
-				<td onClick= "GoForgetPassword()">
-				<span class="dot">
-					<p style="margin:10px;background:transparent;">
-						Réinitialiser mon mot de passe
-					</p>
-					</span >
-				</td>
-			</tr>
-		</table>
-	</form>
-	<?php
-	if (isset($_GET['Login']) &&  $_GET['Login']=="false")
-	{
-		session_destroy();
-		?> <p style="background-color : Red;"> Mauvais mot de passe </p>
-		 <p>* Si  votre mot de passe ne fonctionne pas, veuillez le réinitialiser </p>
-	<?php	
-	}
-	else
-	{
-		session_destroy();
-	}
-}
+
+	
 
    ?>
   

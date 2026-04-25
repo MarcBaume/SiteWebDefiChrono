@@ -1,0 +1,2 @@
+11 mai 2022;La Courtine / Les Genevez;;;2;19:15
+Point;Arrivée;;;Arrivee;;19:20;;#FF0000FF;False;False;False;False;False;False;;False;False;False;False;False;False;False;;False

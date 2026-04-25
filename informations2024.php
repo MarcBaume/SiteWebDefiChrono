@@ -973,8 +973,7 @@ function AddPoint(LastPoint, Point ,mymap , GraphiqueSVG, xStart, xFinish)
 // you can set .my-div-icon styles in CSS
 
 L.marker([Point.Lat -0.0005, Point.Lon-0.0005], {
-  icon: myIcon
-}).addTo(mymap);
+  icon: myIcon}).addTo(mymap);
 	}
 
 	color= "rgb("+r+" ,"+g+","+ b+")"; 

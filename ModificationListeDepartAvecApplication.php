@@ -73,7 +73,7 @@ function majuscules($inChaine)
 					// Recherche si le numéro d'id existe
 					$IDCoureur = $data[17];
 					
-					$sql = 'SELECT * FROM inscription WHERE course =\''.$_GET["NomCourse"].$ANNEE_COURSE.'\'AND Nom = \''.$data[1].'\'AND Prenom = \''.$data[2].'\'AND NumCategorie = \''.$data[9].'\'AND DateNaissance = \''.$data[6].'\'';
+					$sql = 'SELECT * FROM inscription2 WHERE ID =\''.$IDCoureur.'\'';
 					$result4 = mysqli_query($con,$sql);	
 					if ($result4 ) 
 					{	
@@ -132,7 +132,7 @@ function majuscules($inChaine)
 								echo "Nbr etape Modifier_".$data[31]."_".$data[1]."_".$data[2]."</br>";
 							}*/
 						
-						
+						// todo Update de la ligne et pas la supprime
 						
 						$sql2 = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
 						`PrenomDisc1`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`, `PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`, `NomDisc6`, `PrenomDisc6`,`NbrEtape` ,

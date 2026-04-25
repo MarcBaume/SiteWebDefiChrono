@@ -18,7 +18,7 @@ function ChoiceRace(idRace)
 	Form.submit();
 }
 </script>
-  <form method="get" action="informations2023.php" name="FormChoiceCourse" id="FormChoiceCourse">					
+  <form method="get" action="informations.php" name="FormChoiceCourse" id="FormChoiceCourse">					
 		<input type="hidden" name="IdRace" id="IdRace" />
   </form>
 				

@@ -1,31 +1,32 @@
-<script type="text/javascript">
-function getURLHeader( ValueFind, IDElement) {
-	if (window.location.href.search(ValueFind)>-1)
+<script>
+	function getURLHeader( ValueFind, IDElement) 
 	{
-		document.getElementById(IDElement).classList.add("dotDisplayedHeader");
-		document.getElementById(IDElement).classList.remove("dotHeader");
+		if (window.location.href.search(ValueFind)>-1)
+		{
+			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
+			document.getElementById(IDElement).classList.remove("dotHeader");
+		}
+		else
+		{
+			document.getElementById(IDElement).classList.add("dotHeader");
+			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
+		}
 	}
-	else
+	function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement) 
 	{
-		document.getElementById(IDElement).classList.add("dotHeader");
-		document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
-	}
-}
-function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement) 
-{
-	if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
-	{
-		document.getElementById(IDElement).classList.add("dotDisplayedHeader");
-		document.getElementById(IDElement).classList.remove("dotHeader");
+		if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
+		{
+			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
+			document.getElementById(IDElement).classList.remove("dotHeader");
 
+		}
+		else
+		{
+			document.getElementById(IDElement).classList.add("dotHeader");
+			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
+		}
 	}
-	else
-	{
-		document.getElementById(IDElement).classList.add("dotHeader");
-		document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
-	}
-}
-	</script>
+</script>
 <Div id= "Header" style="  z-index:1035;">
 <table style= "width: 100%;">
 <tr>
@@ -121,9 +122,7 @@ function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement)
 				
 				</td>
 				<td>
-				
 					<a href="AddLogin.php"style="font-size:12px;">Créer un compte </a>
-					
 				</td>
 			</tr>
 			<tr>

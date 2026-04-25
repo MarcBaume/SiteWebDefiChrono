@@ -1,0 +1,2 @@
+18 mai 2022; ??? / Boécourt;;;3;19:15
+Point;Arrivée;;;Arrivee;;19:20;;#FFFF00DD;False;False;False;False;False;False;;False;False;False;False;False;False;False;;False

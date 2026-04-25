@@ -577,7 +577,7 @@ function SearchDatabase(e) {
 }
 // Sélection coureur depuis base de donnée de liste de personne
 function SelectCoureur(e) {
-	var Coureur = new Object();user2
+	var Coureur = new Object();
 		Coureur = val[e];
 		document.getElementById("nom").value = Coureur.Nom;
 	document.getElementById("prenom").value = Coureur.Prenom;
@@ -723,7 +723,7 @@ function funSameAdresseWithLastID()
 // Si on a sélecter la même adresse que l'ancien coureur 
 </script>
 <?php
- if ($_GET["LastAdresse"]== "True")
+ if (isset($_GET["LastAdresse"]) && $_GET["LastAdresse"] == "True")
  {
 	?>
 		<script>
@@ -1430,7 +1430,7 @@ function liste_depart(f,CheckSexe)
 
 <?php
 // Afficher la liste des Parcours  Dossier dans la course ;
-$pathfolder = '../../courses/'.$_GET['NomCourse'].$ANNEE_COURSE;
+$pathfolder = '../../courses/'.$NOM_COURSE.$ANNEE_COURSE;
 // CrÃ©ation de la liste de toutes les Dossier = Parcours 
 $files1 = scandir($pathfolder);
 // Liste des ficbiers 
@@ -1456,7 +1456,7 @@ foreach ($files1  as $key => $Parcours)
         <?php
             //<!--- Liste des DÃ©part !---->
             // Afficher la liste des Parcours  Dossier dans la course ;
-            $pathfolderParcours = '../../courses/'.$_GET['NomCourse'].$ANNEE_COURSE. '/'.$Parcours;
+            $pathfolderParcours = '../../courses/'.$NOM_COURSE.$ANNEE_COURSE. '/'.$Parcours;
             // CrÃ©ation de la liste de toutes les Dossier = Depart 
             $filesDepart = scandir($pathfolderParcours);
 

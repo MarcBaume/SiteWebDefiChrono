@@ -55,28 +55,10 @@ function AddPersonne()
 </script>
 
 <div id="corps">
-<table>
-	<tr>
-		<td>
 			<h3>
 				Liste de départ  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
 			</h3>
-			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 
-		</td>
-		<td>
-			<Form  method="post" action="ExportMysql.php">
-				<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
-				<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
-				<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />		
-				<center>
-					<input type="submit" class="ButtonResultat" value="Export Excel">
-				</center>
-			</form>
-		</td>
-	</tr>
-</table>
-<Fieldset>
 <div id="formulaire">
 
 <form method="get"  id="FormulaireCoureur" name="FormulaireCoureur" style="display : none;" >
@@ -287,10 +269,9 @@ function AddPersonne()
 </div>	
 </div>
 	<div id="DivListeCoureurInscrits">
-<h2>Liste des  personnes inscrites </h2>
 <p>
-  <input Type="text"  style="font-size:24px" name="FindValue" id="FindValue" />
-  <button type="button" class="ButtonResultat" onclick="ReadMysqlCoureur()">	<i class='fa fa-search' ></i></button>
+  <input Type="text"  style="width:80%;font-size:24px" name="FindValue" id="FindValue" />
+  	<i class='fa fa-search'  style="font-size:42px" ></i>
 </p>
 <Table  style="width: 80%" id ="TableListCoureurs">
 </table>

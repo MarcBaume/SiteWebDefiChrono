@@ -1,0 +1,111 @@
+{
+  "Date": {
+    "_Value": "2025-05-27"
+  },
+  "xContreLaMontre": {
+    "oldValue": false,
+    "Title": "Contre la montre",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "xClassmeentNombreTour": {
+    "oldValue": false,
+    "Title": "Nombre tour",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "HeureDepart": {
+    "_Value": "19:00"
+  },
+  "HeureEnd": {
+    "_Value": ""
+  },
+  "Lieu": {
+    "_Value": "Vendlincourt"
+  },
+  "ListDiscipline": {
+    "ListItem": []
+  },
+  "ListPointPassage": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 2,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF9400D3",
+        "HeureStart": {
+          "_Value": " 19:25:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Arrivée"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "structurePrintResultat": {
+    "xWithPointPassage": true,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "structureWebResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "Path": "C:\\kDrive\\Chrono\\BCJ Challenge2026\\2 Nordic walking\\2 Nordic walking\\Etape4",
+  "ListNumeroDNF": null,
+  "ID": {
+    "_Value": "4"
+  },
+  "Nom": {
+    "_Value": "Etape4"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

@@ -1,0 +1,633 @@
+{
+  "debutDossard": {
+    "_Value": ""
+  },
+  "finDossard": {
+    "_Value": ""
+  },
+  "ListCoureur": {},
+  "NombrePersonneMaxEquipe": {
+    "_Value": "2"
+  },
+  "NombrePersonneMaxDuo": {
+    "_Value": "6"
+  },
+  "Path": "C:\\kDrive\\Chrono\\BCJ Challenge2026\\1 Course à pied\\1 Course à pied",
+  "ListCategorie": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Dames juniors"
+        },
+        "NumCategorie": {
+          "_Value": "DJ"
+        },
+        "debutAnnee": {
+          "_Value": "2007"
+        },
+        "finAnnee": {
+          "_Value": "2014"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "DJ"
+        },
+        "Nom": {
+          "_Value": "Dames Juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Hommes juniors"
+        },
+        "NumCategorie": {
+          "_Value": "HJ"
+        },
+        "debutAnnee": {
+          "_Value": "2007"
+        },
+        "finAnnee": {
+          "_Value": "2014"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Dames 1"
+        },
+        "NumCategorie": {
+          "_Value": "D1"
+        },
+        "debutAnnee": {
+          "_Value": "1997"
+        },
+        "finAnnee": {
+          "_Value": "2006"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Hommes 1"
+        },
+        "NumCategorie": {
+          "_Value": "H1"
+        },
+        "debutAnnee": {
+          "_Value": "1997"
+        },
+        "finAnnee": {
+          "_Value": "2006"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Dames 2"
+        },
+        "NumCategorie": {
+          "_Value": "D2"
+        },
+        "debutAnnee": {
+          "_Value": "1987"
+        },
+        "finAnnee": {
+          "_Value": "1996"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Hommes 2"
+        },
+        "NumCategorie": {
+          "_Value": "H2"
+        },
+        "debutAnnee": {
+          "_Value": "1987"
+        },
+        "finAnnee": {
+          "_Value": "1996"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Dames 3"
+        },
+        "NumCategorie": {
+          "_Value": "D3"
+        },
+        "debutAnnee": {
+          "_Value": "1977"
+        },
+        "finAnnee": {
+          "_Value": "1986"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Hommes 3"
+        },
+        "NumCategorie": {
+          "_Value": "H3"
+        },
+        "debutAnnee": {
+          "_Value": "1977"
+        },
+        "finAnnee": {
+          "_Value": "1986"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Dames 4"
+        },
+        "NumCategorie": {
+          "_Value": "D4"
+        },
+        "debutAnnee": {
+          "_Value": "1904"
+        },
+        "finAnnee": {
+          "_Value": "1976"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Hommes 4"
+        },
+        "NumCategorie": {
+          "_Value": "H4"
+        },
+        "debutAnnee": {
+          "_Value": "1904"
+        },
+        "finAnnee": {
+          "_Value": "1976"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": "HJ"
+        },
+        "Nom": {
+          "_Value": "Hommes juniors"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "NomeEtapeSelected": "Etape4",
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Course à pied"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

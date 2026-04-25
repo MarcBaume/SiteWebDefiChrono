@@ -82,7 +82,7 @@ function ClickColForm()
 function ClickColListe()
 {
     f1 = 	document.getElementById("FormRace");
-    f1.action="ListeInscriptionOrganisateur.php";
+    f1.action="ListeInscriptionsOrganisateur.php";
      f1.submit();
 
 

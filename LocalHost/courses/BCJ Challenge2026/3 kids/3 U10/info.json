@@ -1,0 +1,156 @@
+{
+  "debutDossard": {
+    "_Value": ""
+  },
+  "finDossard": {
+    "_Value": ""
+  },
+  "ListCoureur": {},
+  "NombrePersonneMaxEquipe": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxDuo": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxEntreprise": {
+    "_Value": ""
+  },
+  "Path": "C:\\kDrive\\Chrono\\BCJ Challenge2026\\3 kids\\3 U10",
+  "ListCategorie": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Ecolières C"
+        },
+        "NumCategorie": {
+          "_Value": "U10F"
+        },
+        "debutAnnee": {
+          "_Value": "2017"
+        },
+        "finAnnee": {
+          "_Value": "2018"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En relais",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Ecoliers C"
+        },
+        "NumCategorie": {
+          "_Value": "U10G"
+        },
+        "debutAnnee": {
+          "_Value": "2017"
+        },
+        "finAnnee": {
+          "_Value": "2018"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En relais",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "NomeEtapeSelected": "Etape1",
+  "ID": {
+    "_Value": "3"
+  },
+  "Nom": {
+    "_Value": "U10"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

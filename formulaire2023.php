@@ -1762,8 +1762,12 @@ function ChoiceDepart(f)
 								else
 								{
 									var ageCoureur =  2026 - f.date.value;
-	
-									if((tarifsActif.AgeMin._Value.length == 0 || ageCoureur >= parseInt(tarifsActif.AgeMin._Value) )
+									if (tarifsActif.AgeMin == undefined)
+									{
+										e.options.add( new Option( tarifsActif.NomOption._Value + " - " + tarifsActif.tarif._Value + "CHF",tarifsActif.NomOption._Value + ";"+ tarifsActif.tarif._Value + ";"+ tarifsActif.OnLine.Value + ";" + tarifsActif.T_shirt._Value));
+										console.log(tarifsActif)	
+									}
+									else if((tarifsActif.AgeMin._Value.length == 0 || ageCoureur >= parseInt(tarifsActif.AgeMin._Value) )
 										&& (tarifsActif.AgeMax._Value.length == 0 || ageCoureur <= parseInt(tarifsActif.AgeMax._Value)  ) ) 						
 									{
 										e.options.add( new Option( tarifsActif.NomOption._Value + " - " + tarifsActif.tarif._Value + "CHF",tarifsActif.NomOption._Value + ";"+ tarifsActif.tarif._Value + ";"+ tarifsActif.OnLine.Value + ";" + tarifsActif.T_shirt._Value));

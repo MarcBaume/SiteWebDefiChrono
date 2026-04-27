@@ -7,7 +7,7 @@ $Date =  date_parse($_POST['DateCourse']);
 $ANNEE_COURSE = $Date['year']; 
 $Month = $Date['month']; 
 $Day = $Date['day']; 
-
+$Status = 'sur place';
 function majuscules($inChaine)
 {
     $inChaine = strtolower($inChaine);

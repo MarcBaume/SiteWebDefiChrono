@@ -6,7 +6,7 @@ session_start();
 include("../MysqlConnect.php");
  
   
-if ( strlen($_POST['DateCourse'])>0)
+if ( strlen($_POST['NomCourse'])>0)
 {
 $DateCourse =  $_POST['DateCourse'];
 $Date =  date_parse($_POST['DateCourse']);
@@ -19,7 +19,7 @@ $NOM_COURSE = $_POST["NomCourse"];
 $Nbr_etape =  $_POST["NbrEtape"] ;
 
 }
-else if  ( strlen($_GET['DateCourse'])>0)
+else if  ( strlen($_GET['NomCourse'])>0)
 {
 $DateCourse =  $_GET['DateCourse'];
 $Date =  date_parse($_GET['DateCourse']);

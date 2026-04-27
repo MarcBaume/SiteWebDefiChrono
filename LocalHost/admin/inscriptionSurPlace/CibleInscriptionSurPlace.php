@@ -7,6 +7,7 @@ $Date =  date_parse($_POST['DateCourse']);
 $ANNEE_COURSE = $Date['year']; 
 $Month = $Date['month']; 
 $Day = $Date['day']; 
+$Status = 'localhost';
 
 function majuscules($inChaine)
 {

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
-	<title>Défi Chrono</title>
+	<title>Défi Chrono update files</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,7 +51,7 @@
 					if($pos >-1)
 					{
 						// Recherche si valeur deja dans base de donnée 
-						$sql = "SELECT * FROM inscription2 WHERE Payer = :type_paiement";
+						$sql = "SELECT * FROM inscription WHERE Payer = :type_paiement";
 						$requete = $pdo->prepare($sql);
 						$requete->execute(['type_paiement' => $typeInscription.$IDCoureur]);
 						$findRacer = $requete->fetch(PDO::FETCH_ASSOC);
@@ -64,7 +63,7 @@
 						else
 						{
 				
-							$sql2 = 'INSERT INTO inscription2(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
+							$sql2 = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
 							`PrenomDisc1`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`, `PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`, `NomDisc6`, `PrenomDisc6`,`NbrEtape` ,
 							`Login`,`Payer` ,`OrderPayement` ,`Prix` ,`Date` ,`PayementOnLine` ,`Partenaire` ,`TypeEquipe` ,`PrixSouvenir` ,`Informations` ,`NombreCreditUtilise`)
 							VALUES
@@ -124,7 +123,7 @@
 			
 						if (strlen($IDCoureur)> 1 )
 						{
-							$sql = "SELECT * FROM inscription2 WHERE ID = :id_coureur";
+							$sql = "SELECT * FROM inscription WHERE ID = :id_coureur";
 							$requete = $pdo->prepare($sql);
 							$requete->execute(['id_coureur' => $IDCoureur]);
 							$membre = $requete->fetch(PDO::FETCH_ASSOC);
@@ -136,7 +135,7 @@
 								{
 									if ($membre['NumDossard'] == "0")
 									{
-										$sql = "UPDATE inscription2 SET NumDossard = :NumDossard WHERE ID = :id_coureur";
+										$sql = "UPDATE inscription SET NumDossard = :NumDossard WHERE ID = :id_coureur";
 										$requete = $pdo->prepare($sql);
 										// 3. Exécution de la mise à jour avec les données
 										$requete->execute([

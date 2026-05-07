@@ -25,7 +25,6 @@
 	include("HeaderInfo.php"); 
 	//$pathfolder = '../courses/'.$NOM_COURSE.$ANNEE_COURSE.'/info';
 	$pathfolder = '../FilesTemp';
-	
 	echo "Vérification si le dossier existe?". $pathfolder."<br />" ;
 	if (is_dir  (  $pathfolder ))
 	{
@@ -48,19 +47,23 @@
 					$pos = strpos($typeInscription, 'localhost');
 					$IDCoureur = $data[17];
 					// Inscription en local a ajouter a la base de donnée
-					if($pos >-1)
+					if($pos >-1 )
 					{
 						// Recherche si valeur deja dans base de donnée 
-						$sql = "SELECT * FROM inscription WHERE Payer = :type_paiement";
+						$sql = "SELECT * FROM inscription WHERE Nom = :Nom and 
+						Prenom = :Prenom and 
+						DateNaissance  = :DateNaissance and 
+						course = :Course and 
+						NomDepart = :NomDepart";
 						$requete = $pdo->prepare($sql);
-						$requete->execute(['type_paiement' => $typeInscription.$IDCoureur]);
+						$requete->execute(['Nom' => $Nom,
+						'Prenom' => $Prenom,
+						'DateNaissance' =>  $data[6],
+						'Course' =>  $data[16],
+						'NomDepart' =>  $data[13]]);
 						$findRacer = $requete->fetch(PDO::FETCH_ASSOC);
 						#si le coureur est déjà trouvé
-						if ($findRacer) 
-						{
-							echo 'Coureur déjà transférer de local '.$Nom .'_'.$Prenom.'</br>';
-						}
-						else
+						if (!$findRacer) 
 						{
 				
 							$sql2 = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
@@ -100,7 +103,7 @@
 							"'.$data[31].'", 
 
 							"'.$data[32].'",
-							"localhost'.$IDCoureur.'",
+							"local'.$IDCoureur.'",
 							"'.$data[34].'",
 
 							"'.$data[35].'",
@@ -120,7 +123,6 @@
 					}
 					else
 					{
-			
 						if (strlen($IDCoureur)> 1 )
 						{
 							$sql = "SELECT * FROM inscription WHERE ID = :id_coureur";
@@ -144,15 +146,10 @@
 										]);
 										echo "Update: ".$IDCoureur."=> ".$data[0]. " ".$title."<br />";
 									}
-									else if ($membre['NumDossard'] == $data[0])
+									else if ( $membre['NumDossard'] !== $data[0] )	
 									{
-										echo "Aucune modifcation: ".$IDCoureur ." => Dossard: ".$membre['NumDossard']. " ".$title."<br />";
-									}
-									else
-									{
-										echo "dossard existant: ".$IDCoureur." => avant: ".$membre['NumDossard']  ."fichier: ".$data[0]." ".$title."<br />";
-									}
-									
+										echo  "Erreur numero dossard déjà attribué: ".$IDCoureur."=> ".$data[0]," - ".$membre['NumDossard']. " ".$title."<br />";
+									}					
 								}
 								else
 								{
@@ -167,7 +164,9 @@
 					}
                 }
             }
+			unlink($pathFile);
         }
+
 	}    		
 	
 ?>

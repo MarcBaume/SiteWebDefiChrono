@@ -81,7 +81,7 @@ function majuscules($inChaine)
 			if ( $ResultAddInsc == 1)
 			{
 				$last_id = $con->insert_id;
-				header('Location: endInscriptionSurPlace.php?NbrEtape='.$_POST['NbrEtape'].'&DateCourse='.$_POST['DateCourse'].'&Etape=1&NomCourse='.$_POST['NomCourse'].'&LastAdresseID='.$last_id.''); 
+				header('Location: endInscriptionSurPlace.php?IdRace='.$_POST['IdRace'].'&DateCourse='.$_POST['DateCourse'].'&Etape=1&NomCourse='.$_POST['NomCourse'].'&LastAdresseID='.$last_id.''); 
 			}
 
      }

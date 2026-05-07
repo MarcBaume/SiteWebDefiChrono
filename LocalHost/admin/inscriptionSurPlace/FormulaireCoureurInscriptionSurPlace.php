@@ -24,6 +24,8 @@ if (isset($_GET["LastAdresseID"]))
 <?php
 }?>
 <form method="get"  id="FormulaireCoureur" name="FormulaireCoureur"  >
+		<input type="hidden" name="IdRace" id="IdRace"  value= '<?php echo  $_GET["IdRace"]?>' />
+	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $NOM_COURSE ?>' />
 	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $DateCourse ?>' />
 	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $NOM_COURSE ?>' />
 	<input type="hidden" name="NumCat" id="NumCat" />

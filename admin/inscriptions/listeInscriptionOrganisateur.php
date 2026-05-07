@@ -1461,6 +1461,21 @@ function ReadMysqlCoureur()
 					col1.innerHTML = Coureur.NbrEtape;
 					RowsCoureur.append(col1);
 					
+					
+					col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "12px";
+					col1.style.padding = "5px";;
+					col1.innerHTML = Coureur.Prix;
+					RowsCoureur.append(col1);
+
+										col1 = document.createElement('td');
+					col1.style.color = "black";
+					col1.style.fontSize = "12px";
+					col1.style.padding = "5px";;
+					col1.innerHTML = Coureur.PrixSouvenir;
+					RowsCoureur.append(col1);
+
 					col1 = document.createElement('td');
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";

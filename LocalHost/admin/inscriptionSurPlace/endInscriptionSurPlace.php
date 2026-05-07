@@ -84,18 +84,11 @@ function Informations()
 <div id="corps">
 		<h2> <i class="fa fa-check-circle" style="color:LightGreen; font-size:48px;" ></i> Maintenant vous pouvez aller à la caisse pour payer et récupérer votre dossard </h2>
         	 <!--- Couverture --->
-<form method="get" action="formulaireInscriptionSurPlace.php" id="ValueCourse" name="ValueCourse" >
+<form method="get" action="FormulaireCoureurInscriptionSurPlace.php" id="ValueCourse" name="ValueCourse" >
 <!-- Tableau information de la course !-->
 
-	<input type="hidden" name="idCoureur" id="idCoureur" />
-	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
-	<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
-	<input type="hidden" name="NumCat" id="NumCat" />
-	<input type="hidden" name="NomCat" id="NomCat" />
-	<input type="hidden" name="OnLine" id="OnLine" />
-	<input type="hidden" name="Option" id="Option" />
+	<input type="hidden" name="IdRace" id="IdRace" value= <?php echo  $_GET["IdRace"]?>/>
 	<input type="hidden" name="LastAdresseID" id="LastAdresseID"  value= '<?php echo  $_GET["LastAdresseID"] ?>' />
-	<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
 
 	<Button class="ButtonResultat"  style="width: 30% ;Height : 80px ; font-size:24px; margin :20px; padding :20px;" onclick="AddNewInscriptionWithSameAdresse()">
 	Nouvelle Inscription </br> avec la même adresse

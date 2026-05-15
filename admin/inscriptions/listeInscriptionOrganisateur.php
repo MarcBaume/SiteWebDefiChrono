@@ -279,6 +279,15 @@ function AddPersonne()
 				<input type="text" name="NbrEtape" id="NbrEtape" tabindex="410"    />
 			</td>
 		</tr>
+				<!---------- CHOIC TARIFS _______________-->
+		<tr style="background:#C0C0C0;padding:20px;" >
+			<td style="width: 40%;padding: 10px;padding-left: 20px;">
+				Prix:
+			</td> 
+			<td>
+				<input type="text" name="Prix" id="Prix" tabindex="410"    />
+			</td>
+		</tr>
 	</table>
 </form>
 
@@ -1248,7 +1257,7 @@ function funDeleteCoureur()
 					document.getElementById("NbrEtape").value = CoureurFind.NbrEtape ;
 					document.getElementById("NomEquipe").value = CoureurFind.NomEquipe ;
 					document.getElementById("TypeEquipe").value = CoureurFind.TypeEquipe ;
-
+					document.getElementById("Prix").value = CoureurFind.Prix ;
 					document.getElementById("FindValue").value = "" ;	
 
 					document.getElementById("ButtonSendFormulaire").value = "Valider dossard" ;
@@ -1458,7 +1467,7 @@ function ReadMysqlCoureur()
 					col1.style.color = "black";
 					col1.style.fontSize = "12px";
 					col1.style.padding = "5px";;
-					col1.innerHTML = Coureur.NbrEtape;
+					col1.innerHTML =  Coureur.NombreCreditUtilise + "/"+ Coureur.NbrEtape ;
 					RowsCoureur.append(col1);
 					
 					

@@ -11,7 +11,7 @@
 <metahttp-equiv = 'pragma' content = 'no-cache'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="styleV6.css" type="text/css"/>
+	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
 	<!-- Import Leaflet CSS Style Sheet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 

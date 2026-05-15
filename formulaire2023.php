@@ -5,6 +5,16 @@
   ?>
     <body>
     <script>
+
+		const today = new Date().toLocaleString('sv-SE', { 
+  year: 'numeric', 
+  month: '2-digit', 
+  day: '2-digit', 
+  hour: '2-digit', 
+  minute: '2-digit', 
+  second: '2-digit' 
+});
+
 		function ClosePopUpAddMember()
 {
 	console.log("ClosePopAddMember");
@@ -1694,8 +1704,11 @@ function ChoiceDepart(f)
                     // Si Duo ou équipe // BCJ Challenge
 					if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1 || (DepartObj.info.NombrePersonneMaxEntreprise != undefined && DepartObj.info.NombrePersonneMaxEntreprise._Value > 1))
 					{
-						document.getElementById("TableEquipe").style.visibility = "visible" ;
-						document.getElementById("TableEquipe").style.display  = "block" ;					
+						if ( today <= document.getElementById("DateCourse").value)
+						{
+							document.getElementById("TableEquipe").style.visibility = "visible" ;
+							document.getElementById("TableEquipe").style.display  = "block" ;	
+						}				
 						if (DepartObj.info.NombrePersonneMaxDuo._Value > 1)
 						{
 							document.getElementById("RowDuo").style.visibility = "visible" ;

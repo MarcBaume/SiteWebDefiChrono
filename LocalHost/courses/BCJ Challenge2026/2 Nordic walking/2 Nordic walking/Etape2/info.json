@@ -17,7 +17,7 @@
     "ReadOnly": false
   },
   "HeureDepart": {
-    "_Value": "19:00"
+    "_Value": "19:04:37"
   },
   "HeureEnd": {
     "_Value": ""
@@ -39,9 +39,9 @@
         "HeureEnd": {
           "_Value": ""
         },
-        "ColorDetection": "#FF0FF0FF",
+        "ColorDetection": "#FF00FF00",
         "HeureStart": {
-          "_Value": "19:30"
+          "_Value": "19:35"
         },
         "NotVisibleOnLiveSpeaker": {
           "oldValue": false,

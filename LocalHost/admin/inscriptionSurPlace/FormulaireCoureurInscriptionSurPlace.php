@@ -1,6 +1,7 @@
 
 <?php
  include("Header.php")
+ 
  ?>
 <script>
 	var CoureurFind = new Object();
@@ -848,25 +849,29 @@ function  SelectDepart(evt)
 	var ButtonParcours	= document.getElementsByName("buttonParcours");
 	for(var i = 0; i < ButtonParcours.length; i++) 
 	{
-	
 		ButtonParcours[i].classList.add("ButtonResultat");
  		ButtonParcours[i].classList.remove("ButtonResultatSelected");
-
 	}
 	
-
 	document.getElementById(evt).classList.remove("ButtonResultat");
 	document.getElementById(evt).classList.add("ButtonResultatSelected");
 	
 	document.getElementById("HaveAChoiceCategorie").style.display="table";
 	document.getElementById("NomDepart").style.backgroundColor="#FFFFFF";
 	
-
 	var tabOption = evt.split(';');
 	var ParcoursObj = ArrayParcours[tabOption[6] ];
 	var DepartObj = ParcoursObj.ArrayDepart[tabOption[0]];
 		
-
+			const today = new Date().toLocaleString('sv-SE', { 
+  year: 'numeric', 
+  month: '2-digit', 
+  day: '2-digit', 
+  hour: '2-digit', 
+  minute: '2-digit', 
+  second: '2-digit' 
+});
+			
 		document.getElementById("NomDepart").value = tabOption[2] ;
 		document.getElementById("NomParcours").value = tabOption[5] ;
 		document.getElementById("NomCat").value = tabOption[3] ;
@@ -910,20 +915,11 @@ function  SelectDepart(evt)
 		// Si on peut s'inscrire par équipe dans la catégorie
 		if ((CatOBj.Equipe != null && CatOBj.Equipe.Value == true) || (CatOBj.Relais != null && CatOBj.Relais.Value == true))
 		{
-		
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "table" ;
-			// Pour course DUO
-	/*		if (f.NomParcours.value == "TEAM")
+			if ( today <= document.getElementById("DateCourse").value)
 			{
-				document.getElementById("ParaRemarques").style.visibility = "visible";
-				document.getElementById("ParaRemarques").style.display  = "table" ;
-			}*/
-
-	
-		// Si la catégorie est en relais
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "table" ;
+				document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+				document.getElementById("lblNomEquipe").style.display  = "table" ;
+			}
 			xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
 		}
 		// Tableau qui regroupe toute les  discipline des étapes
@@ -1055,11 +1051,14 @@ function  SelectDepart(evt)
 		// Si Duo ou équipe // BCJ Challenge
 		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
 		{
-
-			document.getElementById("lblNomEquipe").style.visibility = "visible" ;
-			document.getElementById("lblNomEquipe").style.display  = "block" ;	
-			document.getElementById("TableEquipe").style.visibility = "visible" ;
-			document.getElementById("TableEquipe").style.display  = "block" ;					
+			if ( today <= document.getElementById("DateCourse").value)
+			{
+				document.getElementById("lblNomEquipe").style.visibility = "visible" ;
+				document.getElementById("lblNomEquipe").style.display  = "block" ;	
+				document.getElementById("TableEquipe").style.visibility = "visible" ;
+				document.getElementById("TableEquipe").style.display  = "block" ;
+			}
+					
 			if (DepartObj.info.NombrePersonneMaxDuo._Value > 1)
 			{
 				document.getElementById("RowDuo").style.visibility = "visible" ;

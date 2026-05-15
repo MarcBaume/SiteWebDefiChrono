@@ -1,0 +1,145 @@
+{
+  "Date": {
+    "_Value": "2026-05-20"
+  },
+  "xContreLaMontre": {
+    "oldValue": false,
+    "Title": "Contre la montre",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "xClassmeentNombreTour": {
+    "oldValue": false,
+    "Title": "Nombre tour",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "HeureDepart": {
+    "_Value": "19:15"
+  },
+  "HeureEnd": {
+    "_Value": ""
+  },
+  "Lieu": {
+    "_Value": "Develier"
+  },
+  "ListDiscipline": {
+    "ListItem": []
+  },
+  "ListPointPassage": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 1,
+        "HeureEnd": {
+          "_Value": "19:20"
+        },
+        "ColorDetection": "#FFFF69B4",
+        "HeureStart": {
+          "_Value": "19:15:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Départ"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 2,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FFFF4500",
+        "HeureStart": {
+          "_Value": "19:30"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Arrivée"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "structurePrintResultat": {
+    "xWithPointPassage": true,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "structureWebResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "Path": "C:\\kDrive\\Chrono\\BCJ Challenge2026\\1 Course à pied\\1 Course à pied\\Etape3",
+  "ListNumeroDNF": null,
+  "ID": {
+    "_Value": "3"
+  },
+  "Nom": {
+    "_Value": "Etape3"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

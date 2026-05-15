@@ -1,0 +1,81 @@
+BCJ Challenge2026 Etape1
+DJ Dames juniors 2007 - 2014
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;177;Juillerat;Zo ;Ch tillon Ju;2009;D;;DJ;55:58.86;00:00.00
+2;111;Oriet;Emilie;Del mont;2011;D;;DJ;59:11.13;03:12.27
+3;478;Berberat;Timea;Courtemautruy;2009;D;;DJ;01:00:35.61;04:36.75
+4;5;Voirol;M lanie;Sonceboz;2009;D;;DJ;01:02:42.60;06:43.74
+5;69;Marquis;Julie;Courfaivre;2007;D;;DJ;01:03:00.09;07:01.23
+%
+HJ Hommes juniors 2007 - 2014
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;110;Oriet;Louis;Del mont;2009;H;;HJ;37:30.26;00:00.00
+2;168;Spano;Luigi;Del mont;2009;H;;HJ;38:13.92;00:43.66
+3;632;Chappatte;Nolan ;Les Bois;2008;H;FSG Les Bois;HJ;40:34.46;03:04.20
+4;513;Grossert;Thomas;Eschert;2007;H;;HJ;42:07.89;04:37.63
+5;249;Mercier;Colin;Tramelan;2013;H;;HJ;43:48.59;06:18.33
+%
+D1 Dames 1 1997 - 2006
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;246;Erb;Charlotte ;Malleray ;1998;D;WellnessCenter Tavannes;D1;42:20.70;00:00.00
+2;672;Humair;Laura;Les Genevez;2005;D;GROUPE SPORTIF DES FRANCHES-MONTAGNES ;D1;46:30.14;04:09.44
+3;40;Bron;Elisa;Montsevelier;1999;D;;D1;47:39.32;05:18.62
+4;42;Zappala;Ivana;Courfaivre;2000;D;;D1;47:52.34;05:31.64
+5;349;Fleury;Joana;Courroux;1998;D;;D1;48:14.01;05:53.31
+%
+H1 Hommes 1 1997 - 2006
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;296;Monnerat;L andre;Bassecourt;2002;H;;H1;32:56.10;00:00.00
+2;160;Lachat;Tom;Montsevelier ;2003;H;;H1;34:03.99;01:07.89
+3;60;Fleury;Th o;Del mont;1999;H;Team La Vall e;H1;35:29.75;02:33.65
+4;681;Cerf;Evan;Seleute;1998;H;;H1;36:28.58;03:32.48
+5;615;Bonati ;Jonas ;Courtedoux;1999;H;;H1;36:56.82;04:00.72
+%
+D2 Dames 2 1987 - 1996
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;102;Caroli;Aliz e;Malleray-B vilard;1991;D;Team la Vall e/ gsmb;D2;41:05.87;00:00.00
+2;43;Schaller;Marine;Bassecourt;1991;D;Club Cycliste Moutier;D2;42:40.32;01:34.45
+3;216;Bailly;Rosalie;Courtedoux;1989;D;;D2;45:19.88;04:14.01
+4;607;Halm;Vanessa;Brevilliers;1987;D;;D2;47:03.93;05:58.06
+5;48;Stebler;Ga lle;Bo court;1990;D;;D2;48:13.58;07:07.71
+%
+H2 Hommes 2 1987 - 1996
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;197;Labadens;C dric;Boncourt;1988;H;FSG ALLE;H2;33:31.49;00:00.00
+2;222;Brondani;Lucas ;Hirtzbach;1995;H;;H2;33:49.95;00:18.46
+3;8;Jacquat;Yanis;Del mont;1996;H;GoFasta;H2;37:17.82;03:46.33
+4;605;Bandelier;Guillaume;Chevenez;1989;H;;H2;37:50.27;04:18.78
+5;128;Marmillod;Lo c;Abb villers;1993;H;Joray & Wyss SA ;H2;38:27.95;04:56.46
+%
+D3 Dames 3 1977 - 1986
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;104;Plumez;Virginie;Develier;1978;D;FAM Coaching;D3;46:55.67;00:00.00
+2;584;Haegeli ;Muriel;Glovelier;1980;D;GS Tabeillon ;D3;47:55.79;01:00.12
+3;418;Jobin;Cindy;Sonceboz-Sombeval;1984;D;Monnin SA;D3;47:58.05;01:02.38
+4;117;Basset;Crist le;Vicques;1984;D;;D3;49:39.98;02:44.31
+5;568;Beuchat;Maude;Courfaivre;1986;D;;D3;49:55.11;02:59.44
+%
+H3 Hommes 3 1977 - 1986
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;642;Montagnat-Rentier;Alexis;Renan;1985;H;GSFM;H3;36:28.58;00:00.00
+2;6;Pagani;Livio;Les Breuleux;1982;H;GSFM;H3;37:24.47;00:55.89
+3;501;Oester;Chri;Tramelan;1980;H;Team alouettes.ch;H3;38:53.75;02:25.17
+4;83;Huber;Thomas;Mi court;1985;H;;H3;39:01.98;02:33.40
+5;143;Miserez ;Xavier ;Lajoux;1982;H;;H3;39:04.43;02:35.85
+%
+D4 Dames 4 1904 - 1976
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;564;Pape Juillard;Chantal ;Damvant;1971;D;FSG Alle;D4;45:03.26;00:00.00
+2;99;Desboeufs;Sandrine;Bassecourt;1976;D;;D4;50:00.42;04:57.16
+3;283;Nussbaumer;Tania;Courgenay;1973;D;;D4;52:33.45;07:30.19
+4;267;Vitone;Anna;Del mont;1975;D;;D4;53:26.40;08:23.14
+5;162;Lachat;Sophie;Montsevelier;1973;D;;D4;53:33.27;08:30.01
+%
+H4 Hommes 4 1904 - 1976
+pos;N°;Nom; Prénom;Localité;Année;Sexe;Club;cat.; Temps;Ecart
+1;187;Beuret;Philippe;Porrentruy;1976;H;team la vall e;H4;35:07.89;00:00.00
+2;352;Chenal;Raphael;St-Brais;1974;H;GS Tabeillon;H4;37:58.29;02:50.40
+3;161;Lachat;Jacques;Montsevelier ;1971;H;;H4;42:13.76;07:05.87
+4;532;Kottelat ;Michel;Le B mont ;1971;H;GSFM;H4;43:12.99;08:05.10
+5;55;Gillioz;J r me;Courgenay;1975;H;CAP Hunt;H4;43:49.82;08:41.93
+%

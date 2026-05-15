@@ -449,6 +449,64 @@ padding-left:10px">
 			FormTypeClassement.value = "Scratch";
 		//	FormSendIndfo.submit();
 		}
+				<?		// Création de la liste de toutes les Dossier = Depart 
+			/**************************************************
+			 * 
+			 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
+			 * 
+			 ***************************************************/
+			if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+			{
+				if ($numetape >0 && $numetape <99)
+				{
+					$pathfolderStep = $pathfolder   .'/Etape'.$numetape;
+				}
+				elseif ($numetape == 99)
+				{
+					
+					$pathfolderStep = $pathfolder .'/General' ;
+				}
+				else
+				{
+					$pathfolderStep = $pathfolder   .'/Etape1';
+				}
+				$pathfolderStep = $pathfolderStep   .'/ResultatWeb';
+				// Création de la liste de toutes les Dossier = Depart 
+				$files1 = scandir($pathfolderStep);
+				
+			// Lecture de chaques dossier Pacours Exemple Adultes / Enfants 
+			foreach ($files1  as $key => $value) 
+			{ 
+				$pos2 = strpos($value, 'classement_');
+				if ($pos2 !== false) 
+				{
+					$ClassementTampon = $value;	
+					?>
+
+					buttonTypeClassement3 = document.createElement('button');
+					if (FormTypeClassement.value == "File"+<?echo json_encode($value) ?> )
+					{
+						buttonTypeClassement3.classList.add("ButtonResultatSelected");
+					}
+					else
+					{
+						buttonTypeClassement3.classList.add("ButtonResultat");
+					}
+					buttonTypeClassement3.innerHTML =  <?echo json_encode($value) ?> ;
+					buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace("classement_", "");
+					buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace(".csv", "");
+					DivTypeClassement.appendChild(buttonTypeClassement3);
+					// évenement ajout colonne dans tableau
+					buttonTypeClassement3.addEventListener("click", function()
+					{
+					// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
+					var FormSendIndfo= document.getElementById('FormSendIndfo');
+						FormTypeClassement.value =  "File"+<?echo json_encode($value) ?> ;
+						FormSendIndfo.submit();
+					}, false);<?
+				}
+			}
+		}?>
 	}
 
 		function ListCoureurLiveToTableGeneral( ListCoureurs)
@@ -1340,7 +1398,7 @@ padding-left:10px">
 			}
 			elseif ($numetape == 99)
 			{
-			
+				
 				$pathfolderStep = $pathfolder .'/General' ;
 			}
 			else
@@ -3453,8 +3511,9 @@ document.getElementById("GoToTop").style.visibility = "hidden";
 <?php
 if ($indexDepartSelected > 0  && $Etape > 0 )
 {
-	if ($indexParcoursSelected < 99  && $Etape < 99 ) 
-	{?>
+	if ($indexParcoursSelected < 99  && ($Etape < 99 || substr($_GET['TypeClassement'],0,4) == 'File') )
+	{
+		?>
 		<script>
 		console.log("Call Function Read File Resultat");
 		readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?> )

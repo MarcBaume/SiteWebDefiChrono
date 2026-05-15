@@ -17,7 +17,7 @@
     "ReadOnly": false
   },
   "HeureDepart": {
-    "_Value": "19:15"
+    "_Value": "19:19:32"
   },
   "HeureEnd": {
     "_Value": ""
@@ -30,40 +30,6 @@
   },
   "ListPointPassage": {
     "ListItem": [
-      {
-        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
-        "IdBox": {
-          "_Value": ""
-        },
-        "EType": 1,
-        "HeureEnd": {
-          "_Value": "19:30:00"
-        },
-        "ColorDetection": "#FF00FFFF",
-        "HeureStart": {
-          "_Value": "19:15:00"
-        },
-        "NotVisibleOnLiveSpeaker": {
-          "oldValue": false,
-          "Title": "Ne pas afficher dans live speaker",
-          "Value": false,
-          "VisibilityTitle": 0,
-          "ReadOnly": false
-        },
-        "TempsInterpassageSeconde": 30,
-        "ID": {
-          "_Value": ""
-        },
-        "Nom": {
-          "_Value": "Départ"
-        },
-        "Distance": {
-          "_Value": ""
-        },
-        "Denivelle": {
-          "_Value": ""
-        }
-      },
       {
         "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
         "IdBox": {

@@ -1,18 +1,34 @@
-promo;2025-03-23 23:59:59;1 crédit-étape;25;True;;1
-promo;2025-03-23 23:59:59;2 crédit-étape;45;True;;1
-promo;2025-03-23 23:59:59;3 crédit-étape;60;True;;1
-promo;2025-03-23 23:59:59;4 crédit-étape;65;True;;1
-intermédiaire;2025-04-20 23:59:59;1 crédit-étape;30;True;;1
-intermédiaire;2025-04-20 23:59:59;2 crédit-étape;50;True;;1
-intermédiaire;2025-04-20 23:59:59;3 crédit-étape;65;True;;1
-intermédiaire;2025-04-20 23:59:59;4 crédit-étape;80;True;;1
-normal;2025-05-06 22:00:00;1 crédit-étape;30;True;;1
-normal;2025-05-06 22:00:00;2 crédit-étape;55;True;;1
-normal;2025-05-06 22:00:00;3 crédit-étape;75;True;;1
-normal;2025-05-06 22:00:00;4 crédit-étape;90;True;;1
-normal;2025-05-13 22:00:00;1 crédit-étape;30;True;;1
-normal;2025-05-13 22:00:00;2 crédit-étape;55;True;;1
-normal;2025-05-13 22:00:00;3 crédit-étape;75;True;;0
-normal;2025-05-20 22:00:00;1 crédit-étape;30;True;;1
-normal;2025-05-20 22:00:00;2 crédit-étape;55;True;;1
-normal;2025-05-27 22:00:00;1 crédit-étape;30;True;;1
+promo;2026-03-22 23:59:59;1 crédit-étape;25;True;;0
+promo;2026-03-22 23:59:59;2 crédits-étape;45;True;;0
+promo;2026-03-22 23:59:59;3 crédits-étape;60;True;;0
+promo;2026-03-22 23:59:59;4 crédits-étape;65;True;;0
+intermédiaire;2026-04-22 23:59:59;1 crédit-étape;30;True;;0
+intermédiaire;2026-04-22 23:59:59;2 crédits-étape;50;True;;0
+intermédiaire;2026-04-22 23:59:59;3 crédits-étape;65;True;;0
+intermédiaire;2026-04-22 23:59:59;4 crédits-étape;80;True;;0
+intermédiaire;2026-04-22 23:59:59;1 crédit-étape junior;25;True;;0
+intermédiaire;2026-04-22 23:59:59;2 crédits-étape junior;45;True;;0
+intermédiaire;2026-04-22 23:59:59;3 crédits-étape junior;60;True;;0
+intermédiaire;2026-04-22 23:59:59;4 crédits-étape junior;65;True;;0
+intermédiaire;2026-04-22 23:59:59;1 crédit-étape sénior;25;True;;0
+intermédiaire;2026-04-22 23:59:59;2 crédit-étape sénior;45;True;;0
+intermédiaire;2026-04-22 23:59:59;3 crédit-étape sénior;60;True;;0
+intermédiaire;2026-04-22 23:59:59;4 crédit-étape sénior;65;True;;0
+inscription;2026-05-05 22:00:00;1 crédit-étape;30;True;;0
+inscription;2026-05-05 22:00:00;2 crédits-étape;55;True;;0
+inscription;2026-05-05 22:00:00;3 crédits-étape;75;True;;0
+inscription;2026-05-05 22:00:00;4 crédits-étape;90;True;;0
+inscription;2026-05-05 22:00:00;1 crédit-étape junior;25;True;;0
+inscription;2026-05-05 22:00:00;2 crédits-étape junior;45;True;;0
+inscription;2026-05-05 22:00:00;3 crédits-étape junior;60;True;;0
+inscription;2026-05-05 22:00:00;4 crédits-étape junior;65;True;;0
+inscription;2026-05-05 22:00:00;1 crédits-étape sénior;20;True;;0
+inscription;2026-05-05 22:00:00;2 crédit-étape sénior;45;True;;0
+inscription;2026-05-05 22:00:00;3 crédit-étape sénior;60;True;;0
+inscription;2026-05-05 22:00:00;4 crédits-étape sénior;65;True;;0
+inscription;2026-05-12 22:00:00;1 crédit-étape;30;True;;0
+inscription;2026-05-12 22:00:00;2 crédits-étape;55;True;;0
+inscription;2026-05-12 22:00:00;3 crédits-étape;75;True;;0
+inscription;2026-05-19 22:00:00;1 crédit-étape;30;True;;0
+inscription;2026-05-19 22:00:00;2 crédits-étape;55;True;;0
+normal;2026-05-26 22:00:00;1 crédit-étape;30;True;;0

@@ -453,7 +453,6 @@ padding-left:10px">
 			/**************************************************
 			 * 
 			 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
-			 * 
 			 ***************************************************/
 			if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
 			{
@@ -527,11 +526,8 @@ padding-left:10px">
 				console.log("json");
 				// Affichage Titre point de passage et  nombre de coureur arrivée au point de passage
 				const Title = document.createElement("p");
-
-
 				DivViewLiveCoureur.appendChild(Title);
 
-				
 				if (ListCoureurs.length < 1)
 				{
 			
@@ -1248,7 +1244,7 @@ padding-left:10px">
 			if (Parcours.info != undefined)
 			{
 				document.getElementById('FilterDepart').style.display ="flex";
-				if (NumEtape != 99)
+				if (NumEtape != 99 || document.getElementById('FormTypeClassement').value.includes("File"))
 				{
 					AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
 

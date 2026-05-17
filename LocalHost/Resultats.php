@@ -1,27 +1,72 @@
 <?php
 	include("Header.php"); 
-	include("HeaderInfo2023_WithoutCouverture.php"); 
-	
-	$indexParcoursSelected= $_GET['Parcours'];
-	$indexDepartSelected = $_GET['Depart'];
-	$Etape = $_GET['Etape'];
-	$Classement = $_GET['Classement'];
-	if ($Etape ==0)
+	?>
+	<div id="Top1"></div>
+        <a href="#Top1" id="GoToTop" class="GoToTop" style ="visibility :hidden ;z-index:3000;" >
+    <i class="fa fa-arrow-up" style= "font-size: 50px;margin:2px;"></i>
+</a>
+</div>
+<?php
+	include("HeaderIndex.php"); 
+	include("menuPages.php"); 
+	if (isset($_GET['Parcours']))
 	{
-		$Etape =1 ;
+		$indexParcoursSelected= $_GET['Parcours'];
+	}
+	else
+	{
+		$indexParcoursSelected= -1;
+	}
+
+	if (isset($_GET['Depart']))
+	{
+		$indexDepartSelected = $_GET['Depart'];
+	}
+	else
+	{
+		$indexDepartSelected = -1;
+	}
+	if (isset( $_GET['Etape']))
+	{
+		$Etape = $_GET['Etape'];
+	}
+	else
+	{
+		$Etape = -1;
 	}
 	
-	  ?>
+	if (isset($_GET['Classement']))
+	{
+		$TypeClassement = $_GET['Classement'];
+	}
+	else
+	{
+		$TypeClassement = "";
+	}
+	$PointPassage = "";
+	if (isset($_GET["PointPassage"]))
+	{
+		$PointPassage = $_GET["PointPassage"];
+	}
+	$TypeClassement = "";
+	if (isset($_GET["TypeClassement"]))
+	{
+		$TypeClassement = $_GET["TypeClassement"];
+	}
+	$NomClassement = "";
+	if (isset( $_GET["NomClassement"]))
+	{
+		$NomClassement = $_GET["NomClassement"];
+	}
+	?>
 
 <form method="get" action="Resultats.php" id="FormSendIndfo">
-	<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["DateCourse"] ?>' />
-	<input type="hidden" name="NomCourse" id="FormNomCourse" tabindex="10"  size="60"  value= '<?php echo $_GET["NomCourse"] ?>' />
-	<input type="hidden" name="NbrEtape" id="FormNbrEtape" tabindex="10"  size="60"  value= '<?php echo $_GET["NbrEtape"] ?>' />
+	<input type="text" name="IdRace" id="IdRace2" tabindex="10"  size="60"  value= '<?php echo $IdRace?>' />
 	<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $indexDepartSelected ?>' />
 	<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60" value= '<?php echo $indexParcoursSelected ?>'/>
-	<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $_GET["PointPassage"]?>' />
-	<input type="hidden" name="TypeClassement" id="FormTypeClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["TypeClassement"]?>'/>
-	<input type="hidden" name="NomClassement" id="FormNomClassement" tabindex="10"  size="60"  value= '<?php echo $_GET["NomClassement"]?>' />
+	<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $PointPassage?>' />
+	<input type="hidden" name="TypeClassement" id="FormTypeClassement" tabindex="10"  size="60"  value= '<?php echo $TypeClassement?>'/>
+	<input type="hidden" name="NomClassement" id="FormNomClassement" tabindex="10"  size="60"  value= '<?php echo $NomClassement?>' />
 	<input type="hidden" name="Etape" id="FormEtape" tabindex="10"  size="60"  value= '<?php echo $Etape ?>' />
 </form>
 <?php 
@@ -61,42 +106,51 @@ if (count($arParcours) > 1)
 			Parcours
 		</Legend>
 		<select  onchange='ChangParcours(this);' id="SelectParcours" >
-			<option value="0" >Sélectionne un parcours</option><?
+			<option value="0" >Sélectionne un parcours</option><?php
+			$Parcours = "";
 			foreach($arParcours as $Parcours1)
 			{
 				$IndexParcours++;
 				if ($indexParcoursSelected != $IndexParcours)
 				{
 					?>		
-					<option value=<?php echo $IndexParcours?>><? echo substr($Parcours1, strpos($Parcours1, ' '))  ?></option>
-				<?
+					<option value=<?php echo $IndexParcours?>><?php echo substr($Parcours1, strpos($Parcours1, ' '))  ?></option>
+				<?php
 				}
 				else
 				{
+					$Parcours = $Parcours1
 					?>
 					<script>
+						
 						console.log("Parcours Find")
-					</script><?
-					$Parcours =  $Parcours1?>
-					<option selected value=<?php echo $IndexParcours?>><?  echo substr($Parcours1, strpos($Parcours1, ' ')) ?></option>
-				<?
+						NameParcours = <?php echo json_encode($Parcours)?>
+					</script>
+					<option selected value=<?php echo $IndexParcours?>><?php  echo substr($Parcours1, strpos($Parcours1, ' ')) ?></option>
+				<?php
 				}
 			}?>
+
 		</select>
 	</fieldset>
-	<? 
+	<?php
 	// Acun parcours sélectionné
-	if ($indexParcoursSelected == 0)
+	if ($indexParcoursSelected < 1)
 	{?>
-		
-		<?php include("sponsors2023.php"); ?> 
-	<?	
+	<?php include("sponsors.php"); 
 	}
 }
 else
 {
-	$Parcours =  $arParcours[0];
 	$indexParcoursSelected = 1;
+	?>
+	<script>
+						console.log("Only one Parcours")
+						NameParcours = <?php echo json_encode($$arParcours[0])?>
+
+	</script> 
+			<?php
+	
 }
 
 /***************************** Depart ************************************/
@@ -108,9 +162,9 @@ if ($indexParcoursSelected > 0)
 	<script>
 		console.log("Parcours")
 	</script>
-	<?
+	<?php
 	// Afficher la liste des départ Dossier dans la course ;
-	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1];
+	$pathfolder = 'courses/'.$NOM_COURSE.$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1];
 	// Création de la liste de toutes les Dossier = Depart 
 	$files1 = scandir($pathfolder);
 	
@@ -137,39 +191,51 @@ if ($indexParcoursSelected > 0)
 			</Legend>
 
 			<select onchange='ChangDepart(this);'  id="SelectDepart"   style="cursor: pointer;" > 
-			<option value="0" >Sélectionne un départs</option><?
+			<option value="0" >Sélectionne un départs</option><?php
 			
 			foreach($arDepart as $Depart1)
 			{
 				$IndexDep++;
 				if ($indexDepartSelected != $IndexDep)
 				{ ?>
-					<option  value=<?php echo $IndexDep?> >	<? echo $Depart1 ?></option>
-				<?
+					<option  value=<?php echo $IndexDep?> >	<?php echo $Depart1 ?></option>
+				<?php
 				}
 				else
 				{ 
 					$Depart =  $Depart1
+					
 				?>
-					<option selected value=<?php echo $IndexDep?> >	<? echo $Depart1 ?></option>
-				<?
+				<script>
+					var NameDepart= <?php echo json_encode($Depart1)?>;
+					console.log("NameDepart select: "+NameDepart);
+				</script>
+					<option selected value=<?php echo $IndexDep?> >	<?php echo $Depart1 ?></option>
+				<?php
 				}
 				
 			}?>
 			</select>	
-			<? if ($indexDepartSelected == 0)
+			<?php if ($indexDepartSelected == 0)
 			{?>
-				<?php include("sponsors2023.php"); ?> 
-			<?	
+				<?php include("sponsors.php"); ?> 
+			<?php	
 			}?>
 		</fieldset>
 	<?php
 	}
 	else
 	{
+		
 		$Depart =  $arDepart[0];
 		// si il y a que un départ ;
 		$indexDepartSelected  = 1;
+		?>
+		<script>
+				var NameDepart= <?php echo json_encode($Depart)?>;
+					console.log("NameDepart select: "+NameDepart);
+				</script>
+		<?php
 	}
 }
 
@@ -180,7 +246,7 @@ if ($indexParcoursSelected > 0)
 if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepartSelected > 0 && $indexParcoursSelected  > 0 )
 {
 	// Afficher la liste des départ Dossier dans la course ;
-	$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1].'/'.$arDepart[$indexDepartSelected-1];
+	$pathfolder = 'courses/'.$NOM_COURSE.$ANNEE_COURSE.'/'.$arParcours[$indexParcoursSelected-1].'/'.$arDepart[$indexDepartSelected-1];
 	// Création de la liste de toutes les Dossier = Depart 
 	$files1 = scandir($pathfolder);
 	foreach ($files1  as $key => $value) 
@@ -203,7 +269,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 				<i class="fa fa-trophy" style= "fontSize: 25px;margin:5px;"></i>étape
 			</Legend>
 			<select  onchange='ChangEtape(this);' id="SelectEtape"   style="cursor: pointer;">
-			<? 
+			<?php 
 			$IndexDep = 0;
 			// Affichage du bouton de la liste des étapes
 			foreach($arEtape as $Etape1)
@@ -215,13 +281,13 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 					if ($Etape == 99)
 					{
 							?>
-					<option selected value=99> <? 	echo 'Général'?>
-					</option><?
+					<option selected value=99> <?php 	echo 'Général'?>
+					</option><?php
 					}
 					else
 					{?>
-					<option value=99> <? 	echo 'Général'?>
-					</option><?
+					<option value=99> <?php 	echo 'Général'?>
+					</option><?php
 					}
 				}
 				else
@@ -230,26 +296,26 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 					<script>
 						console.log("Read info" + <?php echo json_encode($pathfolder.'//'.$Etape1)?>);
 						Etape =  readJSON(<?php  echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
-					</script><?
+					</script><?php
 					$IndexDep++;
 					if ($Etape != $IndexDep)
 					{?>
-						<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+						<option  value=<?php echo $IndexDep?>> <?php 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
 						</option>
-					<?
+					<?php
 					}
 					else
 					{  ?>
-						<option selected value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
+						<option selected value=<?php echo $IndexDep?>> <?php 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
 						</option>
-					<?
+					<?php
 					}?>
-					<?
+					<?php
 				}
 			}
 			?>
 		</select>
-		</fieldset><?
+		</fieldset><?php
 	}
 	else
 	{
@@ -364,6 +430,64 @@ padding-left:10px">
 			FormTypeClassement.value = "Scratch";
 		//	FormSendIndfo.submit();
 		}
+		<?php
+		/**************************************************
+		 * 
+		 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
+		 * 
+		 ***************************************************/
+		if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+		{
+			if ($numetape >0 && $numetape <99)
+			{
+				$pathfolderStep = $pathfolder   .'/Etape'.$numetape;
+			}
+			elseif ($numetape == 99)
+			{
+			
+				$pathfolderStep = $pathfolder .'/General' ;
+			}
+			else
+			{
+				$pathfolderStep = $pathfolder   .'/Etape1';
+			}
+			$pathfolderStep = $pathfolderStep   .'/ResultatWeb';
+			// Création de la liste de toutes les Dossier = Depart 
+			$files1 = scandir($pathfolderStep);
+			// Lecture de chaques dossier Pacours Exemple Adultes / Enfants 
+			foreach ($files1  as $key => $value) 
+			{ 
+				$pos2 = strpos($value, 'classement_');
+				if ($pos2 !== false) 
+				{
+					$ClassementTampon = $value;	
+					?>
+
+					buttonTypeClassement3 = document.createElement('button');
+					if (FormTypeClassement.value == "File"+<?php echo json_encode($value) ?> )
+					{
+						buttonTypeClassement3.classList.add("ButtonResultatSelected");
+					}
+					else
+					{
+						buttonTypeClassement3.classList.add("ButtonResultat");
+					}
+					buttonTypeClassement3.innerHTML =  <?php echo json_encode($value) ?> ;
+				buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace("classement_", "");
+				buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace(".csv", "");
+					DivTypeClassement.appendChild(buttonTypeClassement3);
+					// évenement ajout colonne dans tableau
+					buttonTypeClassement3.addEventListener("click", function()
+					{
+					// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
+					var FormSendIndfo= document.getElementById('FormSendIndfo');
+						FormTypeClassement.value =  "File"+<?php echo json_encode($value) ?> ;
+						FormSendIndfo.submit();
+					}, false);
+
+	<?php			}
+			}
+		}?>
 	}
 
 		function ListCoureurLiveToTableGeneral( ListCoureurs)
@@ -377,7 +501,6 @@ padding-left:10px">
 			if (FormTypeClassement.value.includes("File") )
 			{
 				console.log("File");
-			
 			}
 			else
 			{
@@ -1046,7 +1169,7 @@ padding-left:10px">
 
 
 	var ListNomClassement = [];
-	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )	
+	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape ,NameDepart)	
 	{
 		console.log("Function Read File Resultat");
 		console.log(NumEtape);
@@ -1104,16 +1227,18 @@ padding-left:10px">
 
 			if (Parcours.info != undefined)
 			{
+				console.log("Num etape :"+NumEtape)
 				document.getElementById('FilterDepart').style.display ="flex";
-				if (NumEtape != 99)
+				console.log(document.getElementById('FormTypeClassement').value);
+				if (NumEtape != 99  || document.getElementById('FormTypeClassement').value.includes("File"))
 				{
 					AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
 
 					// Affichage du live des coureurs de chaque point de passage 
 					for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
 					{
-
-						if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
+						console.log("NameDepart :"+NameDepart)
+						if (Parcours.info.ListLivePointDePassage[i].NameDepart == NameDepart)
 						{
 							// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
 							if (LastPoint)
@@ -1158,7 +1283,7 @@ padding-left:10px">
 			if (file_exists($chemin)) {
 			?>
 				mapSvg('Test', PathFolderDepart +"//Etape"+ NumEtape+ "//images/Etape.xml", DivimgEtapePara,Etape,Parcours);
-				<?
+				<?php
 			}?>
 		}
 	}
@@ -1241,7 +1366,7 @@ padding-left:10px">
 			buttonTypeClassement3.classList.add("ButtonResultatSelected");
 			//FormSendIndfo.submit();
 		}
-<?
+<?php
 		/**************************************************
 		 * 
 		 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
@@ -1275,7 +1400,7 @@ padding-left:10px">
 					?>
 
 					buttonTypeClassement3 = document.createElement('button');
-					if (FormTypeClassement.value == "File"+<?echo json_encode($value) ?> )
+					if (FormTypeClassement.value == "File"+<?php echo json_encode($value) ?> )
 					{
 						buttonTypeClassement3.classList.add("ButtonResultatSelected");
 					}
@@ -1283,7 +1408,7 @@ padding-left:10px">
 					{
 						buttonTypeClassement3.classList.add("ButtonResultat");
 					}
-					buttonTypeClassement3.innerHTML =  <?echo json_encode($value) ?> ;
+					buttonTypeClassement3.innerHTML =  <?php echo json_encode($value) ?> ;
 				buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace("classement_", "");
 				buttonTypeClassement3.innerHTML = 	buttonTypeClassement3.innerHTML.replace(".csv", "");
 					DivTypeClassement.appendChild(buttonTypeClassement3);
@@ -1292,11 +1417,11 @@ padding-left:10px">
 					{
 					// Quand on sélectionne la point de passage on signal au formulaire que le point est sélectionné
 					var FormSendIndfo= document.getElementById('FormSendIndfo');
-						FormTypeClassement.value =  "File"+<?echo json_encode($value) ?> ;
+						FormTypeClassement.value =  "File"+<?php echo json_encode($value) ?> ;
 						FormSendIndfo.submit();
 					}, false);
 
-	<?			}
+	<?php			}
 			}
 		}?>
 	}
@@ -3211,9 +3336,7 @@ circle.setAttribute("fill", "steelblue");
 	
 function AddMember()
 {
-	// Appelle fonction php pour ajouter un
-
-$('formChoiceMember').request({
+	$('formChoiceMember').request({
 			onComplete: function(transport){
 				 val =transport.responseText.evalJSON();
 
@@ -3226,14 +3349,12 @@ $('formChoiceMember').request({
 			});
 }
 
-    </script>
-
-
-	<?php
-	if (strpos($_GET["TypeClassement"],'File')>-1)
+</script>
+<?php
+	if (strpos($TypeClassement,'File')>-1)
 	{
-		$TypeClass = str_replace('File','',$_GET["TypeClassement"]);
-		$pathfolder = 'courses/'.$_GET['NomCourse'].$ANNEE_COURSE.'/'.$Parcours.'/'.$Depart;
+		$TypeClass = str_replace('File','',$TypeClassement);
+		$pathfolder = 'courses/'.$NOM_COURSE.$ANNEE_COURSE.'/'.$Parcours.'/'.$Depart;
 		if ($numetape >0 && $numetape <99)
 		{
 			$pathfolder = $pathfolder   .'/Etape'.$numetape;
@@ -3241,22 +3362,20 @@ $('formChoiceMember').request({
 		elseif ($numetape == 99)
 		{
 		
-			$pathfolder = $pathfolder .'/General/ResultatWeb' ;
+			$pathfolder = $pathfolder .'/General' ;
 		}
 		else
 		{
 			$pathfolder = $pathfolder   .'/Etape1';
 		}
 		$pathfolder = $pathfolder   .'/ResultatWeb/'.$TypeClass;
+		echo($pathfolder);
 		if (file_exists($pathfolder))
 		{
 		
 			if (($handle = fopen($pathfolder, "r")) !== FALSE) 
 			{
 				?>
-				<script>
-		
-			</script>
 				<script>
 					// Table du classement sélectionné 
 					const TablePointPassage = document.createElement("Table");
@@ -3265,7 +3384,7 @@ $('formChoiceMember').request({
 					TablePointPassage.classList.add("TableauResulat");
 					DivViewLiveCoureur.appendChild(TablePointPassage);
 				</script>
-				<?
+				<?php
 				while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) 
 				{
 					$en_tete = false;?>
@@ -3274,7 +3393,7 @@ $('formChoiceMember').request({
 							
 					TablePointPassage.appendChild(ligneTab);
 					</script>
-					<?
+					<?php
 								$num = count($data);
 					// Lecture fichier CSV 
 					for ($c=0; $c < $num; $c++)
@@ -3297,10 +3416,10 @@ $('formChoiceMember').request({
 								TitleCol.style.fontWeight  = "Bold";
 								TitleCol.style.color  = "white";
 								TitleCol.style.paddingLeft = "10px";
-								TitleCol.innerText =<?echo json_encode($data[$c]) ?>;
+								TitleCol.innerText =<?php echo json_encode($data[$c]) ?>;
 								ligneTab.appendChild(TitleCol);
 								</script>
-								<?
+								<?php
 								
 							}
 							else if (strlen($data[0])>0) //Tableau athlète avec position 
@@ -3310,13 +3429,13 @@ $('formChoiceMember').request({
 						
 								col = document.createElement("td");
 								col.style.backgroundColor  = "transparent";
-								col.innerText =<?echo json_encode($data[$c]) ?>;
+								col.innerText =<?php echo json_encode($data[$c]) ?>;
 								col.style.fontSize  = "20px";
 								col.style.fontWeight  = "Bold";
 								col.style.paddingLeft = "10px";
 								ligneTab.appendChild(col);
 								</script>
-								<?
+								<?php
 							}
 							else  //Tableau athlète sans position
 							{
@@ -3324,13 +3443,13 @@ $('formChoiceMember').request({
 								<script>
 								
 								col2 = document.createElement("td");
-								col2.innerText =<?echo json_encode($data[$c]) ?>;
+								col2.innerText =<?php echo json_encode($data[$c]) ?>;
 								col2.style.fontSize  = "12px";
 								col2.style.fontWeight  = "Normal";
 								col2.style.paddingLeft = "10px";
 								ligneTab.appendChild(col2);
 								</script>
-								<?
+								<?php
 							}
 						}
 						else if (strlen($data[$c])> 0) // SI on a pas commencer le tableau
@@ -3338,10 +3457,10 @@ $('formChoiceMember').request({
 							?>
 								<script>
 							TitleCol = document.createElement("p");
-							TitleCol.innerText =<?echo json_encode($data[$c]) ?>;
+							TitleCol.innerText =<?php echo json_encode($data[$c]) ?>;
 							ligneTab.appendChild(TitleCol);
 							</script>
-							<?
+							<?php
 						}
 					}
 				}
@@ -3372,7 +3491,7 @@ if ($indexDepartSelected > 0  && $Etape > 0 )
 	{?>
 		<script>
 		console.log("Call Function Read File Resultat");
-		readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?> )
+		readFileResultat(parseInt( <?php echo json_encode($Nbr_etape); ?>),<?php echo json_encode($pathfolder); ?>,<?php echo json_encode($Etape); ?>,  NameDepart)
 		</script>
 		<?php
 	}
@@ -3380,9 +3499,9 @@ if ($indexDepartSelected > 0  && $Etape > 0 )
 	{?>
 		<script>
 		console.log("Call Function Read File Resultat General");
-		readFileResultat(parseInt( <?php echo json_encode($_GET['NbrEtape']); ?>),<?php echo json_encode($pathfolder); ?>,99 )
+		readFileResultat(parseInt( <?php echo json_encode($Nbr_etape); ?>),<?php echo json_encode($pathfolder); ?>,99,NameDepart )
 		</script>
-	<?
+	<?php
 	}
 }?>
 <script>

@@ -221,14 +221,6 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 	</table>
 
 <div  class="menu_vertical"  id= "Header" style="margin-top:10px; z-index:1040;" >
-
- 	<form method="get" id="Menu" >
-				
-		<input type="hidden" name="Etape" id="Etape" value= 0 />
-		<input type="hidden" name="NbrEtape" id="NbrEtape" value= '<?php echo  $Nbr_etape ?>' />
-		<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
-		<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />				
-
 	<Table   style="width:100%;"  >
 	<tr>
 	<?php
@@ -383,7 +375,6 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 		?>
 		</tr>		
 				</table>
-		</form>
 
 	</div>	
 <script type="text/javascript">
@@ -402,73 +393,46 @@ function ClickRows( )
 	}
 	function ClickRowsListe(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	elmnt.action = "liste2023.php";
+	elmnt = document.getElementById("FormRace");
+	elmnt.action = "listes.php";
 		elmnt.submit();
 	}
 	function ClickRowsForm(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	if (<?php echo json_encode($ANNEE_COURSE); ?> > 2022)
-		{
-			elmnt.action = "formulaire2023.php";
-		}
-	else if (<?php echo json_encode($ANNEE_COURSE); ?> > 2021)
-		{
-			elmnt.action = "formulaireV3.php";
-		}
-		else
-		{
-			elmnt.action = "formulaireV2.php";
-		}
+		elmnt = document.getElementById("FormRace");
+		elmnt.action = "formulaire.php";
 		elmnt.submit();
 	}
 	function ClickRowsResultat(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	if ( <?php echo json_encode($ANNEE_COURSE ); ?> > 2019 &&  <?php echo json_encode($Nbr_etape ); ?> >10 )
-	{
-		elmnt.action = "Live.php";
-	}
-	else
-	{
-		elmnt.action = "Resultat2023.php";
-	}
-
+		elmnt = document.getElementById("FormRace");
+		elmnt.action = "Resultats.php";
 		elmnt.submit();
 	}
 
 	function ClickRowsPhotos(elmnt )
     {  
-	elmnt = document.getElementById("Menu");
-	
+		elmnt = document.getElementById("FormRace");
 		elmnt.action = "Photos.php";
-
 		elmnt.submit();
 	}
+
 	function ClickRowsInformation(elmnt)
     {  
 		elmnt = document.getElementById("Menu");
 		elmnt.action = "informations.php";
 		elmnt.submit();
 	}
+	
 	function ViewResult( NumEtape , Annee )
 	{
-			elmnt = document.getElementById("Menu");
-			elmnt.elements['Etape'].value = NumEtape ;
-			if ((Annee > 2019 && NumEtape >10 )||Annee > 2021 )
-			{
-			elmnt.action = "ResultatV4.php"
-			}
-			else
-			{
-				elmnt.action = "Resultat2023.php"
-			}
-			elmnt.submit();
+		elmnt = document.getElementById("Menu");
+		elmnt.action = "Resultats.php"
+		elmnt.submit();
 	}
 
-  	  // Calcul grandeur des colonne pour arrivée au 100%
-        ChangeStyleCol();
+// Calcul grandeur des colonne pour arrivée au 100%
+ ChangeStyleCol();
 function ChangeStyleCol()
 {
  var TabArr =   document.getElementsByClassName("ColMenuInfo");

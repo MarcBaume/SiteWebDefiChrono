@@ -358,12 +358,8 @@ function choiceOption(f)
 	{
 		document.getElementById("NbrEtapeCode").value = "1" ;
 	}
+		console.log("Nombre étape: " +DepartObj.ArrayEtape.length );
 
-	if (  DepartObj.ArrayEtape.length > 1 )
-	{
-		document.getElementById("lblNbrEtape").style.visibility = "visible" ;
-		document.getElementById("lblNbrEtape").style.display  = "table" 
-	}
 	document.getElementById("PrixInscription").value = tabOption[1] ;
 	console.log("log" + tabOption[3]);
 	if ( parseInt(tabOption[3])> 0)
@@ -688,7 +684,11 @@ function  SelectDepart(evt)
 			var ArrayDiscipline = [];
 			for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
 			{
-				
+				if (  DepartObj.ArrayEtape.length > 1 )
+				{
+					document.getElementById("lblNbrEtape").style.visibility = "visible" ;
+					document.getElementById("lblNbrEtape").style.display  = "table" 
+				}
 				var EtapeObj = DepartObj.ArrayEtape[j];
 				console.log(EtapeObj);
 				if (EtapeObj.info.ListDiscipline != null)

@@ -449,29 +449,28 @@ padding-left:10px">
 			FormTypeClassement.value = "Scratch";
 		//	FormSendIndfo.submit();
 		}
-				<?		// Création de la liste de toutes les Dossier = Depart 
-			/**************************************************
-			 * 
-			 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
-			 ***************************************************/
-			if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+			<?		// Création de la liste de toutes les Dossier = Depart 
+		/**************************************************
+		 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
+		 ***************************************************/
+		if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+		{
+			if ($numetape >0 && $numetape <99)
 			{
-				if ($numetape >0 && $numetape <99)
-				{
-					$pathfolderStep = $pathfolder   .'/Etape'.$numetape;
-				}
-				elseif ($numetape == 99)
-				{
-					
-					$pathfolderStep = $pathfolder .'/General' ;
-				}
-				else
-				{
-					$pathfolderStep = $pathfolder   .'/Etape1';
-				}
-				$pathfolderStep = $pathfolderStep   .'/ResultatWeb';
-				// Création de la liste de toutes les Dossier = Depart 
-				$files1 = scandir($pathfolderStep);
+				$pathfolderStep = $pathfolder   .'/Etape'.$numetape;
+			}
+			elseif ($numetape == 99)
+			{
+				
+				$pathfolderStep = $pathfolder .'/General' ;
+			}
+			else
+			{
+				$pathfolderStep = $pathfolder   .'/Etape1';
+			}
+			$pathfolderStep = $pathfolderStep   .'/ResultatWeb';
+			// Création de la liste de toutes les Dossier = Depart 
+			$files1 = scandir($pathfolderStep);
 				
 			// Lecture de chaques dossier Pacours Exemple Adultes / Enfants 
 			foreach ($files1  as $key => $value) 
@@ -1191,8 +1190,19 @@ padding-left:10px">
 		console.log(NumEtape);
 		var Parcours = new Object();
 		var Etape= new Object();	
-		// Lecture du fichier " info étape "
-		if (NumEtape != 99)
+		//***********************************************
+		//  */ Lecture du fichier " info étape "
+		//************************************************ */
+		if (document.getElementById('FormTypeClassement').value.includes("File"))
+		{
+			if (NumEtape != 99)
+			{
+				Etape =  readJSON(PathFolderDepart + "/info.json");
+			}
+			Parcours.info =  "File";
+			console.log("Read File");
+		}
+		else if (NumEtape != 99)
 		{
 			Etape =  readJSON(PathFolderDepart + "/Etape"+NumEtape+"/info.json");
 			console.log("Read File Json Etape");
@@ -1240,35 +1250,40 @@ padding-left:10px">
 			var LastPoint = true;
 			var DivAllPoint= document.getElementById('Allpointpassage');
 			CountCoureurTotal = 0;
-
-			if (Parcours.info != undefined)
+			console.log("start type");
+			if (Parcours.info != undefined )
 			{
+				console.log("parcours ok");
 				document.getElementById('FilterDepart').style.display ="flex";
-				if (NumEtape != 99 || document.getElementById('FormTypeClassement').value.includes("File"))
+				if (NumEtape != 99)
 				{
 					AddButtonTypeResultat(Etape.ListPointPassage.ListItem[0]);
-
-					// Affichage du live des coureurs de chaque point de passage 
-					for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
+					if (!document.getElementById('FormTypeClassement').value.includes("File"))
 					{
-
-						if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
+						console.log("ok type");
+						// Affichage du live des coureurs de chaque point de passage 
+						for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
 						{
-							// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
-							if (LastPoint)
+
+							if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
 							{
-								var ListCoureurs = Parcours.info.ListLivePointDePassage[i].ListCoureursArrivee;
+								// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
+								if (LastPoint)
+								{
+									var ListCoureurs = Parcours.info.ListLivePointDePassage[i].ListCoureursArrivee;
 
+								}
+								else
+								{
+
+									var ListCoureurs = Parcours.info.ListLivePointDePassage[i+1].ListCoureursRestant;
+
+								}
+								funMenuNomClassement(ListCoureurs, false);
+
+								ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
+								LastPoint = false;
 							}
-							else
-							{
-
-								var ListCoureurs = Parcours.info.ListLivePointDePassage[i+1].ListCoureursRestant;
-
-							}
-							funMenuNomClassement(ListCoureurs, false);
-							ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
-							LastPoint = false;
 						}
 					}
 				}
@@ -1276,12 +1291,16 @@ padding-left:10px">
 				{
 					AddButtonTypeResultatGeneral();
 					funMenuNomClassement(Parcours.info,true);
-					ListCoureurLiveToTableGeneral(Parcours.info);
+					if (!document.getElementById('FormTypeClassement').value.includes("File"))
+					{
+						ListCoureurLiveToTableGeneral(Parcours.info);
+					}
+					
 				}
 				
 			
 			}
-			else
+			else 
 			{
 				document.getElementById("Informations").style.display = "";
 				document.getElementById("Informations").innerHTML = "Les résultats ne sont pas encore disponible pour ce départ";
@@ -3380,23 +3399,21 @@ $('formChoiceMember').request({
 		elseif ($numetape == 99)
 		{
 		
-			$pathfolder = $pathfolder .'/General/ResultatWeb' ;
+			$pathfolder = $pathfolder .'/General' ;
 		}
 		else
 		{
 			$pathfolder = $pathfolder   .'/Etape1';
 		}
-		$pathfolder = $pathfolder   .'/ResultatWeb/'.$TypeClass;
-		if (file_exists($pathfolder))
+		$pathfolder1 = $pathfolder ."/ResultatWeb/".$TypeClass;
+		if (file_exists($pathfolder1))
 		{
 		
-			if (($handle = fopen($pathfolder, "r")) !== FALSE) 
+			if (($handle = fopen($pathfolder1, "r")) !== FALSE) 
 			{
 				?>
 				<script>
-		
-			</script>
-				<script>
+					console.log("Read file in prosgress");
 					// Table du classement sélectionné 
 					const TablePointPassage = document.createElement("Table");
 					TablePointPassage.style.width = "100%";
@@ -3486,6 +3503,10 @@ $('formChoiceMember').request({
 				}
 			}
 		}
+		else
+			{
+				echo ($pathfolder1);
+			}
 	}?>
 
 <script>
@@ -3507,7 +3528,7 @@ document.getElementById("GoToTop").style.visibility = "hidden";
 <?php
 if ($indexDepartSelected > 0  && $Etape > 0 )
 {
-	if ($indexParcoursSelected < 99  && ($Etape < 99 || substr($_GET['TypeClassement'],0,4) == 'File') )
+	if ($indexParcoursSelected < 99  && $Etape < 99 )
 	{
 		?>
 		<script>

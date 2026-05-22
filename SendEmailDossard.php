@@ -36,7 +36,7 @@ table {
                       <p><b>'.  strtoupper($data[1]) . ' '. strtoupper($data[2]).'</b></p>
                     </br>
                   <p>
-           Nous vous donnons rendez-vous demain dès 17h45 à Boécourt pour la deuxième étape du BCJ Challenge.
+           Nous vous donnons rendez-vous demain dès 17h45 à Develier pour la deuxième étape du BCJ Challenge.
             </p>
         </br>
                     <p>Votre numéro de dossard est : <b> '.  $data[0] .'</b></br></p>

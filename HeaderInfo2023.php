@@ -395,6 +395,8 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 								
 								
 								</td>
+							</tr>
+							<tr>
 								<td style="font-size:12px; text-align: center;">
 									Résultats
 								</td>

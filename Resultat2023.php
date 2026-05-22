@@ -783,7 +783,25 @@ padding-left:10px">
 							
 								colLoc.style.margin ="1px";
 								colLoc.style.fontStyle = "italic";
-								colLoc.innerText = ListCoureurs[i].Coureur.Club._Value;
+									var nomClub = ListCoureurs[i].Coureur.Club._Value.replaceAll(" ", "");
+								var nomEquipe = ListCoureurs[i].Coureur.NomEquipe._Value.replaceAll(" ", "");
+								nomClub = nomClub.toUpperCase();
+								nomEquipe = nomEquipe.toUpperCase();
+								if ( nomClub.length > 1 
+								&& nomEquipe.length > 1 
+								&& nomClub!= nomEquipe )
+								{
+									console.log(nomClub + "/"+ nomEquipe)
+									colLoc.innerText = ListCoureurs[i].Coureur.Club._Value+ " / "+ ListCoureurs[i].Coureur.NomEquipe._Value;
+								}
+								else if  (nomEquipe.length > 1)
+								{
+									colLoc.innerText = ListCoureurs[i].Coureur.NomEquipe._Value;
+								}
+								else if (nomClub.length > 1)
+								{
+									colLoc.innerText = ListCoureurs[i].Coureur.Club._Value;
+								}
 								RowLoc.appendChild(colLoc);
 								colonne.appendChild(tableLoc);
 								
@@ -1940,7 +1958,27 @@ padding-left:10px">
 								colLoc.style.margin ="1px";
 								colLoc.style.fontStyle = "italic";
 								colLoc.style.fontSize = "12px";
-								colLoc.innerText = ListCoureurs[i].Coureur.Club;
+								var nomClub = ListCoureurs[i].Coureur.Club.replaceAll(" ", "");
+								var nomEquipe = ListCoureurs[i].Coureur.NomEquipe.replaceAll(" ", "");
+								nomClub = nomClub.toUpperCase();
+								nomEquipe = nomEquipe.toUpperCase();
+								if ( nomClub.length > 1 
+								&& nomEquipe.length > 1 
+								&& nomClub!= nomEquipe )
+								{
+									console.log(nomClub + "/"+ nomEquipe)
+									colLoc.innerText = ListCoureurs[i].Coureur.Club+ " / "+ ListCoureurs[i].Coureur.NomEquipe;
+								}
+								else if  (nomEquipe.length > 1)
+								{
+									colLoc.innerText = ListCoureurs[i].Coureur.NomEquipe;
+								}
+								else if (nomClub.length > 1)
+								{
+									colLoc.innerText = ListCoureurs[i].Coureur.Club;
+								}
+								
+								
 								RowLoc.appendChild(colLoc);
 								colonne.appendChild(tableLoc);
 								

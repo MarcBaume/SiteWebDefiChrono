@@ -86,16 +86,16 @@
 	$indexDepartSelected = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
 	$Classement = $_GET['Classement'];
-	if ($Etape ==0)
+	if ($Etape ==0 && $_GET['NbrEtape'] <2)
 	{
 		$Etape =1 ;
 	}
-	
+	/*
 	  if ($NOM_COURSE =='Jura Défi' || $NOM_COURSE =='Trophée du Doubs DMT Microtechnique'  )
 	{
 		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
 	
-	}
+	}*/
 	  ?>
 
 <form method="get" action="Resultat2023.php" id="FormSendIndfo">
@@ -282,14 +282,23 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 	}
 	// SI il y plus que 1 étape affichage d'un menu pour le choix du départ
 	if (count($arEtape) > 1)
-	{?>							
+	{
+		?>							
 		<fieldset class="fieldsetResultat">
 			<Legend  class="LegendResultat">
 				<i class="fa fa-trophy" style= "fontSize: 25px;margin:5px;"></i>étape
 			</Legend>
 			<select  onchange='ChangEtape(this);' id="SelectEtape"   style="cursor: pointer;">
 			<? 
+			
 			$IndexDep = 0;
+			if ($Etape == "0")
+			{?>
+				<option  value="">Sélectionner une étape
+				</option>
+				<?php
+			}
+					
 			// Affichage du bouton de la liste des étapes
 			foreach($arEtape as $Etape1)
 			{
@@ -317,7 +326,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 						Etape =  readJSON(<?php  echo json_encode($pathfolder.'//'.$Etape1)?>+ "//info.json");
 					</script><?
 					$IndexDep++;
-					if ($Etape != $IndexDep)
+					 if ($Etape != $IndexDep)
 					{?>
 						<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
 						</option>
@@ -847,8 +856,6 @@ padding-left:10px">
 									
 									rows.appendChild(colonne);
 								}
-
-
 								colonne = document.createElement('td');
 								colonne.style.paddingLeft = "10px";
 								colonne.style.paddingRight = "10px";
@@ -1098,8 +1105,6 @@ padding-left:10px">
 												
 												rowsPassage.appendChild(colonne);
 											}
-
-	
 											// Affichage temps et écart 
 											colonne = document.createElement('td');
 											colonne.style.paddingLeft = "10px";
@@ -1202,12 +1207,13 @@ padding-left:10px">
 
 
 	var ListNomClassement = [];
-	function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )	
+	async function readFileResultat(NbrEtape , PathFolderDepart, NumEtape )	
 	{
 		console.log("Function Read File Resultat");
 		console.log(NumEtape);
 		var Parcours = new Object();
-		var Etape= new Object();	
+		var Etape= new Object();
+		var resultExist = false;	
 		//***********************************************
 		//  */ Lecture du fichier " info étape "
 		//************************************************ */
@@ -1215,28 +1221,50 @@ padding-left:10px">
 		{
 			if (NumEtape != 99)
 			{
-				Etape =  readJSON(PathFolderDepart + "/info.json");
+				const res = await(fileResultExist(PathFolderDepart + "/info.json"));
+				console.log(res);
+				if (res)
+				{
+					resultExist = true;
+					Parcours.info =  "Type File";
+					console.log("Read File");
+					Etape =  readJSON(PathFolderDepart + "/info.json");
+				}
 			}
-			Parcours.info =  "File";
-			console.log("Read File");
 		}
 		else if (NumEtape != 99)
 		{
 			Etape =  readJSON(PathFolderDepart + "/Etape"+NumEtape+"/info.json");
 			console.log("Read File Json Etape");
 			console.log(Etape);
-			// lecture fichier JSON des résultats de la coursse
-			Parcours.info =  readJSON(PathFolderDepart +"/Etape"+ NumEtape+ "/ResultatsV2.json");
-			console.log("ResultatsV2.json");
+			// lecture fichier JSON des résultats de la course
+			var path = PathFolderDepart +"/Etape"+ NumEtape+ "/ResultatsV2.json";
+			const res = await(fileResultExist(path));
+				console.log(res);
+			if (res)
+			{
+				resultExist = true;
+				Parcours.info =  readJSON(path);
+				console.log("ResultatsV2.json");
+			}
 		}	
-		else
+		else 
 		{
-			Parcours.info =  readJSON(PathFolderDepart +"/General/ResultatWeb/ResultatsGeneral.json");
-			console.log("ResultatsGeneral.json");
+			// Fichier existe au classement général
+			var path = PathFolderDepart +"/General/ResultatWeb/ResultatsGeneral.json"
+			const res = await(fileResultExist(path));
+				console.log(res);
+			if (res)
+			{
+				resultExist = true;
+				Parcours.info =  readJSON(path);
+				console.log("ResultatsGeneral.json");
+			}
 		}
 		console.log("Parcours");
 		console.log(Parcours);
 		var ListPointPassage  = [];
+		// Si le fichier étape existe on va lire le fichier Json
 		if (Etape != undefined  )
 		{
 			console.log("Etape");
@@ -1251,8 +1279,6 @@ padding-left:10px">
 			var ElevationMin = 10000;
 			var ElevationMax = 0;
 			var TotalKM = 0;
-
-			
 			var indexPassage = 1;
 
 			// Ajout du graphique dans tableau ViewDetailCoureur
@@ -1282,7 +1308,6 @@ padding-left:10px">
 						// Affichage du live des coureurs de chaque point de passage 
 						for (let i = Parcours.info.ListLivePointDePassage.length-1; i >-1; i--) 
 						{
-
 							if (Parcours.info.ListLivePointDePassage[i].NameDepart == <?php echo json_encode($Depart)?>)
 							{
 								// Affichage des personnes du dernier point de passage de la course exemple : arrivée 
@@ -1293,12 +1318,9 @@ padding-left:10px">
 								}
 								else
 								{
-
 									var ListCoureurs = Parcours.info.ListLivePointDePassage[i+1].ListCoureursRestant;
-
 								}
 								funMenuNomClassement(ListCoureurs, false);
-
 								ListCoureurLiveToTable(Parcours.info.ListLivePointDePassage[i],ListCoureurs, LastPoint, i);
 								LastPoint = false;
 							}
@@ -1312,33 +1334,50 @@ padding-left:10px">
 					if (!document.getElementById('FormTypeClassement').value.includes("File"))
 					{
 						ListCoureurLiveToTableGeneral(Parcours.info);
-					}
-					
+					}	
 				}
-				
-			
 			}
-			else 
-			{
-				document.getElementById("Informations").style.display = "";
-				document.getElementById("Informations").innerHTML = "Les résultats ne sont pas encore disponible pour ce départ";
-			}
-		
-
 			// Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
 			// Open a log file
 			// Affichage du graphique de déniveller pour ce départ si le fichier gpx existe
-			<?php
-			$chemin= $pathfolder."//Etape". $Etape."//images/Etape.xml";
-
-			if (file_exists($chemin)) {
-			?>
+			var path=  PathFolderDepart+"//Etape"+NumEtape+"//images/Etape.xml";
+			const res = await fileExist(path);
+			console.log(res);
+			if (res) 
+			{
+				console.log("File xml exist : "+ path);
 				mapSvg('Test', PathFolderDepart +"//Etape"+ NumEtape+ "//images/Etape.xml", DivimgEtapePara,Etape,Parcours);
-				<?
-			}?>
+			}
 		}
 	}
 
+	async function fileResultExist(path)
+	{
+		const response = await fileExist(path);
+		console.log(response);
+		if (response)
+		{
+			return true;
+		}
+		else
+		{
+			document.getElementById("Informations").style.display = "";
+			document.getElementById("Informations").innerHTML = "Les résultats ne sont pas encore disponible pour ce départ";
+			return false; 
+	 	}
+  	}
+
+	async function fileExist(path) 
+	{
+  		try 
+		{
+    		const reponse = await fetch(path, { method: 'HEAD' });
+    		return reponse.ok; // Renvoie true (200-299) ou false (ex: 404)
+  		} catch (erreur) 
+		{
+    		return false; // Erreur réseau
+  		}
+	}
 
 	function AddButtonTypeResultat(PointDePassageInfo)
 	{
@@ -2864,8 +2903,8 @@ padding-left:10px">
 			
 			divGraph = document.createElement('div');
 			divGraph.style.height ="300px";
+
 			divGraph.setAttribute("id", IDSVG+"conteneurSVG");
-			
 			td2.append(divGraph);
 			tr2.append(td2);
 			TableTotal.append(tr2);

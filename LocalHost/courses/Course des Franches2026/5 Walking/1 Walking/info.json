@@ -1,0 +1,99 @@
+{
+  "debutDossard": {
+    "_Value": ""
+  },
+  "finDossard": {
+    "_Value": ""
+  },
+  "ListCoureur": {},
+  "NombrePersonneMaxEquipe": {
+    "_Value": ""
+  },
+  "InformationsSiteInternet": {
+    "_Value": "Aucun classement ne sera établi pour le parcours Walking mais chaque participant participe automatiquement  à un tirage au sort"
+  },
+  "NombrePersonneMaxDuo": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxEntreprise": {
+    "_Value": ""
+  },
+  "Path": "C:\\kDrive\\Chrono\\Course des Franches2026\\5 Walking\\1 Walking",
+  "ListCategorie": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Walking"
+        },
+        "NumCategorie": {
+          "_Value": "W"
+        },
+        "debutAnnee": {
+          "_Value": "0"
+        },
+        "finAnnee": {
+          "_Value": "2023"
+        },
+        "SexeCategorie": {
+          "_Value": "M"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "NomeEtapeSelected": "Etape1",
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Walking"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

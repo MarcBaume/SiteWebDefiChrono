@@ -650,7 +650,7 @@ padding-left:10px">
 								colonne = document.createElement('td');
 								colonne.style.paddingLeft = "10px";
 								colonne.style.paddingRight = "10px";
-								colonne.style.fontSize = "16px";
+								colonne.style.fontSize = "20px";
 								// Affichage du Nom d'équipe et le nom du coureur
 								if ( ListCoureurs[i].Coureur.NomEquipe._Value.length > 0 && ListCoureurs[i].Coureur.NomCoureur2._Value.length > 0  )
 								{
@@ -766,53 +766,45 @@ padding-left:10px">
 								}
 								else
 								{
-									colonne.innerText = ListCoureurs[i].Coureur.AnneeNaissance._Value;
+									colonne = document.createElement('td');
+													colonne.style.fontSize = "8px";
+									paraLoc = document.createElement('p');
+									paraLoc.className = "Resultat";
+									colonne.appendChild(paraLoc);
+
+
+									paraLoc.style.fontSize = "8px";
+									paraLoc.style.fontWeight = "bold";
+									paraLoc.innerText =  ListCoureurs[i].Coureur.AnneeNaissance._Value + "/" +ListCoureurs[i].Coureur.localite._Value;
+	
+									paraclub = document.createElement('p');
+									paraclub.className = "Resultat";
+									paraclub.style.margin ="1px";
+									paraclub.style.fontStyle = "italic";
+									var nomClub = ListCoureurs[i].Coureur.Club._Value.replaceAll(" ", "");
+									var nomEquipe = ListCoureurs[i].Coureur.NomEquipe._Value.replaceAll(" ", "");
+									nomClub = nomClub.toUpperCase();
+									nomEquipe = nomEquipe.toUpperCase();
+									if ( nomClub.length > 1 
+									&& nomEquipe.length > 1 
+									&& nomClub!= nomEquipe )
+									{
+										paraclub.innerText = ListCoureurs[i].Coureur.Club._Value+ " / "+ ListCoureurs[i].Coureur.NomEquipe._Value;
+									}
+									else if  (nomEquipe.length > 1)
+									{
+										paraclub.innerText = ListCoureurs[i].Coureur.NomEquipe._Value;
+									}
+									else if (nomClub.length > 1)
+									{
+										paraclub.innerText = ListCoureurs[i].Coureur.Club._Value;
+									}
+								
+									colonne.appendChild(paraclub);
 								}
 								rows.appendChild(colonne);
 
-								colonne = document.createElement('td');
-								tableLoc = document.createElement('Table');
-								
-								RowLoc = document.createElement('tr');
-								RowLoc.style.height = "30px";
-								tableLoc.appendChild(RowLoc);
-
-								colLoc = document.createElement('td');
-								colLoc.style.margin ="1px";
-								colonne.style.fontSize = "10px";
-								colLoc.style.fontWeight = "bold";
-								colLoc.innerText = ListCoureurs[i].Coureur.localite._Value;
-								RowLoc.appendChild(colLoc);
-
-								RowLoc = document.createElement('tr');
-								RowLoc.style.height = "30px";
-								RowLoc.style.background = "transparent";
-								tableLoc.appendChild(RowLoc);
-								colLoc = document.createElement('td');
-							
-								colLoc.style.margin ="1px";
-								colLoc.style.fontStyle = "italic";
-									var nomClub = ListCoureurs[i].Coureur.Club._Value.replaceAll(" ", "");
-								var nomEquipe = ListCoureurs[i].Coureur.NomEquipe._Value.replaceAll(" ", "");
-								nomClub = nomClub.toUpperCase();
-								nomEquipe = nomEquipe.toUpperCase();
-								if ( nomClub.length > 1 
-								&& nomEquipe.length > 1 
-								&& nomClub!= nomEquipe )
-								{
-									console.log(nomClub + "/"+ nomEquipe)
-									colLoc.innerText = ListCoureurs[i].Coureur.Club._Value+ " / "+ ListCoureurs[i].Coureur.NomEquipe._Value;
-								}
-								else if  (nomEquipe.length > 1)
-								{
-									colLoc.innerText = ListCoureurs[i].Coureur.NomEquipe._Value;
-								}
-								else if (nomClub.length > 1)
-								{
-									colLoc.innerText = ListCoureurs[i].Coureur.Club._Value;
-								}
-								RowLoc.appendChild(colLoc);
-								colonne.appendChild(tableLoc);
+					
 								
 								rows.appendChild(colonne);
 

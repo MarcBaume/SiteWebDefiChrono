@@ -36,13 +36,12 @@ table {
                       <p><b>'.  strtoupper($data[1]) . ' '. strtoupper($data[2]).'</b></p>
                     </br>
                   <p>
-           Nous vous donnons rendez-vous demain dès 17h45 à Develier pour la deuxième étape du BCJ Challenge.
+                  Pour les enfants nous vous donnons rendez vous dès 15h15 et pour les adultes dès 17h45 à Vendlincourt pour la quatrième étape du BCJ Challenge.
             </p>
         </br>
                     <p>Votre numéro de dossard est : <b> '.  $data[0] .'</b></br></p>
                    <p> Ton départ : <b> '.  $data[13] .' </b></br></p>
         </br> 
-       Si vous ne courez pas, venez le récupérer sur les autres étapes dès 17h45.</br>
                 Défi chrono te souhaite déjà une bonne course<br/>
               <p>
     <img style="width:200px;"src="https://defichrono.ch/images/LogoDefiChrono2023.png"></img>

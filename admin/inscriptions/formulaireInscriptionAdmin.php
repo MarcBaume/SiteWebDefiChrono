@@ -602,7 +602,7 @@ function SearchDatabase(e) {
 }
 // Sélection coureur depuis base de donnée de liste de personne
 function SelectCoureur(e) {
-	var Coureur = new Object();user2
+	var Coureur = new Object();
 		Coureur = val[e];
 		document.getElementById("nom").value = Coureur.Nom;
 	document.getElementById("prenom").value = Coureur.Prenom;

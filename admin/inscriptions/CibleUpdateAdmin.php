@@ -172,33 +172,31 @@ $NOM_COURSE = $_REQUEST["NomCourse"];
             $sql = 'UPDATE inscription SET NbrEtape  =\''.$_REQUEST['NbrEtape'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
     
-                $ResultAddInsc = mysqli_query($con,$sql);	
-                if ( $ResultAddInsc != 1)
-                {
-                    print(-24);
-                }
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-24);
+            }
 
            
-     $sql = 'UPDATE inscription SET Date  = current_timestamp   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $sql = 'UPDATE inscription SET Prix  =\''.$_REQUEST['Prix'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
-    
-                $ResultAddInsc = mysqli_query($con,$sql);	
-                if ( $ResultAddInsc == 1)
-                {
-                    print(1);
-                }
-                else
-                {
-                    print(-25);
-                }
-       $sql = 'UPDATE inscription SET Prix  =\''.$_REQUEST['Prix'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            if ( $ResultAddInsc != 1)
+            {
+                print(-26);
+            }
+
+            $sql = 'UPDATE inscription SET Date  = current_timestamp   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
-    
-                $ResultAddInsc = mysqli_query($con,$sql);	
-                if ( $ResultAddInsc != 1)
-                {
-                    print(-26);
-                }
+            if ( $ResultAddInsc == 1)
+            {
+                print(1);
+            }
+            else
+            {
+                print(-25);
+            }
+
      }
      catch(Exception $e)
      {

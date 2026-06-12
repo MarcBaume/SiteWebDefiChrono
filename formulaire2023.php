@@ -38,14 +38,24 @@ function checkForm2() {
 	paraInfoAdd = document.getElementById("paraInfoAdd")
 	paraInfoAdd.style.display = "block";
 	textInfoAdd = document.getElementById("textInfoAdd")
-	if (f1.nomAdd.value.length<2) {
+	if (f1.nomAdd.value.length<1 ) {
 		textInfoAdd.value="Merci d'indiquer votre nom";
 		f1.nomAdd.focus();
 		return false;
 	}
+	if (f1.nomAdd.value.length>20 ) {
+		textInfoAdd.value="Merci d'indiquer votre nom au maxium 20 caractères";
+		f1.nomAdd.focus();
+		return false;
+	}
 
-		if (f1.prenomAdd.value.length<2) {
+		if (f1.prenomAdd.value.length<1) {
 		textInfoAdd.value="Merci d'indiquer votre prénom";
+		f1.prenomAdd.focus();
+		return false;
+	}
+		if (f1.prenomAdd.value.length> 20) {
+		textInfoAdd.value="Merci d'indiquer votre prénom au maximum 20 caractères";
 		f1.prenomAdd.focus();
 		return false;
 	}

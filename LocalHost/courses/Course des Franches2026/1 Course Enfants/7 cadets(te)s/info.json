@@ -1,0 +1,159 @@
+{
+  "debutDossard": {
+    "_Value": ""
+  },
+  "finDossard": {
+    "_Value": ""
+  },
+  "ListCoureur": {},
+  "NombrePersonneMaxEquipe": {
+    "_Value": ""
+  },
+  "InformationsSiteInternet": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxDuo": {
+    "_Value": ""
+  },
+  "NombrePersonneMaxEntreprise": {
+    "_Value": ""
+  },
+  "Path": "C:\\kDrive\\Chrono\\Course des Franches2026\\1 Course Enfants\\7 cadets(te)s",
+  "ListCategorie": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Cadettes"
+        },
+        "NumCategorie": {
+          "_Value": "CF"
+        },
+        "debutAnnee": {
+          "_Value": "2011"
+        },
+        "finAnnee": {
+          "_Value": "2014"
+        },
+        "SexeCategorie": {
+          "_Value": "D"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassCategorie, ChronoV4WPF",
+        "NomCategorie": {
+          "_Value": "Cadets"
+        },
+        "NumCategorie": {
+          "_Value": "CG"
+        },
+        "debutAnnee": {
+          "_Value": "2011"
+        },
+        "finAnnee": {
+          "_Value": "2014"
+        },
+        "SexeCategorie": {
+          "_Value": "H"
+        },
+        "debutAnneeInternet": {
+          "_Value": ""
+        },
+        "TimeHandicapCat": {
+          "_Value": ""
+        },
+        "finAnneeInternet": {
+          "_Value": ""
+        },
+        "Scratch": {
+          "oldValue": false,
+          "Title": "Classé au scartch",
+          "Value": true,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Relais": {
+          "oldValue": false,
+          "Title": "En équipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "Equipe": {
+          "oldValue": false,
+          "Title": "Equipe",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "NomeEtapeSelected": "Etape1",
+  "ID": {
+    "_Value": "7"
+  },
+  "Nom": {
+    "_Value": "cadets(te)s"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

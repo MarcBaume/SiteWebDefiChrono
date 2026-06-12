@@ -1,0 +1,3 @@
+;2 km;;;1;;
+Discipline;1.6 km;
+Discipline;1.6 km;

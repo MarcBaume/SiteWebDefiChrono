@@ -1,0 +1,147 @@
+{
+  "Date": {
+    "_Value": ""
+  },
+  "xContreLaMontre": {
+    "oldValue": false,
+    "Title": "Contre la montre",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "xClassmeentNombreTour": {
+    "oldValue": false,
+    "Title": "Nombre tour",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "HeureDepart": {
+    "_Value": "18:55"
+  },
+  "HeureEnd": {
+    "_Value": ""
+  },
+  "Lieu": {
+    "_Value": ""
+  },
+  "ListDiscipline": {
+    "ListItem": []
+  },
+  "ListPointPassage": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 0,
+        "HeureEnd": {
+          "_Value": "19:45:00"
+        },
+        "ColorDetection": "#FFFF4500",
+        "HeureStart": {
+          "_Value": "19:11:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Tour 1"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassPointPassage, ChronoV4WPF",
+        "IdBox": {
+          "_Value": ""
+        },
+        "EType": 2,
+        "HeureEnd": {
+          "_Value": ""
+        },
+        "ColorDetection": "#FF1E90FF",
+        "HeureStart": {
+          "_Value": "19:12:00"
+        },
+        "NotVisibleOnLiveSpeaker": {
+          "oldValue": false,
+          "Title": "Ne pas afficher dans live speaker",
+          "Value": false,
+          "VisibilityTitle": 0,
+          "ReadOnly": false
+        },
+        "TempsInterpassageSeconde": 30,
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": "Arrivée "
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "structurePrintResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": true,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "structureWebResultat": {
+    "xWithPointPassage": false,
+    "xDiplome": false,
+    "xResultatCategorie": false,
+    "xResultatScratch": false,
+    "xResultatHommesDames": false,
+    "xResultatTop5Categorie": false,
+    "xResultatTop5HommesDames": false,
+    "xResultatTj": false,
+    "xResultatAIJC": false,
+    "xResultatLastPoint": false,
+    "xResultatAlphabetique": false,
+    "xTirageAuSort": false
+  },
+  "Path": "C:\\kDrive\\Chrono\\Course des Franches2026\\1 Course Enfants\\7 cadets(te)s\\Etape1",
+  "ListNumeroDNF": [
+    565
+  ],
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Etape1"
+  },
+  "Distance": {
+    "_Value": "1000m"
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

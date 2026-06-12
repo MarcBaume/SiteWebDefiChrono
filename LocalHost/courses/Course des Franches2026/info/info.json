@@ -1,0 +1,17 @@
+{
+  "xOptionPopUpRun": {
+    "oldValue": false,
+    "Title": "Classement point passage depart de 1 (Pop up Run)",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  },
+  "NameFileDetectionUsed": null,
+  "GeneralParPoint": {
+    "oldValue": false,
+    "Title": "Classement par point trophée du doubs",
+    "Value": false,
+    "VisibilityTitle": 0,
+    "ReadOnly": false
+  }
+}

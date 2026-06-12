@@ -855,6 +855,7 @@ function funCreateDrawerMap(IDSVG, FileName)
 	/*____________________________________________________________________________________________
 	*																															*
 		CREATION AFFICHAGE SELON LE TABLEAU DE POINT LU DANS LE FICHIER GPX 
+
 	_____________________________________________________________________________________*/	
 	let MedLat = ((Number(latMax)- Number(latMin )) / 2)  ;
 	let MedLon = ((Number(lonMax) - Number(lonMin)) / 2);
@@ -2156,6 +2157,14 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		
 			}
 		}
+		/*****************Informmations *********************/
+		if (DepartObj.info.InformationsSiteInternet != null && DepartObj.info.InformationsSiteInternet._Value.length > 1 )
+		{
+				let paraInformation =	document.createElement('p');
+				paraInformation.innerHTML =  DepartObj.info.InformationsSiteInternet._Value;
+				DepartPara.append(paraInformation);
+		}
+					
 			/*************** Catégorie *********************/
 			if (DepartObj.info.ListCategorie != null && DepartObj.info.ListCategorie.ListItem.length > 1) 	
 			{

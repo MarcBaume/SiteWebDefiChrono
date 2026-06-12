@@ -84,28 +84,29 @@ function AddPersonne()
 <div id="corps">
 <table>
 	<tr>
-		<td>
-			<h3><span class="material-symbols-outlined">install_mobile</span>
-				Liste de départ  <?php  echo $NOM_COURSE. ' ' . $ANNEE_COURSE ?>
-			</h3>
-			<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
-
-		</td>
-		<td>
-			<Form  method="post" action="ExportMysql.php">
-				<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"  size="60"  value= '<?php echo $DateCourse ?>' />
-				<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
-				<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"  size="60"  value= '<?php echo $NOM_COURSE ?>' />		
-				<center>
-					<input type="submit" class="ButtonResultat" value="Export Excel">
-				</center>
-			</form>
-		</td>
+		
+	
 	</tr>
 </table>
 <Fieldset>
 <div id="formulaire">
+	<table style="width:80%">
 
+		<tr>
+			<td>
+				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"  id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= " width: 100px; height: 50px";>  </br>
+			</td>
+			<td style="witdth:100px">
+				<Form  method="post" action="ExportMysql.php">
+					<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"   value= '<?php echo $DateCourse ?>' />
+					<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
+					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"   value= '<?php echo $NOM_COURSE ?>' />		
+						<input type="submit" class="ButtonResultat" style="padding:5px;margin:10px;width:80px;font-size:20px"value="Excel">
+				</form>
+			</td>
+		</tr>
+	</table>
+		<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 <form method="get"  id="FormulaireCoureur" name="FormulaireCoureur" style="display : none;" >
 
 	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
@@ -123,6 +124,7 @@ function AddPersonne()
 
 	<!-- Tableau information du coureurs à inscrire !-->
 	<div id="InformationsCoureurs">
+
 		<table width="100%">
 			<tr style="background:#C0C0C0;padding:20px;">
 				<td style="padding: 10px;padding-left: 20px;">Numéro dossard :</td><td id="td_num_dossard" style="padding:5px; Background:lightblue;"><input type="text" name="num_dossard" id="num_dossard" /></td>
@@ -147,7 +149,6 @@ function AddPersonne()
 					<input type="hidden" name="ville" id="ville"/>
 					<input type="hidden" name="pays" id="pays"/>	
 					<input type="hidden" name="email" id="email" />
-					<input type="hidden" name="club" id="club"/>
 				</td>
 			</tr>
 			<tr style="height: 10px;"> 
@@ -163,7 +164,7 @@ function AddPersonne()
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
-			<tr  id="RowEquipe" style="background:#C0C0C0;">
+			<tr style="display:none" id="RowEquipe" style="background:#C0C0C0;">
 				<td colspan="4" >
 					<table  id="TableEquipe" style="background:#C0C0C0;">
 						<tr>
@@ -270,13 +271,21 @@ function AddPersonne()
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
 			<!---------- CHOIC TARIFS _______________-->
-	<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblNbrEtape">
+	<table 	style="width:100%;margin-top: 20px;" id="lblNbrEtape">
 		<tr style="background:#C0C0C0;padding:20px;" >
 			<td style="width: 40%;padding: 10px;padding-left: 20px;">
 				Etapes:
 			</td> 
 			<td>
 				<input type="text" name="NbrEtape" id="NbrEtape" tabindex="410"    />
+			</td>
+		</tr>
+			<tr style="background:#C0C0C0;padding:20px;" >
+			<td style="width: 40%;padding: 10px;padding-left: 20px;">
+				Paiement:
+			</td> 
+			<td>
+				<input type="text" name="Payer" id="Payer" tabindex="410"    />
 			</td>
 		</tr>
 				<!---------- CHOIC TARIFS _______________-->
@@ -297,37 +306,30 @@ function AddPersonne()
 				<input type="text" name="mail" id="mail" tabindex="410"    />
 			</td>
 		</tr>
-	</table>
-</form>
-
-
-	
-	<center>
-	<table style="width:80%">
-		<tr>
+		<tr style="background:#C0C0C0;padding:20px;" >
+			<td style="width: 40%;padding: 10px;padding-left: 20px;">
+				Club:
+			</td> 
 			<td>
-				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"  id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= " width: 100px; height: 50px";>  </br>
-			</td>
-			<td>
-				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"   id="ButtonDeleteFormulaire"   class="ButtonResultat"  value="Supression du coureur" onclick="funConfirmResetCoureur()" style= " width: 100px; height: 50px";>  </br>
-			</td>
-			<td>
-				<button  id= "ButtonReset" type="button" style=" font-size :24px"  class="ButtonResultat" onclick="ResetCoureur()">
-						Reset
-				</button>
+				<input type="text" name="club" id="club" tabindex="410"    />
 			</td>
 		</tr>
 	</table>
+</form>
+
+				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"   id="ButtonDeleteFormulaire"   class="ButtonResultat"  value="Supression du coureur" onclick="funConfirmResetCoureur()" style= " width: 100px; height: 50px";>  </br>
+			
 
 		<!----------Information Delete coureur _______________-->
 		<table 	style="width:100%;visibility:hidden; display:none; margin-top: 20px;" id="lblInfoDeleteCoureur">
 		<tr>
+
 			<td>
 			<input type="button" style="height:40px;font-size:160%;"  id="ButtonConfirmDeleteFormulaire"   class="ButtonResultat"  value="Confirmer vous la Supression du coureur" onclick="funDeleteCoureur()" style= " width: 100px; height: 50px";>  </br>
 				</td>
 		</tr>
 	</table>
-	</center>
+	
 	
 	<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 
@@ -431,11 +433,10 @@ function choiceOption(f)
 		document.getElementById("NbrEtapeCode").value = "1" ;
 	}
 
-	if (  DepartObj.ArrayEtape.length > 1 )
-	{
-		document.getElementById("lblNbrEtape").style.visibility = "visible" ;
-		document.getElementById("lblNbrEtape").style.display  = "table" 
-	}
+
+	document.getElementById("lblNbrEtape").style.visibility = "visible" ;
+	document.getElementById("lblNbrEtape").style.display  = "table" 
+
 	document.getElementById("PrixInscription").value = tabOption[1] ;
 	console.log("log" + tabOption[3]);
 	if ( parseInt(tabOption[3])> 0)
@@ -1251,6 +1252,14 @@ function funDeleteCoureur()
 					{
 						document.getElementById("num_dossard").style.backgroundColor = "lightgreen";
 					}
+						if (CoureurFind.Payer != "Payé")
+					{
+						document.getElementById("Payer").style.backgroundColor = "orange";
+					}
+					else
+					{
+						document.getElementById("Payer").style.backgroundColor = "lightgreen";
+					}
 					document.getElementById("nom").value = CoureurFind.Nom;
 					document.getElementById("prenom").value = CoureurFind.Prenom;
 					document.getElementById("date").value = CoureurFind.DateNaissance;
@@ -1264,13 +1273,14 @@ function funDeleteCoureur()
 					document.getElementById("NumCat").value = CoureurFind.NumCategorie ;
 					document.getElementById("NomCat").value = CoureurFind.NomCategorie ;
 					document.getElementById("NbrEtape").value = CoureurFind.NbrEtape ;
+					document.getElementById("Payer").value = CoureurFind.Payer ;
 					document.getElementById("NomEquipe").value = CoureurFind.NomEquipe ;
 					document.getElementById("TypeEquipe").value = CoureurFind.TypeEquipe ;
 					document.getElementById("Prix").value = CoureurFind.Prix ;
 					document.getElementById("mail").value = CoureurFind.mail ;
 					document.getElementById("FindValue").value = "" ;	
 
-					document.getElementById("ButtonSendFormulaire").value = "Valider dossard" ;
+					document.getElementById("ButtonSendFormulaire").value = "Valider coureur" ;
 					document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
 					document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
 					document.getElementById("FormulaireCoureur").style.display  = "block" ;	

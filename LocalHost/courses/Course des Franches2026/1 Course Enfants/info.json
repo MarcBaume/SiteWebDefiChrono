@@ -1,0 +1,172 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription enfant"
+        },
+        "dateEndZone": {
+          "_Value": "2026-05-31 23:59:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "8"
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Enfants"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription enfant"
+        },
+        "dateEndZone": {
+          "_Value": "2026-06-10 23:59:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "10"
+            },
+            "NomOption": {
+              "_Value": "Inscription "
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "3"
+        },
+        "Nom": {
+          "_Value": "Inscription enfant"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscription enfant"
+        },
+        "dateEndZone": {
+          "_Value": "2026-06-12 17:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "15"
+            },
+            "NomOption": {
+              "_Value": "Inscription"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": ""
+            },
+            "AgeMax": {
+              "_Value": ""
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": ""
+        },
+        "Nom": {
+          "_Value": ""
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": []
+  },
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "Course Enfants"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

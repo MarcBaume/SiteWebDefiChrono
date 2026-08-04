@@ -326,7 +326,7 @@ if ($resultResult && mysqli_num_rows($resultResult) > 0)
 				</span>
 </td>
 				<?php
-				if ( $val["xNoListeDepart"] == False)
+				if ( $val["xNoListeDepart"] == False &&  $DateResult['year'] == $ANNEE_COURSE)
 				{
 				?>
 					<td class="ColMenuInfo"  onClick="ClickRowsListe()" onmouseover="" style="cursor: pointer;">

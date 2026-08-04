@@ -255,17 +255,11 @@ if ( isset($_SESSION["Login"]))
 			<input type="hidden" name="Option" id="Option" />
 			<input type="hidden" name="Nbretape" id="Nbretape" value= "<?php echo  $_GET["NbrEtape"] ?>" />
 		</div>
-		<?php if ($val ["JuraDefi"] )
-		{?>
-		<a><img src="admin/images/addChef.jpg" width="60px" onclick="ShowPopuAddMember()" /></a>	<?
-		}
-		else
-		{?>
+	
 			<div class="Button" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
 				<i class="fa fa-plus-circle" style= "font-size: 50px;" ></i></br>
 			</div>
-			<?
-		}?>
+			
 		<a  class="Button" href="admin/membres.php"> 
 			<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 50px;"></i>
 		</a>

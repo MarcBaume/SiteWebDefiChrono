@@ -1,7 +1,4 @@
-﻿
-
-<?php
-
+﻿<?php
 $DateCourse =  $_POST['DateCourse'];
 $Date =  date_parse($_POST['DateCourse']);
 $ANNEE_COURSE = $Date['year']; 
@@ -11,6 +8,8 @@ $Status = 'localhost';
 
 function majuscules($inChaine)
 {
+	$inChaine =ltrim($inChaine);
+	$inChaine =rtrim($inChaine);
     $inChaine = strtolower($inChaine);
     // index du nom changer
     $tiretIndex = strpos($inChaine, '-');
@@ -20,9 +19,8 @@ function majuscules($inChaine)
     $inChaine = ucwords($inChaine);
     if ( $tiretIndex  > 0)
     {
-    // Remets le tiret d'union 
-    $inChaine = substr_replace($inChaine,"-",$tiretIndex,1);
-
+    	// Remets le tiret d'union 
+    	$inChaine = substr_replace($inChaine,"-",$tiretIndex,1);
     }
 	return $inChaine;
 }
@@ -32,7 +30,7 @@ function majuscules($inChaine)
      try
      {
           mysqli_select_db($con ,'dxvv_jurachrono' );
-          $sql = 'INSERT INTO inscription (`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,
+          $sql = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,
 		`club`, `NumCategorie`,`mail`,`parcours`,`course`,`NomDepart`,
 		`NomCategorie`,`NomEquipe`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`,
 		`PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`,
@@ -83,7 +81,6 @@ function majuscules($inChaine)
 				$last_id = $con->insert_id;
 				header('Location: endInscriptionSurPlace.php?IdRace='.$_POST['IdRace'].'&DateCourse='.$_POST['DateCourse'].'&Etape=1&NomCourse='.$_POST['NomCourse'].'&LastAdresseID='.$last_id.''); 
 			}
-
      }
      catch(Exception $e)
      {

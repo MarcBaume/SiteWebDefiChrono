@@ -34,6 +34,8 @@ function checkForm(f) {
 	
 	function majuscules($inChaine)
 {
+	$inChaine =ltrim($inChaine);
+	$inChaine =rtrim($inChaine);
     $inChaine = strtolower($inChaine);
     // index du nom changer
     $tiretIndex = strpos($inChaine, '-');

@@ -171,8 +171,6 @@ $NOM_COURSE = $_REQUEST["NomCourse"];
                 }
             $sql = 'UPDATE inscription SET NbrEtape  =\''.$_REQUEST['NbrEtape'].'\'   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
-    
-            $ResultAddInsc = mysqli_query($con,$sql);	
             if ( $ResultAddInsc != 1)
             {
                 print(-24);
@@ -188,13 +186,100 @@ $NOM_COURSE = $_REQUEST["NomCourse"];
 
             $sql = 'UPDATE inscription SET Date  = current_timestamp   WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
             $ResultAddInsc = mysqli_query($con,$sql);	
-            if ( $ResultAddInsc == 1)
+            if ( $ResultAddInsc != 1)
             {
-                print(1);
+               print(-50);
+            }
+           
+             $sql = 'UPDATE inscription SET NomEquipe   =\''.$_REQUEST['NomEquipe'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-51);
+            }
+          
+            $sql = 'UPDATE inscription SET NomDisc1   =\''.$_REQUEST['NomDisc1'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc1   =\''.$_REQUEST['PrenomDisc1'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
+            }
+
+              $sql = 'UPDATE inscription SET NomDisc2    =\''.$_REQUEST['NomDisc2'].'\' WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc2    =\''.$_REQUEST['PrenomDisc2'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
+            }
+               $sql = 'UPDATE inscription SET NomDisc3    =\''.$_REQUEST['NomDisc3'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc3    =\''.$_REQUEST['PrenomDisc3'].'\' WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
+            }
+               $sql = 'UPDATE inscription SET NomDisc4    =\''.$_REQUEST['NomDisc4'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc4    =\''.$_REQUEST['PrenomDisc4'].'\' WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
+            }
+               $sql = 'UPDATE inscription SET NomDisc5   =\''.$_REQUEST['NomDisc5'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc5    =\''.$_REQUEST['PrenomDisc5'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
+            }
+               $sql = 'UPDATE inscription SET NomDisc6   =\''.$_REQUEST['NomDisc6'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-52);
+            }
+
+             $sql = 'UPDATE inscription SET PrenomDisc6    =\''.$_REQUEST['PrenomDisc6'].'\'  WHERE ID=\''.$_REQUEST['IDCoureur'].'\''; 
+            $ResultAddInsc = mysqli_query($con,$sql);	
+            if ( $ResultAddInsc != 1)
+            {
+                print(-53);
             }
             else
             {
-                print(-25);
+                print(1);
             }
 
      }

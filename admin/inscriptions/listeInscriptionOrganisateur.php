@@ -106,7 +106,8 @@ function AddPersonne()
 			</td>
 		</tr>
 	</table>
-		<p id="lblInformation" style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
+		<p id="lblInformation" 
+		style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 <form method="get"  id="FormulaireCoureur" name="FormulaireCoureur" style="display : none;" >
 
 	<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
@@ -164,7 +165,7 @@ function AddPersonne()
 			<tr style="height: 10px;"> 
 				<td></td><td></td>
 			</tr>
-			<tr style="display:none" id="RowEquipe" style="background:#C0C0C0;">
+			<tr id="RowEquipe" style="background:#C0C0C0;">
 				<td colspan="4" >
 					<table  id="TableEquipe" style="background:#C0C0C0;">
 						<tr>
@@ -189,82 +190,90 @@ function AddPersonne()
 		<tr>
 
 
-		<div id="Paradisc1" style="visibility:hidden; display:none" >	
+		<div id="Paradisc1" style="display:none" >	
             <h2 id="disc1" > </h2>
-            <p  id="lblNomDisc1" ><label for="NomDisc1" >Nom *:</label> <input type="text" name="NomDisc1" id="NomDisc1" tabindex="202"   /></p>
-            <p  id="lblPrenomDisc1"><label for="PrenomDisc1">Prénom *:</label>  <input type="text" name="PrenomDisc1" id="PrenomDisc1" tabindex="203"/></p>
-            <p  id="lblSexeDisc1" ><label for="SexeDisc1">Sexe *:</label> 
+            <p  id="lblNomDisc1" ><label for="NomDisc1" >Nom et prénom*:</label> 
+			<input type="text" name="NomDisc1" id="NomDisc1" tabindex="202"   />
+        	<input type="text" name="PrenomDisc1" id="PrenomDisc1" tabindex="203"/></p>
+         <!--   <p  id="lblSexeDisc1" ><label for="SexeDisc1">Sexe *:</label> 
             <select id="SexeDisc1"   name="SexeDisc1"  tabindex="204">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
             </select>
-            </p>
+            </p>-->
         </div>
 
-        <div id="Paradisc2" style="visibility:hidden; display:none" >	
+        <div id="Paradisc2" style="display:none" >	
             <h2 id="disc2" > </h2>
-            <p  id="lblNomDisc2"><label for="NomDisc2" >Nom *:</label> <input type="text" name="NomDisc2" id="NomDisc2" tabindex="204"   /></p>
-            <p  id="lblPrenomDisc2" ><label for="PrenomDisc2">Prénom *:</label>  <input type="text" name="PrenomDisc2" id="PrenomDisc2" tabindex="210"/></p>
-            <p  id="lblSexeDisc2" ><label for="SexeDisc2">Sexe *:</label> 
+            <p  id="lblNomDisc2"><label for="NomDisc2" >Nom *:</label> 
+				<input type="text" name="NomDisc2" id="NomDisc2" tabindex="204"   />
+			 	<input type="text" name="PrenomDisc2" id="PrenomDisc2" tabindex="210"/>
+			</p>
+       <!--     <p  id="lblSexeDisc2" ><label for="SexeDisc2">Sexe *:</label> 
             <select id="SexeDisc2"   name="SexeDisc2"  tabindex="214">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
-            </select>
+            </select>-->
             </p>
         </div>
 
-        <div id="Paradisc3" style="visibility:hidden; display:none" >	
+        <div id="Paradisc3" style="display:none" >	
             <h2 id="disc3" > </h2>		
-            <p id="lblNomDisc3" ><label for="NomDisc3"  >Nom *:</label> <input type="text" name="NomDisc3" id="NomDisc3" tabindex="305"   /></p>
-            <p id="lblPrenomDisc3" ><label for="PrenomDisc3" >Prénom *:</label>  <input type="text" name="PrenomDisc3" id="PrenomDisc3" tabindex="310"/></p>
-            <p  id="lblSexeDisc3"><label for="SexeDisc3">Sexe *:</label> 
-            <select id="SexeDisc3"  name="SexeDisc3"  tabindex="314">
+            <p id="lblNomDisc3" ><label for="NomDisc3"  >Nom *:</label> 
+			<input type="text" name="NomDisc3" id="NomDisc3" tabindex="305"   />
+            <input type="text" name="PrenomDisc3" id="PrenomDisc3" tabindex="310"/></p>
+          <!--   <p  id="lblSexeDisc3"><label for="SexeDisc3">Sexe *:</label> 
+           <select id="SexeDisc3"  name="SexeDisc3"  tabindex="314">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
             </select>
-            </p>
+            </p>-->
         </div>
 
-        <div id="Paradisc4" style="visibility:hidden; display:none" >	
+        <div id="Paradisc4" style="display:none" >	
             <h2 id="disc4" > </h2>		
-            <p id="lblNomDisc4"><label for="NomDisc4"  >Nom *:</label> <input type="text" name="NomDisc4" id="NomDisc4" tabindex="315"   /></p>
-            <p id="lblPrenomDisc4" ><label for="PrenomDisc4" >Prénom *:</label>  <input type="text" name="PrenomDisc4" id="PrenomDisc4" tabindex="320"/></p>		
-            <p  id="lblSexeDisc4" ><label for="SexeDisc4">Sexe *:</label> 
+            <p id="lblNomDisc4"><label for="NomDisc4"  >Nom *:</label> 
+			<input type="text" name="NomDisc4" id="NomDisc4" tabindex="315"   />
+            <input type="text" name="PrenomDisc4" id="PrenomDisc4" tabindex="320"/>
+		</p>		
+        <!--    <p  id="lblSexeDisc4" ><label for="SexeDisc4">Sexe *:</label> 
             <select id="SexeDisc4"   name="SexeDisc4"  tabindex="324">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
             </select>
-            </p>
+            </p>-->
         </div>
 
-        <div id="Paradisc5" style="visibility:hidden; display:none" >	
+        <div id="Paradisc5" style=" display:none" >	
             <h2 id="disc5"> </h2>		
-            <p id="lblNomDisc5" ><label for="NomDisc5"  >Nom *:</label> <input type="text" name="NomDisc5" id="NomDisc5" tabindex="325"   /></p>
-            <p id="lblPrenomDisc5" ><label for="PrenomDisc5" >Prénom *:</label>  <input type="text" name="PrenomDisc5" id="PrenomDisc5" tabindex="330"/></p>		
-            <p  id="lblSexeDisc5"><label for="SexeDisc5">Sexe *:</label> 
+            <p id="lblNomDisc5" ><label for="NomDisc5"  >Nom *:</label> 
+			<input type="text" name="NomDisc5" id="NomDisc5" tabindex="325"   />
+            <input type="text" name="PrenomDisc5" id="PrenomDisc5" tabindex="330"/></p>		
+         <!--   <p  id="lblSexeDisc5"><label for="SexeDisc5">Sexe *:</label> 
             <select id="SexeDisc5"   name="SexeDisc5"  tabindex="334">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
             </select>
-            </p>
+            </p>-->
         </div>
   
-        <div id="Paradisc6" style="visibility:hidden; display:none" >	
+        <div id="Paradisc6" style="display:none" >	
             <h2 id="disc6" > </h2>		
-            <p id="lblNomDisc6"><label for="NomDisc6"  >Nom *:</label> <input type="text" name="NomDisc6" id="NomDisc6" tabindex="335"   /></p>
-            <p id="lblPrenomDisc6" ><label for="PrenomDisc6" >Prénom *:</label>  <input type="text" name="PrenomDisc6" id="PrenomDisc6" tabindex="340"/></p>	
-            <p  id="lblSexeDisc6" ><label for="SexeDisc6">Sexe *:</label> 
+            <p id="lblNomDisc6"><label for="NomDisc6"  >Nom *:</label> 
+			<input type="text" name="NomDisc6" id="NomDisc6" tabindex="335"   />
+			<input type="text" name="PrenomDisc6" id="PrenomDisc6" tabindex="340"/></p>	
+           <!-- <p  id="lblSexeDisc6" ><label for="SexeDisc6">Sexe *:</label> 
             <select id="SexeDisc6"   name="SexeDisc6"  tabindex="344">
                 <option style="padding : 10px" value= "">Selectionner</option>	
                 <option style="padding : 10px" value= "D">Dame</option>
                 <option style="padding : 10px" value= "H">Homme</option>	
             </select>
-            </p>
+            </p>-->
         </div>
 
 		<div id="ParaRemarques" style="visibility:hidden; display:none" >	
@@ -346,6 +355,9 @@ function AddPersonne()
 <p>
   <input Type="text"  style="font-size:24px" name="FindValue" id="FindValue" />
   <button type="button" class="ButtonResultat" onclick="ReadMysqlCoureur()">	<i class='fa fa-search' ></i></button>
+</p>
+<p>
+ Nombre athlètes trouvé: <a id="TotalFind"> </a>
 </p>
 <Table  style="width: 80%" id ="TableListCoureurs">
 </table>
@@ -596,8 +608,151 @@ function check()
 	
 
 }
+function RelaisSelected(CatOBj,DepartObj ,Coureur)
+{
+	console.log("Function relais selected");
+	console.log(Coureur);
+	// Si on peut s'inscrire par équipe dans la catégorie
+	if ((CatOBj.Equipe != null && CatOBj.Equipe.Value == true) || (CatOBj.Relais != null && CatOBj.Relais.Value == true))
+	{
+		xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
+		document.getElementById("TableEquipe").style.visibility = "visible" ;
+		document.getElementById("TableEquipe").style.display  = "table" ;	
+		// Tableau qui regroupe toute les  discipline des étapes
+		var ArrayDiscipline = [];
+		for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
+		{
+			
+			var EtapeObj = DepartObj.ArrayEtape[j];
+			console.log(EtapeObj);
+			if (EtapeObj.info.ListDiscipline != null)
+			{
+			
+				for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
+				{
+					
+					ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
+				}
+			}
+		}
+		// affichage des champs au fromulaire pour inscrire chaque coureur
+		console.log(ArrayDiscipline);
+		if (ArrayDiscipline.length > 1)
+		{
+			document.getElementById("NomEquipe").style.display  = "block" ;
+		}
+		for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
+		{
+			Disc = new Object();
+			Disc =	ArrayDiscipline[iDiscipline];
 
-// Ajout inscriptiuon ou modifie inscription existante
+			switch(iDiscipline) 
+			{
+				case 0:
+				if (ArrayDiscipline.length > 1)
+				{
+					document.getElementById("Paradisc1").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null && Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc1").innerHTML = text;
+					document.getElementById("NomDisc1").value = Coureur.NomDisc1;
+					document.getElementById("PrenomDisc1").value = Coureur.PrenomDisc1;
+				}
+				break;
+				case 1:
+					document.getElementById("Paradisc2").style.visibility = "visible" ;
+					document.getElementById("Paradisc2").style.display  = "block" ;
+						text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc2").innerHTML = text;
+					document.getElementById("NomDisc2").value = Coureur.NomDisc2;
+					document.getElementById("PrenomDisc2").value = Coureur.PrenomDisc2;
+				break;
+				case 2:
+				
+					document.getElementById("Paradisc3").style.visibility = "visible" ;
+					document.getElementById("Paradisc3").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc3").innerHTML = text;
+					document.getElementById("NomDisc3").value = Coureur.NomDisc3;
+					document.getElementById("PrenomDisc3").value = Coureur.PrenomDisc3;
+					break;
+				case 3:
+				
+					document.getElementById("Paradisc4").style.visibility = "visible" ;
+					document.getElementById("Paradisc4").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc4").innerHTML = text;
+					document.getElementById("NomDisc4").value = Coureur.NomDisc4;
+					document.getElementById("PrenomDisc4").value = Coureur.PrenomDisc4;
+					break;
+				case 4:
+					document.getElementById("Paradisc5").style.visibility = "visible" ;
+					document.getElementById("Paradisc5").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc._Value.Deniv ;
+					}
+					document.getElementById("disc5").innerHTML = text;
+					document.getElementById("NomDisc5").value = Coureur.NomDisc5;
+					document.getElementById("PrenomDisc5").value = Coureur.PrenomDisc5;
+				break;
+				case 5:
+					document.getElementById("Paradisc6").style.visibility = "visible" ;
+					document.getElementById("Paradisc6").style.display  = "block" ;
+					text = Disc.Nom._Value;
+					if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
+					{
+					text	+" / "+ Disc.Distance._Value ;
+					}
+					if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
+					{
+					text	+" / "+ Disc.Deniv._Value ;
+					}
+					document.getElementById("disc6").innerHTML = text;
+					document.getElementById("NomDisc6").value = Coureur.NomDisc6;
+					document.getElementById("PrenomDisc6").value = Coureur.PrenomDisc6;
+				break;
+			}
+		}		
+	}
+	
+}
 function AddInscriptionOrModify()
 {
 	var FormCoureur =document.getElementById("FormulaireCoureur");
@@ -670,14 +825,6 @@ function  ResetCoureur()
 	document.getElementById("NumCat").value = "" ;	
 	
 	document.getElementById("NomEquipe").value = "" ;
-
-	document.getElementById("Paradisc1").value = "" ;
-	document.getElementById("Paradisc2").value = "" ;
-	document.getElementById("Paradisc3").value = "" ;
-	document.getElementById("Paradisc4").value = "" ;
-	document.getElementById("Paradisc5").value = "" ;
-	document.getElementById("Paradisc6").value = "" ;
-
 	document.getElementById("ParaRemarques").value = "" ;
 
 	inputHomme.classList.remove("ButtonResultatSelected");
@@ -722,177 +869,35 @@ function  SelectDepart(evt)
 
 	}
 	
-
 	document.getElementById(evt).classList.remove("ButtonResultat");
 	document.getElementById(evt).classList.add("ButtonResultatSelected");
-	
 	document.getElementById("NomDepart").style.backgroundColor="#FFFFFF";
 	
-
 	var tabOption = evt.split(';');
 	var ParcoursObj = ArrayParcours[tabOption[6] ];
 	var DepartObj = ParcoursObj.ArrayDepart[tabOption[0]];
 		
+	document.getElementById("NomDepart").value = tabOption[2] ;
+	document.getElementById("NomParcours").value = tabOption[5] ;
+	document.getElementById("NomCat").value = tabOption[3] ;
+	document.getElementById("NumCat").value = tabOption[4] ;	
+	
+	//********* initialisatino des champs **********************/
+	document.getElementById("Paradisc1").style.display = "none" ;
+	document.getElementById("Paradisc2").style.display = "none" ;
+	document.getElementById("Paradisc3").style.display = "none";
+	document.getElementById("Paradisc4").style.display = "none" ;
+	document.getElementById("Paradisc5").style.display = "none" ;
+	document.getElementById("Paradisc6").style.display = "none" ;
+	document.getElementById("ParaRemarques").style.display = "none" ;
 
-		document.getElementById("NomDepart").value = tabOption[2] ;
-		document.getElementById("NomParcours").value = tabOption[5] ;
-		document.getElementById("NomCat").value = tabOption[3] ;
-		document.getElementById("NumCat").value = tabOption[4] ;	
+	document.getElementById("TableEquipe").style.visibility = "hidden" ;
+	document.getElementById("TableEquipe").style.display  = "none" ;
+
+	xEquipe = false;
+
+	var CatOBj = DepartObj.info.ListCategorie.ListItem[tabOption[1]];
 		
-		//********* initialisatino des champs **********************/
-		document.getElementById("Paradisc1").style.display = "none" ;
-		document.getElementById("Paradisc2").style.display = "none" ;
-		document.getElementById("Paradisc3").style.display = "none";
-		document.getElementById("Paradisc4").style.display = "none" ;
-		document.getElementById("Paradisc5").style.display = "none" ;
-		document.getElementById("Paradisc6").style.display = "none" ;
-		document.getElementById("ParaRemarques").style.display = "none" ;
-
-		document.getElementById("Paradisc1").style.visibility = "hidden" ;
-		document.getElementById("Paradisc2").style.visibility = "hidden" ;
-		document.getElementById("Paradisc3").style.visibility = "hidden" ;
-		document.getElementById("Paradisc4").style.visibility = "hidden" ;
-		document.getElementById("Paradisc5").style.visibility = "hidden" ;
-		document.getElementById("Paradisc6").style.visibility = "hidden" ;
-		document.getElementById("ParaRemarques").style.display = "none" ;
-
-		document.getElementById("TableEquipe").style.visibility = "hidden" ;
-		document.getElementById("TableEquipe").style.display  = "none" ;
-	
-		xEquipe = false;
-
-		var CatOBj = DepartObj.info.ListCategorie.ListItem[tabOption[1]];
-	
-
-		// Si on peut s'inscrire par équipe dans la catégorie
-		if ((CatOBj.Equipe != null && CatOBj.Equipe.Value == true) || (CatOBj.Relais != null && CatOBj.Relais.Value == true))
-		{
-			xEquipe = true; // Utile pour nombre de t-shirt spécial Jura défi
-
-			// Tableau qui regroupe toute les  discipline des étapes
-			var ArrayDiscipline = [];
-			for (var j = 0; j < DepartObj.ArrayEtape.length; j++)
-			{
-				
-				var EtapeObj = DepartObj.ArrayEtape[j];
-				console.log(EtapeObj);
-				if (EtapeObj.info.ListDiscipline != null)
-				{
-				
-					for (var h = 0; h < EtapeObj.info.ListDiscipline.ListItem.length; h++)
-					{
-						
-						ArrayDiscipline.push(EtapeObj.info.ListDiscipline.ListItem[h]);
-					}
-				}
-			}
-			// affichage des champs au fromulaire pour inscrire chaque coureur
-			for(var iDiscipline=0; iDiscipline < ArrayDiscipline.length ; ++iDiscipline) 
-			{
-				Disc = new Object();
-				Disc =	ArrayDiscipline[iDiscipline];
-
-				switch(iDiscipline) 
-				{
-					case 0:
-					if (ArrayDiscipline.length > 1)
-					{
-						document.getElementById("Paradisc1").style.visibility = "visible" ;
-						document.getElementById("Paradisc1").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null && Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc1").innerHTML = text;
-					}
-					break;
-					case 1:
-						document.getElementById("Paradisc2").style.visibility = "visible" ;
-						document.getElementById("Paradisc2").style.display  = "block" ;
-							text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc2").innerHTML = text;
-					break;
-					case 2:
-					
-						document.getElementById("Paradisc3").style.visibility = "visible" ;
-						document.getElementById("Paradisc3").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc3").innerHTML = text;
-						break;
-					case 3:
-					
-						document.getElementById("Paradisc4").style.visibility = "visible" ;
-						document.getElementById("Paradisc4").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc4").innerHTML = text;
-						break;
-					case 4:
-						document.getElementById("Paradisc5").style.visibility = "visible" ;
-						document.getElementById("Paradisc5").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc._Value.Deniv ;
-						}
-						document.getElementById("disc5").innerHTML = text;
-					break;
-					case 5:
-						document.getElementById("Paradisc6").style.visibility = "visible" ;
-						document.getElementById("Paradisc6").style.display  = "block" ;
-						text = Disc.Nom._Value;
-						if (Disc.Distance != null &&  Disc.Distance._Value.length > 0)
-						{
-						text	+" / "+ Disc.Distance._Value ;
-						}
-						if (Disc.Deniv != null && Disc.Deniv._Value.length > 0)
-						{
-						text	+" / "+ Disc.Deniv._Value ;
-						}
-						document.getElementById("disc6").innerHTML = text;
-					break;
-				}
-				
-			}		
-		}
-		// Si Duo ou équipe // BCJ Challenge
-		if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
-		{
-			document.getElementById("TableEquipe").style.visibility = "visible" ;
-			document.getElementById("TableEquipe").style.display  = "table" ;					
-		}
 		// Affichage bouton envoie formulaire
 		document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
 		document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
@@ -918,12 +923,7 @@ function liste_depart(f,CheckSexe)
 	document.getElementById("Paradisc2").style.display  = "none" ;
 	document.getElementById("Paradisc3").style.display  = "none" ;
 	document.getElementById("Paradisc4").style.display  = "none" ;
-
-	document.getElementById("Paradisc1").style.visibility = "hidden" ;
-	document.getElementById("Paradisc2").style.visibility = "hidden" ;
-	document.getElementById("Paradisc3").style.visibility = "hidden" ;
-	document.getElementById("Paradisc4").style.visibility = "hidden" ;
-
+	document.getElementById("TableEquipe").style.display = "none" ;
 
 	var sel = document.getElementById("NomDepart");
 	var lbl = document.getElementById("lblDepart");
@@ -963,7 +963,7 @@ function liste_depart(f,CheckSexe)
 				{
 					
 					var DepartObj = ArrayParcours[iParcours].ArrayDepart[iDepart];
-
+					
 					// Scan de chaque catégorie du départ 
 					for(var iCategorie=0; iCategorie<DepartObj.info.ListCategorie.ListItem.length; ++iCategorie) 
 					{	
@@ -991,14 +991,27 @@ function liste_depart(f,CheckSexe)
 
 
 							// Comparaison si le coureur à modifié est déjà sur ce départ 
-							var sDepartCoureurFind =  CoureurFind.parcours +";" + CoureurFind.NomDepart;
+							var sDepartCoureurFind =  CoureurFind.parcours +";" + CoureurFind.NomDepart+";"+CoureurFind.NumCategorie;
 				
-							var sDepartRead =  ArrayParcours[iParcours].nom +";" + DepartObj.Nom;
-						
+							var sDepartRead =  ArrayParcours[iParcours].nom +";" + DepartObj.Nom+";"+Cat.NumCategorie._Value;
+						console.log(sDepartCoureurFind);
+						console.log(sDepartRead);
 							
 							if (sDepartCoureurFind == sDepartRead)
 							{
 								buttonParcours.classList.add("ButtonResultatSelected");
+								console.log("Départ sélected");
+								DepartObjSelected = DepartObj;
+								console.log(DepartObj);
+								console.log(Cat);
+								RelaisSelected(Cat,DepartObj,CoureurFind );
+								
+								// Si Duo ou équipe // BCJ Challenge
+								if (DepartObj.info.NombrePersonneMaxDuo._Value > 1 || DepartObj.info.NombrePersonneMaxEquipe._Value > 1)
+								{
+									document.getElementById("TableEquipe").style.visibility = "visible" ;
+									document.getElementById("TableEquipe").style.display  = "table" ;					
+								}
 							}
 							else
 							{
@@ -1372,10 +1385,6 @@ function ReadMysqlCoureur()
 	RowHeader.append(ColHeader);
 
 	ColHeader = document.createElement('th');
-	ColHeader.innerHTML = "Prénom"
-	RowHeader.append(ColHeader);
-
-	ColHeader = document.createElement('th');
 	ColHeader.innerHTML = "Année"
 	RowHeader.append(ColHeader);
 
@@ -1406,7 +1415,7 @@ function ReadMysqlCoureur()
 			onComplete: function(transport){
 				 val =transport.responseText.evalJSON();
 				 console.log(val);
-		        for (var j = 0; j < val.length && j < 10 ;j++) 
+		        for (var j = 0; j < val.length && j < 100 ;j++) 
 				{
 				
 					var Coureur = new Object();
@@ -1437,15 +1446,15 @@ function ReadMysqlCoureur()
 					col1.style.color = "black";
 					col1.style.fontSize = "24px";
 					col1.style.padding = "5px";
-					col1.innerHTML = Coureur.Nom;
+					col1.innerHTML = Coureur.Nom+ " "+  Coureur.Prenom;
+					if (Coureur.NomEquipe.length > 0)
+					{
+						col1.innerHTML = col1.innerHTML+ "</br>"+ Coureur.NomEquipe
+					}
+						
 					RowsCoureur.append(col1);
 
-					col1 = document.createElement('td');
-					col1.style.color = "black";
-					col1.style.fontSize = "24px";
-					col1.style.padding = "5px";
-					col1.innerHTML = Coureur.Prenom;
-					RowsCoureur.append(col1);
+					
 
 					col1 = document.createElement('td');
 					col1.style.color = "black";
@@ -1513,7 +1522,9 @@ function ReadMysqlCoureur()
 					col1.innerHTML ='	<i  style="font-size:24px;  margin:0px;"  class="fa fa-edit"></i>	';
 				//	col1.addEventListener("click", function() { SelectCoureurInscrit(this.dataset.value); } );
 					RowsCoureur.append(col1);
-				};		
+				};
+				document.getElementById("TotalFind").innerHTML = val.length ;
+		
 			}
 	});
 }

@@ -77,7 +77,13 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
 
 <center>
 <?php
-if ($val["InformationsComingSoon"])
+if ($DateResult['year']> $ANNEE_COURSE)
+{?>
+</br>
+	<p> Les informations de cette ancienne édition ne sont plus disponibles
+</p><?php
+}
+else if ($val["InformationsComingSoon"])
 {
 ?>
 </br>
@@ -205,11 +211,7 @@ if ($Nbr_etape < 2)
 						?> Les inscriptions s'effectue sur le site de l'organisateur
 					<?php
 					}
-					else if ($today >$val ["Date"] )
-					{
-						echo 'Course Terminé';
-					}
-					else if ( $today < $val ["DateStartInscription"]  )
+					 if ( $today < $val ["DateStartInscription"]  )
 					{?>
 						les inscriptions pour cette course ne sont pas encore ouverte, elles ouvrent le       <?php echo  strftime('%A %d %B %Y ',strtotime($val ["DateStartInscription"]));
 

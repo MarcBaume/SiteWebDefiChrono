@@ -8,108 +8,48 @@
 <script src="../../js/prototype.js" ></script>
 <script src="../../js/FonctionDefiChrono2.js?v=1"></script>
 </script>
-
-
-<script>
-
-function getURL( ValueFind, IDElement) {
-
-if (window.location.href.search(ValueFind)>-1)
+<?php
+    // Si une course est choisie
+    if (isset($_GET['IdRace']))
     {
-        document.getElementById(IDElement).classList.add("dotDisplayed");
-        document.getElementById(IDElement).classList.remove("dot");
+            // 1. Préparation de la requête avec un marqueur nommé
+        $stmt = $pdo->prepare('SELECT * FROM Course WHERE ID = :idRace');
 
+        // 2. Exécution en passant la variable sécurisée
+        $stmt->execute([':idRace' => $_GET['IdRace']]);
+
+        // 3. Récupération des résultats
+        $allCourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Si le tableau n'est pas vide
+        if (!empty($allCourses)) 
+        {
+            foreach ($allCourses as $course) 
+            {
+                $DateCourse =  $course['Date'];
+                $Date =  date_parse($course['Date']);
+                $ANNEE_COURSE = $Date['year']; 
+                $Month = $Date['month']; 
+                $Day = $Date['day']; 
+                $NOM_COURSE = $course["Nom_Course"];
+                $Nbr_etape =  $course["nbr_etape"] ;
+                $Site = $course['Site'];
+                break;
+            }
+        }
+        else
+        {
+            http_response_code(404);
+        }
+    // Suive de l'événemnt
+    ?>
+        <form method="get"  id="FormRace" name="FormRace"  >
+            <input type="hidden" name="IdRace" id="IdRace"  value= '<?php echo $_GET["IdRace"] ?>' />
+        </form>
+    <?php
     }
     else
     {
-        document.getElementById(IDElement).classList.add("dot");
-        document.getElementById(IDElement).classList.remove("dotDisplayed");
+        http_response_code(404);
     }
-    
-   
-}
-</script>
-<form method="get"  id="FormMenu" name="FormMenu"  >
+?>
 
-<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_GET['DateCourse'] ?>' />
-<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_GET["NomCourse"] ?>' />
-<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_GET["NbrEtape"] ?>' />
-
-</form>
-
- <div id="menu_vertical" class="menu_vertical">
-
-    <table style="Width : 100%">
-        <tr>
-            <td>
-                <a href="../../index.php">
-                <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
-                </a>
-            </td>
-            <td>
-                <div id="Title" style="margin: 10px;">
-                    <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
-                </div>
-            </td>
-        <td>
-                <td style="Width : 25%" onClick="ClickColForm()" >
-                    <span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>"  >
-                        <table>
-                            <tr   style="Width : 100%">
-                                <td>
-                                    <i class="fa fa-wpforms" style= "font-size: 20px;margin:9px;"></i>
-                                </td>
-                                <td>
-                                    Formulaire
-                                </td>
-                            </tr>
-                        </table>
-                    </span>
-                </td>
-                <script>
-                    // Style si page active
-	            	getURL( "formulaireInscriptionAdmin","<?php echo "Rowinsc".$IdRace ?>" ) ;
-	            </script>
-                <td  style="Width : 25%" onClick="ClickColListe()">
-                    <span class="dot"  id="<?php echo "RowList".$IdRace ?>" >
-                        <table>
-                            <tr style="Width : 100%">
-                                <td>
-                                    <i class="fa fa-list" style= "font-size: 25px;margin:8px;"></i>
-                                </td>
-                                <td>
-                                    Liste de départ
-                                </td>
-                            </tr>
-                        </table>
-                    </span>
-                    <script>
-                    // Style si page active
-	            	getURL( "listeInscriptionOrganisateur","<?php echo "RowList".$IdRace ?>" ) ;
-	            </script>
-                </td>
-        </tr>
-   </table>
-</div>
-
-<script>
- 
-function ClickColForm()
-{
-    f1 = 	document.getElementById("FormMenu");
-    f1.action="formulaireInscriptionAdmin.php";
-  
-     f1.submit();
-
-}
-function ClickColListe()
-{
-    f1 = 	document.getElementById("FormMenu");
-    f1.action="listeInscriptionOrganisateur.php";
-     
-     f1.submit();
-
-
-}
-
-</script>

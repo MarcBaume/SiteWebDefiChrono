@@ -43,7 +43,7 @@ return $inChaine;
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 	include("MysqlConnect.php");
 	// Recolte des information transmise par l'application WPF
-	$NomCourse =  'Course des Franches2026';
+	$NomCourse =  '4 Foulées2026';
 	$pathfolder = 'courses/'.$NomCourse.'/info';
 	
 	echo "Dossier existe???". $pathfolder ;
@@ -61,7 +61,7 @@ return $inChaine;
 				// Lecture de chaque ligne du fichier de la liste de départ 
                 while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) 
                 {
-					if (count($data) > 31)
+					if (count($data) > 10)
 					{
 						echo $data[17];
 						// Recherche si le numéro d'id existe

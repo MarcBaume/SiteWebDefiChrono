@@ -90,22 +90,7 @@ function AddPersonne()
 </table>
 <Fieldset>
 <div id="formulaire">
-	<table style="width:80%">
 
-		<tr>
-			<td>
-				<input type="button" style="visibility:hidden;height:40px;font-size:160%;"  id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= " width: 100px; height: 50px";>  </br>
-			</td>
-			<td style="witdth:100px">
-				<Form  method="post" action="ExportMysql.php">
-					<input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"   value= '<?php echo $DateCourse ?>' />
-					<input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
-					<input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"   value= '<?php echo $NOM_COURSE ?>' />		
-						<input type="submit" class="ButtonResultat" style="padding:5px;margin:10px;width:80px;font-size:20px"value="Excel">
-				</form>
-			</td>
-		</tr>
-	</table>
 		<p id="lblInformation" 
 		style="visibility:hidden; display:none;padding:5px; border-style: solid; border-color: black; font-size:160%;background:#fa8a8a "></p>	
 <form method="get"  id="FormulaireCoureur" name="FormulaireCoureur" style="display : none;" >
@@ -128,7 +113,15 @@ function AddPersonne()
 
 		<table width="100%">
 			<tr style="background:#C0C0C0;padding:20px;">
-				<td style="padding: 10px;padding-left: 20px;">Numéro dossard :</td><td id="td_num_dossard" style="padding:5px; Background:lightblue;"><input type="text" name="num_dossard" id="num_dossard" /></td>
+				<td style="padding: 10px;padding-left: 20px;">Dossard :</td>
+				
+				<td id="td_num_dossard" style="padding:5px; Background:lightblue;">
+					<div style="display:flex;">
+						<input type="text" name="num_dossard" id="num_dossard" />
+						<input type="button" id="ButtonSendFormulaire"   class="ButtonResultat"  value="Ajouter cette inscription à mon pannier" onclick="check()" style= "height: 40px";>  </br>
+					</div>
+				</td>
+				
 				<td style="padding: 10px;padding-left: 20px;">Nom & prénom :</td><td id="td_nom" style="padding:5px; Background:lightblue;"><input type="text" name="nom" id="nom" /> <input type="text" name="prenom" id="prenom" /></td>
 			</tr>
 			<tr style="height: 10px;"> 
@@ -152,19 +145,7 @@ function AddPersonne()
 					<input type="hidden" name="email" id="email" />
 				</td>
 			</tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
-			<tr style="background:#C0C0C0;">
-				<!-- Emplacement des départs trouvé -->
-                <Td colspan="4" >
-					<table  id="TableDepartForRunner" >
-					</table>
-                </td>
-            </tr>
-			<tr style="height: 10px;"> 
-				<td></td><td></td>
-			</tr>
+		
 			<tr id="RowEquipe" style="background:#C0C0C0;">
 				<td colspan="4" >
 					<table  id="TableEquipe" style="background:#C0C0C0;">
@@ -279,7 +260,13 @@ function AddPersonne()
 		<div id="ParaRemarques" style="visibility:hidden; display:none" >	
             <p id="lblRemarques"><label for="NomRemarques"  >Nom et prénom des équipiers supplémentaire *:</label> <input type="textarea" name="Remarques" id="Remarques" tabindex="336"   /></p>
 		</div>
-			<!---------- CHOIC TARIFS _______________-->
+	<div style="background:#C0C0C0;display:flex;flex-direction: column">
+				<!-- Emplacement des départs trouvé -->
+               
+					<table  id="TableDepartForRunner" >
+					</table>
+             
+	<div>
 	<table 	style="width:100%;margin-top: 20px;" id="lblNbrEtape">
 		<tr style="background:#C0C0C0;padding:20px;" >
 			<td style="width: 40%;padding: 10px;padding-left: 20px;">
@@ -306,6 +293,7 @@ function AddPersonne()
 				<input type="text" name="Prix" id="Prix" tabindex="410"    />
 			</td>
 		</tr>
+	
 				<!---------- CHOIC TARIFS _______________-->
 		<tr style="background:#C0C0C0;padding:20px;" >
 			<td style="width: 40%;padding: 10px;padding-left: 20px;">
@@ -1265,7 +1253,7 @@ function funDeleteCoureur()
 					{
 						document.getElementById("num_dossard").style.backgroundColor = "lightgreen";
 					}
-						if (CoureurFind.Payer != "Payé")
+					if (CoureurFind.Payer != "Payé")
 					{
 						document.getElementById("Payer").style.backgroundColor = "orange";
 					}
@@ -1293,7 +1281,7 @@ function funDeleteCoureur()
 					document.getElementById("mail").value = CoureurFind.mail ;
 					document.getElementById("FindValue").value = "" ;	
 
-					document.getElementById("ButtonSendFormulaire").value = "Valider coureur" ;
+					document.getElementById("ButtonSendFormulaire").value = "Valider" ;
 					document.getElementById("ButtonSendFormulaire").style.display  = "block" ;
 					document.getElementById("ButtonSendFormulaire").style.visibility = "visible" ;
 					document.getElementById("FormulaireCoureur").style.display  = "block" ;	

@@ -93,59 +93,62 @@ if (window.location.href.search(ValueFind)>-1)
 
 </form>
 
- <div id="menu_vertical" class="menu_vertical">
-
-    <table style="Width : 100%">
-        <tr>
-            <td>
-                <a href="../../index.php">
-                <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
-                </a>
-            </td>
-            <td>
-                <div id="Title" style="margin: 10px;">
-                    <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
-                </div>
-            </td>
-        <td>
-                <td style="Width : 25%" onClick="ClickColForm()" >
-                    <span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>"  >
-                        <table>
-                            <tr   style="Width : 100%">
-                                <td>
-                                    <i class="fa fa-wpforms" style= "font-size: 20px;margin:9px;"></i>
-                                </td>
-                                <td>
-                                    Formulaire
-                                </td>
-                            </tr>
-                        </table>
-                    </span>
-                </td>
-                <script>
-                    // Style si page active
-	            	getURL( "formulaireInscriptionAdmin","<?php echo "Rowinsc".$IdRace ?>" ) ;
-	            </script>
-                <td  style="Width : 25%" onClick="ClickColListe()">
-                    <span class="dot"  id="<?php echo "RowList".$IdRace ?>" >
-                        <table>
-                            <tr style="Width : 100%">
-                                <td>
-                                    <i class="fa fa-list" style= "font-size: 25px;margin:8px;"></i>
-                                </td>
-                                <td>
-                                    Liste de départ
-                                </td>
-                            </tr>
-                        </table>
-                    </span>
-                    <script>
-                    // Style si page active
-	            	getURL( "listeInscriptionOrganisateur","<?php echo "RowList".$IdRace ?>" ) ;
-	            </script>
-                </td>
-        </tr>
-   </table>
+ <div id="menu_vertical" class="menu_vertical"  style="display:flex;justify-content:space-between;">
+        <div style="margin:5px">
+            <a href="../../index.php">
+            <img src="../../images/LogoDefiChrono2023.svg" style="height:60px;" alt="" />
+            </a>
+        </div>
+        <div>
+            <div id="Title" style="margin: 10px;">
+                <h3> <? echo  $_GET["NomCourse"] .$ANNEE_COURSE ?></h3>	
+            </div>
+        </div>
+    
+        <div onClick="ClickColForm()" >
+            <span class="dot"  id="<?php echo "Rowinsc".$IdRace ?>"  >
+                <table>
+                    <tr style="Width : 100%">
+                        <td>
+                            <i class="fa fa-wpforms" style= "font-size: 20px;margin:9px;"></i>
+                        </td>
+                        <td>
+                            Formulaire
+                        </td>
+                    </tr>
+                </table>
+            </span>
+        </div>
+        <script>
+            // Style si page active
+            getURL( "formulaireInscriptionAdmin","<?php echo "Rowinsc".$IdRace ?>" ) ;
+        </script>
+        <div   onClick="ClickColListe()">
+            <span class="dot"  id="<?php echo "RowList".$IdRace ?>" >
+                <table style="Width : 100%">
+                    <tr >
+                        <td>
+                            <i class="fa fa-list" style= "font-size: 25px;margin:8px;"></i>
+                        </td>
+                        <td>
+                            Liste de départ
+                        </td>
+                    </tr>
+                </table>
+            </span>
+            <script>
+            // Style si page active
+            getURL( "listeInscriptionOrganisateur","<?php echo "RowList".$IdRace ?>" ) ;
+        </script>
+        </div>
+    <div>  		
+        <Form  method="post" action="ExportMysql.php">
+            <input type="hidden" name="DateCourse" id="DateCourse" tabindex="10"   value= '<?php echo $DateCourse ?>' />
+            <input type="hidden" name="etape" id="etape" value= '<?php echo $_POST["etape"] ?>' />
+            <input type="hidden" name="NomCourse" id="NomCourse" tabindex="10"   value= '<?php echo $NOM_COURSE ?>' />		
+            <input type="submit" class="ButtonResultat" class="dot"  value="Excel">
+        </form>
+    </div>
 </div>
 
 <script>

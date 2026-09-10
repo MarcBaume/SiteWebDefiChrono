@@ -1997,6 +1997,13 @@ function liste_depart(f)
 					for(var iDepart=0; iDepart<nbrDepart; ++iDepart) 
 					{
 						var DepartObj = ArrayParcours[intselected].ArrayDepart[iDepart];
+						var NomDepart = "";
+						if (f.NomParcours.value.includes(DepartObj.info.Nom._Value)== 0)
+						{
+							console.log( DepartObj.info.Nom._Value /  f.NomParcours.value)
+							NomDepart = DepartObj.info.Nom._Value+ " ";
+						}
+
 						for(var iCategorie=0; iCategorie<DepartObj.info.ListCategorie.ListItem.length; ++iCategorie) 
 						{	
 							var Cat = new Object();
@@ -2010,7 +2017,7 @@ function liste_depart(f)
 							if ((sexe== Cat.SexeCategorie._Value || Cat.SexeCategorie._Value == "M") &&  (  parseInt(f.date.value) >= Cat.debutAnnee._Value ) && (parseInt(f.date.value)<=  Cat.finAnnee._Value ))
 							{
 						
-								sel.options.add( new Option(Cat.NomCategorie._Value+" "+Cat.debutAnnee._Value+" - "+Cat.finAnnee._Value+ " " + DepartObj.info.Distance._Value,iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value));
+								sel.options.add( new Option(NomDepart +Cat.NomCategorie._Value+" "+Cat.debutAnnee._Value+" - "+Cat.finAnnee._Value+ " " + DepartObj.info.Distance._Value,iDepart +";"+iCategorie + ";"+ DepartObj.Nom + ";"+ Cat.NomCategorie._Value+ ";" + Cat.NumCategorie._Value));
 						
 								ICounterCat++;
 							}

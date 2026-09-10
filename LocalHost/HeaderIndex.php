@@ -33,7 +33,7 @@
 <td>
 <Div id = "logo">
 <a href="index.php">
-<img src="images/LogoDefiChrono2023.svg" style="height:90px;" alt="" />
+<img src="images/LogoDefiChrono.svg" style="height:90px;" alt="" />
 </a>
 </div>
 </td>

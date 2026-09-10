@@ -77,11 +77,9 @@
 </a>
 
 <?php
+	include("Header2023.php"); 
+	include("HeaderInfo2023_WithoutCouverture.php"); 
 
-
-	  include("Header2023.php"); 
-	  include("HeaderInfo2023_WithoutCouverture.php"); 
-	
 	$indexParcoursSelected= $_GET['Parcours'];
 	$indexDepartSelected = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
@@ -90,12 +88,14 @@
 	{
 		$Etape =1 ;
 	}
-	/*
-	  if ($NOM_COURSE =='Jura Défi' || $NOM_COURSE =='Trophée du Doubs DMT Microtechnique'  )
+	if ($Etape ==99)
 	{
-		header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
-	
-	}*/
+	  if ( $NOM_COURSE =='Trophée du Doubs DMT Microtechnique'  )
+		{
+			header('Location: Resultat2023GeneralJuraDefi.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
+		
+		}
+	}
 	  ?>
 
 <form method="get" action="Resultat2023.php" id="FormSendIndfo">
@@ -292,7 +292,7 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 			<? 
 			
 			$IndexDep = 0;
-			if ($Etape == "0")
+			if ($Etape == "0" ||  $Etape == "")
 			{?>
 				<option  value="">Sélectionner une étape
 				</option>
@@ -330,15 +330,16 @@ if ($indexParcoursSelected != null && $indexDepartSelected != null && $indexDepa
 					{?>
 						<option  value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
 						</option>
-					<?
+					<?php
 					}
 					else
 					{  ?>
 						<option selected value=<?php echo $IndexDep?>> <? 	echo 'Etape '. $IndexDep .' '?><script> document.write(Etape.Lieu._Value)</script>
 						</option>
-					<?
+					<?php
+						// Todo Liste des fichiers csv dans l'étape
 					}?>
-					<?
+					<?php
 				}
 			}
 			?>
@@ -378,6 +379,8 @@ padding-left:10px">
 </div>
 <div style="width:100%;padding;10px;" id="ViewLiveCoureur">
 </div>
+<?php
+	include("sponsors.php");?>
 <script>	
 
 	function AddButtonTypeResultatGeneral()
@@ -1239,6 +1242,11 @@ padding-left:10px">
 				Parcours.info =  readJSON(path);
 				console.log("ResultatsV2.json");
 			}
+			else if (filecsv)
+			{
+				resultExist = true;
+				console.log("AddFileCsv");
+			}
 		}	
 		else 
 		{
@@ -1834,13 +1842,13 @@ padding-left:10px">
 							
 								rows.appendChild(colonne);
 								// Numéro dossard
-							/*	colonne = document.createElement('td');
+								colonne = document.createElement('td');
 								colonne.style.paddingLeft = "5px";
 								colonne.style.paddingRight = "5px";
 								colonne.style.fontWeight = "italic";
 								colonne.style.fontSize = "8px";
 								colonne.innerText =ListCoureurs[i].NumeroDossard;
-								rows.appendChild(colonne);*/
+								rows.appendChild(colonne);
 
 								colonne = document.createElement('td');
 								colonne.style.paddingLeft = "10px";
@@ -3616,3 +3624,4 @@ if ($indexDepartSelected > 0  && $Etape > 0 )
 	}
 }?>
 <script>
+	

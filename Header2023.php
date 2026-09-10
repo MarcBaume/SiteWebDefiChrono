@@ -5,47 +5,36 @@ session_start();
 setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
 ?>
 <script type="text/javascript">
-function getURLHeader( ValueFind, IDElement) {
-
-	
+	function getURLHeader( ValueFind, IDElement) {
 		if (window.location.href.search(ValueFind)>-1)
 		{
-		//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-			//document.getElementById(IDElement).style.color = "white";
 			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
 			document.getElementById(IDElement).classList.remove("dotHeader");
 
 		}
 		else
 		{
-		//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-			//document.getElementById(IDElement).style.color = " #3d6ca4";
 			document.getElementById(IDElement).classList.add("dotHeader");
 			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
-		}
-		
-    }
+		}	
+	}
 
 	function getURLHeader4( ValueFind,  ValueFind2,ValueFind3,ValueFind4,IDElement) {
 
-if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
-{
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
-	document.getElementById(IDElement).classList.add("dotDisplayedHeader");
-	document.getElementById(IDElement).classList.remove("dotHeader");
+		if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1|| window.location.href.search(ValueFind3)>-1|| window.location.href.search(ValueFind4)>-1)
+		{
+			document.getElementById(IDElement).classList.add("dotDisplayedHeader");
+			document.getElementById(IDElement).classList.remove("dotHeader");
+		}
+		else
+		{
+			document.getElementById(IDElement).classList.add("dotHeader");
+			document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
+		}
 
-}
-else
-{
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
-	document.getElementById(IDElement).classList.add("dotHeader");
-	document.getElementById(IDElement).classList.remove("dotDisplayedHeader");
-}
+	}
+</script>
 
-}
-	</script>
 <Div id= "Header" style="  z-index:1035;">
 <table style= "width: 100%;">
 <tr>

@@ -1,80 +1,79 @@
 
 <script type="text/javascript">
-function dec2Hex(dec) {
+function dec2Hex(dec) 
+{
     return Math.abs(dec).toString(16);
 }
-function getPixel(url, x, y) {
-  var img = new Image();
-  img.src = url;
-  var canvas = document.createElement('canvas');
-  var context = canvas.getContext('2d');
-  context.drawImage(img, 0, 0);
-  imageData =  context.getImageData(x, y, 1, 1);
 
-   var r = dec2Hex( imageData.data[0]);
-var g = dec2Hex(imageData.data[ 1]);
-var b =dec2Hex( imageData.data[2]);
-
-return ("#"+r+g+b);
-
-}
-
-function getURL( ValueFind, IDElement) {
-
-		if (window.location.href.search(ValueFind)>-1)
-		{
-		//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-			//document.getElementById(IDElement).style.color = "white";
-			document.getElementById(IDElement).classList.add("dotDisplayed");
-			document.getElementById(IDElement).classList.remove("dot");
-
-		}
-		else
-		{
-		//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-			//document.getElementById(IDElement).style.color = " #3d6ca4";
-			document.getElementById(IDElement).classList.add("dot");
-			document.getElementById(IDElement).classList.remove("dotDisplayed");
-		}
-		
-    }
-function getURL2( ValueFind,  ValueFind2,IDElement) {
-
-if (window.location.href.search(ValueFind)>-1 && window.location.href.search(ValueFind2)>-1)
+function getPixel(url, x, y) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
-	document.getElementById(IDElement).classList.add("dotDisplayed");
-	document.getElementById(IDElement).classList.remove("dot");
+	var img = new Image();
+	img.src = url;
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	context.drawImage(img, 0, 0);
+	imageData =  context.getImageData(x, y, 1, 1);
+
+	var r = dec2Hex( imageData.data[0]);
+	var g = dec2Hex(imageData.data[ 1]);
+	var b =dec2Hex( imageData.data[2]);
+
+	return ("#"+r+g+b);
 
 }
-else
+
+function getURL( ValueFind, IDElement) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
-	document.getElementById(IDElement).classList.add("dot");
-	document.getElementById(IDElement).classList.remove("dotDisplayed");
+	if (window.location.href.search(ValueFind)>-1)
+	{
+		document.getElementById(IDElement).classList.add("dotDisplayed");
+		document.getElementById(IDElement).classList.remove("dot");
+	}
+	else
+	{
+		document.getElementById(IDElement).classList.add("dot");
+		document.getElementById(IDElement).classList.remove("dotDisplayed");
+	}	
 }
 
-}
-function getOrURL2( ValueFind,  ValueFind2,IDElement) {
-
-if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1)
+function getURL2( ValueFind,  ValueFind2,IDElement) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
-	//document.getElementById(IDElement).style.color = "white";
-	document.getElementById(IDElement).classList.add("dotDisplayed");
-	document.getElementById(IDElement).classList.remove("dot");
 
+	if (window.location.href.search(ValueFind)>-1 && window.location.href.search(ValueFind2)>-1)
+	{
+	//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
+		//document.getElementById(IDElement).style.color = "white";
+		document.getElementById(IDElement).classList.add("dotDisplayed");
+		document.getElementById(IDElement).classList.remove("dot");
+
+	}
+	else
+	{
+	//	document.getElementById(IDElement).style.backgroundColor = "transparent";
+		//document.getElementById(IDElement).style.color = " #3d6ca4";
+		document.getElementById(IDElement).classList.add("dot");
+		document.getElementById(IDElement).classList.remove("dotDisplayed");
+	}
 }
-else
+
+function getOrURL2( ValueFind,  ValueFind2,IDElement) 
 {
-//	document.getElementById(IDElement).style.backgroundColor = "transparent";
-	//document.getElementById(IDElement).style.color = " #3d6ca4";
-	document.getElementById(IDElement).classList.add("dot");
-	document.getElementById(IDElement).classList.remove("dotDisplayed");
-}
 
+	if (window.location.href.search(ValueFind)>-1 || window.location.href.search(ValueFind2)>-1)
+	{
+	//	document.getElementById(IDElement).style.backgroundColor = "#1e8ac2";
+		//document.getElementById(IDElement).style.color = "white";
+		document.getElementById(IDElement).classList.add("dotDisplayed");
+		document.getElementById(IDElement).classList.remove("dot");
+
+	}
+	else
+	{
+	//	document.getElementById(IDElement).style.backgroundColor = "transparent";
+		//document.getElementById(IDElement).style.color = " #3d6ca4";
+		document.getElementById(IDElement).classList.add("dot");
+		document.getElementById(IDElement).classList.remove("dotDisplayed");
+	}
 }
 </script>
 
@@ -83,92 +82,6 @@ else
 if (strlen($ANNEE_COURSE ) > 0 )
 {
 ?>
-<div class="PopupV2" style="display:none;"  id="popUPResult" >
-<?php
-$sqlResult = 'SELECT * FROM Course  WHERE KeyNomCourse=\''.$course ["KeyNomCourse"].'\'' ; 
-$resultResult = mysqli_query($con,$sqlResult);
-if ($resultResult && mysqli_num_rows($resultResult) > 0) 
-{?>
-  
-<table>
-  <?php
-/**************************************************************************************************************33
-* 
-* 					HIstorique des courses
-* 
-*******************************************************************************************************************/
-
-	  // output data of each row
-  while($courseResult = mysqli_fetch_assoc($resultResult)) 
-  {
-	  $DateResult =  date_parse($courseResult['Date']);	
-	  $NomCourse = $courseResult['Nom_Course'];
-	  // si année différentes de l'année en cours
-	  if ($DateResult['year']<> $ANNEE_COURSE)
-	  {
-		  ?>
-		  <tr  >
-		  <td>
-			  <div style= "margin:5px;background: #00b4ff;padding:5px">
-			  <i class="fa fa-trophy" style= "font-size: 24px;margin:5px;color: white;"></i>
-		  <?php
-		  // Multi étape 
-		  if (intval($courseResult['nbr_etape'])>1)
-		  {
-			  if ($DateResult['year']> 2022)
-			  {
-				  
-				  ?>
-				  <a href="<?php echo "Resultat2023.php?&NbrEtape=".$courseResult['nbr_etape']."&DateCourse=".$courseResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
-				  <?php
-			  }
-			  else   if ($DateResult['year']> 2021)
-			  {
-				  
-				  ?>
-				  <a href="<?php echo "ResultatV4.php?&NbrEtape=".$courseResult['nbr_etape']."&DateCourse=".$courseResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
-				  <?php
-			  }
-			  else
-			  {
-				  ?>
-				  <a href="<?php echo "informati	ons.php?&NbrEtape=".$courseResult['nbr_etape']."&DateCourse=".$courseResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;" ><? echo $DateResult['year'];?></a>
-					  <?php
-			  }
-		  }
-		  // Selon l'année affichage des résultats
-		  else if ($DateResult['year']> 2021)
-		  {
-			  
-			  ?>
-			  <a href="<?php echo "ResultatV4.php?Etape=0&NbrEtape=".$courseResult['nbr_etape']."&DateCourse=".$courseResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;"><?	echo $DateResult['year'];?></a>
-			  <?
-		  }
-		  else
-		  {
-			  ?>
-			  <a href="<?php echo "ResultatV3.php?Etape=0&NbrEtape=".$courseResult['nbr_etape']."&DateCourse=".$courseResult['Date']."&NomCourse=".$NomCourse?>" style= "font-size: 16px;margin:5px;color: black;"><?	echo  $DateResult['year'];?></a>
-				  <?php
-		  }
-		  ?>
-		  </div>
-		  </td>
-		  </tr><?php
-	  }
-  }
-  ?>
-  </table>
-
-<?php
-}
-/**************************************************************************************************************33
-* 
-* En tête de la course
-* 
-*******************************************************************************************************************/
-?>
-
-</div>
 
  	<table  style="width:100%;Padding:0px;"  class="HeaderRace">
 		<tr style="width:100%">

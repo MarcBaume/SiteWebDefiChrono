@@ -1,0 +1,9 @@
+1;Dames;;;D;0;2027;;;True;False;;
+2;Hommes 60 ans +;;;H;0;1966;;;True;False;;
+3;Hommes 50 ans +;;;H;1967;1976;;;True;False;;
+4;Hommes 40 ans +;;;H;1977;1986;;;True;False;;2:30
+5;Hommes 40 ans - pop;;;H;1987;2007;;;True;False;;3:30
+6;Hommes Juniors;;;H;2008;2009;;;True;False;;3:30
+7;Hommes Cadets;;;H;2010;2017;;;True;False;;
+8;Licenciés;;;H;1908;2007;;;True;False;;4:00 
+100;Electriques;;;M;0;2017;;;False;False;;

@@ -1,6 +1,6 @@
 
 <?php
-	include("Header.php");
+	require_once __DIR__ . "/Header.php";
 ?>
 <script>
 	var ArrayCoureurs = [];
@@ -572,16 +572,16 @@
 </script>
 
 <?php	
-	include("HeaderIndex.php"); 
+	require_once __DIR__ . "/HeaderIndex.php";
+	require_once __DIR__ . "/HeaderRace.php";
 ?>
 <div id="Top1"></div>
         <a href="#Top1" id="GoToTop" class="GoToTop" style ="visibility :hidden ;z-index:3000;" >
     <i class="fa fa-arrow-up" style= "font-size: 50px;margin:2px;"></i>
 </a>
-	<?php
-	  include("menuPages.php"); 
-	  ?>
-
+<?php
+	include("menuPages.php"); 
+?>
 
 <?php
 if ($course["InformationsComingSoon"])

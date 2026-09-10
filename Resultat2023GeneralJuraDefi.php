@@ -30,6 +30,7 @@
 	  
 
  <?php
+
 	  include("Header2023.php"); 
 	  ?>
  </center>
@@ -42,6 +43,11 @@ include("HeaderInfo2023_WithoutCouverture.php");
 	$Classement = $_GET['Classement'];
 	$Depart = $_GET['Depart'];
 	$Etape = $_GET['Etape'];
+	 if ($Etape !=99)
+	{
+			header('Location: Resultat2023.php?NbrEtape='.$Nbr_etape.'&Etape='.$_GET['Etape'].'&DateCourse='.$DateCourse.'&NomCourse='.$NOM_COURSE.'&Parcours='.$_GET['Parcours'].''.'&Depart='.$_GET['Depart'].''); 
+		
+	}
 // Tableau des fichiers
 
 	  ?>

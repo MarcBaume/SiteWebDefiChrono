@@ -1,0 +1,211 @@
+{
+  "GeneralParPoint": null,
+  "ListTariffZone": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassTariffZone, ChronoV4WPF",
+        "NomZone": {
+          "_Value": "Inscriptions"
+        },
+        "dateEndZone": {
+          "_Value": "2026-06-30 23:00:00"
+        },
+        "ListTarif": [
+          {
+            "tarif": {
+              "_Value": "12"
+            },
+            "NomOption": {
+              "_Value": "1 étape"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "24"
+            },
+            "NomOption": {
+              "_Value": "2 étapes "
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "36"
+            },
+            "NomOption": {
+              "_Value": "3 étapes"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "48"
+            },
+            "NomOption": {
+              "_Value": "4 étapes"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          },
+          {
+            "tarif": {
+              "_Value": "50"
+            },
+            "NomOption": {
+              "_Value": "5 étapes"
+            },
+            "OnLine": {
+              "oldValue": false,
+              "Title": "On line",
+              "Value": true,
+              "VisibilityTitle": 0,
+              "ReadOnly": false
+            },
+            "T_shirt": {
+              "_Value": "0"
+            },
+            "AgeMin": {
+              "_Value": "0"
+            },
+            "AgeMax": {
+              "_Value": "100"
+            }
+          }
+        ],
+        "MaximumInscription": {
+          "_Value": ""
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Inscription"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ListOptionReduction": {
+    "ListItem": [
+      {
+        "$type": "ChronoV4WPF.ClassOptionReduction, ChronoV4WPF",
+        "tarif": {
+          "_Value": "-5"
+        },
+        "DateStartReduction": {
+          "_Value": "2024-01-01 23:59:59"
+        },
+        "ID": {
+          "_Value": "1"
+        },
+        "Nom": {
+          "_Value": "Juniors et cadets"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      },
+      {
+        "$type": "ChronoV4WPF.ClassOptionReduction, ChronoV4WPF",
+        "tarif": {
+          "_Value": "-50"
+        },
+        "DateStartReduction": {
+          "_Value": "2023-01-01 23:59:59"
+        },
+        "ID": {
+          "_Value": "2"
+        },
+        "Nom": {
+          "_Value": "Membres VCFM"
+        },
+        "Distance": {
+          "_Value": ""
+        },
+        "Denivelle": {
+          "_Value": ""
+        }
+      }
+    ]
+  },
+  "ID": {
+    "_Value": "1"
+  },
+  "Nom": {
+    "_Value": "ParcoursAdulte"
+  },
+  "Distance": {
+    "_Value": ""
+  },
+  "Denivelle": {
+    "_Value": ""
+  }
+}

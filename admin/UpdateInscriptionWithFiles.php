@@ -46,125 +46,63 @@
 					$typeInscription= $data[33];
 					$pos = strpos($typeInscription, 'localhost');
 					$IDCoureur = $data[17];
-					// Inscription en local a ajouter a la base de donnée
-					if($pos >-1 )
+				
+					if (strlen($IDCoureur)> 1 )
 					{
 						// Recherche si valeur deja dans base de donnée 
-						$sql = "SELECT * FROM inscription WHERE Nom = :Nom and 
-						Prenom = :Prenom and 
-						DateNaissance  = :DateNaissance and 
-						course = :Course and 
-						NomDepart = :NomDepart";
-						$requete = $pdo->prepare($sql);
-						$requete->execute(['Nom' => $Nom,
-						'Prenom' => $Prenom,
-						'DateNaissance' =>  $data[6],
-						'Course' =>  $data[16],
-						'NomDepart' =>  $data[13]]);
-						$findRacer = $requete->fetch(PDO::FETCH_ASSOC);
-						#si le coureur est déjà trouvé
-						if (!$findRacer) 
+					$sql = "SELECT * FROM inscription WHERE Nom = :Nom and 
+					Prenom = :Prenom and 
+					DateNaissance  = :DateNaissance and 
+					course = :Course and 
+					NomDepart = :NomDepart";
+
+					$requete = $pdo->prepare($sql);
+					$requete->execute(['Nom' => $Nom,
+					'Prenom' => $Prenom,
+					'DateNaissance' =>  $data[6],
+					'Course' =>  $data[16],
+					'NomDepart' =>  $data[13]]);
+						$membre = $requete->fetch(PDO::FETCH_ASSOC);
+						if ($membre) 
 						{
-				
-							$sql2 = 'INSERT INTO inscription(`NumDossard`,`Nom`, `Prenom`, `adresse`,`npa`,`localite`,`DateNaissance`,`sexe`,`club`, `NumCategorie`,`mail`,`NomCategorie`,`parcours`,`NomDepart`,`tel`,`equipe`,`course`,`NomEquipe`,`NomDisc1`,
-							`PrenomDisc1`,`NomDisc2`, `PrenomDisc2`,`NomDisc3`, `PrenomDisc3`,`NomDisc4`, `PrenomDisc4`,`NomDisc5`, `PrenomDisc5`, `NomDisc6`, `PrenomDisc6`,`NbrEtape` ,
-							`Login`,`Payer` ,`OrderPayement` ,`Prix` ,`Date` ,`PayementOnLine` ,`Partenaire` ,`TypeEquipe` ,`PrixSouvenir` ,`Informations` ,`NombreCreditUtilise`)
-							VALUES
-							("'.$data[0].'", 
-							"'.$Nom.'",
-							"'.$Prenom.'",
-							"'.$data[3].'", 
-							"'.$data[4].'", 	
-							"'.$data[5].'", 
-							"'.$data[6].'", 
-							"'.$data[7].'", 	
-							"'.$data[8].'", 
-							"'.$data[9].'", 
-							"'.$data[10].'", 
-							"'.$data[11].'", 
-							"'.$data[12].'", 
-							"'.$data[13].'", 
-							"'.$data[14].'", 
-							"'.$data[15].'", 
-							"'.$data[16].'", 
-							"'.$data[18].'", 
-							"'.$data[19].'", 
-							"'.$data[20].'", 
-							"'.$data[21].'", 
-							"'.$data[22].'", 
-							"'.$data[23].'", 
-							"'.$data[24].'", 
-							"'.$data[25].'", 
-							"'.$data[26].'", 
-							"'.$data[27].'", 
-							"'.$data[28].'", 
-							"'.$data[29].'", 
-							"'.$data[30].'", 
-							"'.$data[31].'", 
+							$title = $membre['Nom']." ".$membre['Prenom'];
 
-							"'.$data[32].'",
-							"local'.$IDCoureur.'",
-							"'.$data[34].'",
-
-							"'.$data[35].'",
-							"'.$data[36].'",
-							"'.$data[37].'",
-							"'.$data[38].'",
-							"'.$data[39].'",
-							"'.$data[40].'",
-							"'.$data[41].'",
-							"'.$data[42].'");';
-							$result2 = mysqli_query($con,$sql2);   
-							if ($result2  )
+							if (strlen($data[0])> 0 )
 							{
-								echo "Insertion personne localhost".$data[1]."_".$data[2]."</br>" ;
-							}
-						}
-					}
-					else
-					{
-						if (strlen($IDCoureur)> 1 )
-						{
-							$sql = "SELECT * FROM inscription WHERE ID = :id_coureur";
-							$requete = $pdo->prepare($sql);
-							$requete->execute(['id_coureur' => $IDCoureur]);
-							$membre = $requete->fetch(PDO::FETCH_ASSOC);
-							if ($membre) 
-							{
-								$title = $membre['Nom']." ".$membre['Prenom'];
+								
+									
+									$sql = "UPDATE inscription SET NumDossard = :NumDossard WHERE Nom = :Nom and 
+									Prenom = :Prenom and 
+									DateNaissance  = :DateNaissance and 
+									course = :Course and 
+									NomDepart = :NomDepart";
 
-								if (strlen($data[0])> 0 )
-								{
-									if ($membre['NumDossard'] == "0")
-									{
-										$sql = "UPDATE inscription SET NumDossard = :NumDossard WHERE ID = :id_coureur";
-										$requete = $pdo->prepare($sql);
-										// 3. Exécution de la mise à jour avec les données
-										$requete->execute([
-											'NumDossard' => $data[0],
-											'id_coureur'  => $IDCoureur
-										]);
-										echo "Update: ".$IDCoureur."=> ".$data[0]. " ".$title."<br />";
-									}
-									else if ( $membre['NumDossard'] !== $data[0] )	
-									{
-										echo  "Erreur numero dossard déjà attribué: ".$IDCoureur."=> ".$data[0]," - ".$membre['NumDossard']. " ".$title."<br />";
-									}					
-								}
-								else
-								{
-									echo "aucun dossard dans fichier".$IDCoureur."<br />";
-								}
+									$requete = $pdo->prepare($sql);
+									$requete->execute(['Nom' => $Nom,
+									'NumDossard' => $data[0],
+									'Prenom' => $Prenom,
+									'DateNaissance' =>  $data[6],
+									'Course' =>  $data[16],
+									'NomDepart' =>  $data[13]]);
+								
+									echo "Update: ".$IDCoureur."=> ".$data[0]. " ".$title."<br />";
+								
+											
 							}
 							else
 							{
-									echo "Aucun coureur trouvé.".$IDCoureur."<br />";
+								echo "aucun dossard dans fichier".$IDCoureur."<br />";
 							}
 						}
+						else
+						{
+								echo "Aucun coureur trouvé.".$IDCoureur."<br />";
+						}
+						
 					}
                 }
             }
-			unlink($pathFile);
+		
         }
 
 	}    		

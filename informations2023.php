@@ -1410,78 +1410,91 @@ xEtape = false;
 let newDiv = document.createElement("div");
 TableProgramme = document.getElementById("TableProgramme");
 TableProgramme.style.maxWidth = "800px";
-  // ********** POUR CHAQUE PARCOURS ***************/
+const ArrayAllDepart = [];
+// ********** Création d'un tablea avec tous les départ pour le programme***************/
+// Copie et tri par ordre croissant
 for (var i = 0; i < ArrayParcours.length; i++) 
 {
-
 	var ParcoursObj = new Object();
 	ParcoursObj = ArrayParcours[i];
 	let ParcoursPara  = null ;
-
-	// Si il existe plusieurs parcours
-
-	// Programme Manifestation
-        for (var j = 0; j < ParcoursObj.ArrayDepart.length;j++) 
-{
-         var DepartObj = new Object();
-         DepartObj = ParcoursObj.ArrayDepart[j];
-
-		ParcoursPara = document.createElement('fieldset');
-        LineProgramme = document.createElement('tr');
-        LineProgramme.style.background = '#BCDDFD';
-        LineProgramme.style.margin = '5px';
-
-        ColIcone = document.createElement('td');
-        ColIcone.style.textAlign ='center';
-		ColIcone.style.background = '#3D6CA4';
-        Icone = document.createElement('a');
-        Icone.style.fontSize="30px" ;
-		Icone.setAttribute('href', "#div"+ParcoursObj.nom);
-		Icone.innerHTML = "<img src='/Icones/IconeDepartBlanc.png'  style='width:30px;margin:5px;'/>";
-	
-        ColIcone.append(Icone);
-        LineProgramme.append(ColIcone);
-
-        
-        ColHoure = document.createElement('td');
-        Hour = document.createElement('a');
-		console.log(DepartObj);
-		Hour.innerHTML = '<i class="fa fa-clock-o" ></i>    ' + DepartObj.ArrayEtape[0].info.HeureDepart._Value;
-        Hour.style.marginLeft = "10px";
-        ColHoure.append(Hour);
-		
-        LineProgramme.append(ColHoure);
-
-		ColMenu = document.createElement('td');
-	
-		ParcoursMenu = document.createElement('a');
-		ParcoursMenu.innerHTML = DepartObj.info.Nom._Value;
-        ParcoursMenu.style.marginLeft = "10px";
-		ParcoursMenu.style.width = "80%";
-
-        ColMenu.append(ParcoursMenu);
-
-		LineProgramme.append(ColMenu);
-
-        ColInfo = document.createElement('td');
-        ColInfo.style.textAlign ='center';
-
-		IconeInfo= document.createElement('a');
-		IconeInfo.setAttribute('href', "#div"+ParcoursObj.nom);
-		IconeInfo.innerHTML = '<i class="fa fa-info-circle" style= "font-size: 28px;margin:8px; margin-top: 6px; color: #3d6cA4;"></i>';
-		IconeInfo.id =  DepartObj.Nom;
-		IconeInfo.style.width = "80%";
-        ColInfo.append(IconeInfo);
-
-		LineProgramme.append(ColInfo);
-
-		TableProgramme.append(LineProgramme);
+	// Ajout de tous les départ
+	for (var j = 0; j < ParcoursObj.ArrayDepart.length;j++) 
+	{
+		if (ParcoursObj.ArrayDepart.length > 1) 
+		{
+			if (! ParcoursObj.ArrayDepart[j].info.Nom._Value.include(ParcoursObj.info.Nom._Value))
+			{
+				ParcoursObj.ArrayDepart[j].info.Nom._Value = ParcoursObj.info.Nom._Value + ": "+ ParcoursObj.ArrayDepart[j].info.Nom._Value 
+			}
+		}
+		ArrayAllDepart.push(ParcoursObj.ArrayDepart[j])
 	}
+}
+// Scan de tous les départs
+const ArrayAllDepartSort = ArrayAllDepart
+.sort((a, b) => a.ArrayEtape[0].info.HeureDepart._Value.localeCompare(b.ArrayEtape[0].info.HeureDepart._Value));
+for (var i = 0; i < ArrayAllDepartSort.length; i++) 
+{
+	var DepartObjProg = new Object();
+	DepartObjProg = ArrayAllDepartSort[i];
+	ParcoursPara = document.createElement('fieldset');
+	LineProgramme = document.createElement('tr');
+	LineProgramme.style.background = '#BCDDFD';
+	LineProgramme.style.margin = '5px';
+
+	ColIcone = document.createElement('td');
+	ColIcone.style.textAlign ='center';
+	ColIcone.style.background = '#3D6CA4';
+	Icone = document.createElement('a');
+	Icone.style.fontSize="30px" ;
+	Icone.setAttribute('href', "#div"+DepartObjProg.Nom);
+	Icone.innerHTML = "<img src='/Icones/IconeDepartBlanc.png'  style='width:30px;margin:5px;'/>";
+
+	ColIcone.append(Icone);
+	LineProgramme.append(ColIcone);        
+	ColHoure = document.createElement('td');
+	Hour = document.createElement('a');
+	Hour.innerHTML = '<i class="fa fa-clock-o" ></i>' + DepartObjProg.ArrayEtape[0].info.HeureDepart._Value;
+	Hour.style.marginLeft = "10px";
+	ColHoure.append(Hour);
 	
+	LineProgramme.append(ColHoure);
+
+	ColMenu = document.createElement('td');
+
+	ParcoursMenu = document.createElement('a');
+	ParcoursMenu.innerHTML = DepartObjProg.info.Nom._Value;
+	ParcoursMenu.style.marginLeft = "10px";
+	ParcoursMenu.style.width = "80%";
+
+	ColMenu.append(ParcoursMenu);
+
+	LineProgramme.append(ColMenu);
+
+	ColInfo = document.createElement('td');
+	ColInfo.style.textAlign ='center';
+
+	IconeInfo= document.createElement('a');
+		console.log("div1")
+	console.log(DepartObjProg.Nom)
+	IconeInfo.setAttribute('href', "#div"+DepartObjProg.Nom);
+	IconeInfo.innerHTML = '<i class="fa fa-info-circle" style= "font-size: 28px;margin:8px; margin-top: 6px; color: #3d6cA4;"></i>';
+	IconeInfo.id =  DepartObjProg.Nom;
+	IconeInfo.style.width = "80%";
+	ColInfo.append(IconeInfo);
+	LineProgramme.append(ColInfo);
+	TableProgramme.append(LineProgramme);
+}
+
+for (var i = 0; i < ArrayParcours.length; i++) 
+{
+	var ParcoursObj = new Object();
+	ParcoursObj = ArrayParcours[i];
     ParcoursPara = document.createElement('div');
 	ParcoursPara.className='FieldParcours'
 	ParcoursPara.classList.add('Anchor');
-	ParcoursPara.id = "div"+ParcoursObj.nom;
+
 	let NomParcoursPara =	document.createElement('div');	
 		
 	// Affichage du titre du parcours si il y a plusieurs départ
@@ -1564,6 +1577,9 @@ for (var i = 0; i < ArrayParcours.length; i++)
 		
 		// Créer un Div par Depart
 		let  DepartPara = document.createElement('div');
+		console.log("div2");
+				console.log(DepartObj.Nom);
+			DepartPara.id = "div"+DepartObj.Nom;
 		DepartPara.style.background =  "#BCDDFD";
 		DepartPara.style.margin = "20px";
 		DepartPara.style.borderRadius = "10px";

@@ -174,8 +174,8 @@ table {
         if (!mysqli_query($con,$sql))
         {
              $message =  $message . "Error update : inscription adresse " .$referenceId ." " . mysql_error();
-             $headers = 'From: Defi chrono <info@defichrono.ch>'."\r\n";
-             $headers = "Content-Type: text/html; charset=utf-8\r\n";
+             $headers += 'From: Defi chrono <info@defichrono.ch>'."\r\n";
+             $headers += "Content-Type: text/html; charset=utf-8\r\n";
              
              if ( mail( 'info@defichrono.ch' , 'Erreur update status inscription webhook'.$referenceId,$message ,$headers))
              {

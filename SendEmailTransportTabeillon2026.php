@@ -4,6 +4,7 @@
 <?php
 		// Ajout des Données de résultat
 		// Création de la liste de toutes les Dossier = Depart 
+        // Le fichier dpoit être en utf8 
         $pathFile   = 'SendEmail/listeDepart.csv';
         if (file_exists($pathFile)) 
         {
@@ -15,7 +16,7 @@
                     $pdf =  "pdfMailingTabeillon/".$data[1] ."_".  $data[2] ."_".  $data[6].".pdf";
                     if (!file_exists($pdf)) 
                     {
-                        echo "PDF manquant pour ".$data[10];
+                        echo "PDF manquant pour ".$data[10]."  : ".$data[1] ."_".  $data[2] ."_".  $data[6].".pdf<br>";
                     }
                     else
                     {
@@ -33,7 +34,6 @@
                                 <p> La remise de votre dossard se fera au plus tard 30 minutes avant ton départ</p>
                             <br/>
                                 <p> Ton départ : <b> '.  $data[13] .' </b></p><br/>
-                                <p>  Ton heure de départ : <b> '.  $data[14] .'</b> </p><br/>
                             <br/>
                             <br/>
                             <br/>    

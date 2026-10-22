@@ -482,6 +482,17 @@ function valider()
 	
 	filter = input.value.toUpperCase();
 	filterPrenom = inputPrenom.value.toUpperCase();
+
+	if (input.value.length > 15)
+	{
+		console.log("too lenght name");
+		return;
+	}
+	if (inputPrenom.value.length > 15)
+	{
+		console.log("too lenght forname");
+		return;
+	}
 	var i;
 	for (i = 0; i < table.length; i++) 
 	{

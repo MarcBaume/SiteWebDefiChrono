@@ -1,3 +1,36 @@
+<?php 
+$today = date("Y-m-d H:i:s"); 
+date_default_timezone_set('Europe/Paris');
+
+// --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
+setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
+ /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
+require_once __DIR__ . "/MysqlConnect.php";
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Zone membres Défi Chrono</title>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+	
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" title="defaut" href="../../css/style.css" type="text/css"/>
+	<meta http-equiv="cache-control" content="no-cache"> <!-- tells browser not to cache -->
+	<meta http-equiv="expires" content="0"> <!-- says that the cache expires 'now' -->
+	<meta http-equiv="pragma" content="no-cache"> <!-- says not to use cached stuff, if there is any -->
+
+<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="../../js/prototype.js" ></script>
+	<script src="../../js/FonctionDefiChrono3.js?v=1"></script>
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js" charset="utf-8"></script>
 <script>
 	function getURLHeader( ValueFind, IDElement) 
 	{
@@ -33,7 +66,7 @@
 <td>
 <Div id = "logo">
 <a href="index.php">
-<img src="images/LogoDefiChrono.svg" style="height:90px;" alt="" />
+<img src="../../images/LogoDefiChrono.svg" style="height:90px;" alt="" />
 </a>
 </div>
 </td>
@@ -52,18 +85,28 @@
 			</a>
 		</td> 		
 		<td> 
-		<a href="admin/login.php">
+			<?php
+			if ( ! isset($_SESSION['user']['login']))
+			{?>
+		<a href="https://staging.defichrono.ch/auth/oidc-login.php?destination=login.php">
+			<?php
+			}
+			else{
+				?>
+				<a href="/pages/membres/indexMembres.php">
+				<?php
+			}?>
 			<table>
 				<tr>
 					<td>
 						<span class="dotHeader"  id="ButtonUser">
 							<i class="fa fa-user-circle" style= "font-size: 25px;margin:8px; margin-top: 8px; "></i>
 							<a style="vertical-align :center;">
-							<?
-								if (  isset($_SESSION['Login']))
+							<?php
+								if (  isset($_SESSION['user']['login']))
 								{
-									$pos = strpos($_SESSION['Login'],'@');
-									$login = substr($_SESSION['Login'], 0, $pos) ;
+									$pos = strpos($_SESSION['user']['login'],'@');
+									$login = substr($_SESSION['user']['login'], 0, $pos) ;
 									 echo  	$login ;
 								
 								}
@@ -101,68 +144,5 @@
 </div>
 </td>
 </table>
-<span class="popupUser" id="PopUpUSer">
- 
-	<form method="post" name="FormConnect" id ="FormConnect" action="admin/CibleLoginV2.php">
-		<table>
-			<tr style= "Height : 10px">
-				<span class="dot" onclick="ClosePopUp()" onmouseover="" style="cursor: pointer;" style="float : right; margin :0px">
-					<i class="fa fa-times" style= "font-size: 20px;margin:5px;color: #3d6cA4"></i>
-				</span>
-			</tr>
-			<tr>
-			
-				<td>
-					<label for="Login" style="font-size:8px;">e-mail :</label>
-				</td>
-				<td>
-					<label for="password" style="font-size:8px;">Mot de passe :</label>
-				</td>
-				<td>
-				
-				</td>
-				<td>
-					<a href="AddLogin.php"style="font-size:12px;">Créer un compte </a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="text" name="login" id="login" tabindex="10" style="max-width: 120px;"/> 
-				</td>
-				<td>
-					<input type="password" name="pass" id="pass" tabindex="15" style="max-width: 100px;"/>
-				</td>
-					<td onclick=" SendForm()" onmouseover="" style="cursor: pointer;">
-						<i  class="fa fa-sign-in" style= " font-size: 20px;" ></i>
-					</td>
-				<td>
-					<a href="PasswordForget.php"style="font-size:12px;">mot de passe oublié? </a>
-				</td>
-			</tr>
-		</table>
-	</form>
- </span>
- 
 </div>
 <script>
-// When the user clicks on div, open the popup
-function ShowPopUp() {
-	 
-	var popup = document.getElementById("PopUpUSer");
-	popup.style.visibility = "visible" ;
-	 
- // popup.classList.toggle("show");
-}
-function ShowDeconnect()
-{
-		 window.location.href = "admin/login.php";
-}
-function ClosePopUp() {
-  var popup = document.getElementById("PopUpUSer");
-  popup.style.visibility = "hidden" ;
-}
-function SendForm() {
-  var popup = document.getElementById("FormConnect");
-  popup.submit();
-}
-</script>

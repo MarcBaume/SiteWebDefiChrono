@@ -1,3 +1,11 @@
+	<?php 
+	 session_start();
+	if (!isset($_SESSION["user"]'Login']) || strlen($_SESSION["User"]['Login']) <1)
+{
+	exit("Aucun utilistaeur connecté");
+	}?>
+
+
 <script type="text/javascript">
 function getURL( ValueFind, IDElement) {
 
@@ -24,10 +32,7 @@ function getURL( ValueFind, IDElement) {
  <div id="menu_vertical" class="menu_vertical">
   <table style="Width : 100%">
   <tr>
-	<?php 
-	 session_start();
-	if (isset($_SESSION['Login']) && strlen($_SESSION['Login']) > 1)
-{?>
+
 <td style="Width : 25%" onClick="ClickColProfil()"  >
 <span class="dot" id="<?php echo "RowProfil".$IdRace ?>">
 	<table style="Width : 100%">

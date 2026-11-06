@@ -1,0 +1,101 @@
+
+const express = require("express");
+const oidc = require("openid-client");
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+const issuer = "https://auth.defichrono.ch";
+const realm = "loginDefiChrono";
+const clientId = "defichrono-auth";
+const redirectUri = "https://app.defichrono.ch/callback";
+
+let config;
+
+async function initialize() {
+  config = await oidc.discovery(
+    new URL(`${issuer}/realms/${realm}`),
+    clientId
+  );
+
+  console.log("Connexion à Keycloak configurée.");
+}
+
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Defichrono</h1>
+    <p>Authentification Keycloak</p>
+    <a href="/login">Se connecter</a>
+  `);
+});
+
+app.get("/login", async (req, res) => {
+  try {
+    const codeVerifier = oidc.randomPKCECodeVerifier();
+    const codeChallenge = await oidc.calculatePKCECodeChallenge(codeVerifier);
+    const state = oidc.randomState();
+
+    // Démonstration uniquement : stockage temporaire pour un seul parcours.
+    // À remplacer par une vraie session serveur avant mise en production.
+    globalThis.loginState = { codeVerifier, state };
+
+    const url = oidc.buildAuthorizationUrl(config, {
+      redirect_uri: redirectUri,
+      scope: "openid profile email",
+      code_challenge: codeChallenge,
+      code_challenge_method: "S256",
+      state
+    });
+console.log("Redirect uri login : ", redirectUri);
+    res.redirect(url.href);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la connexion.");
+  }
+});
+
+app.get("/callback", async (req, res) => {
+  try {
+    if (!globalThis.loginState) {
+      return res.status(400).send("Session de connexion introuvable.");
+    }
+
+    const currentUrl = new URL(
+      req.url,"https://app.defichrono.ch"
+    );
+console.log("REDIRECT URI CALLBACK :", currentUrl.origin + currentUrl.pathname);
+    const tokens = await oidc.authorizationCodeGrant(
+      config,
+      currentUrl,
+      {
+        pkceCodeVerifier: globalThis.loginState.codeVerifier,
+        expectedState: globalThis.loginState.state
+      }
+    );
+
+    delete globalThis.loginState;
+
+    const claims = tokens.claims();
+
+    res.send(`
+      <h1>Connexion réussie !</h1>
+      <p>Bienvenue ${claims.name || claims.preferred_username || "utilisateur"}.</p>
+      <p>Email : ${claims.email || "Non communiqué"}</p>
+      <a href="/">Retour à l'accueil</a>
+    `);
+  } catch (error) {
+    console.error("Erreur callback Keycloak :", error);
+    res.status(500).send("Échec de l'authentification.");
+  }
+});
+
+initialize()
+  .then(() => {
+    app.listen(port, "0.0.0.0", () => {
+      console.log(`Defichrono écoute sur le port ${port}`);
+    });
+  })
+  .catch(error => {
+    console.error("Impossible de démarrer :", error);
+    process.exit(1);
+  });

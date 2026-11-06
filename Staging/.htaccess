@@ -4,3 +4,7 @@ AddOutputFilterByType DEFLATE "application/atom+xml" "application/javascript" "a
 # SECTION BEGIN GIT PROTECTION
 RedirectMatch 404 /\.git
 # SECTION END GIT PROTECTION
+# Protection des fichiers sensibles
+<FilesMatch "^(MysqlConnect\.php|\.env|composer\.(json|lock))$">
+    Require all denied
+</FilesMatch>

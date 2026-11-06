@@ -3,7 +3,6 @@
 require_once 'config.php'; 
   // On se connecte à MySQL
   // 1. Connexion (à faire une seule fois au début)
-  echo HOSTNAME_DB;
 try {
   $host    =HOSTNAME_DB;
   $db      = NAME_DB;

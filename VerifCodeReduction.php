@@ -32,10 +32,10 @@ function string2url($chaine) {
 if ( strlen ($_REQUEST['Code'])>2)
 {
 	// Déserialization de la liste des courses
-	$ArrCourse = explode(';',$_REQUEST['strListCourse']);
+	$ArrCourse = explode(';',$_REQUEST["strListCourse"]);
 	include("MysqlConnect.php");
 	
-	$sql = 'SELECT * FROM CodeReduction  WHERE   Code = \''. $_REQUEST['Code']. '\'';
+	$sql = "SELECT * FROM CodeReduction  WHERE   Code = \"". $_REQUEST["Code"]. "\"";
 
 	$result = mysqli_query($con,$sql);
 	
@@ -59,8 +59,7 @@ if ( strlen ($_REQUEST['Code'])>2)
 					}
 					else
 					{
-						if ($_REQUEST['CourseCode'] == 	$val["Course"] or $val['Course'] == 'All')
-						{
+	
 							$NOM = string2url($val['Nom']);
 							$PRENOM = string2url($val['Prenom']);
 							$NOMREQUEST = string2url($_REQUEST['NomCode']);
@@ -76,12 +75,7 @@ if ( strlen ($_REQUEST['Code'])>2)
 									goto a;	
 							}
 
-						}
-						else
-						{
-							print( -3);
-						goto a;	
-						}				
+							
 					}
 				}
 				else

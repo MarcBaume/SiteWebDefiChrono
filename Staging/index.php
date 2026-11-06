@@ -3,10 +3,6 @@
 	<?php
 		require_once __DIR__ . "/includes/Header.php";
 	?>
-<body>
-	<?php
-		require_once __DIR__ . "/includes/HeaderIndex.php";
-	?>
 <script>
 function ChoiceRace(idRace)
 {
@@ -18,7 +14,7 @@ function ChoiceRace(idRace)
 	Form.submit();
 }
 </script>
-  <form method="get" action="informations.php" name="FormChoiceCourse" id="FormChoiceCourse">					
+  <form method="get" action="pages/informations.php" name="FormChoiceCourse" id="FormChoiceCourse">					
 		<input type="hidden" name="IdRace" id="IdRace" />
   </form>
 				
@@ -34,7 +30,7 @@ function ChoiceRace(idRace)
 	$allCourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($allCourses as $val) 
 	{
-		$timestamp = strtotime($val ["Date"]);
+		$timestamp = formatMysqlDate($val ["Date"]);
 		$Date =  date_parse($val ["Date"]);
 		$Year = $Date['year']; 
 		$Month = $Date['month']; 
@@ -115,7 +111,7 @@ function ChoiceRace(idRace)
 						<div style="display: flex;
 									font-size: 22px;
 									height:100%;
-									align-items: center;"><?php echo strftime ("%d",$timestamp)." ".strftime ("%B",$timestamp)." ".strftime ("%Y",$timestamp)?>
+									align-items: center;"><?php echo $timestamp?>
 						</div>
 					</div>
 					<div style="display: flex;align-items: center">
@@ -140,6 +136,7 @@ function ChoiceRace(idRace)
 
 <?php
 }
+
 	
 /**********************************************************************************************
  * 
@@ -162,7 +159,7 @@ function ChoiceRace(idRace)
 	foreach ($allCourses as $val) 
 	{
 	
-		$timestamp = strtotime($val ["Date"]);
+		$timestamp = formatMysqlDate($val ["Date"]);
 		$Date =  date_parse($val ["Date"]);
 		$Year = $Date['year']; 
 		$Month = $Date['month']; 
@@ -243,7 +240,7 @@ function ChoiceRace(idRace)
 								<div style="display: flex;
 											font-size: 22px;
 											height:100%;
-											align-items: center;"><?php echo strftime ("%d",$timestamp)." ".strftime ("%B",$timestamp)." ".strftime ("%Y",$timestamp)?>
+											align-items: center;"><?php echo formatMysqlDate ($timestamp)?>
 								</div>
 							</div>
 							<div style="display: flex;align-items: center">

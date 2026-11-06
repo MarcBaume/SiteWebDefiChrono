@@ -1,0 +1,41 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Formate une date MySQL en français.
+ *
+ * Entrée : 2026-11-05 ou 2026-11-05 14:30:00
+ * Sortie : 05 novembre 2026 ou 05 novembre 2026 à 14:30
+ */
+function formatMysqlDate(
+    ?string $date,
+    bool $withTime = false
+): string {
+
+    if (empty($date) || $date === '0000-00-00') {
+        return '';
+    }
+
+    try {
+        $dateObj = new DateTimeImmutable($date);
+
+        $format = $withTime
+            ? 'dd MMMM yyyy \'à\' HH:mm'
+            : 'dd MMMM yyyy';
+
+        $formatter = new IntlDateFormatter(
+            'fr_CH',
+            IntlDateFormatter::NONE,
+            IntlDateFormatter::NONE,
+            'Europe/Zurich',
+            IntlDateFormatter::GREGORIAN,
+            $format
+        );
+
+        return $formatter->format($dateObj) ?: '';
+
+    } catch (Throwable $e) {
+        return '';
+    }
+}
+?>

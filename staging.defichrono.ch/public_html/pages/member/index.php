@@ -6,10 +6,8 @@
 ?>
 	<div id="corps">
 		<div id="index">
-
-
 	<h3>
-thdgfh
+
 	<script>
     var ArrayCoureurs = [];
 
@@ -77,7 +75,7 @@ thdgfh
 <?php
 
 // Affichage bandeau seulement si on est en insciption de cours
-	if ( strlen($_SESSION['DateCourse'])> 0  && strlen($_SESSION['Course'])>0)
+	if (!empty($_SESSION['IdRace']))
 	{
        
 	?>
@@ -126,16 +124,18 @@ thdgfh
  
    <?php
 
-		$sql = 'SELECT * FROM Membres  WHERE LoginCompte=\''.$_SESSION['Login'].'\''; 
+        $sql = 'SELECT * FROM Membres WHERE LoginCompte = :loginCompte';
 
-		//echo $sql;
-		$result = mysqli_query($con,$sql);
- 
-		if ($result && mysqli_num_rows($result) > 0) 
-		{
+        $result  = $pdo->prepare($sql);
+         $result ->execute([
+            ':loginCompte' => $_SESSION['user']['login']
+        ]);
+
+        if ($result ->rowCount() > 0)
+        {
             $c= 0;
             // de type entreprise
-            if ($_SESSION['Niveau'] == "1")
+            if ($_SESSION["user"]['niveau'] == "1")
             {
             	header('Location: entreprise/ProfilEntreprise.php'); 
             }
@@ -147,8 +147,8 @@ thdgfh
            
             <?php
 			//Chaque athlète on va créer un nom 
-			while($val = mysqli_fetch_assoc($result)) 
-			{?>
+            foreach ($result as $val)
+            {?>
                <Fieldset   id="<?php echo "user".$c ?>" onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;Display:inline-grid;cursor: pointer; width:20%;  " >
 				<span class="dotMember"  > 
 

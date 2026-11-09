@@ -9,6 +9,21 @@ session_set_cookie_params([
 ]);
 session_start();
 
+$destination = $_GET['destination'] ?? 'home';
+
+
+if (($_GET['destination'] ?? '') === 'formulaire' && 
+isset($_GET['IdRace'])) {
+    $_SESSION['destination_apres_login'] = [
+        'type' => 'formulaire',
+        'IdRace' => (int) $_GET['IdRace']
+    ];
+} else {
+    $_SESSION['destination_apres_login'] = [
+        'type' => 'member'
+    ];
+}
+
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 2));
@@ -17,13 +32,7 @@ $dotenv->load();
 $clientId = $_ENV['KEYCLOAK_CLIENT_ID'] ?? '';
 $clientSecret = $_ENV['KEYCLOAK_CLIENT_SECRET'] ?? '';
 
-$destination = $_GET['destination'] ?? 'membre';
 
-if (!isset($destinations[$destination])) {
-    $destination = 'membre';
-}
-
-$_SESSION['destination_apres_login'] = $destinations[$destination];
 if ($clientId === '' || $clientSecret === '') {
     http_response_code(500);
     exit('Configuration OIDC manquante.');

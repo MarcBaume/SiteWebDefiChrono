@@ -38,4 +38,24 @@ function formatMysqlDate(
         return '';
     }
 }
+
+function majuscules($inChaine)
+{
+	$inChaine =ltrim($inChaine);
+	$inChaine =rtrim($inChaine);
+    $inChaine = strtolower($inChaine);
+    // index du nom changer
+    $tiretIndex = strpos($inChaine, '-');
+    // Remplace le minus par un espace 
+    $inChaine = str_replace("-"," ",$inChaine);
+    // Mets en majuscule ddébut de chaque nom
+    $inChaine = ucwords($inChaine);
+    if ( $tiretIndex  > 0)
+    {
+    // Remets le tiret d'union 
+    $inChaine = substr_replace($inChaine,"-",$tiretIndex,1);
+
+    }
+	return $inChaine;
+}
 ?>

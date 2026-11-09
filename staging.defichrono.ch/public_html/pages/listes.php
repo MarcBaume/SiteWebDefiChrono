@@ -1,46 +1,29 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<meta property="og:description" content="chronométrage, chrono, jura, franches-montagnes, Jura défi, course à pied, Sport, Jura défi chrono" />  
-	<title>Défi Chrono</title>
-	<meta charset="utf-8">
-			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
-	
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" title="defaut" media="screen" href="css/style.css" type="text/css"/>
-<!--	<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="style-mobilV2.css" /> -->
-</head>
-<div id="Top1"></div>
-        <a href="#Top1" id="GoToTop" class="GoToTop" style ="visibility :hidden ;z-index:3000;" >
-    <i class="fa fa-arrow-up" style= "font-size: 50px;margin:2px;"></i>
-</a>
-    <body>
-
-<?php
-  include("Header.php"); 
-  ?>
+﻿<?php
+	require_once __DIR__ . "/../includes/Header.php";	
+	require_once __DIR__ . "/../includes/dataRaceSelected.php";	
+	require_once __DIR__ . "/../includes/menuPages.php";
+	// initialisation des variables
+	$nbrFile = 0;
+	$c = -1;
+	$m = -1;
+	$NomDepartTampon = '';
+	$relais = 0;
+?>
   <div id="Top1"></div>
         <a href="#Top1" id="GoToTop" class="GoToTop" style ="visibility :hidden ;z-index:3000;" >
     <i class="fa fa-arrow-up" style= "font-size: 50px;margin:2px;"></i>
 </a>
-<div id="corps">
-	<?php include("HeaderRace.php"); ?>
- </br> 
-<script>
-console.log()
-</script>
   <div  id="TableauResulat">
  <?php
 $row = 1;
 $start_array = false;
-$numetape = intval($_GET['Etape']);
+$numetape = isset($_GET['Etape']) ? (int) $_GET['Etape'] : 0;
+$Parcours = $_GET['Parcours'] ?? '';
+$NbrEtape = isset($_GET['NbrEtape']) ? (int) $_GET['NbrEtape'] : 1;
 // Afficher la liste des départ Dossier dans la course ;
-$pathfolder = "courses/".$NOM_COURSE.$ANNEE_COURSE;
+$pathfolder = "../courses/".$NOM_COURSE.$ANNEE_COURSE;
 // Création de la liste de toutes les Parcours
 $files1 = scandir($pathfolder);
-$Parcours = $_GET['Parcours'];
    foreach ($files1  as $key => $value) 
    { 
 	   if(is_dir($pathfolder ."/".$value))
@@ -66,35 +49,46 @@ if ($nbrFile> 0)
 
 -->
 	<?php
-	
-    // On récupère tout le contenu de la table camp
-	if ($_GET['Parcours']==("")){
-  //   $sql = 'SELECT * FROM inscription WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE .'\'ORDER BY parcours ASC,  NomDepart ASC,ID ASC';
-$sql = 'SELECT * FROM inscription WHERE course=\''.addslashes($NOM_COURSE). $ANNEE_COURSE .'\'ORDER BY parcours ASC, NomDepart ASC,  Nom ASC';
+if (empty($_GET['Parcours'])) {
 
-}
-	else{
+    $sql = 'SELECT *
+            FROM inscription
+            WHERE course = :course
+            ORDER BY parcours ASC, NomDepart ASC, Nom ASC';
 
-//	 $sql = 'SELECT * FROM inscription  WHERE course=\''.$NOM_COURSE. $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY NomDepart ASC,Nom ASC';
-$sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $ANNEE_COURSE. '\'AND parcours = \''.$_GET["Parcours"]. '\'ORDER  BY Nom ASC';
-	
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'course' => $NOM_COURSE . $ANNEE_COURSE
+    ]);
+
+} else {
+
+    $sql = 'SELECT *
+            FROM inscription
+            WHERE course = :course
+            AND parcours = :parcours
+            ORDER BY Nom ASC';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'course' => $NOM_COURSE . $ANNEE_COURSE,
+        'parcours' => $_GET['Parcours']
+    ]);
 }
-	 
-	 $result = mysqli_query($con,$sql);
-    ?>
-	 <?php
 	 $c=-1;
 	 $m = -1;
     // On affiche chaque entrée une à une
 	
 	  // On affiche chaque entrée une à une
-  
- if ($result && mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($donnees = mysqli_fetch_assoc($result)) {
+$resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+if (count($resultats) > 0) {
+    foreach ($resultats as $donnees) {
+        // Ton code d'affichage
+
+ 
 	$ArrayDepart =explode(";",$donnees['NomDepart']);
-	if ("En Attente"<>  $donnees['Payer']  || $val ["AllPeopleOnStartList"])
+	if ("En Attente"<>  $donnees['Payer']  || $course ["AllPeopleOnStartList"])
 	{
 		$c= $c +1;
 		$m= $m +1;
@@ -135,14 +129,17 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
  		<tr>
 		
 		<th width="15%"> Nom équipe</th>
-<?php 		if ($val ["JuraDefi"]  && $ANNEE_COURSE == 2021  )
+		<?php 		
+		if ($val ["JuraDefi"]  && $ANNEE_COURSE == 2021  )
 		{?>
 			<th width="15%"> Roller</th>
-		<?php}
+		<?php
+		}
 		else if ($val ["JuraDefi"])
 		{?>
 			<th width="15%"> Roller</th>
-		<?php}
+		<?php
+		}
 		else
 		{?>
 			<th width="15%"> Coureur 1 </th>
@@ -154,7 +151,8 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
 			<?php 		if ($val ["JuraDefi"]  )
 			{?>
 				<th width="15%"> Course</th>
-			<?php}
+			<?php
+			}
 			else
 			{?>
 				<th width="15%"> Coureur 2 </th>
@@ -168,11 +166,13 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
 	<?php		if ($val ["JuraDefi"]   && $ANNEE_COURSE == 2021 )
 			{?>
 				<th width="15%"> VTT</th>
-			<?php}
+			<?php
+			}
 			else if ($val ["JuraDefi"] )
 			{?>
 					<th width="15%">Natation</th>
-			<?php}
+			<?php
+			}
 			else
 			{?>
 				<th width="15%"> Coureur 3 </th>
@@ -186,11 +186,13 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
 	<?php 		if ($val ["JuraDefi"]   && $ANNEE_COURSE == 2021 )
 			{?>
 				<th width="15%"> Vélo ce route</th>
-			<?php}
+			<?php
+			}
 			else if ($val ["JuraDefi"] )
 			{?>
 					<th width="15%">Course Montagne</th>
-			<?php}
+			<?php
+			}
 			else
 			{?>
 				<th width="15%"> Coureur 4 </th>
@@ -198,13 +200,15 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
 			}?>
 		<?php
 		}?>
-		<?php if (strlen($donnees['PrenomDisc5']) > 1)
+		<?php 
+		if (strlen($donnees['PrenomDisc5']) > 1)
 		{
 		$relais = 5 ?>
 	<?php 		if ($val ["JuraDefi"] )
 			{?>
 					<th width="15%">Vélo de route</th>
-			<?php}
+			<?php
+			}
 			else
 			{?>
 				<th width="15%"> Coureur 5 </th>
@@ -218,7 +222,8 @@ $sql = 'SELECT * FROM inscription  WHERE course=\''.addslashes($NOM_COURSE). $AN
 	<?php 		if ($val ["JuraDefi"] )
 			{?>
 					<th width="15%">VTT</th>
-			<?php}
+			<?php
+			}
 			else
 			{?>
 				<th width="15%"> Coureur 6 </th>
@@ -248,7 +253,7 @@ $relais = 0?>
 		<?php
 		}?>
 		<th width="5%"> Cat.</th><?php
-if ( $val ["InscriptionWithPayment"] )
+if ( $course ["InscriptionWithPayment"] )
 {?>
 <th width="10%"> </th>
 <?php
@@ -264,7 +269,7 @@ else if ($_GET["NbrEtape"]>1  )
 }
 }
 
-if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val ["AllPeopleOnStartList"] )
+if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $course ["AllPeopleOnStartList"] )
 {
 
 	if ($relais >0)
@@ -348,7 +353,7 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
 			<td > <?php echo $donnees['NomEquipe']; ?></td><?php
 		}?>
 					<td style="Font-size:12px"> <?php echo $donnees['NumCategorie']; ?> </td>
-		<?php	if ($val ["InscriptionWithPayment"] )
+		<?php	if ($course ["InscriptionWithPayment"] )
 		{
 		
             if ("En Attente"==  $donnees['Payer'] || "Refusé"==  $donnees['Payer'] )
@@ -360,10 +365,14 @@ if ("En Attente"<>  $donnees['Payer']  || "Refusé"==  $donnees['Payer'] || $val
             }
             else
             {
-                if ($_GET["NbrEtape"] > 1  )
+                if (isset($_GET["NbrEtape"] ) && $_GET["NbrEtape"] > 1  )
                 {?>
                 <td ><?php
-                    $NbrEtape = intval(substr($donnees['NbrEtape'], 0, 1));
+
+				$NbrEtape = isset($donnees['NbrEtape'])
+    ? (int) substr((string) $donnees['NbrEtape'], 0, 1)
+    : 1;
+                
                     $NbrCreditUtilise = intval($donnees['NombreCreditUtilise']);
                     // A faire avec boucle while
                     $i = 0;

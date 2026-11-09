@@ -17,7 +17,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK 
  /*************************** CONNECTION AVEC LA BASE DE DONNEES ***********************************/
 require_once __DIR__ . "/MysqlConnect.php";
-
+require_once   "functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +42,7 @@ require_once __DIR__ . "/MysqlConnect.php";
 	<script src="../js/FonctionDefiChrono3.js?v=1"></script>
 	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js" charset="utf-8"></script>
-	<?php
-	require_once   "date-functions.php";
-	?>
+
 	<script>
 	function getURLHeader( ValueFind, IDElement) 
 	{
@@ -79,7 +77,7 @@ require_once __DIR__ . "/MysqlConnect.php";
 <tr>
 <td>
 <Div id = "logo">
-<a href="index.php">
+<a href="/index.php">
 <img src="../images/LogoDefiChrono.svg" style="height:90px;" alt="" />
 </a>
 </div>
@@ -89,7 +87,7 @@ require_once __DIR__ . "/MysqlConnect.php";
 <table>	
 	<tr>	
 		<td> 	
-			<a href="index.php">
+			<a href="/index.php">
 				<span class="dotHeader"  id="ButtonIndex" >
 					<i class="fa fa-home" style= "font-size: 28px;margin:7px;margin-top:5px ; "></i>
 				</span>
@@ -107,7 +105,7 @@ require_once __DIR__ . "/MysqlConnect.php";
 			}
 			else{
 				?>
-				<a href="/pages/membres/index.php">
+				<a href="/pages/member/index.php">
 				<?php
 			}?>
 			<table>

@@ -1,6 +1,7 @@
 <?php
 	require_once __DIR__ . "/../includes/Header.php";	
-	require_once __DIR__ . "/../includes/HeaderRace.php";
+		require_once __DIR__ . "/../includes/dataRaceSelected.php";	
+	require_once __DIR__ . "/../includes/menuPages.php";
 ?>
     <script>
 		const today = new Date().toLocaleString('sv-SE', { 
@@ -94,10 +95,7 @@ function isMail2(txtMail)
 	var regMail=new RegExp("^[0-9a-z._-]+@{1}[0-9a-z. -]{2,}[.]{1}[a-z]{2,5}$", "i");
 	return regMail.test(txtMail);
 }
-
 </script>
-
-
 <div id="corps">
 <?php
 
@@ -148,8 +146,8 @@ function EquipeChang(valueText) {
 	<span class="popuptext" id="SpanPopUpAddMembre">
 		<button class="ButtonResultat" id="ExitPopUp"  type ="button" style="float:right;margin: 0px" onClick="ClosePopUpAddMember()" title="Exit" data-toggle="tooltip" data-placement="right">X</button>
 		<p class="TitlePopUP"> Ajout d'un nouvel athlète </p>
-		<form style="padding: 10px" id="formAddMember" name="formAddMember" method="get" action="addMembresFormulaire.php"  >
-			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION["Login"] ?>' />
+		<form style="padding: 10px" id="formAddMember" name="formAddMember" method="get" action="/../actions/action-member-add.php"  >
+			<input type="hidden" name="LoginCompte" id="LoginCompte"   value= '<?php echo $_SESSION["user"]["login"] ?>' />
 			<div class="input">
 				<label id="lblNomAdd" for="nomAdd" >Nom :</label>
 				<input type="text" name="nomAdd" id="nomAdd" tabindex="10"/>
@@ -212,7 +210,11 @@ function EquipeChang(valueText) {
 // Si on est connecté on affiche dans un menu avec les coureurs de la session
 if ( !isset($_SESSION["user"]))
 {
-	    header('Location: /auth/oidc-login.php?destination=formulaire.php?IdRace='.$IdRace);
+	    header('Location: /auth/oidc-login.php?destination=formulaire&IdRace='.$IdRace);
+}
+if ( !isset($_GET["IdRace"]))
+{
+	   echo "Aucune course choisie pour formulaire, contacter info@defichrono.ch et copier le liens url afin de pouvoir diagnostiquer le problème";
 }
 ?>
 <center>
@@ -223,7 +225,7 @@ if ( !isset($_SESSION["user"]))
 	<input type="hidden" name="Course" id="Course"   value= "<?php echo $NOM_COURSE. $ANNEE_COURSE ?>" />
 	<input type="hidden" name="NomEquipe" id="NomEquipe"   value=  />
 </form>
-<form method="post" action="ciblePanier.php" id="Formulaire" name="Formulaire" >
+<form method="post" action="/actions/action-cart-add.php" id="Formulaire" name="Formulaire" >
 	<!-- Select coureur -->
 	<div class="classTitleWithButton">
 		<div class="input" style=" width: 100%;">
@@ -244,18 +246,25 @@ if ( !isset($_SESSION["user"]))
 			<!-- information coureurs masqué --> 
 			<input type="hidden" name="idCoureur" id="idCoureur" />
 			<input type="hidden" name="IdRace" id="DateCourse"   value= "<?php echo $IdRace ?>" />
+					<input type="hidden" name="NumCat" id="NumCat" />
+			<input type="hidden" name="NomCat" id="NomCat" />
+			<input type="hidden" name="OnLine" id="OnLine" />
+			<input type="hidden" name="Option" id="Option" />
+
 		</div>
 	
 			<div class="Button" onclick="ShowPopuAddMember()" id="OpenPopUpAddCoureur" >
 				<i class="fa fa-plus-circle" style= "font-size: 50px;" ></i></br>
 			</div>
 			
-		<a  class="Button" href="admin/membres.php"> 
-			<i  href="admin/membres.php" class="fa fa-pencil"  style= "font-size: 50px;"></i>
+		<a  class="Button" href="member/index.php"> 
+			<i  href="member/index.php" class="fa fa-pencil"  style= "font-size: 50px;"></i>
 		</a>
 	</div>
 	<div id="InformationsCoureurs" style="display:none;">
 		<input type="hidden" name="nom" id="nom" />
+		<input type="hidden" name="NomCourse" id="NomCourse"  value= "<?php echo $NOM_COURSE?>"  />
+		<input type="hidden" name="AnneeCourse" id="AnneeCourse"  value= "<?php echo $ANNEE_COURSE?>"  />
 		<input type="hidden" name="prenom" id="prenom" />
 		<input type="hidden" name="email" id="email" />
 		<input type="hidden" name="adresse" id="adresse"  />

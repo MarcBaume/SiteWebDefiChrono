@@ -4,7 +4,7 @@
 	exit("Aucun utilistaeur connecté...");
 	}?>
 
-<script type="text/javascript">
+<script>
 function getURL( ValueFind, IDElement) {
 
 	if (window.location.href.search(ValueFind)>-1)
@@ -117,7 +117,7 @@ function getURL( ValueFind, IDElement) {
 <script>
 function ClickColPannier()
 {
-	 window.location.href = "Pannier.php";
+	 window.location.href = "/../pages/member/cart.php";
 }
 function ClickColResultat()
 {
@@ -129,6 +129,6 @@ function ClickColDeconnect()
 }
 function ClickColProfil()
 {
-	 window.location.href = "membres.php";
+	 window.location.href = "/../pages/member/index.php";
 }
 </script>

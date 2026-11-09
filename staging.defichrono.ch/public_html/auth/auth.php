@@ -99,7 +99,17 @@ try {
 
     unset($_SESSION['destination_apres_login']);
 
+
+    if (($destination['type'] ?? '') === 'formulaire') 
+    {
+        header('Location:/pages/formulaire.php?IdRace=' . urlencode((string) 
+        $destination['IdRace']));
+    }
+    else
+    {
     header('Location: ' . $destination);
+    }
+
     exit;
 
 } catch (Throwable $e) {

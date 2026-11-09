@@ -1,6 +1,8 @@
+
+
 <?php
 	require_once __DIR__ . "/../includes/Header.php";	
-	require_once __DIR__ . "/../includes/HeaderRace.php";
+	require_once __DIR__ . "/../includes/dataRaceSelected.php";
 ?>
 	<script src="/../js/maps.js"></script>
 <div id="Top1"></div>

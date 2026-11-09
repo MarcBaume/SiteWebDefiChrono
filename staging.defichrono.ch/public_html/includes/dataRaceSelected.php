@@ -1,13 +1,24 @@
 <?php
+session_start();
+ $IdRace  = 0;
     // Si une course est choisie
-    if (isset($_GET['IdRace']))
+    if (isset($_GET['IdRace']) || isset($_SESSION["IdRace"]))
     {
-        $IdRace  = $_GET['IdRace'];
+        if (isset($_GET['IdRace']))
+        {
+            echo "Save id race";
+            $IdRace  = (int) $_GET['IdRace'];
+            $_SESSION["IdRace"] = $IdRace;
+        }
+        else
+        {
+           $IdRace  =  (int) $_SESSION["IdRace"];
+        }
             // 1. Préparation de la requête avec un marqueur nommé
         $stmt = $pdo->prepare('SELECT * FROM Course WHERE ID = :idRace');
 
         // 2. Exécution en passant la variable sécurisée
-        $stmt->execute([':idRace' => $_GET['IdRace']]);
+        $stmt->execute([':idRace' =>  $IdRace ]);
 
         // 3. Récupération des résultats
         $allCourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,6 +40,7 @@
         }
         else
         {
+            echo "No Find Race";
             http_response_code(404);
         }
     // Suive de l'événemnt

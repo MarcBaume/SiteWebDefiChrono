@@ -23,8 +23,18 @@ if (ini_get('session.use_cookies')) {
 
 // Destruction de la session
 session_destroy();
+// URL de déconnexion Keycloak
+$logoutUrl = 'https://auth.defichrono.ch/realms/loginDefiChrono/protocol/openid-connect/logout';
 
-// Retour à l'accueil
-header('Location: /');
+$params = [
+    'client_id' => 'defichrono-php',
+    'post_logout_redirect_uri' => 'https://staging.defichrono.ch/'
+];
+
+if (is_string($idToken) && $idToken !== '') {
+    $params['id_token_hint'] = $idToken;
+}
+
+header('Location: ' . $logoutUrl . '?' . http_build_query($params));
 exit;
 ?>

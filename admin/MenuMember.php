@@ -6,7 +6,7 @@
 	}?>
 
 
-<script type="text/javascript">
+<script>
 function getURL( ValueFind, IDElement) {
 
 	if (window.location.href.search(ValueFind)>-1)
@@ -75,7 +75,7 @@ function getURL( ValueFind, IDElement) {
 	<script>
 		getURL( "ListResultat","<?php echo "RowResult".$IdRace ?>" ) ;
 	</script>
-<?}
+<?php
 
 	if (isset($_SESSION['Course']))
 	{
@@ -105,7 +105,7 @@ function getURL( ValueFind, IDElement) {
 		getURL( "Pannier","<?php echo "Rowinsc".$IdRace ?>" ) ;
 	</script>
 
-<? 
+<?php 
 
 	}
 if  (isset($_SESSION['Login']))
@@ -127,7 +127,7 @@ if  (isset($_SESSION['Login']))
 		</span>
 
 	</td>
-<?	}
+<?php	}
 ?>
    </tr>
    </table>

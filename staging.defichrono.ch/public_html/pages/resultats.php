@@ -7,9 +7,10 @@
 </a>
 </div>
 <?php	
-	require_once __DIR__ . "/../includes/HeaderIndex.php";
-	require_once __DIR__ . "/../includes/HeaderRace.php";
-
+		require_once __DIR__ . "/../includes/dataRaceSelected.php";
+		require_once __DIR__ . "/../includes/menuPages.php";
+		$Parcours = ""  ;
+		$Depart = "" ;
 	if (isset($_GET['Parcours']))
 	{
 		$indexParcoursSelected= $_GET['Parcours'];
@@ -62,7 +63,7 @@
 	?>
 
 <form method="get" action="resultats.php" id="FormSendIndfo">
-	<input type="text" name="IdRace" id="IdRace2" tabindex="10"  size="60"  value= '<?php echo $IdRace?>' />
+	<input type="hidden" name="IdRace" id="IdRace2" tabindex="10"  size="60"  value= '<?php echo $IdRace?>' />
 	<input type="hidden" name="Depart" id="FormDepart" tabindex="10"  size="60"  value= '<?php echo $indexDepartSelected ?>' />
 	<input type="hidden" name="Parcours" id="FormParcours" tabindex="10"  size="60" value= '<?php echo $indexParcoursSelected ?>'/>
 	<input type="hidden" name="PointPassage" id="FormPointPassage" tabindex="10"  size="60"  value= '<?php echo $PointPassage?>' />
@@ -445,7 +446,7 @@ padding-left:10px">
 		 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
 		 * 
 		 ***************************************************/
-		if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+		if ($Parcours !== "" && $Depart !== "")
 		{
 			if ($numetape >0 && $numetape <99)
 			{
@@ -1381,7 +1382,7 @@ padding-left:10px">
 		 * 			Liste fichier résultat de type spéciaux "équipe , Duo "
 		 * 
 		 ***************************************************/
-		if (strlen($Parcours) > 0 &&  strlen($Parcours) > 0 && strlen($Depart) > 0  )
+		if ($Parcours !== ""  &&  $Parcours !== "" && $Depart !== ""  )
 		{
 			if ($numetape >0 && $numetape <99)
 			{
@@ -3065,6 +3066,9 @@ padding-left:10px">
 		var posXMin = 100000000000000;
 		var posYMax = -100000000000000;
 		var posYMin = 100000000000000;
+		var DecalageStartWidth = 0;
+		var Height = 0;
+		var DecalageStartHeight = 0;
 	/***** FUNCTION AJOUT DE POINT SUR LES DESSINS ****/
 	function AddPoint(LastPoint, Point  , GraphiqueSVG, xStart, xFinish)
 	{
@@ -3264,7 +3268,7 @@ circle.setAttribute("fill", "steelblue");
 		var textNode = document.createTextNode(Math.round(value));
 		newText.appendChild(textNode);
 		GraphiqueSVG.appendChild(newText);
-
+		
 		var maLigne1 = document.createElementNS("http://www.w3.org/2000/svg",'line');
 		maLigne1.setAttribute('x1',  (DecalageStartWidth - 50) +'px');
 		maLigne1.setAttribute('y1', ELevationPxl+ 'px');

@@ -194,7 +194,7 @@ if ($donnees) {
    
 		// output data of each row
 		?>
-		<img src="../images/FilRougeInscription5.png" style="width: 100%" ></img>
+		<img src="../../images/FilRougeInscription5.png" style="width: 100%" ></img>
 		</br>
 		</br>
 		<p class="title2"> Paiement via internet</p>

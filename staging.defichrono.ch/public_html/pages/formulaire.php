@@ -218,7 +218,7 @@ if ( !isset($_GET["IdRace"]))
 }
 ?>
 <center>
-<img src="images/FilRougeInscription4.png" style="width: 80%" >
+<img src="../images/FilRougeInscription4.png" style="width: 80%" >
 </center>
 
 <form id="VerifEquipe" method="get" action="VerifEquipe.php">

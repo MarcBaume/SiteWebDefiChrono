@@ -3,6 +3,7 @@
 	require_once __DIR__ . "/../../includes/member-header.php";	
     require_once __DIR__ . "/../../includes/MysqlConnect.php";	
     require_once __DIR__ . "/../../includes/member-menu.php";	
+     $CmptValider=0;
 ?>
 	<div id="corps">
 		<div id="index">
@@ -15,8 +16,8 @@
 
     function  funUserSelected(IDUserSelected)
     {
-        document.getElementById("FormInformation").style.visibility = "visible" ;
-        document.getElementById("FormInformation").style.display  = "block" ;
+        document.getElementById("formAddMember").style.visibility = "visible" ;
+        document.getElementById("formAddMember").style.display  = "block" ;
         document.getElementById("FormDeleteInformation").style.visibility = "visible" ;
         document.getElementById("FormDeleteInformation").style.display  = "block" ;
         
@@ -75,54 +76,6 @@
 <?php
 
 // Affichage bandeau seulement si on est en insciption de cours
-	if (!empty($_SESSION['IdRace']))
-	{
-       
-	?>
-     <table  style="width:100%;">
-     <tr>
-        <img src="../images/FilRougeInscription3.png" style="width: 100%" >
-    </tr>
-	<tr name="PCoureurValid" id="PCoureurValid" style="visibility:hidden;">
-		<td>
-		<i style="font-size:120%" > Maintenant que votre profil est terminé, vous pouvez inscrire  les coureurs validés aux différentes courses.</i>
-		</br>
-		</br>
-		<form method="get" action="../formulaire2023.php">
-			<input type="hidden" name="DateCourse" id="DateCourse"   value= '<?php echo $_SESSION['DateCourse'] ?>' />
-			<input type="hidden" name="NomCourse" id="NomCourse"  value= '<?php echo $_SESSION['Course']?>' />
-			<input type="hidden" name="Nbretape" id="Nbretape" value= '<?php echo  $_SESSION['Nbretape'] ?>' />
-			<input type="submit" value="Retourné au inscription de  <?php echo $_SESSION['Course'] ?>"  class="ButtonResultat" style= " padding:10px;height:80px;cursor: pointer; Background:transparent;Font-size:24px"> 
-		 </form>
-		 </br>
-		</br>
-		</td>
-	</tr>
-    </table>
-    </BR>
-	<?php
-	}
-	?>
-	<form id="FormAddMembres" method="get" action ="AddMembres.php" style="float:right;"  >
-    <Button  class="ButtonResultat"  style="cursor: pointer; background:transparent;Height: 120px; " onClick="addForm(this.form)">
-        <Table >
-            <tr>
-            <td style="text-align: center;">
-        
-                    <i class="fa fa-plus" style= "font-size: 50px;color: #00b4ff;    width:100%;"></i>
-
-            </td>
-            </tr>
-            <Tr>
-            <td>
-            <a style="margin :10px; Font-size : 15px">  Ajout athlète </a>
-            </td>
-            </tr>
-        </table>
-    </button>
-	</form>
- 
-   <?php
 
         $sql = 'SELECT * FROM Membres WHERE LoginCompte = :loginCompte';
 
@@ -130,8 +83,9 @@
          $result ->execute([
             ':loginCompte' => $_SESSION['user']['login']
         ]);
+        $valeurs = $result->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($result ->rowCount() > 0)
+        if (count($valeurs) > 0)
         {
             $c= 0;
             // de type entreprise
@@ -147,7 +101,7 @@
            
             <?php
 			//Chaque athlète on va créer un nom 
-            foreach ($result as $val)
+            foreach ($valeurs as $val)
             {?>
                <Fieldset   id="<?php echo "user".$c ?>" onclick="funUserSelected('<?php echo $c ?>')" style="border:0px;Display:inline-grid;cursor: pointer; width:20%;  " >
 				<span class="dotMember"  > 
@@ -270,7 +224,7 @@
         <p id="lblInformation" style=" display:block;padding:5px; border-style: solid;height:20px; border-color: black; font-size:100%; ">Aucun athlète sélectionné</p>	
 
 </h2>
-		<form method="post" action="ModificationMembres.php" id=FormInformation style="visibility:hidden; display:none" >
+		<form mmethod="get" action="/../actions/action-member-update.php" id=formAddMember style="visibility:hidden; display:none" >
             <input type="hidden" name="ID" id="ID"   />
             <p><label style="vertical-alignement: center" for="nom">Nom *:</label> <input type="text" name="nom" id="nom" tabindex="10"   /></p>
             <p><label style="vertical-alignement: center" for="prenom">Prénom *:</label>  <input type="text" name="prenom" id="prenom" tabindex="20" /></p>
@@ -282,7 +236,7 @@
             <p><label style="vertical-alignement: center" for="dateNaissance"> Année de Naissance * :</label> <input type="text" name="dateNaissance" id="DateNaissance"  />
             <p><label style="vertical-alignement: center" for="club">Club:</label> <input type="text" name="club" id="club"tabindex="100" /></p>
                                 
-            <p><label style="vertical-alignement: center">Sexe * :</label><Select    onchange ="liste_depart(this.form);" name="sexe"   id="sexe" /> 
+            <p><label style="vertical-alignement: center">Sexe * :</label><Select  name="sexe"   id="sexe" /> 
                  <option style="padding : 10px" value="">Sélectionner valeur</option>
                 <option style="padding : 10px" value="H">Homme</option>
                 <option style="padding : 10px" value="D">Dame</option>		
@@ -298,7 +252,7 @@
             </A>
 		</form>
 				
-				<form method="post" action="DeleteMembre.php" id=FormDeleteInformation style="visibility:hidden; display:none">
+				<form method="post" action="/../actions/action-member-delete.php" id=FormDeleteInformation style="visibility:hidden; display:none">
                     <input type="hidden" name="ID" id="IDDelete"  />
                     <a><span> </span>
                       <!-- Bouton delete information -->
@@ -315,7 +269,7 @@
 
 <Center>
 	<?php
-	if (isset($_SESSION['Course']) and $CmptValider > 0)
+	if (isset($IdRace) and  $IdRace > 0 and $CmptValider > 0)
     {
         ?>
         <script>  
@@ -329,7 +283,7 @@
 	</div>
     <?php
     // de type entreprise
-    if ($_SESSION['Niveau'] == "1")
+    if ($_SESSION["user"]["niveau"] == "1")
     {?>
         <A> Listes des équipes </a>
         <table > 
@@ -347,24 +301,14 @@
 </html>
 <?php
      // Si un seul coureur créer le sélectionner d'office au chargement de la page
-     if( mysqli_num_rows($result) == 1)
-     {
-
-         ?>
-         <script>
-             funUserSelected(0);
-         </script>
-         <?php 
-
-     }
-     else if (mysqli_num_rows($result) == 0)
-     {
+    if ($c== 1)
+    {
         ?>
         <script>
-        document.getElementById("FormAddMembres").submit();
+            funUserSelected(0);
         </script>
         <?php
-     }
+    }
 ?>
 <script type="text/javascript">
 
@@ -410,7 +354,20 @@ function checkForm(f1) {
 
 
 	if (confirm("Etes-vous sur des informations de votre coureur?")) {
-	f1.submit();
+
+	// Appelle fonction php pour ajouter un
+$('formAddMember').request({
+        onComplete: function(transport){
+                val =transport.responseText.evalJSON();
+
+            console.log(val);
+            if (val == "1")
+            {
+                location.reload();
+            }
+            }
+        });
+
 	}
 }
 

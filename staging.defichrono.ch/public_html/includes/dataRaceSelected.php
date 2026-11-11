@@ -6,7 +6,6 @@ session_start();
     {
         if (isset($_GET['IdRace']))
         {
-            echo "Save id race";
             $IdRace  = (int) $_GET['IdRace'];
             $_SESSION["IdRace"] = $IdRace;
         }

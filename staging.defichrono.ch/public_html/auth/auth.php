@@ -107,7 +107,7 @@ try {
     }
     else
     {
-    header('Location: ' . $destination);
+    header('Location: ../index.php');
     }
 
     exit;

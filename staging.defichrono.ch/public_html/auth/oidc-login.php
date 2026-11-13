@@ -8,7 +8,10 @@ session_set_cookie_params([
     'samesite' => 'Lax'
 ]);
 session_start();
-
+echo '<pre>';
+echo 'Session ID avant départ : ' . session_id() . PHP_EOL;
+echo 'Clés de session : ' . implode(', ', array_keys($_SESSION)) . PHP_EOL;
+echo '</pre>';
 $destination = $_GET['destination'] ?? 'home';
 
 
@@ -23,6 +26,14 @@ isset($_GET['IdRace'])) {
         'type' => 'member'
     ];
 }
+
+$origine = $_GET['origine'] ?? 'member';
+
+if (!in_array($origine, ['member', 'formulaire'], true)) {
+    $origine = 'member';
+}
+
+$_SESSION['origine_connexion'] = $origine;
 
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 

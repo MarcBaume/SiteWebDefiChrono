@@ -136,7 +136,7 @@ require_once   "functions.php";
 		</a>
 		</td> 
 		<td> 	
-			<a href="Contact.php">
+			<a href="pages/contacts.php">
 				<span class="dotHeader" id="ButtonContact">
 					<i class="fa fa-info-circle" style= "font-size: 28px;margin:8px; margin-top: 6px; "></i>
 				</span>

@@ -1,5 +1,8 @@
 <?php
 declare(strict_types=1);
+error_reporting(E_ALL);
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
 session_set_cookie_params([
     'lifetime' => 0,
     'path' => '/',
@@ -8,6 +11,12 @@ session_set_cookie_params([
     'samesite' => 'Lax'
 ]);
 session_start();
+echo '<pre>';
+echo 'Session ID : ' . session_id() . PHP_EOL;
+echo 'Session active : ' . (session_status() === PHP_SESSION_ACTIVE ? 'oui' : 'non') . PHP_EOL;
+echo 'Cookie reçu : ' . (isset($_COOKIE[session_name()]) ? 'oui' : 'non') . PHP_EOL;
+echo 'Clés de session : ' . implode(', ', array_keys($_SESSION)) . PHP_EOL;
+echo '</pre>';
 
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
@@ -40,7 +49,7 @@ try {
 
     $oidc->addScope(['openid', 'profile', 'email']);
     $oidc->setCodeChallengeMethod('S256');
-
+error_log('OIDC login session : ' . session_id());
     if (!$oidc->authenticate()) {
         throw new RuntimeException('Authentification incomplète.');
     }

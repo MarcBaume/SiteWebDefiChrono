@@ -210,7 +210,7 @@ function EquipeChang(valueText) {
 // Si on est connecté on affiche dans un menu avec les coureurs de la session
 if ( !isset($_SESSION["user"]))
 {
-	    header('Location: /auth/oidc-login.php?destination=formulaire&IdRace='.$IdRace);
+	    header('Location: /auth/oidc-login.php?destination=formulaire&IdRace='.$IdRace.'&origine=formulaire');
 }
 if ( !isset($_GET["IdRace"]))
 {
@@ -663,7 +663,7 @@ if ( !isset($_GET["IdRace"]))
 		<!-- lit de tous les code de réduction utiliser sérialiser -->
 		<input type="hidden"  name="strCodeReduction" id="strCodeReduction" value=""  />  
 		</form>	
-		<form id="formCode" method="get" action="VerifCodeReduction.php" style="visibility:collapse;">
+		<form id="formCode" method="get" action="../actions/action-codeReduction-update.php" style="visibility:collapse;">
 				<div style="display :none;" ><input type="hidden" name="NomCode" id="NomCode" style="display :none;"  readonly  /></p>
 				<input type="hidden" name="PrenomCode" id="PrenomCode"  style="display :none;" readonly /></p>
 				<input type="hidden" name="CourseCode" id="CourseCode" style="display :none;"  value= '<?php echo $NOM_COURSE. $ANNEE_COURSE ?>' />

@@ -1,6 +1,6 @@
 ﻿<?php
 	require_once __DIR__ . "/../includes/Header.php";	
-	require_once __DIR__ . "/../includes/dataRaceSelected.php";	
+		require_once __DIR__ . "/../includes/dataRaceSelected.php";	
 	require_once __DIR__ . "/../includes/menuPages.php";
 	// initialisation des variables
 	$nbrFile = 0;

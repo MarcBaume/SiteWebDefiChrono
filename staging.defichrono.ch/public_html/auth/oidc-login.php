@@ -56,7 +56,7 @@ $oidc = new Jumbojett\OpenIDConnectClient(
 );
 
 $oidc->setRedirectURL(
-    'https://staging.defichrono.ch/auth/oidc-callback.php'
+    'https://productionv2.defichrono.ch/auth/oidc-callback.php'
 );
 
 $oidc->addScope(['openid', 'profile', 'email']);
